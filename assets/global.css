@@ -80,28 +80,6 @@
 
 footer { background: linear-gradient(135deg, #414243, #6B6B6B)}
 
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-}
-
-.logo-dot {
-    inline-size: 8px;
-    block-size: 8px;
-    background: white;
-    border-radius: 0%;
-    animation: pulse 3s infinite;
-}
-
-.text { background: white; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.brand-pulse { animation: brand-pulse 3s ease-in-out infinite; }
-@keyframes brand-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.2);} }
-
-
 /* ADA contrast improvement */
 button.bg-primary-blue { color: #fff; }
 button.bg-primary-blue:hover { background-color: #1E40AF; }
