@@ -65,7 +65,7 @@
     block-size: 8px;
     background: white;
     border-radius: 50%;
-    animation: pulse 2s infinite;
+    animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
@@ -73,11 +73,11 @@
     50% { opacity: 0.5; }
 }
 .text-gradient { background: linear-gradient(135deg, #2563EB, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.brand-pulse { animation: brand-pulse 5s ease-in-out infinite; }
+.brand-pulse { animation: brand-pulse 3s ease-in-out infinite; }
 @keyframes brand-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.2);} }
 
 /* Footer Fix */
-footer { background: linear-gradient(135deg, #6B6B6B, #414243)}
+footer { background: linear-gradient(135deg, #414243, #6B6B6B)}
 
 /* ADA contrast improvement */
 button.bg-primary-blue { color: #fff; }
