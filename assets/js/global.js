@@ -25,10 +25,10 @@ function toggleLanguage(lang) {
   currentLanguage = lang;
   document.getElementById('lang-en').className = lang === 'en'
     ? 'px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm'
-    : 'px-3 py-1 text-sm font-medium text-gray-dark hover:text-light-blue transition-colors';
+    : 'px-3 py-1 text-sm font-medium text-gray-dark hover:text-primary-blue transition-colors';
   document.getElementById('lang-es').className = lang === 'es'
     ? 'px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm'
-    : 'px-3 py-1 text-sm font-medium text-gray-dark hover:text-light-blue transition-colors';
+    : 'px-3 py-1 text-sm font-medium text-gray-dark hover:text-primary-blue transition-colors';
   document.querySelectorAll('[data-en][data-es]').forEach(el=>{
     el.textContent = el.getAttribute('data-' + lang);
   });
