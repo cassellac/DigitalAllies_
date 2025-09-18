@@ -198,7 +198,7 @@ When contributing to this project:
 
 For questions about this codebase or Digital Allies services:
 
-- Website: [Digital Allies Portfolio](https://digitalallies.com)
+- Website: [Digital Allies](https://digitalallies.net)
 - Email: Contact through website form
 - Accessibility: Committed to WCAG 2.1 AA compliance
 
