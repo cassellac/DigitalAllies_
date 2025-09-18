@@ -70,7 +70,7 @@ DigitalAllies_/
 
 ### Typography
 - **Primary Font**: System font stack (Segoe UI, Arial, sans-serif)
-- **Secondary Font**: Used for body text and descriptions
+- **Secondary Font**: "Roboto", Arial, sans-serif – used for body text and descriptions
 - **Font Weights**: Regular (400), Medium (500), Semibold (600), Bold (700)
 
 ### Components
@@ -197,13 +197,22 @@ When contributing to this project:
 ## 📞 Support & Contact
 
 For questions about this codebase or Digital Allies services:
-- Website: [Digital Allies Portfolio]
+
+- Website: [Digital Allies Portfolio](https://digitalallies.com)
 - Email: Contact through website form
 - Accessibility: Committed to WCAG 2.1 AA compliance
 
 ## 📄 License
 
-This project is proprietary software belonging to Digital Allies. All rights reserved.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### MIT License Summary
+- ✅ Commercial use allowed
+- ✅ Modification allowed  
+- ✅ Distribution allowed
+- ✅ Private use allowed
+- ⚠️ Must include copyright notice
+- ⚠️ No warranty provided
 
 ---
 
