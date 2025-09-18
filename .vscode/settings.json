@@ -1,0 +1,27 @@
+{
+    "mdb.presetConnections": [
+        {
+            "name": "Preset Connection",
+            "connectionString": "mongodb://localhost:27017"
+        }
+    ],
+    "dbcode.connections": [
+        {
+            "connectionId": "2QcxFcsqULz0HsYEZsQ74",
+            "name": "MongoDB",
+            "driver": "mongodb",
+            "connectionType": "host",
+            "driverOptions": {
+                "protocol": "mongodb://"
+            },
+            "host": "cluster0.1atesx8.mongodb.net",
+            "port": 27017,
+            "ssl": false,
+            "username": "acinktown_db_user",
+            "password": "",
+            "savePassword": "secretStorage",
+            "readOnly": false,
+            "connectionTimeout": 30
+        }
+    ]
+}
