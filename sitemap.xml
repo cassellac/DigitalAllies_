@@ -4,8 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://digitalallies.net/</loc>
@@ -14,41 +12,52 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://digitalallies.net/index.html</loc>
+  <loc>https://digitalallies.net/about</loc>
   <lastmod>2025-09-23T01:22:53+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digitalallies.net/about.html</loc>
+  <loc>https://digitalallies.net/services</loc>
   <lastmod>2025-09-23T01:22:53+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digitalallies.net/services.html</loc>
+  <loc>https://digitalallies.net/blog</loc>
   <lastmod>2025-09-23T01:22:53+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digitalallies.net/blog.html</loc>
+  <loc>https://digitalallies.net/contact</loc>
   <lastmod>2025-09-23T01:22:53+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://digitalallies.net/ada_guide.html</loc>
+  <loc>https://digitalallies.net/ada-guide</loc>
   <lastmod>2025-09-23T01:22:53+00:00</lastmod>
   <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://digitalallies.net/privacy_policy_en.html</loc>
+  <loc>https://digitalallies.net/privacy</loc>
   <lastmod>2025-09-23T01:22:53+00:00</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
 </url>
-
+<url>
+  <loc>https://digitalallies.net/terms</loc>
+  <lastmod>2025-09-23T01:22:53+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://digitalallies.net/cookies</loc>
+  <lastmod>2025-09-23T01:22:53+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
+</url>
 
 </urlset>
