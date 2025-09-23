@@ -1,0 +1,56 @@
+# Digital Allies URL Rewrite Rules
+# Enable extension-less URLs for clean routing
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect .html extensions to clean URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Internal rewrites for clean URLs to .html files
+# About page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^about/?$ /about.html [L]
+
+# Services page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^services/?$ /services.html [L]
+
+# Blog page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^blog/?$ /blog.html [L]
+
+# Contact page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^contact/?$ /contact.html [L]
+
+# Terms page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^terms/?$ /terms.html [L]
+
+# Cookies page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^cookies/?$ /cookies.html [L]
+
+# Accessibility guide page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^accessibility-guide/?$ /ada_guide.html [L]
+
+# Privacy policy (already exists as 'privacy' file)
+# No rewrite needed as the file is already named 'privacy'
+
+# Remove trailing slashes (optional)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Default index handling
+DirectoryIndex index.html

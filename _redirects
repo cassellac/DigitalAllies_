@@ -1,0 +1,27 @@
+# Digital Allies URL Redirects for Netlify
+# Clean URL routing for extension-less URLs
+
+# Redirect old .html URLs to clean URLs (301 redirects)
+/index.html /
+/about.html /about 301
+/services.html /services 301
+/blog.html /blog 301
+/contact.html /contact 301
+/terms.html /terms 301
+/cookies.html /cookies 301
+/ada_guide.html /accessibility-guide 301
+
+# Clean URL rewrites (serve .html files for clean URLs)
+/about /about.html 200
+/services /services.html 200
+/blog /blog.html 200
+/contact /contact.html 200
+/terms /terms.html 200
+/cookies /cookies.html 200
+/accessibility-guide /ada_guide.html 200
+
+# Privacy already exists as 'privacy' file, no rewrite needed
+# /privacy serves the existing privacy file directly
+
+# Fallback for any other requests
+/* /index.html 404
