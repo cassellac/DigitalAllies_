@@ -1,0 +1,15 @@
+# Netlify redirects for clean URLs
+
+# Legacy .html redirects to clean URLs
+/about.html /about 301
+/services.html /services 301
+/blog.html /blog 301
+/ada_guide.html /ada-guide 301
+/privacy_policy_en.html /privacy-policy 301
+
+# Clean URL handling - map clean URLs to directory structure
+/about /about/index.html 200
+/services /services/index.html 200
+/blog /blog/index.html 200
+/ada-guide /ada-guide/index.html 200
+/privacy-policy /privacy-policy/index.html 200

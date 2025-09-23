@@ -1,0 +1,25 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect .html URLs to clean URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1? [NC,L,R=301]
+
+# Handle specific clean URLs that map to subdirectories
+RewriteRule ^about/?$ /about/index.html [NC,L]
+RewriteRule ^services/?$ /services/index.html [NC,L]
+RewriteRule ^blog/?$ /blog/index.html [NC,L]
+RewriteRule ^ada-guide/?$ /ada-guide/index.html [NC,L]
+RewriteRule ^privacy-policy/?$ /privacy-policy/index.html [NC,L]
+
+# Legacy redirects for old .html URLs
+RewriteRule ^about\.html$ /about [R=301,L]
+RewriteRule ^services\.html$ /services [R=301,L]
+RewriteRule ^blog\.html$ /blog [R=301,L]
+RewriteRule ^ada_guide\.html$ /ada-guide [R=301,L]
+RewriteRule ^privacy_policy_en\.html$ /privacy-policy [R=301,L]
