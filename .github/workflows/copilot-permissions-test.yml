@@ -69,7 +69,7 @@ jobs:
         echo "✅ Actions metadata access working"
         
     - name: Create test issue (if permissions allow)
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'issues'
+      if: (github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'issues') || github.event_name == 'push' || github.event_name == 'pull_request'
       uses: actions/github-script@v7
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
