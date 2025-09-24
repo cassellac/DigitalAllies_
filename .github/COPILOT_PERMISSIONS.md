@@ -40,6 +40,37 @@ This document outlines the required permissions for the GitHub Copilot agent to 
 
 ## Verification
 
+### Workflow Test Requirements
+The `copilot-permissions-test.yml` workflow requires the following to pass successfully:
+
+**Basic Tests (always run):**
+- Repository checkout permissions ✅
+- File read permissions ✅  
+- File write permissions ✅
+- Branch access permissions ✅
+- Actions metadata access ✅
+
+**Extended Tests (manual trigger only):**
+- Issue creation/management (`test_type: 'issues'`)
+- Pull request management (`test_type: 'pull_requests'`)
+
+### Running the Permissions Test
+1. **Automatic Basic Test**: Runs on push to main and PR creation
+2. **Manual Extended Test**: Go to Actions → "Copilot Agent Permissions Test" → "Run workflow"
+   - Choose test type: `basic`, `files`, `issues`, or `pull_requests`
+
+### Common Test Failure Causes
+- **Permission denied errors**: Repository settings don't allow workflow token sufficient access
+- **API rate limits**: Too many test runs in short period
+- **Branch protection rules**: Prevent automated PR creation
+- **Missing GITHUB_TOKEN permissions**: Token lacks required scopes
+
+### Troubleshooting Test Failures
+1. Check repository Settings → Actions → General → Workflow permissions
+2. Ensure "Read and write permissions" is enabled
+3. Enable "Allow GitHub Actions to create and approve pull requests"
+4. For organization repositories, check organization-level restrictions
+
 ### Testing Permissions
 After configuration, verify the agent can:
 - [ ] Read all files from any branch
