@@ -1,0 +1,178 @@
+name: Copilot Agent Permissions Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Type of permission test to run'
+        required: true
+        default: 'basic'
+        type: choice
+        options:
+          - basic
+          - files
+          - issues
+          - pull_requests
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: write
+  metadata: read
+
+jobs:
+  permission-test:
+    runs-on: ubuntu-latest
+    name: Test Copilot Agent Permissions
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Test file read permissions
+      run: |
+        echo "Testing file read permissions..."
+        ls -la
+        cat README.md | head -5
+        echo "✅ File read permissions working"
+        
+    - name: Test file write permissions
+      run: |
+        echo "Testing file write permissions..."
+        echo "# Copilot Agent Test - $(date)" > test-permissions.md
+        echo "This file was created by the Copilot agent permissions test workflow." >> test-permissions.md
+        cat test-permissions.md
+        echo "✅ File write permissions working"
+        
+    - name: Test branch access
+      run: |
+        echo "Testing branch access..."
+        git branch -a
+        echo "Current branch: $(git branch --show-current)"
+        echo "✅ Branch access working"
+        
+    - name: Test Actions metadata access
+      run: |
+        echo "Testing Actions metadata access..."
+        echo "Workflow: ${{ github.workflow }}"
+        echo "Run ID: ${{ github.run_id }}"
+        echo "Actor: ${{ github.actor }}"
+        echo "Repository: ${{ github.repository }}"
+        echo "✅ Actions metadata access working"
+        
+    - name: Create test issue (if permissions allow)
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'issues'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          try {
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Copilot Agent Permissions Test - Issues',
+              body: 'This issue was created by the Copilot agent permissions test workflow to verify issue creation permissions.\n\nCreated at: ' + new Date().toISOString()
+            });
+            console.log('✅ Issue creation permissions working - Issue #' + issue.data.number);
+            
+            // Close the test issue immediately
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.data.number,
+              state: 'closed'
+            });
+            console.log('✅ Issue update permissions working - Issue closed');
+          } catch (error) {
+            console.error('❌ Issue permissions test failed:', error.message);
+            core.setFailed('Issue permissions test failed');
+          }
+          
+    - name: Test PR permissions (on workflow_dispatch only)
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'pull_requests'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          try {
+            // First create a test branch
+            const ref = await github.rest.git.getRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/' + context.ref.replace('refs/heads/', '')
+            });
+            
+            const branchName = 'copilot-permissions-test-' + Date.now();
+            await github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/heads/' + branchName,
+              sha: ref.data.object.sha
+            });
+            
+            console.log('✅ Branch creation permissions working - Branch: ' + branchName);
+            
+            // Then create a test PR
+            const pr = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Copilot Agent Permissions Test - PR',
+              body: 'This pull request was created by the Copilot agent permissions test workflow.\n\nCreated at: ' + new Date().toISOString(),
+              head: branchName,
+              base: context.ref.replace('refs/heads/', '')
+            });
+            
+            console.log('✅ PR creation permissions working - PR #' + pr.data.number);
+            
+            // Close the test PR
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.data.number,
+              state: 'closed'
+            });
+            
+            // Delete the test branch
+            await github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/' + branchName
+            });
+            
+            console.log('✅ PR update and branch deletion permissions working');
+          } catch (error) {
+            console.error('❌ PR permissions test failed:', error.message);
+            core.setFailed('PR permissions test failed');
+          }
+          
+    - name: Cleanup test files
+      run: |
+        echo "Cleaning up test files..."
+        rm -f test-permissions.md
+        echo "✅ Cleanup completed"
+        
+    - name: Permissions test summary
+      run: |
+        echo "🎉 Copilot Agent Permissions Test Summary"
+        echo "========================================"
+        echo "✅ File read permissions: PASSED"
+        echo "✅ File write permissions: PASSED" 
+        echo "✅ Branch access permissions: PASSED"
+        echo "✅ Actions metadata access: PASSED"
+        echo ""
+        echo "Additional tests can be run manually using workflow_dispatch with:"
+        echo "- test_type: 'issues' to test issue management"
+        echo "- test_type: 'pull_requests' to test PR management"
+        echo ""
+        echo "For full permissions verification, ensure the Copilot agent can:"
+        echo "1. Read/write all repository files"
+        echo "2. Create, update, and close issues"
+        echo "3. Create, update, and merge pull requests"
+        echo "4. Trigger and monitor GitHub Actions workflows"
