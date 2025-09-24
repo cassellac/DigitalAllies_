@@ -1,5 +1,19 @@
 # GitHub Copilot Instructions - Digital Allies
 
+## Copilot Agent Permissions
+
+**Required Permissions for GitHub Copilot Agent:**
+- **Repository Access**: Read and write access to all files across all branches
+- **Issues**: Full read and write access to repository issues
+- **Pull Requests**: Full read and write access to pull requests and reviews
+- **Actions**: Read and write access to GitHub Actions workflows and runs
+- **Scope**: Entire repository across all branches
+
+**Note**: These permissions must be configured by repository administrators through GitHub's web interface at:
+- Repository Settings > Actions > General
+- Organization Settings > GitHub Apps (if using GitHub App)
+- User Settings > Developer settings > Personal access tokens (if using PAT)
+
 ## Repository Summary
 
 Digital Allies is a static multilingual website (English/Spanish) for a digital services company that specializes in web development, accessibility consulting, and digital solutions for small businesses. The site emphasizes WCAG 2.1 AA accessibility compliance and modern web standards.
