@@ -39,13 +39,18 @@ jobs:
         cat README.md | head -5
         echo "✅ File read permissions working"
         
-    - name: Test file write permissions
+    - name: Test file write and repository commit permissions
       run: |
-        echo "Testing file write permissions..."
+        echo "Testing file write and repository commit permissions..."
         echo "# Copilot Agent Test - $(date)" > test-permissions.md
         echo "This file was created by the Copilot agent permissions test workflow." >> test-permissions.md
         cat test-permissions.md
-        echo "✅ File write permissions working"
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add test-permissions.md
+        git commit -m "Copilot Agent Permissions Test: add test-permissions.md [skip ci]" || echo "No changes to commit"
+        git push origin HEAD
+        echo "✅ File write and repository commit permissions working"
         
     - name: Test branch access
       run: |
