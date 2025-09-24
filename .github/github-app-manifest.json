@@ -17,8 +17,6 @@
     "issues": "write",
     "metadata": "read",
     "pull_requests": "write",
-    "repository_hooks": "write",
-    "repository_projects": "write",
     "statuses": "write"
   },
   "default_events": [
