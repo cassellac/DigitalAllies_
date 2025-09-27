@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - Digital Allies</title>
+    <meta name="description" content="Cookie Policy for Digital Allies, web development and digital solutions provider in Kingman, AZ and surrounding areas.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/global.css">
+    <script src="assets/js/global.js"></script>
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Digital Allies" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Digital Allies",
+        "email": "contact@digitalallies.net",
+        "telephone": "928-228-5769",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kingman",
+            "addressRegion": "AZ",
+            "addressCountry": "US"
+        },
+        "url": "https://digitalallies.net"
+    }
+    </script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HVGNEKE8R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9HVGNEKE8R');
+</script>
+
+<body class="font-primary bg-white text-gray-dark">
+    <!-- Language Toggle -->
+    <div class="bg-pale-blue py-2">
+        <div class="max-w-7xl mx-auto px-4 flex justify-end">
+            <div class="flex items-center space-x-2">
+                <button onclick="toggleLanguage('en')" id="lang-en" class="px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm">EN</button>
+                <button onclick="toggleLanguage('es')" id="lang-es" class="px-3 py-1 text-sm font-medium text-gray-medium hover:text-primary-blue transition-colors">ES</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-1">
+                    <div class="relative w-4 h-4 flex items-center justify-center">
+                        <div class="w-2 h-2 bg-primary-blue rounded-full brand-pulse"></div>
+                    </div>
+                    <span class="text-xl font-bold text-gradient">Digital Allies</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home" data-es="Inicio">Home</a>
+                    <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
+                    <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
+                    <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
+                    <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
+                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+                </div>
+                
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
+                <div class="flex flex-col space-y-4 pt-4">
+                    <a href="/" class="text-gray-dark hover:text-primary-blue" data-en="Home" data-es="Inicio">Home</a>
+                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca">About</a>
+                    <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios">Services</a>
+                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog">Blog</a>
+                    <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto">Contact</a>
+                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="gradient-bg py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-dark mb-4" data-en="Cookie Policy" data-es="Política de Cookies">Cookie Policy</h1>
+            <p class="text-lg text-gray-medium font-secondary" data-en="Last updated: January 2025" data-es="Última actualización: Enero 2025">Last updated: January 2025</p>
+        </div>
+    </section>
+
+    <!-- Cookie Policy Content -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="prose prose-lg max-w-none">
+                <p class="text-gray-medium font-secondary mb-8" data-en="This Cookie Policy explains how Digital Allies uses cookies and similar technologies when you visit our website." data-es="Esta Política de Cookies explica cómo Digital Allies utiliza cookies y tecnologías similares cuando visita nuestro sitio web.">
+                    This Cookie Policy explains how Digital Allies uses cookies and similar technologies when you visit our website.
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-dark mb-6" data-en="What are Cookies?" data-es="¿Qué son las Cookies?">What are Cookies?</h2>
+                <p class="text-gray-medium font-secondary mb-8" data-en="Cookies are small text files that are placed on your device when you visit our website. They help us provide you with a better user experience and analyze how our site is used." data-es="Las cookies son pequeños archivos de texto que se colocan en su dispositivo cuando visita nuestro sitio web. Nos ayudan a brindarle una mejor experiencia de usuario y analizar cómo se usa nuestro sitio.">
+                    Cookies are small text files that are placed on your device when you visit our website. They help us provide you with a better user experience and analyze how our site is used.
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-dark mb-6" data-en="Analytics Cookies" data-es="Cookies de Análisis">Analytics Cookies</h2>
+                <p class="text-gray-medium font-secondary mb-8" data-en="We use Google Analytics to understand how visitors interact with our website. This helps us improve our services and better serve businesses in Kingman, AZ and surrounding areas." data-es="Utilizamos Google Analytics para entender cómo los visitantes interactúan con nuestro sitio web. Esto nos ayuda a mejorar nuestros servicios y atender mejor a las empresas en Kingman, AZ y áreas circundantes.">
+                    We use Google Analytics to understand how visitors interact with our website. This helps us improve our services and better serve businesses in Kingman, AZ and surrounding areas.
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-dark mb-6" data-en="Managing Cookies" data-es="Gestión de Cookies">Managing Cookies</h2>
+                <p class="text-gray-medium font-secondary mb-8" data-en="You can control and manage cookies through your browser settings. Please note that disabling cookies may affect the functionality of our website." data-es="Puede controlar y gestionar las cookies a través de la configuración de su navegador. Tenga en cuenta que deshabilitar las cookies puede afectar la funcionalidad de nuestro sitio web.">
+                    You can control and manage cookies through your browser settings. Please note that disabling cookies may affect the functionality of our website.
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-dark mb-6" data-en="Contact Information" data-es="Información de Contacto">Contact Information</h2>
+                <div class="bg-pale-blue rounded-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-gray-dark mb-4" data-en="Digital Allies" data-es="Digital Allies">Digital Allies</h3>
+                    <p class="text-gray-medium font-secondary mb-2">
+                        <span data-en="Email:" data-es="Correo:">Email:</span> contact@digitalallies.net
+                    </p>
+                    <p class="text-gray-medium font-secondary mb-2">
+                        <span data-en="Phone:" data-es="Teléfono:">Phone:</span> 928-228-5769
+                    </p>
+                    <p class="text-gray-medium font-secondary">
+                        <span data-en="Location:" data-es="Ubicación:">Location:</span> Kingman, AZ
+                    </p>
+                </div>
+
+                <p class="text-gray-medium font-secondary text-sm" data-en="For questions about this Cookie Policy, please contact us using the information above." data-es="Para preguntas sobre esta Política de Cookies, contáctenos usando la información anterior.">
+                    For questions about this Cookie Policy, please contact us using the information above.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <div class="relative w-4 h-4 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-primary-blue rounded-full brand-pulse"></div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gradient">Digital Allies</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 font-secondary" data-en="Creating digital solutions for the real world. We help small businesses thrive with accessible, beautiful web solutions that connect with your community." data-es="Creando soluciones digitales para el mundo real. Ayudamos a las pequeñas empresas a prosperar con soluciones web accesibles y hermosas que conectan con su comunidad.">
+                        Creating digital solutions for the real world. We help small businesses thrive with accessible, beautiful web solutions that connect with your community.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors" data-en="Home" data-es="Inicio">Home</a></li>
+                        <li><a href="/about" class="text-gray-300 hover:text-white transition-colors" data-en="About" data-es="Acerca">About</a></li>
+                        <li><a href="/services" class="text-gray-300 hover:text-white transition-colors" data-en="Services" data-es="Servicios">Services</a></li>
+                        <li><a href="/blog" class="text-gray-300 hover:text-white transition-colors" data-en="Blog" data-es="Blog">Blog</a></li>
+                        <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors" data-en="Contact" data-es="Contacto">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-600 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-300 text-sm mb-4 md:mb-0" data-en="© 2025 Digital Allies. All rights reserved." data-es="© 2025 Digital Allies. Todos los derechos reservados.">
+                        © 2025 Digital Allies. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="/privacy" class="text-white hover:text-gray-300 text-sm transition-colors" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
+                        <a href="/terms" class="text-white hover:text-gray-300 text-sm transition-colors" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
+                        <a href="/cookies" class="text-white hover:text-gray-300 text-sm transition-colors" data-en="Cookie Policy" data-es="Política de Cookies">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
