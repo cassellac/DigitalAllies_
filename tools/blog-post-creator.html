@@ -10,168 +10,34 @@
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
     <link rel="stylesheet" href="../assets/global.css">
     <style>
-        /* Fallback styles when Tailwind CSS doesn't load */
+        /* Minimal fallback styles (used only if Tailwind fails to load) */
+        :root { --blue:#2563eb; --gray:#4b5563; --gray-light:#f9fafb; --radius:0.5rem; }
         * { box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            margin: 0; 
-            background-color: #f9fafb; 
-        }
-        .max-w-7xl { max-width: 80rem; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .p-6 { padding: 1.5rem; }
-        .bg-white { background-color: #fff; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-        .font-bold { font-weight: 700; }
-        .text-gray-900 { color: #111827; }
-        .mb-2 { margin-bottom: 0.5rem; }
-        .text-gray-600 { color: #4b5563; }
-        .space-x-3 > * + * { margin-left: 0.75rem; }
-        .bg-blue-600 { background-color: #2563eb; }
-        .text-white { color: #fff; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-        .hover\\:bg-blue-700:hover { background-color: #1d4ed8; }
-        .bg-gray-600 { background-color: #4b5563; }
-        .hover\\:bg-gray-700:hover { background-color: #374151; }
-        .transition-colors { transition: background-color 0.15s ease-in-out; }
-        .cursor-pointer { cursor: pointer; }
-        .grid { display: grid; }
-        .lg\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .gap-6 { gap: 1.5rem; }
-        .space-y-6 > * + * { margin-top: 1.5rem; }
-        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-        .font-semibold { font-weight: 600; }
-        .mb-4 { margin-bottom: 1rem; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-        .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .gap-4 { gap: 1rem; }
-        .block { display: block; }
-        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-        .font-medium { font-weight: 500; }
-        .text-gray-700 { color: #374151; }
-        .mb-1 { margin-bottom: 0.25rem; }
-        .w-full { width: 100%; }
-        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
-        .border { border-width: 1px; }
-        .border-gray-300 { border-color: #d1d5db; }
-        .focus\\:ring-2:focus { box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); }
-        .focus\\:ring-blue-500:focus { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); }
-        .focus\\:border-blue-500:focus { border-color: #3b82f6; }
-        .mt-4 { margin-top: 1rem; }
-        .rows-3 { height: 3.5rem; }
-        .font-mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace; }
-        .flex-wrap { flex-wrap: wrap; }
-        .gap-3 { gap: 0.75rem; }
-        .bg-green-600 { background-color: #059669; }
-        .hover\\:bg-green-700:hover { background-color: #047857; }
-        .bg-purple-600 { background-color: #9333ea; }
-        .hover\\:bg-purple-700:hover { background-color: #7c3aed; }
-        .bg-orange-600 { background-color: #ea580c; }
-        .hover\\:bg-orange-700:hover { background-color: #c2410c; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .hidden { display: none; }
-        .bg-gray-900 { background-color: #111827; }
-        .text-gray-100 { color: #f3f4f6; }
-        .p-4 { padding: 1rem; }
-        .overflow-x-auto { overflow-x: auto; }
-        .space-y-4 > * + * { margin-top: 1rem; }
-        .border { border-width: 1px; }
-        .bg-blue-50 { background-color: #eff6ff; }
-        .text-blue-900 { color: #1e3a8a; }
-        .space-y-1 > * + * { margin-top: 0.25rem; }
-        .text-blue-600 { color: #2563eb; }
-        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-        .underline { text-decoration: underline; }
-        .text-green-700 { color: #15803d; }
-        .text-xs { font-size: 0.75rem; line-height: 1rem; }
-        .text-gray-500 { color: #6b7280; }
-        .bg-gray-50 { background-color: #f9fafb; }
-        .fixed { position: fixed; }
-        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
-        .bg-black { background-color: #000; }
-        .bg-opacity-50 { background-color: rgba(0, 0, 0, 0.5); }
-        .z-50 { z-index: 50; }
-        .min-h-screen { min-height: 100vh; }
-        .justify-center { justify-content: center; }
-        .max-w-4xl { max-width: 56rem; }
-        .max-h-\\[80vh\\] { max-height: 80vh; }
-        .overflow-hidden { overflow: hidden; }
-        .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .border-b { border-bottom-width: 1px; }
-        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-        .hover\\:text-gray-700:hover { color: #374151; }
-        .w-6 { width: 1.5rem; }
-        .h-6 { height: 1.5rem; }
-        .fill-none { fill: none; }
-        .stroke-2 { stroke-width: 2; }
-        .max-h-\\[60vh\\] { max-height: 60vh; }
-        .overflow-y-auto { overflow-y: auto; }
-        .text-center { text-align: center; }
-        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-        .border-blue-500 { border-color: #3b82f6; }
-        .flex-1 { flex: 1 1 0%; }
-        .items-start { align-items: flex-start; }
-        .text-blue-600 { color: #2563eb; }
-        .font-normal { font-weight: 400; }
-        .space-x-4 > * + * { margin-left: 1rem; }
-        .space-x-2 > * + * { margin-left: 0.5rem; }
-        .ml-4 { margin-left: 1rem; }
-        .hover\\:bg-blue-700:hover { background-color: #1d4ed8; }
-        .bg-red-600 { background-color: #dc2626; }
-        .hover\\:bg-red-700:hover { background-color: #b91c1c; }
-        .prose { max-width: 65ch; }
-        .max-w-none { max-width: none; }
-        input, select, textarea { 
-            width: 100%; 
-            padding: 0.5rem 0.75rem; 
-            border: 1px solid #d1d5db; 
-            border-radius: 0.375rem; 
-            font-size: 0.875rem;
-            transition: border-color 0.15s ease-in-out;
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-        }
-        button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.15s ease-in-out;
-            color: white;
-        }
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .editor-container { min-height: 400px; }
-        .preview-content h1 { font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
-        .preview-content h2 { font-size: 2rem; font-weight: bold; margin-bottom: 0.75rem; margin-top: 1.5rem; }
-        .preview-content h3 { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; margin-top: 1rem; }
-        .preview-content p { margin-bottom: 1rem; line-height: 1.6; }
-        .preview-content ul, .preview-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
-        .preview-content li { margin-bottom: 0.25rem; }
-        .preview-content blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; margin: 1rem 0; font-style: italic; }
-        .preview-content code { background: #f1f5f9; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-family: monospace; }
-        .preview-content pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; }
-        .preview-content pre code { background: none; padding: 0; }
-        .draft-item { transition: all 0.2s; }
-        .draft-item:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.6; color:#333; margin:0; background:var(--gray-light); }
+        .max-w-7xl { max-width:80rem; }
+        .mx-auto { margin-left:auto; margin-right:auto; }
+        .p-6 { padding:1.5rem; }
+        .bg-white { background:#fff; }
+        .rounded-lg { border-radius:var(--radius); }
+        .shadow-sm { box-shadow:0 1px 2px rgba(0,0,0,.05); }
+        h1 { font-size:1.875rem; margin:0 0 .5rem; }
+        h2 { font-size:1.25rem; margin:0 0 1rem; }
+        .text-gray-600 { color:var(--gray); }
+        button { background:var(--blue); color:#fff; border:none; border-radius:var(--radius); padding:.5rem 1rem; cursor:pointer; font-size:.875rem; }
+        button:hover { filter:brightness(.9); }
+        input,select,textarea { width:100%; padding:.5rem .75rem; border:1px solid #d1d5db; border-radius:.375rem; font-size:.875rem; }
+        input:focus,select:focus,textarea:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 2px rgba(37,99,235,.3); }
+        .editor-container { min-height:400px; }
+        .preview-content h1 { font-size:2.25rem; font-weight:700; margin:1rem 0; }
+        .preview-content h2 { font-size:1.75rem; font-weight:600; margin:1.5rem 0 .75rem; }
+        .preview-content h3 { font-size:1.25rem; font-weight:600; margin:1rem 0 .5rem; }
+        .preview-content p { margin:0 0 1rem; }
+        .preview-content blockquote { border-left:4px solid var(--blue); padding-left:1rem; margin:1rem 0; font-style:italic; color:var(--gray); }
+        .preview-content code { background:#f1f5f9; padding:2px 4px; border-radius:4px; font-family:monospace; }
+        .preview-content pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:8px; overflow:auto; }
+        .draft-item { transition:box-shadow .2s, transform .2s; }
+        .draft-item:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+        .hidden { display:none; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -225,6 +91,14 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
                             <input type="text" id="postAuthor" value="Digital Allies" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Featured Image URL</label>
+                            <input type="text" id="postImage" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com/assets/cover.jpg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Image Alt Text</label>
+                            <input type="text" id="postImageAlt" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="A descriptive alt text for the featured image">
                         </div>
                     </div>
                     <div class="mt-4">
@@ -447,6 +321,8 @@ console.log('Code example');
             const description = descriptionInput.value || '';
             const category = categorySelect.value || '';
             const author = authorInput.value || 'Digital Allies';
+        const featuredImage = document.getElementById('postImage') ? document.getElementById('postImage').value.trim() : '';
+        const featuredImageAlt = document.getElementById('postImageAlt') ? document.getElementById('postImageAlt').value.trim() : '';
             const tags = tagsInput.value.split(',').map(t => t.trim()).filter(t => t);
             const content = markdownEditor.value;
             
@@ -502,6 +378,15 @@ console.log('Code example');
                 html += '<p>' + description + '</p>';
             }
             html += '<div class="meta">By ' + author + ' | ' + new Date(currentDate).toLocaleDateString() + ' | ' + readingTimeMin + ' min read</div>';
+            // Insert featured image if provided
+            if (featuredImage) {
+                html += '<div class="mt-6">';
+                html += '<img src="' + featuredImage + '" alt="' + (featuredImageAlt || '') + '" style="max-width:100%;height:auto;border-radius:8px;">';
+                if (featuredImageAlt) {
+                    html += '<p class="text-sm text-gray-500 mt-2">' + featuredImageAlt + '</p>';
+                }
+                html += '</div>';
+            }
             if (tags.length > 0) {
                 html += '<div>Tags: ' + tags.map(tag => '#' + tag).join(', ') + '</div>';
             }

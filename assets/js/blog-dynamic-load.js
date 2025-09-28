@@ -101,7 +101,18 @@
         const readingTime = calculateReadingTime(post.wordCount || 0);
         const excerpt = post.description || post.excerpt || 'Read this interesting post...';
         
+        // Featured image (if available)
+        const imageBlock = post.featuredImage ? `
+            <div class="mb-4 -mt-2 -mx-2 rounded-xl overflow-hidden aspect-video bg-gray-100 relative group">
+                <img src="${escapeHtml(post.featuredImage)}" 
+                     ${post.imageAlt ? `alt="${escapeHtml(post.imageAlt)}"` : 'alt="Blog post featured image"'}
+                     loading="lazy" 
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+        ` : '';
+
         card.innerHTML = `
+            ${imageBlock}
             ${post.category ? `<div class="mb-3">
                 <span class="bg-primary-blue text-white px-2 py-1 rounded-full text-xs font-medium">
                     ${escapeHtml(post.category)}

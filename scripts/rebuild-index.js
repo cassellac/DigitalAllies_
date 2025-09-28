@@ -58,6 +58,16 @@ function extractMetadataFromHtml(htmlPath) {
         // Extract word count from structured data
         const wordCountMatch = htmlContent.match(/"wordCount": (\d+)/);
         metadata.wordCount = wordCountMatch ? parseInt(wordCountMatch[1]) : 0;
+
+        // Extract featured image (og:image) and alt
+        const ogImageMatch = htmlContent.match(/<meta property="og:image" content="(.*?)"/);
+        if (ogImageMatch) {
+            metadata.featuredImage = ogImageMatch[1];
+        }
+        const ogImageAltMatch = htmlContent.match(/<meta (?:name|property)="og:image:alt" content="(.*?)"/);
+        if (ogImageAltMatch) {
+            metadata.imageAlt = ogImageAltMatch[1];
+        }
         
         // Calculate reading time
         metadata.readingTime = Math.ceil(metadata.wordCount / 200);
@@ -126,7 +136,9 @@ function scanBlogPosts() {
                 tags: metadata.tags || [],
                 wordCount: metadata.wordCount || 0,
                 readingTime: metadata.readingTime || 1,
-                excerpt: metadata.excerpt || metadata.description || 'Read this interesting post...'
+                excerpt: metadata.excerpt || metadata.description || 'Read this interesting post...',
+                featuredImage: metadata.featuredImage || '',
+                imageAlt: metadata.imageAlt || ''
             };
             
             posts.push(post);

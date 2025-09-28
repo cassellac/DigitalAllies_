@@ -31,7 +31,9 @@ function parseArgs() {
         author: 'Digital Allies',
         slug: '',
         contentFile: null,
-        content: null
+    content: null,
+    featuredImage: '',
+    imageAlt: ''
     };
 
     for (let i = 0; i < args.length; i++) {
@@ -53,6 +55,10 @@ function parseArgs() {
             options.contentFile = arg.substring(14).replace(/['"]/g, '');
         } else if (arg.startsWith('--content=')) {
             options.content = arg.substring(10).replace(/['"]/g, '');
+        } else if (arg.startsWith('--featuredImage=')) {
+            options.featuredImage = arg.substring(16).replace(/['"]/g, '');
+        } else if (arg.startsWith('--imageAlt=')) {
+            options.imageAlt = arg.substring(11).replace(/['"]/g, '');
         } else if (arg === '--help' || arg === '-h') {
             showHelp();
             process.exit(0);
@@ -90,6 +96,8 @@ Optional Options:
   --slug="post-slug"             URL slug (auto-generated from title if not provided)
   --contentFile="path.md"        Path to markdown file with post content
   --content="Markdown content"   Inline markdown content
+    --featuredImage="URL"         Absolute/relative URL to featured image
+    --imageAlt="Alt text"          Alt text for the featured image
 
 Examples:
   node generate-post.js --title="SEO Best Practices" --description="Learn the latest SEO techniques" --category="SEO" --tags="seo,marketing"
@@ -232,7 +240,9 @@ function updateBlogIndex(postData) {
         tags: postData.tags,
         wordCount: postData.wordCount,
         readingTime: postData.readingTime,
-        excerpt: postData.description || postData.content.substring(0, 160) + '...'
+    excerpt: postData.description || postData.content.substring(0, 160) + '...',
+    featuredImage: postData.featuredImage || '',
+    imageAlt: postData.imageAlt || ''
     });
     
     // Update categories
@@ -330,7 +340,9 @@ Wrap up your post here...
         content: htmlContent,
         tags: options.tags,
         wordCount: wordCount,
-        readingTime: readingTime
+    readingTime: readingTime,
+    featuredImage: escapeHtml(options.featuredImage || ''),
+    imageAlt: escapeHtml(options.imageAlt || '')
     };
     
     // Render template
@@ -351,7 +363,9 @@ Wrap up your post here...
         tags: options.tags,
         wordCount: wordCount,
         readingTime: readingTime,
-        content: markdownContent
+    content: markdownContent,
+    featuredImage: options.featuredImage,
+    imageAlt: options.imageAlt
     });
     
     console.log(`✅ Blog post created successfully!`);

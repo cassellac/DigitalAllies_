@@ -16,6 +16,10 @@
     <meta property="og:title" content="{{title}}">
     <meta property="og:description" content="{{description}}">
     <meta property="og:site_name" content="Digital Allies">
+    {{#if featuredImage}}
+    <meta property="og:image" content="{{featuredImage}}">
+    <meta property="og:image:alt" content="{{imageAlt}}">
+    {{/if}}
     <meta property="article:author" content="{{author}}">
     <meta property="article:published_time" content="{{publishDate}}">
     <meta property="article:section" content="{{category}}">
@@ -28,6 +32,10 @@
     <meta property="twitter:url" content="https://digitalallies.net/blog/{{slug}}.html">
     <meta property="twitter:title" content="{{title}}">
     <meta property="twitter:description" content="{{description}}">
+    {{#if featuredImage}}
+    <meta property="twitter:image" content="{{featuredImage}}">
+    <meta name="twitter:image:alt" content="{{imageAlt}}">
+    {{/if}}
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -177,6 +185,12 @@
                 </div>
                 {{/unless}}{{/if}}
             </div>
+            {{#if featuredImage}}
+            <figure class="my-8">
+                <img src="{{featuredImage}}" alt="{{imageAlt}}" class="rounded-xl shadow-md w-full h-auto"/>
+                {{#if imageAlt}}<figcaption class="text-sm text-gray-500 mt-2 text-center italic">{{imageAlt}}</figcaption>{{/if}}
+            </figure>
+            {{/if}}
             
             {{#if tags}}
             <div class="flex flex-wrap gap-2">
