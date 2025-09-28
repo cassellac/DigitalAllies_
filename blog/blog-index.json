@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "title": "Advanced SEO Techniques for 2025",
+      "slug": "advanced-seo-techniques-for-2025",
+      "description": "Master modern SEO with proven techniques for better rankings and visibility",
+      "category": "SEO",
+      "author": "Digital Allies",
+      "publishDate": "2025-09-28T13:55:47.920Z",
+      "tags": [
+        "seo",
+        "optimization",
+        "rankings",
+        "technical-seo"
+      ],
+      "wordCount": 158,
+      "readingTime": 1,
+      "excerpt": "Master modern SEO with proven techniques for better rankings and visibility"
+    },
+    {
+      "title": "CLI Test",
+      "slug": "cli-test",
+      "description": "CLI generated post",
+      "category": "SEO",
+      "author": "Digital Allies",
+      "publishDate": "2025-09-28T13:51:51.971Z",
+      "tags": [
+        "seo",
+        "cli"
+      ],
+      "wordCount": 49,
+      "readingTime": 1,
+      "excerpt": "CLI generated post"
+    }
+  ],
+  "categories": [
+    "SEO"
+  ],
+  "tags": [
+    "cli",
+    "optimization",
+    "rankings",
+    "seo",
+    "technical-seo"
+  ],
+  "lastUpdated": "2025-09-28T13:55:47.941Z",
+  "totalPosts": 2,
+  "metadata": {
+    "generatedBy": "rebuild-index.js",
+    "generatedAt": "2025-09-28T13:54:29.724Z",
+    "version": "1.0.0"
+  }
+}

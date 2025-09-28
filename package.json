@@ -1,5 +1,20 @@
 {
+  "name": "digitalallies-cms",
+  "version": "1.0.0",
+  "description": "Static CMS toolkit for Digital Allies blog management",
+  "main": "scripts/generate-post.js",
+  "scripts": {
+    "generate-post": "node scripts/generate-post.js",
+    "rebuild-index": "node scripts/rebuild-index.js"
+  },
   "dependencies": {
-    "mongodb": "^6.20.0"
-  }
+    "mongodb": "^6.20.0",
+    "fs-extra": "^11.1.1",
+    "marked": "^9.1.2",
+    "dompurify": "^3.0.5"
+  },
+  "devDependencies": {},
+  "keywords": ["blog", "cms", "static", "markdown"],
+  "author": "Digital Allies",
+  "license": "MIT"
 }
