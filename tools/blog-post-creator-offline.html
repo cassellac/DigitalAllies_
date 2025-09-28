@@ -457,42 +457,43 @@ console.log('Code example');
             const readingTimeMin = Math.ceil(wordCountNum / 200);
 
             // Build HTML parts
-            let html = '<!DOCTYPE html>';
-            html += '<html lang="en">';
-            html += '<head>';
-            html += '<meta charset="UTF-8">';
-            html += '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-            html += '<title>' + escapeHtml(title) + ' - Digital Allies</title>';
-            html += '<meta name="description" content="' + escapeHtml(description) + '">';
-            html += '<meta name="author" content="' + escapeHtml(author) + '">';
-            html += '<style>';
-            html += 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; }';
-            html += '.container { max-width: 800px; margin: 0 auto; padding: 20px; }';
-            html += 'h1, h2, h3, h4, h5, h6 { color: #1f2937; margin-top: 1.5em; margin-bottom: 0.5em; }';
-            html += 'h1 { font-size: 2.25rem; }';
-            html += 'p { margin-bottom: 1rem; }';
-            html += '</style>';
-            html += '</head>';
-            html += '<body>';
-            html += '<div class="container">';
-            html += '<article>';
-            html += '<header>';
+            const parts = [];
+            parts.push('<!DOCTYPE html>');
+            parts.push('<html lang="en">');
+            parts.push('<head>');
+            parts.push('<meta charset="UTF-8">');
+            parts.push('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
+            parts.push('<title>' + escapeHtml(title) + ' - Digital Allies</title>');
+            parts.push('<meta name="description" content="' + escapeHtml(description) + '">');
+            parts.push('<meta name="author" content="' + escapeHtml(author) + '">');
+            parts.push('<style>');
+            parts.push('body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; }');
+            parts.push('.container { max-width: 800px; margin: 0 auto; padding: 20px; }');
+            parts.push('h1, h2, h3, h4, h5, h6 { color: #1f2937; margin-top: 1.5em; margin-bottom: 0.5em; }');
+            parts.push('h1 { font-size: 2.25rem; }');
+            parts.push('p { margin-bottom: 1rem; }');
+            parts.push('</style>');
+            parts.push('</head>');
+            parts.push('<body>');
+            parts.push('<div class="container">');
+            parts.push('<article>');
+            parts.push('<header>');
             if (category) {
-                html += '<div><span>' + escapeHtml(category) + '</span></div>';
+                parts.push('<div><span>' + escapeHtml(category) + '</span></div>');
             }
-            html += '<h1>' + escapeHtml(title) + '</h1>';
+            parts.push('<h1>' + escapeHtml(title) + '</h1>');
             if (description) {
-                html += '<p>' + escapeHtml(description) + '</p>';
+                parts.push('<p>' + escapeHtml(description) + '</p>');
             }
-            html += '<div>By ' + escapeHtml(author) + ' | ' + new Date(currentDate).toLocaleDateString() + ' | ' + readingTimeMin + ' min read</div>';
-            html += '</header>';
-            html += '<div class="content">' + htmlContent + '</div>';
-            html += '</article>';
-            html += '</div>';
-            html += '</body>';
-            html += '</html>';
+            parts.push('<div>By ' + escapeHtml(author) + ' | ' + new Date(currentDate).toLocaleDateString() + ' | ' + readingTimeMin + ' min read</div>');
+            parts.push('</header>');
+            parts.push('<div class="content">' + htmlContent + '</div>');
+            parts.push('</article>');
+            parts.push('</div>');
+            parts.push('</body>');
+            parts.push('</html>');
 
-            return html;
+            return parts.join('');
         }
 
         function escapeHtml(text) {
