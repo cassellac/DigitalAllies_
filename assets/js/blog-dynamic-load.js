@@ -281,7 +281,7 @@
             filteredPosts = blogIndex.posts.filter(post => {
                 return post.title.toLowerCase().includes(query) ||
                        post.description.toLowerCase().includes(query) ||
-                       post.content.toLowerCase().includes(query) ||
+                       (post.excerpt && post.excerpt.toLowerCase().includes(query)) ||
                        (post.tags && post.tags.some(tag => tag.toLowerCase().includes(query))) ||
                        (post.category && post.category.toLowerCase().includes(query));
             });
