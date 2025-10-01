@@ -32,12 +32,12 @@
       ],
       "wordCount": 1506,
       "readingTime": 8,
-      "excerpt": "In our fast-paced world, patience is in short supply—especially online. Studies show that if your website takes more than three seconds to load, many users will abandon it and look elsewhere. Slow websites not only frustrate visitors but also hurt your search engine rankings, making it harder for new customers to find you."
+      "excerpt": "In our fast-paced world, patience is in short supply—especially online. Studies show that if your website takes more than three seconds to load, many users will abandon it and look..."
     },
     {
       "title": "ADA Compliance for Websites: A Small Business Guide",
       "slug": "ada-compliance-for-websites",
-      "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional.",
+      "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance. This guide covers the essentials you need to know.",
       "category": "accessibility",
       "author": "Digital Allies",
       "publishDate": "2025-10-01T08:00:47.920Z",
@@ -54,24 +54,36 @@
       ],
       "wordCount": 697,
       "readingTime": 4,
-      "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional."
+      "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance."
     }
   ],
   "categories": [
-    "SEO"
+    "SEO",
+    "business",
+    "accessibility"
   ],
   "tags": [
-    "cli",
+    "seo",
     "optimization",
     "rankings",
-    "seo",
-    "technical-seo"
+    "technical-seo",
+    "small business",
+    "web design",
+    "outdated design",
+    "slow page load",
+    "ada compliance",
+    "website accessibility",
+    "legal requirements",
+    "wcag guidelines",
+    "inclusive design",
+    "digital inclusion",
+    "disability rights"
   ],
-  "lastUpdated": "2025-09-28T13:55:47.941Z",
-  "totalPosts": 2,
+  "lastUpdated": "2025-10-01T08:00:47.941Z",
+  "totalPosts": 3,
   "metadata": {
     "generatedBy": "rebuild-index.js",
-    "generatedAt": "2025-09-28T13:54:29.724Z",
+    "generatedAt": "2025-10-01T08:00:47.941Z",
     "version": "1.0.0"
   }
 }
