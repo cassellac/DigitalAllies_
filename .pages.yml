@@ -81,5 +81,3 @@ content:
       - name: "photo"
         label: "Photo"
         widget: "file"
-
-components: {}
