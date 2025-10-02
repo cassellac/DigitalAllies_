@@ -7,12 +7,7 @@
       "category": "SEO",
       "author": "Digital Allies",
       "publishDate": "2025-09-28T13:55:47.920Z",
-      "tags": [
-        "seo",
-        "optimization",
-        "rankings",
-        "technical-seo"
-      ],
+      "tags": ["seo","optimization","rankings","technical-seo"],
       "wordCount": 158,
       "readingTime": 1,
       "excerpt": "Master modern SEO with proven techniques for better rankings and visibility"
@@ -24,12 +19,7 @@
       "category": "business",
       "author": "Digital Allies",
       "publishDate": "2025-08-27T13:55:47.920Z",
-      "tags": [
-        "small business",
-        "web design",
-        "outdated design",
-        "slow page load"
-      ],
+      "tags": ["small business","web design","outdated design","slow page load"],
       "wordCount": 1506,
       "readingTime": 8,
       "excerpt": "In our fast-paced world, patience is in short supply—especially online. Studies show that if your website takes more than three seconds to load, many users will abandon it and look..."
@@ -42,42 +32,16 @@
       "author": "Digital Allies",
       "publishDate": "2025-10-01T08:00:47.920Z",
       "tags": [ 
-        "ada compliance",
-        "website accessibility",
-        "small business",
-        "web design",
-        "legal requirements",
-        "wcag guidelines",
-        "inclusive design",
-        "digital inclusion",
-        "disability rights"
+        "ada compliance","website accessibility","small business","web design","legal requirements","wcag guidelines","inclusive design","digital inclusion","disability rights"
       ],
       "wordCount": 697,
       "readingTime": 4,
       "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance."
     }
   ],
-  "categories": [
-    "SEO",
-    "business",
-    "accessibility"
-  ],
+  "categories": ["SEO","business","accessibility"],
   "tags": [
-    "seo",
-    "optimization",
-    "rankings",
-    "technical-seo",
-    "small business",
-    "web design",
-    "outdated design",
-    "slow page load",
-    "ada compliance",
-    "website accessibility",
-    "legal requirements",
-    "wcag guidelines",
-    "inclusive design",
-    "digital inclusion",
-    "disability rights"
+    "seo","optimization","rankings","technical-seo","small business","web design","outdated design","slow page load","ada compliance","website accessibility","legal requirements","wcag guidelines","inclusive design","digital inclusion","disability rights"
   ],
   "lastUpdated": "2025-10-01T08:00:47.941Z",
   "totalPosts": 3,
