@@ -1,17 +1,85 @@
-name: Build and Deploy
+branch: "Master"
 
-on:
-  push:
-    branches: [ "Master" ]
+build:
+  command: "npm run build"
+  publish_dir: "public"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: (optional) Deploy or run post-build steps
-        run: echo "Add your deploy step here"
+media:
+  - name: "files"
+    label: "Files"
+    input: "files/documents"
+    output: "/files/documents"
+    categories:
+      - "document"
+  - name: "images"
+    label: "Images"
+    input: "images"
+    output: "/images"
+    extensions:
+      - "png"
+      - "webp"
+
+content:
+  - name: "blog"
+    label: "Blog"
+    folder: "CMS/blog"
+    create: true
+    format: "md"
+    fields:
+      - name: "title"
+        label: "Title"
+        widget: "string"
+      - name: "date"
+        label: "Date"
+        widget: "datetime"
+      - name: "author"
+        label: "Author"
+        widget: "string"
+      - name: "body"
+        label: "Body"
+        widget: "markdown"
+
+  - name: "blog_assets"
+    label: "Blog Assets"
+    folder: "CMS/assets"
+    create: true
+    fields:
+      - name: "file"
+        label: "File"
+        widget: "file"
+      - name: "description"
+        label: "Description"
+        widget: "string"
+
+  - name: "pages"
+    label: "Pages"
+    folder: "CMS/pages"
+    create: true
+    format: "md"
+    fields:
+      - name: "title"
+        label: "Title"
+        widget: "string"
+      - name: "body"
+        label: "Body"
+        widget: "markdown"
+
+  - name: "staff"
+    label: "Staff"
+    folder: "CMS/staff"
+    create: true
+    fields:
+      - name: "name"
+        label: "Name"
+        widget: "string"
+      - name: "role"
+        label: "Role"
+        widget: "string"
+      - name: "bio"
+        label: "Bio"
+        widget: "markdown"
+      - name: "photo"
+        label: "Photo"
+        widget: "file"
+
+components: {}
