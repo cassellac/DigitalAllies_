@@ -1,52 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post Creator - Digital Allies</title>
-    <meta name="description" content="Create and manage blog posts for Digital Allies with markdown editor, live preview, and SEO optimization.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
-    <link rel="stylesheet" href="../assets/global.css">
-    <script src="../assets/js/global.js"></script>
-    <style>
-        /* ... your existing fallback styles ... */
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Blog Post Creator - Digital Allies</title>
+  <meta name="description" content="Create and manage blog posts for Digital Allies with markdown editor, live preview, and SEO optimization.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+  <link rel="stylesheet" href="../assets/global.css">
+  <script src="../assets/js/global.js"></script>
+  <style>
+    :root { --blue:#2563eb; --gray:#4b5563; --gray-light:#f9fafb; --radius:0.5rem; }
+    * { box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.6; color:#333; margin:0; background:var(--gray-light); }
+    .max-w-7xl { max-width:80rem; }
+    .editor-container { min-height:400px; }
+    .preview-content h1 { font-size:2.25rem; font-weight:700; margin:1rem 0; }
+    .preview-content h2 { font-size:1.75rem; font-weight:600; margin:1.5rem 0 .75rem; }
+    .preview-content h3 { font-size:1.25rem; font-weight:600; margin:1rem 0 .5rem; }
+    .preview-content p { margin:0 0 1rem; }
+    .preview-content blockquote { border-left:4px solid var(--blue); padding-left:1rem; margin:1rem 0; font-style:italic; color:var(--gray); }
+    .preview-content code { background:#f1f5f9; padding:2px 4px; border-radius:4px; font-family:monospace; }
+    .preview-content pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:8px; overflow:auto; }
+    .draft-item { transition:box-shadow .2s, transform .2s; }
+    .draft-item:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+    .hidden { display:none; }
+  </style>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- ... existing creator UI code ... -->
-    <!-- Keep your form, editor, preview, etc. unchanged -->
-    <!-- The only major change is to the generateCompleteHtml() function below! -->
+  <div class="max-w-7xl mx-auto p-6">
+    <!-- Header Bar -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900 mb-2">Blog Post Creator</h1>
+          <p class="text-gray-600">Create SEO‑optimized blog posts with live preview and draft management</p>
+        </div>
+        <div class="flex space-x-3">
+          <button id="saveDraftBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Save Draft</button>
+          <button id="showDraftsBtn" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">Manage Drafts</button>
+        </div>
+      </div>
+    </div>
 
-    <script>
-    // ... all your form and editor logic above remains unchanged ...
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- Left: Form + Editor -->
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <h2 class="text-xl font-semibold mb-4">Post Metadata</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+                <input id="postTitle" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter post title">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
+                <input id="postSlug" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="auto-generated">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                <select id="postCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                  <option value="">Select category</option>
+                  <option>Web Development</option>
+                  <option>SEO</option>
+                  <option>Design</option>
+                  <option>Business</option>
+                  <option>Accessibility</option>
+                  <option>Technology</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                <input id="postAuthor" type="text" value="Digital Allies" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Featured Image URL</label>
+                <input id="postImage" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com/assets/cover.jpg">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Image Alt Text</label>
+                <input id="postImageAlt" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Describe the featured image">
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+              <textarea id="postDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Brief description for SEO and preview"></textarea>
+            </div>
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
+              <input id="postTags" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="seo, small business, web design">
+            </div>
+        </div>
 
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <h2 class="text-xl font-semibold mb-4">Content Editor</h2>
+          <textarea id="markdownEditor" class="w-full editor-container px-4 py-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="# Heading
+Intro paragraph with **bold** and *italic* text.
+
+## Subheading
+- Bullet item
+- Another item
+
+Link example: [Visit Site](https://example.com)
+
+> Quote block
+
+Code:
+console.log('Example');
+"></textarea>
+          <div class="mt-4 flex flex-wrap gap-4 text-sm text-gray-600">
+            <span>Words: <span id="wordCount" class="font-semibold">0</span></span>
+            <span>Characters: <span id="charCount" class="font-semibold">0</span></span>
+            <span>Reading time: <span id="readingTime" class="font-semibold">0 min</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Preview -->
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <h2 class="text-xl font-semibold mb-4">Live Preview</h2>
+          <div id="previewContent" class="preview-content prose max-w-none">
+            <p class="text-gray-500 italic">Start typing to see your content preview...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-6 bg-white rounded-lg shadow-sm p-6">
+      <div class="flex flex-wrap gap-3">
+        <button id="generateHtmlBtn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">Generate HTML</button>
+        <button id="copyHtmlBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" disabled>Copy HTML</button>
+        <button id="downloadHtmlBtn" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors" disabled>Download HTML</button>
+        <button id="previewSeoBtn" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors">Preview SEO</button>
+      </div>
+    </div>
+
+    <!-- Generated HTML -->
+    <div id="htmlOutput" class="mt-6 bg-white rounded-lg shadow-sm p-6 hidden">
+      <h2 class="text-xl font-semibold mb-4">Generated HTML</h2>
+      <pre id="htmlCode" class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code></code></pre>
+    </div>
+
+    <!-- SEO Preview -->
+    <div id="seoPreview" class="mt-6 bg-white rounded-lg shadow-sm p-6 hidden">
+      <h2 class="text-xl font-semibold mb-4">SEO Preview</h2>
+      <div class="space-y-4">
+        <div class="border rounded-lg p-4 bg-blue-50">
+          <h3 class="font-semibold text-blue-900 mb-2">Google Search Result Preview</h3>
+          <div class="space-y-1">
+            <div id="seoTitle" class="text-blue-600 text-lg font-medium underline cursor-pointer"></div>
+            <div id="seoUrl" class="text-green-700 text-sm"></div>
+            <div id="seoDescription" class="text-gray-700 text-sm"></div>
+          </div>
+        </div>
+        <div class="border rounded-lg p-4 bg-gray-50">
+          <h3 class="font-semibold text-gray-900 mb-2">Social Media Preview</h3>
+          <div class="bg-white border rounded p-3">
+            <div id="socialTitle" class="font-semibold text-gray-900"></div>
+            <div id="socialDescription" class="text-gray-600 text-sm mt-1"></div>
+            <div id="socialUrl" class="text-gray-500 text-xs mt-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Draft Modal -->
+  <div id="draftsModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
+        <div class="p-6 border-b flex items-center justify-between">
+          <h2 class="text-2xl font-semibold">Draft Management</h2>
+          <button id="closeDraftsBtn" class="text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 max-h-[60vh] overflow-y-auto">
+          <div id="draftsList" class="space-y-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ---------- Element Handles ---------- */
+    const titleInput = document.getElementById('postTitle');
+    const slugInput = document.getElementById('postSlug');
+    const categorySelect = document.getElementById('postCategory');
+    const authorInput = document.getElementById('postAuthor');
+    const descriptionInput = document.getElementById('postDescription');
+    const tagsInput = document.getElementById('postTags');
+    const markdownEditor = document.getElementById('markdownEditor');
+    const previewContent = document.getElementById('previewContent');
+    const wordCountEl = document.getElementById('wordCount');
+    const charCountEl = document.getElementById('charCount');
+    const readingTimeEl = document.getElementById('readingTime');
+
+    let generatedHtml = '';
+    let currentDraftId = null;
+
+    /* ---------- Slug Auto-generation ---------- */
+    titleInput.addEventListener('input', () => {
+      const slug = titleInput.value
+        .toLowerCase()
+        .replace(/[^\w\s-]/g,'')
+        .trim()
+        .replace(/\s+/g,'-')
+        .replace(/--+/g,'-');
+      slugInput.value = slug;
+      updatePreview();
+      updateStats();
+    });
+
+    /* ---------- Live Updates ---------- */
+    [descriptionInput, categorySelect, authorInput, tagsInput, markdownEditor].forEach(el => {
+      el.addEventListener('input', () => { updatePreview(); updateStats(); });
+    });
+
+    function updatePreview() {
+      const md = markdownEditor.value.trim();
+      if (!md) {
+        previewContent.innerHTML = '<p class="text-gray-500 italic">Start typing to see your content preview...</p>';
+        return;
+      }
+      let html = typeof marked !== 'undefined' ? marked.parse(md) : md;
+      if (typeof DOMPurify !== 'undefined') html = DOMPurify.sanitize(html);
+      previewContent.innerHTML = html;
+    }
+
+    function updateStats() {
+      const text = markdownEditor.value;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const chars = text.length;
+      const mins = Math.ceil(words / 200) || 0;
+      wordCountEl.textContent = words;
+      charCountEl.textContent = chars;
+      readingTimeEl.textContent = mins + ' min';
+    }
+
+    /* ---------- Generator ---------- */
     function generateCompleteHtml() {
-      // Fetch all metadata as before
-      const title = document.getElementById('postTitle').value || 'Untitled Post';
-      const slug = document.getElementById('postSlug').value || 'untitled-post';
-      const description = document.getElementById('postDescription').value || '';
-      const category = document.getElementById('postCategory').value || '';
-      const author = document.getElementById('postAuthor').value || 'Digital Allies';
+      const title = titleInput.value || 'Untitled Post';
+      const slug = slugInput.value || 'untitled-post';
+      const description = descriptionInput.value || '';
+      const category = categorySelect.value || '';
+      const author = authorInput.value || 'Digital Allies';
       const featuredImage = document.getElementById('postImage').value.trim();
       const featuredImageAlt = document.getElementById('postImageAlt').value.trim();
-      const tags = document.getElementById('postTags').value.split(',').map(t => t.trim()).filter(t => t);
-      const content = document.getElementById('markdownEditor').value;
+      const tags = tagsInput.value.split(',').map(t => t.trim()).filter(Boolean);
+      const content = markdownEditor.value;
       const currentDate = new Date().toISOString();
       const readingTimeMin = Math.ceil((content.trim() ? content.trim().split(/\s+/).length : 0) / 200);
 
-      let htmlContent;
-      if (typeof marked !== 'undefined') {
-        htmlContent = marked.parse(content);
-        if (typeof DOMPurify !== 'undefined') {
-          htmlContent = DOMPurify.sanitize(htmlContent);
-        }
-      } else {
-        htmlContent = content; // fallback: raw markdown
-      }
+      let htmlContent = typeof marked !== 'undefined' ? marked.parse(content) : content;
+      if (typeof DOMPurify !== 'undefined') htmlContent = DOMPurify.sanitize(htmlContent);
 
-      // FULL PAGE HTML including global header/footer from index.html
       return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,23 +327,25 @@
       </div>
     </nav>
   </header>
-  <!-- Blog Post Content -->
+  <!-- Blog Post -->
   <main class="max-w-4xl mx-auto px-4 py-16">
     <article>
       <header>
-        <div class="meta">${category}</div>
-        <h1>${title}</h1>
-        ${description ? `<p>${description}</p>` : ""}
-        <div class="meta">By ${author} | ${new Date(currentDate).toLocaleDateString()} | ${readingTimeMin} min read</div>
+        <div class="meta text-sm text-gray-500 mb-2">${category}</div>
+        <h1 class="text-4xl font-bold mb-4">${title}</h1>
+        ${description ? `<p class="text-lg text-gray-700 mb-4">${description}</p>` : ""}
+        <div class="meta text-sm text-gray-500 mb-6">By ${author} | ${new Date(currentDate).toLocaleDateString()} | ${readingTimeMin} min read</div>
         ${featuredImage ? `
-        <div class="mt-6">
-          <img src="${featuredImage}" alt="${featuredImageAlt}" style="max-width:100%;height:auto;border-radius:8px;">
-          ${featuredImageAlt ? `<p class="text-sm text-gray-500 mt-2">${featuredImageAlt}</p>` : ""}
-        </div>
+          <figure class="mb-8">
+            <img src="${featuredImage}" alt="${featuredImageAlt}" class="w-full h-auto rounded-lg shadow-sm">
+            ${featuredImageAlt ? `<figcaption class="text-sm text-gray-500 mt-2">${featuredImageAlt}</figcaption>` : ""}
+          </figure>
         ` : ""}
-        ${tags.length > 0 ? `<div>Tags: ${tags.map(tag => `#${tag}`).join(', ')}</div>` : ""}
+        ${tags.length ? `<div class="mb-8 flex flex-wrap gap-2">
+          ${tags.map(t => `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">#${t}</span>`).join('')}
+        </div>` : ""}
       </header>
-      <div class="content">${htmlContent}</div>
+      <div class="prose max-w-none">${htmlContent}</div>
     </article>
   </main>
   <!-- Footer -->
@@ -186,7 +401,156 @@
 </body>
 </html>`;
     }
-    // ... rest of your blog creator JS logic ...
-    </script>
+
+    /* ---------- Buttons & Actions ---------- */
+    document.getElementById('generateHtmlBtn').addEventListener('click', () => {
+      generatedHtml = generateCompleteHtml();
+      document.getElementById('htmlCode').textContent = generatedHtml;
+      document.getElementById('htmlOutput').classList.remove('hidden');
+      document.getElementById('copyHtmlBtn').disabled = false;
+      document.getElementById('downloadHtmlBtn').disabled = false;
+    });
+
+    document.getElementById('copyHtmlBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(generatedHtml);
+        flashButton('copyHtmlBtn','Copied!');
+      } catch {
+        alert('Copy failed. Select and copy manually.');
+      }
+    });
+
+    document.getElementById('downloadHtmlBtn').addEventListener('click', () => {
+      const slug = slugInput.value || 'untitled-post';
+      const blob = new Blob([generatedHtml], { type:'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = slug + '.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('previewSeoBtn').addEventListener('click', () => {
+      const title = titleInput.value || 'Untitled Post';
+      const slug = slugInput.value || 'untitled-post';
+      const description = descriptionInput.value || 'No description provided.';
+      document.getElementById('seoTitle').textContent = title + ' - Digital Allies';
+      document.getElementById('seoUrl').textContent = 'https://digitalallies.net/blog/' + slug + '.html';
+      document.getElementById('seoDescription').textContent = description;
+      document.getElementById('socialTitle').textContent = title;
+      document.getElementById('socialDescription').textContent = description;
+      document.getElementById('socialUrl').textContent = 'digitalallies.net';
+      document.getElementById('seoPreview').classList.remove('hidden');
+    });
+
+    /* ---------- Draft Management ---------- */
+    function saveDraft() {
+      const draft = {
+        id: currentDraftId || Date.now().toString(),
+        title: titleInput.value || 'Untitled Draft',
+        slug: slugInput.value,
+        category: categorySelect.value,
+        author: authorInput.value,
+        description: descriptionInput.value,
+        tags: tagsInput.value,
+        content: markdownEditor.value,
+        lastSaved: new Date().toISOString(),
+        wordCount: markdownEditor.value.trim() ? markdownEditor.value.trim().split(/\s+/).length : 0
+      };
+      const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]');
+      const idx = drafts.findIndex(d => d.id === draft.id);
+      idx >= 0 ? drafts.splice(idx,1,draft) : drafts.unshift(draft);
+      if (drafts.length > 30) drafts.length = 30;
+      localStorage.setItem('blogDrafts', JSON.stringify(drafts));
+      currentDraftId = draft.id;
+      flashButton('saveDraftBtn','Saved!');
+    }
+
+    function flashButton(id, text) {
+      const btn = document.getElementById(id);
+      const original = btn.textContent;
+      btn.textContent = text;
+      const prevBg = btn.className;
+      btn.classList.add('bg-green-600');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.className = prevBg;
+      }, 1600);
+    }
+
+    function showDrafts() {
+      const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]');
+      const list = document.getElementById('draftsList');
+      if (!drafts.length) {
+        list.innerHTML = '<p class="text-center text-gray-500 py-8">No drafts saved yet.</p>';
+      } else {
+        list.innerHTML = drafts.map(d => `
+          <div class="draft-item border rounded-lg p-4 ${d.id===currentDraftId ? 'border-blue-500 bg-blue-50':''}">
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-1">${d.title} ${d.id===currentDraftId?'<span class="text-blue-600 text-sm font-normal">(Current)</span>':''}</h3>
+                <p class="text-gray-600 text-sm mb-2">${d.description || 'No description'}</p>
+                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                  <span>${d.wordCount} words</span>
+                  <span>${d.category || 'No category'}</span>
+                  <span>Saved ${new Date(d.lastSaved).toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div class="flex space-x-2 ml-4">
+                <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700" onclick="loadDraft('${d.id}')">Load</button>
+                <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700" onclick="deleteDraft('${d.id}')">Delete</button>
+              </div>
+            </div>
+          </div>`).join('');
+      }
+      document.getElementById('draftsModal').classList.remove('hidden');
+    }
+
+    function loadDraft(id) {
+      const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]');
+      const d = drafts.find(dr => dr.id === id);
+      if (!d) return;
+      titleInput.value = d.title;
+      slugInput.value = d.slug;
+      categorySelect.value = d.category;
+      authorInput.value = d.author;
+      descriptionInput.value = d.description;
+      tagsInput.value = d.tags;
+      markdownEditor.value = d.content;
+      currentDraftId = d.id;
+      updatePreview();
+      updateStats();
+      document.getElementById('draftsModal').classList.add('hidden');
+    }
+
+    function deleteDraft(id) {
+      if (!confirm('Delete this draft?')) return;
+      const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]').filter(d => d.id !== id);
+      localStorage.setItem('blogDrafts', JSON.stringify(drafts));
+      if (currentDraftId === id) currentDraftId = null;
+      showDrafts();
+    }
+
+    document.getElementById('saveDraftBtn').addEventListener('click', saveDraft);
+    document.getElementById('showDraftsBtn').addEventListener('click', showDrafts);
+    document.getElementById('closeDraftsBtn').addEventListener('click', () => {
+      document.getElementById('draftsModal').classList.add('hidden');
+    });
+    document.getElementById('draftsModal').addEventListener('click', e => {
+      if (e.target.id === 'draftsModal') e.currentTarget.classList.add('hidden');
+    });
+
+    // Auto-save every 30s if there is content
+    setInterval(() => {
+      if (titleInput.value.trim() || markdownEditor.value.trim()) saveDraft();
+    }, 30000);
+
+    updatePreview();
+    updateStats();
+
+    // Expose needed functions globally
+    window.loadDraft = loadDraft;
+    window.deleteDraft = deleteDraft;
+  </script>
 </body>
 </html>
