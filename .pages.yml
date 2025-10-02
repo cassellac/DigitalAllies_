@@ -17,6 +17,3 @@ collections:
   - name: Staff
     folder: CMS/staff
     format: json
-  - name: Media
-    folder: CMS/media
-    format: file
