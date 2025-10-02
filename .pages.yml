@@ -1,0 +1,19 @@
+branch: Master
+
+build:
+  command: npm run build
+  publish_dir: public
+
+collections:
+  - name: Blog
+    folder: CMS/blog
+    format: md
+  - name: Blog Assets
+    folder: CMS/assets
+    format: file
+  - name: Pages
+    folder: CMS/pages
+    format: md
+  - name: Staff
+    folder: CMS/staff
+    format: json
