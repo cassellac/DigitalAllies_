@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/global.css">
     <script src="assets/js/global.js"></script>
+    <script src="assets/js/floating-shapes.js"></script>
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 <link rel="shortcut icon" href="/assets/favicon.ico" />
@@ -97,8 +98,26 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="gradient-bg py-20">
-        <div class="max-w-7xl mx-auto px-4">
+    <section class="gradient-bg py-20 relative">
+        <!-- Floating Shapes Background -->
+        <div id="about-hero-shapes" class="floating-shapes-container" data-floating-shapes>
+            <div class="floating-shape" data-speed="0.5" data-rotation="1" style="top: 8%; left: 5%; width: 75px; height: 75px;">
+                <img src="assets/shapes/hexagon.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.4" data-rotation="0" style="top: 12%; right: 8%; width: 65px; height: 65px;">
+                <img src="assets/shapes/circle.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.6" data-rotation="1.5" style="bottom: 15%; left: 10%; width: 85px; height: 85px;">
+                <img src="assets/shapes/square.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.7" data-rotation="0.5" style="top: 50%; right: 5%; width: 70px; height: 70px;">
+                <img src="assets/shapes/star.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.3" data-rotation="0" style="bottom: 25%; right: 18%; width: 60px; height: 60px;">
+                <img src="assets/shapes/triangle.svg" alt="">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16 fade-in">
                 <h1 class="text-5xl font-bold text-gray-dark mb-2" data-en="About Us" data-es="Acerca de Nosotros">About Us</h1>
                 <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Welcome to Your Success Story!" data-es="¡Bienvenido a Tu Historia de Éxito!">Welcome to Your Success Story!</h2>
@@ -168,8 +187,23 @@
     </section>
 
     <!-- Who We Are -->
-    <section class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-4">
+    <section class="py-20 gradient-bg relative">
+        <!-- Floating Shapes Background -->
+        <div id="who-we-are-shapes" class="floating-shapes-container" data-floating-shapes>
+            <div class="floating-shape" data-speed="0.6" data-rotation="0" style="top: 15%; left: 8%; width: 65px; height: 65px;">
+                <img src="assets/shapes/diamond.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.4" data-rotation="1" style="top: 10%; right: 10%; width: 80px; height: 80px;">
+                <img src="assets/shapes/circle.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.7" data-rotation="0.5" style="bottom: 10%; left: 12%; width: 70px; height: 70px;">
+                <img src="assets/shapes/triangle.svg" alt="">
+            </div>
+            <div class="floating-shape" data-speed="0.5" data-rotation="1.5" style="top: 55%; right: 8%; width: 75px; height: 75px;">
+                <img src="assets/shapes/hexagon.svg" alt="">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Who We Are" data-es="Quiénes Somos">Who We Are</h2>
                 <p class="text-xl text-gray-medium font-secondary max-w-4xl mx-auto" data-en="A tight-knit group of digital designers and technology enthusiasts united by a singular mission - to deliver affordable solutions while forging authentic relationships." data-es="Un grupo unido de diseñadores digitales y entusiastas de la tecnología unidos por una misión singular: entregar soluciones asequibles mientras forjamos relaciones auténticas.">

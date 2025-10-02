@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/global.css">
     <script src="assets/js/global.js"></script>
+    <script src="assets/js/floating-shapes.js"></script>
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 <link rel="shortcut icon" href="/assets/favicon.ico" />
@@ -96,9 +97,26 @@
     </header>
 
   <!-- Hero -->
-  <section class="gradient-bg py-20 text-center">
-    <h1 class="text-5xl font-bold text-gray-dark mb-4" data-en="Services" data-es="Servicios">Services</h1>
-    <p class="text-xl text-gray-medium max-w-3xl mx-auto">We build solutions that are accessible, practical, and built with small businesses in mind.</p>
+  <section class="gradient-bg py-20 text-center relative">
+    <!-- Floating Shapes Background -->
+    <div id="services-hero-shapes" class="floating-shapes-container" data-floating-shapes>
+      <div class="floating-shape" data-speed="0.5" data-rotation="0.5" style="top: 10%; left: 8%; width: 70px; height: 70px;">
+        <img src="assets/shapes/circle.svg" alt="">
+      </div>
+      <div class="floating-shape" data-speed="0.4" data-rotation="1" style="top: 15%; right: 10%; width: 80px; height: 80px;">
+        <img src="assets/shapes/star.svg" alt="">
+      </div>
+      <div class="floating-shape" data-speed="0.6" data-rotation="0" style="bottom: 10%; left: 12%; width: 65px; height: 65px;">
+        <img src="assets/shapes/hexagon.svg" alt="">
+      </div>
+      <div class="floating-shape" data-speed="0.7" data-rotation="1.5" style="bottom: 15%; right: 15%; width: 75px; height: 75px;">
+        <img src="assets/shapes/triangle.svg" alt="">
+      </div>
+    </div>
+    <div class="relative z-10">
+      <h1 class="text-5xl font-bold text-gray-dark mb-4" data-en="Services" data-es="Servicios">Services</h1>
+      <p class="text-xl text-gray-medium max-w-3xl mx-auto">We build solutions that are accessible, practical, and built with small businesses in mind.</p>
+    </div>
   </section>
 
   <!-- Services Grid -->
