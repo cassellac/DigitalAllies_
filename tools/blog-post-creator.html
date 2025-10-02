@@ -1,20 +1,53 @@
-function generateCompleteHtml() {
-  // ... your metadata and markdown parsing code as before
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Creator - Digital Allies</title>
+    <meta name="description" content="Create and manage blog posts for Digital Allies with markdown editor, live preview, and SEO optimization.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+    <link rel="stylesheet" href="../assets/global.css">
+    <script src="../assets/js/global.js"></script>
+    <style>
+        /* ... your existing fallback styles ... */
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- ... existing creator UI code ... -->
+    <!-- Keep your form, editor, preview, etc. unchanged -->
+    <!-- The only major change is to the generateCompleteHtml() function below! -->
 
-  let htmlContent;
-  if (hasMarked) {
-    htmlContent = marked.parse(content);
-    if (hasDOMPurify) {
-      htmlContent = DOMPurify.sanitize(htmlContent);
-    }
-  } else {
-    htmlContent = fallbackMarkdownParser.parse(content);
-  }
+    <script>
+    // ... all your form and editor logic above remains unchanged ...
 
-  // Copy the header and footer from index.html
-  // (You may want to move these into template files or variables for maintainability)
+    function generateCompleteHtml() {
+      // Fetch all metadata as before
+      const title = document.getElementById('postTitle').value || 'Untitled Post';
+      const slug = document.getElementById('postSlug').value || 'untitled-post';
+      const description = document.getElementById('postDescription').value || '';
+      const category = document.getElementById('postCategory').value || '';
+      const author = document.getElementById('postAuthor').value || 'Digital Allies';
+      const featuredImage = document.getElementById('postImage').value.trim();
+      const featuredImageAlt = document.getElementById('postImageAlt').value.trim();
+      const tags = document.getElementById('postTags').value.split(',').map(t => t.trim()).filter(t => t);
+      const content = document.getElementById('markdownEditor').value;
+      const currentDate = new Date().toISOString();
+      const readingTimeMin = Math.ceil((content.trim() ? content.trim().split(/\s+/).length : 0) / 200);
 
-  let html = `<!DOCTYPE html>
+      let htmlContent;
+      if (typeof marked !== 'undefined') {
+        htmlContent = marked.parse(content);
+        if (typeof DOMPurify !== 'undefined') {
+          htmlContent = DOMPurify.sanitize(htmlContent);
+        }
+      } else {
+        htmlContent = content; // fallback: raw markdown
+      }
+
+      // FULL PAGE HTML including global header/footer from index.html
+      return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -36,7 +69,6 @@ function generateCompleteHtml() {
   <link rel="manifest" href="/assets/site.webmanifest" />
 </head>
 <body class="font-primary bg-white text-gray-dark">
-
   <!-- Language Toggle Bar -->
   <div class="bg-pale-blue py-2">
     <div class="max-w-7xl mx-auto px-4 flex justify-end">
@@ -46,8 +78,7 @@ function generateCompleteHtml() {
       </div>
     </div>
   </div>
-
-  <!-- Header (global navigation) -->
+  <!-- Header -->
   <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
     <nav class="max-w-7xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
@@ -58,12 +89,12 @@ function generateCompleteHtml() {
           <h1 class="text-xl font-bold text-gradient">Digital Allies</h1>
         </div>
         <div class="hidden md:flex items-center space-x-8">
-          <a href="/" class="text-primary-blue font-medium" data-en="Home" data-es="Inicio">Home</a>
-          <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
-          <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
-          <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
-          <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
-          <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+          <a href="/" class="text-primary-blue font-medium">Home</a>
+          <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors">About</a>
+          <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors">Services</a>
+          <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors">Blog</a>
+          <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors">Contact</a>
+          <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow">Book Now</button>
         </div>
         <button class="md:hidden p-2" onclick="toggleMobileMenu()">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,25 +102,23 @@ function generateCompleteHtml() {
           </svg>
         </button>
       </div>
-      <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
         <div class="flex flex-col space-y-4 pt-4">
-          <a href="/" class="text-primary-blue font-medium" data-en="Home" data-es="Inicio">Home</a>
-          <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca">About</a>
-          <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios">Services</a>
-          <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog">Blog</a>
-          <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto">Contact</a>
-          <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+          <a href="/" class="text-primary-blue font-medium">Home</a>
+          <a href="/about" class="text-gray-dark hover:text-primary-blue">About</a>
+          <a href="/services" class="text-gray-dark hover:text-primary-blue">Services</a>
+          <a href="/blog" class="text-gray-dark hover:text-primary-blue">Blog</a>
+          <a href="/contact" class="text-gray-dark hover:text-primary-blue">Contact</a>
+          <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit">Book Now</button>
         </div>
       </div>
     </nav>
   </header>
-
-  <!-- Main Blog Post Content -->
+  <!-- Blog Post Content -->
   <main class="max-w-4xl mx-auto px-4 py-16">
     <article>
       <header>
-        <div class="meta">${category ? category : ""}</div>
+        <div class="meta">${category}</div>
         <h1>${title}</h1>
         ${description ? `<p>${description}</p>` : ""}
         <div class="meta">By ${author} | ${new Date(currentDate).toLocaleDateString()} | ${readingTimeMin} min read</div>
@@ -104,12 +133,10 @@ function generateCompleteHtml() {
       <div class="content">${htmlContent}</div>
     </article>
   </main>
-
-  <!-- Footer (global) -->
+  <!-- Footer -->
   <footer class="bg-gray-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid md:grid-cols-4 gap-8 mb-12">
-        <!-- Company Info -->
         <div class="md:col-span-2">
           <div class="flex items-center space-x-1 mb-4">
             <div class="relative w-4 h-4 flex items-center justify-center">
@@ -119,13 +146,9 @@ function generateCompleteHtml() {
           </div>
           <p class="text-gray-300 mb-6 max-w-md">Creating digital solutions for the real world. We help small businesses thrive with accessible, beautiful web solutions that connect with your community.</p>
           <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-              <!-- Social Icons Here -->
-            </a>
-            <!-- Add more social links as needed -->
+            <a href="#" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"></a>
           </div>
         </div>
-        <!-- Quick Links -->
         <div>
           <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
           <ul class="space-y-2">
@@ -136,7 +159,6 @@ function generateCompleteHtml() {
             <li><a href="/accessibility-guide" class="text-gray-300 hover:text-white transition-colors">Accessibility Guide</a></li>
           </ul>
         </div>
-        <!-- Services -->
         <div>
           <h3 class="text-lg font-semibold mb-4">Services</h3>
           <ul class="space-y-2">
@@ -148,7 +170,6 @@ function generateCompleteHtml() {
           </ul>
         </div>
       </div>
-      <!-- Bottom Bar -->
       <div class="border-t border-gray-600 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-300 text-sm mb-4 md:mb-0">© 2025 Digital Allies. All rights reserved.</p>
@@ -163,8 +184,9 @@ function generateCompleteHtml() {
   </footer>
   <script src="/assets/js/global.js"></script>
 </body>
+</html>`;
+    }
+    // ... rest of your blog creator JS logic ...
+    </script>
+</body>
 </html>
-`;
-
-  return html;
-}
