@@ -4,16 +4,79 @@ build:
   command: npm run build
   publish_dir: public
 
-collections:
-  - name: Blog
+media:
+  - name: files
+    label: Files
+    input: files/documents
+    output: /files/documents
+    categories: [ document ]
+  - name: images
+    label: Images
+    input: images
+    output: /images
+    extensions: [ png, webp ]
+
+content:
+  - name: blog
+    label: Blog
     folder: CMS/blog
+    create: true
     format: md
-  - name: Blog Assets
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: author
+        label: Author
+        widget: string
+      - name: body
+        label: Body
+        widget: markdown
+
+  - name: blog_assets
+    label: Blog Assets
     folder: CMS/assets
-    format: file
-  - name: Pages
+    create: true
+    fields:
+      - name: file
+        label: File
+        widget: file
+      - name: description
+        label: Description
+        widget: string
+
+  - name: pages
+    label: Pages
     folder: CMS/pages
+    create: true
     format: md
-  - name: Staff
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: body
+        label: Body
+        widget: markdown
+
+  - name: staff
+    label: Staff
     folder: CMS/staff
-    format: json
+    create: true
+    fields:
+      - name: name
+        label: Name
+        widget: string
+      - name: role
+        label: Role
+        widget: string
+      - name: bio
+        label: Bio
+        widget: markdown
+      - name: photo
+        label: Photo
+        widget: file
+
+components: {}
