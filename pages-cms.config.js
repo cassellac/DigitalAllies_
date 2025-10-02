@@ -39,16 +39,24 @@ module.exports = {
         { name: "bio", type: "markdown" },
         { name: "photo", type: "file" }
       ]
+    }
+  ],
+
+  // CMS-style media configuration (per docs)
+  media: [
+    {
+      name: "files",
+      label: "Files",
+      input: "files/documents",
+      output: "/files/documents",
+      categories: ["document"]
     },
     {
-      name: "Media",
-      folder: "CMS/media",
-      format: "file",
-      fields: [
-        { name: "file", type: "file" },
-        { name: "type", type: "string" },
-        { name: "description", type: "string" }
-      ]
+      name: "images",
+      label: "Images",
+      input: "images",
+      output: "/images",
+      extensions: ["png", "webp"]
     }
   ]
 }
