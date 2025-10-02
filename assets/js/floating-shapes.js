@@ -11,47 +11,65 @@ class FloatingShapes {
         this.mouseY = 0;
         this.windowWidth = window.innerWidth;
         this.windowHeight = window.innerHeight;
+        this.animationFrameId = null;
         
         this.init();
     }
     
     init() {
-        // Track mouse movement
+        // Get all shape elements
+        this.shapes = Array.from(this.container.querySelectorAll('.floating-shape'));
+        
+        // Track mouse movement with throttling
+        let isMouseMoving = false;
         document.addEventListener('mousemove', (e) => {
             this.mouseX = (e.clientX / this.windowWidth - 0.5) * 2;
             this.mouseY = (e.clientY / this.windowHeight - 0.5) * 2;
+            
+            // Only update if not already updating
+            if (!isMouseMoving) {
+                isMouseMoving = true;
+                this.updateShapes();
+                
+                // Use setTimeout to add smooth transition
+                setTimeout(() => {
+                    isMouseMoving = false;
+                }, 16); // ~60fps
+            }
         });
         
         // Update on window resize
         window.addEventListener('resize', () => {
             this.windowWidth = window.innerWidth;
             this.windowHeight = window.innerHeight;
+            this.updateShapes();
         });
         
-        // Get all shape elements
-        this.shapes = Array.from(this.container.querySelectorAll('.floating-shape'));
-        
-        // Start animation loop
-        this.animate();
+        // Add scroll listener for additional interactivity
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                this.updateShapes();
+            }, 50);
+        });
     }
     
-    animate() {
+    updateShapes() {
         this.shapes.forEach((shape) => {
             const speed = parseFloat(shape.dataset.speed) || 0.5;
             const rotation = parseFloat(shape.dataset.rotation) || 0;
             
             // Calculate parallax movement based on mouse position
-            const moveX = this.mouseX * speed * 20;
-            const moveY = this.mouseY * speed * 20;
+            const moveX = this.mouseX * speed * 25;
+            const moveY = this.mouseY * speed * 25;
             
             // Calculate rotation if enabled
-            const rotateZ = rotation ? this.mouseX * rotation * 10 : 0;
+            const rotateZ = rotation ? this.mouseX * rotation * 8 : 0;
             
-            // Apply transform
+            // Apply transform smoothly
             shape.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px) rotateZ(${rotateZ}deg)`;
         });
-        
-        requestAnimationFrame(() => this.animate());
     }
 }
 
