@@ -6,10 +6,11 @@
   <title>Blog Post Creator - Digital Allies</title>
   <meta name="description" content="Create and manage blog posts for Digital Allies with markdown editor, live preview, and SEO optimization.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
   <link rel="stylesheet" href="../assets/global.css">
-  <script src="../assets/js/global.js"></script>
+  <!-- Load global.js deferred so errors there don't block initial HTML parsing -->
+  <script defer src="../assets/js/global.js"></script>
   <style>
     :root { --blue:#2563eb; --gray:#4b5563; --gray-light:#f9fafb; --radius:0.5rem; }
     * { box-sizing:border-box; }
@@ -26,16 +27,19 @@
     .draft-item { transition:box-shadow .2s, transform .2s; }
     .draft-item:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
     .hidden { display:none; }
+    #statusLine { font-size:12px; color:#555; margin-top:4px; }
+    .badge { background:#2563eb; color:#fff; border-radius:999px; padding:2px 8px; font-size:11px; }
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
   <div class="max-w-7xl mx-auto p-6">
-    <!-- Header Bar -->
+    <!-- Header -->
     <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
       <div class="flex items-center justify-between">
         <div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-2">Blog Post Creator</h1>
+          <h1 class="text-3xl font-bold text-gray-900 mb-2">Blog Post Creator <span class="badge">v2</span></h1>
           <p class="text-gray-600">Create SEO‑optimized blog posts with live preview and draft management</p>
+          <div id="statusLine" aria-live="polite"></div>
         </div>
         <div class="flex space-x-3">
           <button id="saveDraftBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Save Draft</button>
@@ -45,52 +49,52 @@
     </div>
 
     <div class="grid lg:grid-cols-2 gap-6">
-      <!-- Left: Form + Editor -->
+      <!-- Left -->
       <div class="space-y-6">
         <div class="bg-white rounded-lg shadow-sm p-6">
           <h2 class="text-xl font-semibold mb-4">Post Metadata</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
-                <input id="postTitle" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter post title">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
-                <input id="postSlug" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="auto-generated">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                <select id="postCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  <option value="">Select category</option>
-                  <option>Web Development</option>
-                  <option>SEO</option>
-                  <option>Design</option>
-                  <option>Business</option>
-                  <option>Accessibility</option>
-                  <option>Technology</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
-                <input id="postAuthor" type="text" value="Digital Allies" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Featured Image URL</label>
-                <input id="postImage" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com/assets/cover.jpg">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Image Alt Text</label>
-                <input id="postImageAlt" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Describe the featured image">
-              </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+              <input id="postTitle" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter post title">
             </div>
-            <div class="mt-4">
-              <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-              <textarea id="postDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Brief description for SEO and preview"></textarea>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
+              <input id="postSlug" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="auto-generated">
             </div>
-            <div class="mt-4">
-              <label class="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
-              <input id="postTags" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="seo, small business, web design">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+              <select id="postCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="">Select category</option>
+                <option>Web Development</option>
+                <option>SEO</option>
+                <option>Design</option>
+                <option>Business</option>
+                <option>Accessibility</option>
+                <option>Technology</option>
+              </select>
             </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
+              <input id="postAuthor" type="text" value="Digital Allies" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Featured Image URL</label>
+              <input id="postImage" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com/assets/cover.jpg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Image Alt Text</label>
+              <input id="postImageAlt" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Describe the featured image">
+            </div>
+          </div>
+          <div class="mt-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <textarea id="postDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Brief description for SEO and preview"></textarea>
+          </div>
+          <div class="mt-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
+            <input id="postTags" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="seo, web design, small business">
+          </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-sm p-6">
@@ -98,16 +102,17 @@
           <textarea id="markdownEditor" class="w-full editor-container px-4 py-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="# Heading
 Intro paragraph with **bold** and *italic* text.
 
-## Subheading
-- Bullet item
-- Another item
+## Section
+- Bullet one
+- Bullet two
 
-Link example: [Visit Site](https://example.com)
+Link: [Example](https://example.com)
 
-> Quote block
+Quote:
+> Inspiring line
 
 Code:
-console.log('Example');
+console.log('Demo');
 "></textarea>
           <div class="mt-4 flex flex-wrap gap-4 text-sm text-gray-600">
             <span>Words: <span id="wordCount" class="font-semibold">0</span></span>
@@ -117,7 +122,7 @@ console.log('Example');
         </div>
       </div>
 
-      <!-- Right: Preview -->
+      <!-- Right -->
       <div class="space-y-6">
         <div class="bg-white rounded-lg shadow-sm p-6">
           <h2 class="text-xl font-semibold mb-4">Live Preview</h2>
@@ -138,7 +143,7 @@ console.log('Example');
       </div>
     </div>
 
-    <!-- Generated HTML -->
+    <!-- Generated Output -->
     <div id="htmlOutput" class="mt-6 bg-white rounded-lg shadow-sm p-6 hidden">
       <h2 class="text-xl font-semibold mb-4">Generated HTML</h2>
       <pre id="htmlCode" class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code></code></pre>
@@ -149,15 +154,15 @@ console.log('Example');
       <h2 class="text-xl font-semibold mb-4">SEO Preview</h2>
       <div class="space-y-4">
         <div class="border rounded-lg p-4 bg-blue-50">
-          <h3 class="font-semibold text-blue-900 mb-2">Google Search Result Preview</h3>
+          <h3 class="font-semibold text-blue-900 mb-2">Google Result</h3>
           <div class="space-y-1">
-            <div id="seoTitle" class="text-blue-600 text-lg font-medium underline cursor-pointer"></div>
+            <div id="seoTitle" class="text-blue-600 text-lg font-medium underline"></div>
             <div id="seoUrl" class="text-green-700 text-sm"></div>
             <div id="seoDescription" class="text-gray-700 text-sm"></div>
           </div>
         </div>
         <div class="border rounded-lg p-4 bg-gray-50">
-          <h3 class="font-semibold text-gray-900 mb-2">Social Media Preview</h3>
+          <h3 class="font-semibold text-gray-900 mb-2">Social Preview</h3>
           <div class="bg-white border rounded p-3">
             <div id="socialTitle" class="font-semibold text-gray-900"></div>
             <div id="socialDescription" class="text-gray-600 text-sm mt-1"></div>
@@ -168,7 +173,7 @@ console.log('Example');
     </div>
   </div>
 
-  <!-- Draft Modal -->
+  <!-- Drafts Modal -->
   <div id="draftsModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
     <div class="flex items-center justify-center min-h-screen p-4">
       <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
@@ -188,51 +193,58 @@ console.log('Example');
   </div>
 
   <script>
-    /* ---------- Element Handles ---------- */
-    const titleInput = document.getElementById('postTitle');
-    const slugInput = document.getElementById('postSlug');
-    const categorySelect = document.getElementById('postCategory');
-    const authorInput = document.getElementById('postAuthor');
-    const descriptionInput = document.getElementById('postDescription');
-    const tagsInput = document.getElementById('postTags');
-    const markdownEditor = document.getElementById('markdownEditor');
-    const previewContent = document.getElementById('previewContent');
-    const wordCountEl = document.getElementById('wordCount');
-    const charCountEl = document.getElementById('charCount');
-    const readingTimeEl = document.getElementById('readingTime');
+  document.addEventListener('DOMContentLoaded', () => {
+    const qs = id => document.getElementById(id);
+    const titleInput = qs('postTitle');
+    const slugInput = qs('postSlug');
+    const categorySelect = qs('postCategory');
+    const authorInput = qs('postAuthor');
+    const descriptionInput = qs('postDescription');
+    const tagsInput = qs('postTags');
+    const markdownEditor = qs('markdownEditor');
+    const previewContent = qs('previewContent');
+    const wordCountEl = qs('wordCount');
+    const charCountEl = qs('charCount');
+    const readingTimeEl = qs('readingTime');
+    const statusLine = qs('statusLine');
 
     let generatedHtml = '';
     let currentDraftId = null;
 
-    /* ---------- Slug Auto-generation ---------- */
-    titleInput.addEventListener('input', () => {
-      const slug = titleInput.value
+    function setStatus(msg) { if(statusLine) statusLine.textContent = msg; }
+
+    /* Safety check */
+    const required = [titleInput, slugInput, markdownEditor];
+    if (required.some(el => !el)) {
+      console.error('One or more critical elements not found. Check for broken HTML (possibly textarea placeholder swallowing markup).');
+      setStatus('Error: Critical elements missing. Check HTML structure.');
+      return;
+    }
+
+    /* Slug generation */
+    function regenerateSlug() {
+      if (!titleInput.value.trim()) return;
+      slugInput.value = titleInput.value
         .toLowerCase()
         .replace(/[^\w\s-]/g,'')
         .trim()
         .replace(/\s+/g,'-')
         .replace(/--+/g,'-');
-      slugInput.value = slug;
-      updatePreview();
-      updateStats();
-    });
+    }
+    titleInput.addEventListener('input', regenerateSlug);
+    titleInput.addEventListener('blur', regenerateSlug);
 
-    /* ---------- Live Updates ---------- */
-    [descriptionInput, categorySelect, authorInput, tagsInput, markdownEditor].forEach(el => {
-      el.addEventListener('input', () => { updatePreview(); updateStats(); });
-    });
-
+    /* Preview & stats */
     function updatePreview() {
       const md = markdownEditor.value.trim();
       if (!md) {
         previewContent.innerHTML = '<p class="text-gray-500 italic">Start typing to see your content preview...</p>';
         return;
       }
-      let html = typeof marked !== 'undefined' ? marked.parse(md) : md;
-      if (typeof DOMPurify !== 'undefined') html = DOMPurify.sanitize(html);
+      let html = (window.marked ? window.marked.parse(md) : md);
+      if (window.DOMPurify) html = window.DOMPurify.sanitize(html);
       previewContent.innerHTML = html;
     }
-
     function updateStats() {
       const text = markdownEditor.value;
       const words = text.trim() ? text.trim().split(/\s+/).length : 0;
@@ -242,23 +254,25 @@ console.log('Example');
       charCountEl.textContent = chars;
       readingTimeEl.textContent = mins + ' min';
     }
+    [descriptionInput, categorySelect, authorInput, tagsInput, markdownEditor].forEach(el => {
+      el.addEventListener('input', () => { updatePreview(); updateStats(); });
+    });
 
-    /* ---------- Generator ---------- */
     function generateCompleteHtml() {
       const title = titleInput.value || 'Untitled Post';
       const slug = slugInput.value || 'untitled-post';
       const description = descriptionInput.value || '';
       const category = categorySelect.value || '';
       const author = authorInput.value || 'Digital Allies';
-      const featuredImage = document.getElementById('postImage').value.trim();
-      const featuredImageAlt = document.getElementById('postImageAlt').value.trim();
+      const featuredImage = qs('postImage').value.trim();
+      const featuredImageAlt = qs('postImageAlt').value.trim();
       const tags = tagsInput.value.split(',').map(t => t.trim()).filter(Boolean);
       const content = markdownEditor.value;
       const currentDate = new Date().toISOString();
       const readingTimeMin = Math.ceil((content.trim() ? content.trim().split(/\s+/).length : 0) / 200);
 
-      let htmlContent = typeof marked !== 'undefined' ? marked.parse(content) : content;
-      if (typeof DOMPurify !== 'undefined') htmlContent = DOMPurify.sanitize(htmlContent);
+      let htmlContent = window.marked ? window.marked.parse(content) : content;
+      if (window.DOMPurify) htmlContent = window.DOMPurify.sanitize(htmlContent);
 
       return `<!DOCTYPE html>
 <html lang="en">
@@ -282,16 +296,14 @@ console.log('Example');
   <link rel="manifest" href="/assets/site.webmanifest" />
 </head>
 <body class="font-primary bg-white text-gray-dark">
-  <!-- Language Toggle Bar -->
   <div class="bg-pale-blue py-2">
     <div class="max-w-7xl mx-auto px-4 flex justify-end">
       <div class="flex items-center space-x-2">
-        <button onclick="toggleLanguage('en')" id="lang-en" class="px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm">EN</button>
-        <button onclick="toggleLanguage('es')" id="lang-es" class="px-3 py-1 text-sm font-medium text-gray-medium hover:text-primary-blue transition-colors">ES</button>
+        <button onclick="toggleLanguage && toggleLanguage('en')" id="lang-en" class="px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm">EN</button>
+        <button onclick="toggleLanguage && toggleLanguage('es')" id="lang-es" class="px-3 py-1 text-sm font-medium text-gray-medium hover:text-primary-blue transition-colors">ES</button>
       </div>
     </div>
   </div>
-  <!-- Header -->
   <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
     <nav class="max-w-7xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
@@ -299,7 +311,7 @@ console.log('Example');
           <div class="relative w-4 h-4 flex items-center justify-center">
             <div class="w-2 h-2 bg-primary-blue rounded-full brand-pulse"></div>
           </div>
-          <h1 class="text-xl font-bold text-gradient">Digital Allies</h1>
+            <h1 class="text-xl font-bold text-gradient">Digital Allies</h1>
         </div>
         <div class="hidden md:flex items-center space-x-8">
           <a href="/" class="text-primary-blue font-medium">Home</a>
@@ -309,7 +321,7 @@ console.log('Example');
           <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors">Contact</a>
           <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow">Book Now</button>
         </div>
-        <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+        <button class="md:hidden p-2" onclick="toggleMobileMenu && toggleMobileMenu()">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -327,42 +339,33 @@ console.log('Example');
       </div>
     </nav>
   </header>
-  <!-- Blog Post -->
   <main class="max-w-4xl mx-auto px-4 py-16">
     <article>
       <header>
-        <div class="meta text-sm text-gray-500 mb-2">${category}</div>
+        <div class="text-sm text-gray-500 mb-2">${category}</div>
         <h1 class="text-4xl font-bold mb-4">${title}</h1>
-        ${description ? `<p class="text-lg text-gray-700 mb-4">${description}</p>` : ""}
-        <div class="meta text-sm text-gray-500 mb-6">By ${author} | ${new Date(currentDate).toLocaleDateString()} | ${readingTimeMin} min read</div>
-        ${featuredImage ? `
-          <figure class="mb-8">
-            <img src="${featuredImage}" alt="${featuredImageAlt}" class="w-full h-auto rounded-lg shadow-sm">
-            ${featuredImageAlt ? `<figcaption class="text-sm text-gray-500 mt-2">${featuredImageAlt}</figcaption>` : ""}
-          </figure>
-        ` : ""}
+        ${description ? `<p class="text-lg text-gray-700 mb-4">${description}</p>` : ''}
+        <div class="text-sm text-gray-500 mb-6">By ${author} | ${new Date(currentDate).toLocaleDateString()} | ${readingTimeMin} min read</div>
+        ${featuredImage ? `<figure class="mb-8">
+          <img src="${featuredImage}" alt="${featuredImageAlt}" class="w-full h-auto rounded-lg shadow-sm">
+          ${featuredImageAlt ? `<figcaption class="text-sm text-gray-500 mt-2">${featuredImageAlt}</figcaption>` : ''}
+        </figure>` : ''}
         ${tags.length ? `<div class="mb-8 flex flex-wrap gap-2">
           ${tags.map(t => `<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">#${t}</span>`).join('')}
-        </div>` : ""}
+        </div>` : ''}
       </header>
       <div class="prose max-w-none">${htmlContent}</div>
     </article>
   </main>
-  <!-- Footer -->
   <footer class="bg-gray-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid md:grid-cols-4 gap-8 mb-12">
         <div class="md:col-span-2">
           <div class="flex items-center space-x-1 mb-4">
-            <div class="relative w-4 h-4 flex items-center justify-center">
-              <div class="w-2 h-2 bg-white rounded-full"></div>
-            </div>
+            <div class="relative w-4 h-4 flex items-center justify-center"><div class="w-2 h-2 bg-white rounded-full"></div></div>
             <span class="text-xl font-bold text-white">Digital Allies</span>
           </div>
           <p class="text-gray-300 mb-6 max-w-md">Creating digital solutions for the real world. We help small businesses thrive with accessible, beautiful web solutions that connect with your community.</p>
-          <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"></a>
-          </div>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
@@ -402,48 +405,58 @@ console.log('Example');
 </html>`;
     }
 
-    /* ---------- Buttons & Actions ---------- */
-    document.getElementById('generateHtmlBtn').addEventListener('click', () => {
+    /* Buttons */
+    qs('generateHtmlBtn').addEventListener('click', () => {
       generatedHtml = generateCompleteHtml();
-      document.getElementById('htmlCode').textContent = generatedHtml;
-      document.getElementById('htmlOutput').classList.remove('hidden');
-      document.getElementById('copyHtmlBtn').disabled = false;
-      document.getElementById('downloadHtmlBtn').disabled = false;
+      qs('htmlCode').textContent = generatedHtml;
+      qs('htmlOutput').classList.remove('hidden');
+      qs('copyHtmlBtn').disabled = false;
+      qs('downloadHtmlBtn').disabled = false;
+      setStatus('HTML generated.');
     });
 
-    document.getElementById('copyHtmlBtn').addEventListener('click', async () => {
+    qs('copyHtmlBtn').addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(generatedHtml);
-        flashButton('copyHtmlBtn','Copied!');
+        flash(qs('copyHtmlBtn'),'Copied!');
       } catch {
-        alert('Copy failed. Select and copy manually.');
+        // Fallback
+        const temp = document.createElement('textarea');
+        temp.value = generatedHtml;
+        document.body.appendChild(temp);
+        temp.select();
+        try { document.execCommand('copy'); flash(qs('copyHtmlBtn'),'Copied!'); }
+        catch { alert('Copy failed. Select manually.'); }
+        document.body.removeChild(temp);
       }
     });
 
-    document.getElementById('downloadHtmlBtn').addEventListener('click', () => {
-      const slug = slugInput.value || 'untitled-post';
+    qs('downloadHtmlBtn').addEventListener('click', () => {
+      const slug = (qs('postSlug').value || 'untitled-post').trim();
       const blob = new Blob([generatedHtml], { type:'text/html' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url; a.download = slug + '.html';
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
+      setStatus('Downloaded ' + slug + '.html');
     });
 
-    document.getElementById('previewSeoBtn').addEventListener('click', () => {
+    qs('previewSeoBtn').addEventListener('click', () => {
       const title = titleInput.value || 'Untitled Post';
       const slug = slugInput.value || 'untitled-post';
       const description = descriptionInput.value || 'No description provided.';
-      document.getElementById('seoTitle').textContent = title + ' - Digital Allies';
-      document.getElementById('seoUrl').textContent = 'https://digitalallies.net/blog/' + slug + '.html';
-      document.getElementById('seoDescription').textContent = description;
-      document.getElementById('socialTitle').textContent = title;
-      document.getElementById('socialDescription').textContent = description;
-      document.getElementById('socialUrl').textContent = 'digitalallies.net';
-      document.getElementById('seoPreview').classList.remove('hidden');
+      qs('seoTitle').textContent = title + ' - Digital Allies';
+      qs('seoUrl').textContent = 'https://digitalallies.net/blog/' + slug + '.html';
+      qs('seoDescription').textContent = description;
+      qs('socialTitle').textContent = title;
+      qs('socialDescription').textContent = description;
+      qs('socialUrl').textContent = 'digitalallies.net';
+      qs('seoPreview').classList.remove('hidden');
+      setStatus('SEO preview updated.');
     });
 
-    /* ---------- Draft Management ---------- */
+    /* Drafts */
     function saveDraft() {
       const draft = {
         id: currentDraftId || Date.now().toString(),
@@ -458,34 +471,23 @@ console.log('Example');
         wordCount: markdownEditor.value.trim() ? markdownEditor.value.trim().split(/\s+/).length : 0
       };
       const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]');
-      const idx = drafts.findIndex(d => d.id === draft.id);
-      idx >= 0 ? drafts.splice(idx,1,draft) : drafts.unshift(draft);
-      if (drafts.length > 30) drafts.length = 30;
+      const i = drafts.findIndex(d => d.id === draft.id);
+      i >= 0 ? drafts.splice(i,1,draft) : drafts.unshift(draft);
+      if (drafts.length > 40) drafts.length = 40;
       localStorage.setItem('blogDrafts', JSON.stringify(drafts));
       currentDraftId = draft.id;
-      flashButton('saveDraftBtn','Saved!');
-    }
-
-    function flashButton(id, text) {
-      const btn = document.getElementById(id);
-      const original = btn.textContent;
-      btn.textContent = text;
-      const prevBg = btn.className;
-      btn.classList.add('bg-green-600');
-      setTimeout(() => {
-        btn.textContent = original;
-        btn.className = prevBg;
-      }, 1600);
+      flash(qs('saveDraftBtn'),'Saved!');
+      setStatus('Draft saved.');
     }
 
     function showDrafts() {
       const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]');
-      const list = document.getElementById('draftsList');
+      const container = qs('draftsList');
       if (!drafts.length) {
-        list.innerHTML = '<p class="text-center text-gray-500 py-8">No drafts saved yet.</p>';
+        container.innerHTML = '<p class="text-center text-gray-500 py-8">No drafts yet.</p>';
       } else {
-        list.innerHTML = drafts.map(d => `
-          <div class="draft-item border rounded-lg p-4 ${d.id===currentDraftId ? 'border-blue-500 bg-blue-50':''}">
+        container.innerHTML = drafts.map(d => `
+          <div class="draft-item border rounded-lg p-4 ${d.id===currentDraftId?'border-blue-500 bg-blue-50':'border-gray-200'}">
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <h3 class="font-semibold text-gray-900 mb-1">${d.title} ${d.id===currentDraftId?'<span class="text-blue-600 text-sm font-normal">(Current)</span>':''}</h3>
@@ -493,7 +495,7 @@ console.log('Example');
                 <div class="flex items-center space-x-4 text-xs text-gray-500">
                   <span>${d.wordCount} words</span>
                   <span>${d.category || 'No category'}</span>
-                  <span>Saved ${new Date(d.lastSaved).toLocaleDateString()}</span>
+                  <span>${new Date(d.lastSaved).toLocaleDateString()}</span>
                 </div>
               </div>
               <div class="flex space-x-2 ml-4">
@@ -501,14 +503,15 @@ console.log('Example');
                 <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700" onclick="deleteDraft('${d.id}')">Delete</button>
               </div>
             </div>
-          </div>`).join('');
+          </div>
+        `).join('');
       }
-      document.getElementById('draftsModal').classList.remove('hidden');
+      qs('draftsModal').classList.remove('hidden');
     }
 
     function loadDraft(id) {
       const drafts = JSON.parse(localStorage.getItem('blogDrafts') || '[]');
-      const d = drafts.find(dr => dr.id === id);
+      const d = drafts.find(x => x.id === id);
       if (!d) return;
       titleInput.value = d.title;
       slugInput.value = d.slug;
@@ -520,7 +523,8 @@ console.log('Example');
       currentDraftId = d.id;
       updatePreview();
       updateStats();
-      document.getElementById('draftsModal').classList.add('hidden');
+      qs('draftsModal').classList.add('hidden');
+      setStatus('Draft loaded.');
     }
 
     function deleteDraft(id) {
@@ -529,28 +533,40 @@ console.log('Example');
       localStorage.setItem('blogDrafts', JSON.stringify(drafts));
       if (currentDraftId === id) currentDraftId = null;
       showDrafts();
+      setStatus('Draft deleted.');
     }
 
-    document.getElementById('saveDraftBtn').addEventListener('click', saveDraft);
-    document.getElementById('showDraftsBtn').addEventListener('click', showDrafts);
-    document.getElementById('closeDraftsBtn').addEventListener('click', () => {
-      document.getElementById('draftsModal').classList.add('hidden');
-    });
-    document.getElementById('draftsModal').addEventListener('click', e => {
-      if (e.target.id === 'draftsModal') e.currentTarget.classList.add('hidden');
-    });
+    qs('saveDraftBtn').addEventListener('click', saveDraft);
+    qs('showDraftsBtn').addEventListener('click', showDrafts);
+    qs('closeDraftsBtn').addEventListener('click', () => qs('draftsModal').classList.add('hidden'));
+    qs('draftsModal').addEventListener('click', e => { if (e.target.id === 'draftsModal') qs('draftsModal').classList.add('hidden'); });
 
-    // Auto-save every 30s if there is content
+    /* Autosave */
     setInterval(() => {
       if (titleInput.value.trim() || markdownEditor.value.trim()) saveDraft();
     }, 30000);
 
-    updatePreview();
-    updateStats();
+    function flash(btn, text) {
+      if (!btn) return;
+      const original = btn.textContent;
+      btn.textContent = text;
+      const originalClasses = btn.className;
+      btn.classList.add('bg-green-600');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.className = originalClasses;
+      }, 1500);
+    }
 
-    // Expose needed functions globally
+    /* Expose for inline buttons */
     window.loadDraft = loadDraft;
     window.deleteDraft = deleteDraft;
+
+    /* Initial */
+    updatePreview();
+    updateStats();
+    setStatus('Ready.');
+  });
   </script>
 </body>
 </html>
