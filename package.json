@@ -5,13 +5,15 @@
   "main": "scripts/generate-post.js",
   "scripts": {
     "generate-post": "node scripts/generate-post.js",
-    "rebuild-index": "node scripts/rebuild-index.js"
+    "rebuild-index": "node scripts/rebuild-index.js",
+    "sync-cms": "node scripts/sync-pages-cms-content.js"
   },
   "dependencies": {
     "mongodb": "^6.20.0",
     "fs-extra": "^11.1.1",
     "marked": "^9.1.2",
-    "dompurify": "^3.0.5"
+    "dompurify": "^3.0.5",
+    "gray-matter": "^4.0.3"
   },
   "devDependencies": {},
   "keywords": ["blog", "cms", "static", "markdown"],

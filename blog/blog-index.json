@@ -1,40 +1,6 @@
 {
   "posts": [
     {
-      "title": "Advanced SEO Techniques for 2025",
-      "slug": "advanced-seo-techniques-for-2025",
-      "description": "Master modern SEO with proven techniques for better rankings and visibility",
-      "category": "SEO",
-      "author": "Digital Allies",
-      "publishDate": "2025-09-28T13:55:47.920Z",
-      "tags": [
-        "seo",
-        "optimization",
-        "rankings",
-        "technical-seo"
-      ],
-      "wordCount": 158,
-      "readingTime": 1,
-      "excerpt": "Master modern SEO with proven techniques for better rankings and visibility"
-    },
-    {
-      "title": "5 Signs Your Small Business Needs a New Website",
-      "slug": "5-signs-your-small-business-needs-a-new-website",
-      "description": "Discover 5 key signs your small business needs a website redesign: outdated design, poor mobile experience, slow speeds & more. Get actionable tips!",
-      "category": "business",
-      "author": "Digital Allies",
-      "publishDate": "2025-08-27T13:55:47.920Z",
-      "tags": [
-        "small business",
-        "web design",
-        "outdated design",
-        "slow page load"
-      ],
-      "wordCount": 1506,
-      "readingTime": 8,
-      "excerpt": "In our fast-paced world, patience is in short supply—especially online. Studies show that if your website takes more than three seconds to load, many users will abandon it and look..."
-    },
-    {
       "title": "ADA Compliance for Websites: A Small Business Guide",
       "slug": "ada-compliance-for-websites",
       "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance. This guide covers the essentials you need to know.",
@@ -55,35 +21,74 @@
       "wordCount": 697,
       "readingTime": 4,
       "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance."
+    },
+    {
+      "title": "Advanced SEO Techniques for 2025",
+      "slug": "advanced-seo-techniques-for-2025",
+      "description": "Master modern SEO with proven techniques for better rankings and visibility",
+      "category": "SEO",
+      "author": "Digital Allies",
+      "publishDate": "2025-09-28T13:55:47.920Z",
+      "tags": [
+        "seo",
+        "optimization",
+        "rankings",
+        "technical-seo"
+      ],
+      "wordCount": 158,
+      "readingTime": 1,
+      "excerpt": "Master modern SEO with proven techniques for better rankings and visibility"
+    },
+    {
+      "title": "Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)",
+      "slug": "5-signs-your-small-business-needs-a-new-website",
+      "description": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
+      "category": "Web Design",
+      "author": "Digital Allies",
+      "publishDate": "2024-10-01T00:00:00.000Z",
+      "tags": [
+        "web-design",
+        "small-business",
+        "accessibility",
+        "seo",
+        "redesign"
+      ],
+      "wordCount": 1419,
+      "readingTime": 8,
+      "excerpt": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
+      "featuredImage": "",
+      "imageAlt": ""
     }
   ],
   "categories": [
     "SEO",
-    "business",
+    "Web Design",
     "accessibility"
   ],
   "tags": [
-    "seo",
+    "accessibility",
+    "ada compliance",
+    "digital inclusion",
+    "disability rights",
+    "inclusive design",
+    "legal requirements",
     "optimization",
     "rankings",
-    "technical-seo",
+    "redesign",
+    "seo",
     "small business",
-    "web design",
-    "outdated design",
-    "slow page load",
-    "ada compliance",
-    "website accessibility",
-    "legal requirements",
+    "small-business",
+    "technical-seo",
     "wcag guidelines",
-    "inclusive design",
-    "digital inclusion",
-    "disability rights"
+    "web design",
+    "web-design",
+    "website accessibility"
   ],
-  "lastUpdated": "2025-10-01T08:00:47.941Z",
+  "lastUpdated": "2025-10-03T06:11:09.634Z",
   "totalPosts": 3,
   "metadata": {
-    "generatedBy": "rebuild-index.js",
-    "generatedAt": "2025-10-01T08:00:47.941Z",
-    "version": "1.0.0"
+    "generatedBy": "sync-pages-cms-content.js",
+    "generatedAt": "2025-10-03T06:11:09.634Z",
+    "source": "content/*.md"
   }
 }
