@@ -13,6 +13,10 @@ tags: >-
 
   tech companies in Kingman Arizona, digital accessibility mohave county,
   bilingual web design kingman
+featuredImage: /images/Digital Allies Kingman Local.svg
+featuredImageAlt: A graphic with colorful geometric shapes like squares,
+  circles, and triangles on a light background. A central blue banner reads,
+  "Digital Allies - Local Edition" and "Innovation & Digital Opportunities".
 ---
 \# **Kingman Tech Scene: Local Innovation & Digital Opportunities**
 
