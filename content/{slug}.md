@@ -1,11 +1,12 @@
 ---
-title: " Kingman Tech Scene: Local Innovation & Digital Opportunities"
+title: " Kingman Local: Innovation & Digital Opportunities"
 slug: local-innovation-digital-opportunities
 publishDate: 2025-10-01
 author: Digital Allies
 description: Explore Kingman's growing tech scene! Discover local digital
   innovation, tri-city opportunities, and how Mohave County businesses are
   thriving online. Read more
+category: Community
 tags: >-
   kingman tech scene, mohave county digital innovation, kingman web development,
   arizona small business technology,
@@ -13,32 +14,6 @@ tags: >-
   tech companies in Kingman Arizona, digital accessibility mohave county,
   bilingual web design kingman
 ---
-<!-----
-
-Conversion time: 0.759 seconds.
-
-Using this Markdown file:
-
-1\. Paste this output into your source file.
-
-2\. See the notes and action items below regarding this conversion run.
-
-3\. Check the rendered output (headings, lists, code blocks, tables) for proper
-
-formatting and use a linkchecker before you publish this page.
-
-Conversion notes:
-
-\* Docs to Markdown version 1.0β44
-
-\* Thu Oct 02 2025 17:26:51 GMT-0700 (PDT)
-
-\* Source doc: October Blog Posts
-
-\* This is a partial selection. Check to make sure intra-doc links work.
-
-\----->
-
 \# **Kingman Tech Scene: Local Innovation & Digital Opportunities**
 
 _Published: October 1, 2025 | By Digital Allies_
