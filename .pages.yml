@@ -8,7 +8,7 @@ media:
     label: Images
     input: images
     output: /images
-    categories: [image]
+    categories: ["image"]
 
 content:
   - name: blog_posts
@@ -55,8 +55,8 @@ content:
         type: string
       - name: tags
         label: Tags
-        type: string
-        list: true
+        type: list
+        item_type: string
       - name: featuredImage
         label: Featured image
         type: image
