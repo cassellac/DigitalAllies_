@@ -8,7 +8,7 @@ media:
     label: Images
     input: images
     output: /images
-    categories: ["image"]
+    categories: [image]
 
 content:
   - name: blog_posts
@@ -35,7 +35,7 @@ content:
         description: "Used for filenames and URLs. Lowercase letters, numbers, and hyphens only."
         required: true
         pattern:
-          regex: "^[a-z0-9-]+$"
+          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
           message: "Use lowercase letters, numbers, and hyphens."
       - name: publishDate
         label: Publish date
@@ -55,8 +55,8 @@ content:
         type: string
       - name: tags
         label: Tags
-        type: list
-        item_type: string
+        type: string
+        list: true
       - name: featuredImage
         label: Featured image
         type: image

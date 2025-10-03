@@ -1,14 +1,20 @@
 ---
-title: Is It Time for a New Website? 5 Signs Your Small Business Needs a
-  Redesign (And How to Get Started)
-slug: 5-signs-your-small-business-needs-a-new-website
-publishDate: 2024-09-02
-author: Digital Allies
-description: Learn the five warning signs that your small business website needs
-  a redesign and get practical steps to start the project with confidence.
-category: Web Design
-tags: web-design, small-business, accessibility, seo, redesign
+title: "Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)"
+slug: "5-signs-your-small-business-needs-a-new-website"
+publishDate: 2024-10-01
+author: "Digital Allies"
+description: "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence."
+category: "Web Design"
+tags:
+  - web-design
+  - small-business
+  - accessibility
+  - seo
+  - redesign
+featuredImage: ""
+featuredImageAlt: ""
 ---
+
 # Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)
 
 In today’s digital-first world, a website isn’t just a nice-to-have for small businesses—it’s a fundamental necessity. Your website is often the very first interaction a potential customer has with your brand. It’s your digital storefront, your business card, and your 24/7 salesperson all rolled into one. If your website isn’t up to par, you could be missing out on valuable opportunities to connect with customers, build trust, and grow your business.
