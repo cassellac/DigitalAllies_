@@ -35,7 +35,7 @@ content:
         description: "Used for filenames and URLs. Lowercase letters, numbers, and hyphens only."
         required: true
         pattern:
-          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          regex: "^[a-z0-9]+(?:-[a-z0-9]*)*$"
           message: "Use lowercase letters, numbers, and hyphens."
       - name: publishDate
         label: Publish date
