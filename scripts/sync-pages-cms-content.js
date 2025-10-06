@@ -137,6 +137,7 @@ function normalizeMarkdown(content) {
     return content
         .replace(/\r\n/g, '\n')
         .replace(/\\([\\`*_{}\[\]()#+.!>\-])/g, '$1')
+        // Fixes malformed nested Markdown links, e.g. `]([text](url))` → `](url)`
         .replace(/\]\(\[([^\]]+)\]\((https?:\/\/[^)]+)\)\)/g, ']($2)')
         .replace(/([A-Za-z0-9])\[/g, '$1 [')
         .replace(/(\*\*|__)(?=\[)/g, '$1 ');
