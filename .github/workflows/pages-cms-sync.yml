@@ -3,7 +3,8 @@ name: Sync Pages CMS content
 on:
   push:
     branches:
-      - Master
+      - main
+      - work
     paths:
       - 'content/**'
       - 'scripts/templates/**'
@@ -33,7 +34,7 @@ jobs:
         run: npm run sync-cms
 
       - name: Commit generated pages (if needed)
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403
         with:
           commit_message: 'chore: sync Pages CMS content'
           commit_user_name: Digital Allies Bot

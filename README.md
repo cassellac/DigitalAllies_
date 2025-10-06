@@ -225,3 +225,21 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ♿ accessibility, 🌍 inclusivity, and 💻 modern web standards in mind.**
+
+## 📰 Blog Content Workflow
+
+The blog is generated from Markdown files in the `content/` directory. Use the helper scripts to manage posts and keep the static HTML in sync:
+
+1. Create a draft file:
+   ```bash
+   npm run generate-post -- --title="Your Post Title" --description="Optional summary" --category="Category" --tags="tag-one,tag-two"
+   ```
+   This scaffolds `content/<slug>.md` with YAML front matter that the sync script consumes.
+2. Write your content in Markdown. Add metadata such as `publishDate`, `tags`, and `featuredImage` if needed.
+3. Regenerate the HTML blog posts and index:
+   ```bash
+   npm run sync-cms
+   ```
+   The command renders each Markdown file with the shared `scripts/templates/post-template.html`, ensuring global headers, footers, and styling stay consistent.
+
+If you need to migrate an existing standalone HTML article, convert it to Markdown with `node tools/extract-html-post.js <path-to-html> <path-to-md>` before running the sync.
