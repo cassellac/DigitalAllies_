@@ -170,7 +170,7 @@ php -S localhost:8000
 
 ### Pages CMS workflow
 1. Create or edit blog posts through Pages CMS. Entries are stored as Markdown with YAML front matter in the `content/` directory.
-2. Run `npm run sync-cms` locally (or rely on the automated **Sync Pages CMS content** GitHub Action) to regenerate the HTML pages under `blog/` and refresh `blog/blog-index.json`.
+2. Run `npm run sync-cms` locally (or rely on the automated **Sync Pages CMS content** GitHub Action) to regenerate the HTML pages under `content/posts/` and refresh `content/blog-index.json`.
 3. Commit the generated files so they are deployed with the site.
 
 > The sync step applies the global Digital Allies layout, metadata, and language controls to every generated post, keeping new pages visually and functionally consistent with the site.

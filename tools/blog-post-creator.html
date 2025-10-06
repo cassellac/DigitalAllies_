@@ -294,7 +294,7 @@ console.log('Demo');
   <meta name="keywords" content="${tags.join(', ')}">
   <meta name="author" content="${author}">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://digitalallies.net/blog/${slug}.html">
+  <link rel="canonical" href="https://digitalallies.net/content/posts/${slug}/">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/assets/global.css">
   <script src="/assets/js/global.js"></script>
@@ -452,7 +452,7 @@ console.log('Demo');
       const slug = slugInput.value || 'untitled-post';
       const description = descriptionInput.value || 'No description provided.';
       qs('seoTitle').textContent = title + ' - Digital Allies';
-      qs('seoUrl').textContent = 'https://digitalallies.net/blog/' + slug + '.html';
+      qs('seoUrl').textContent = 'https://digitalallies.net/content/posts/' + slug + '/';
       qs('seoDescription').textContent = description;
       qs('socialTitle').textContent = title;
       qs('socialDescription').textContent = description;
