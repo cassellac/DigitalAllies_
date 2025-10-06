@@ -70,13 +70,14 @@ function renderTemplate(template, data) {
 
     // Tags block
     if (Array.isArray(data.tags)) {
-        const tagMeta = data.tags.map(tag => `    <meta property="article:tag" content="${escapeHtml(tag)}">`).join('\n');
+        const tagMetaIndent = ' '.repeat(4);
+        const tagMeta = data.tags
+            .map(tag => `${tagMetaIndent}<meta property="article:tag" content="${escapeHtml(tag)}">`)
+            .join('\n');
         output = output.replace(/\{\{#each tags\}\}[\s\S]*?\{\{\/each\}\}/g, tagMeta);
 
-        const tagChips = data.tags.length
-            ? `<div class="flex flex-wrap gap-2">\n                ${data.tags.map(tag => `<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#${escapeHtml(tag)}</span>`).join('\n                ')}\n            </div>`
-            : '';
-        output = output.replace(/\{\{#if tags\}\}[\s\S]*?\{\{\/if\}\}/g, tagChips);
+        const tagChips = buildTagChips(data.tags);
+        output = output.replace(/^[\t ]*\{\{#if tags\}\}[\s\S]*?\{\{\/if\}\}\n?/gm, tagChips ? `${tagChips}\n` : '');
     }
 
     // Conditional blocks for category, description, featured image, etc.
@@ -84,10 +85,6 @@ function renderTemplate(template, data) {
     output = replaceConditional(output, 'description', Boolean(data.description));
     output = replaceConditional(output, 'imageAlt', Boolean(data.imageAlt));
     output = replaceConditional(output, 'featuredImage', Boolean(data.featuredImage));
-
-    // Author conditional (only show when not default)
-    output = output.replace(/\{\{#if author\}\}\{\{#unless \(eq author "Digital Allies"\)\}\}([\s\S]*?)\{\{\/unless\}\}\{\{\/if\}\}/g,
-        data.author && data.author !== 'Digital Allies' ? '$1' : '');
 
     return output;
 }
@@ -124,6 +121,25 @@ function buildExcerpt({ description, markdown, html }) {
     return base.substring(0, 200).trim() + (base.length > 200 ? '…' : '');
 }
 
+function buildTagChips(tags) {
+    if (!Array.isArray(tags) || !tags.length) {
+        return '';
+    }
+
+    const containerIndent = ' '.repeat(12);
+    const chipIndent = ' '.repeat(16);
+
+    const chipMarkup = tags
+        .map(tag => `${chipIndent}<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#${escapeHtml(tag)}</span>`)
+        .join('\n');
+
+    return [
+        `${containerIndent}<div class="flex flex-wrap gap-2">`,
+        chipMarkup,
+        `${containerIndent}</div>`
+    ].join('\n');
+}
+
 function normalizeTags(tags) {
     if (!tags) return [];
     if (Array.isArray(tags)) {
@@ -140,6 +156,25 @@ function resolvePublishDate(value, fallback) {
         return fallback;
     }
     return date.toISOString();
+}
+
+function buildAuthorBlock(author) {
+    if (!author || author === 'Digital Allies') {
+        return '';
+    }
+
+    const containerIndent = ' '.repeat(16);
+    const iconIndent = ' '.repeat(20);
+    const pathIndent = ' '.repeat(24);
+
+    return [
+        `${containerIndent}<div class="flex items-center">`,
+        `${iconIndent}<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">`,
+        `${pathIndent}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>`,
+        `${iconIndent}</svg>`,
+        `${iconIndent}By ${author}`,
+        `${containerIndent}</div>`
+    ].join('\n');
 }
 
 function readExistingIndex() {
@@ -220,13 +255,16 @@ function main() {
         const readingTime = Math.max(1, Math.ceil(wordCount / 200));
         const excerpt = buildExcerpt({ description, markdown: body, html: htmlContent });
 
+        const safeAuthor = escapeHtml(author);
+
         const rendered = renderTemplate(template, {
             title: escapeHtml(data.title),
             slug,
             description: escapeHtml(description),
             keywords: tags.map(escapeHtml).join(', '),
             category: escapeHtml(category),
-            author: escapeHtml(author),
+            author: safeAuthor,
+            authorBlock: buildAuthorBlock(safeAuthor),
             publishDate: publishDateIso,
             content: htmlContent,
             tags,
