@@ -5,18 +5,23 @@
   "main": "scripts/generate-post.js",
   "scripts": {
     "generate-post": "node scripts/generate-post.js",
-    "rebuild-index": "node scripts/rebuild-index.js",
     "sync-cms": "node scripts/sync-pages-cms-content.js"
   },
   "dependencies": {
-    "mongodb": "^6.20.0",
-    "fs-extra": "^11.1.1",
-    "marked": "^9.1.2",
     "dompurify": "^3.0.5",
-    "gray-matter": "^4.0.3"
+    "fs-extra": "^11.1.1",
+    "gray-matter": "^4.0.3",
+    "jsdom": "^27.0.0",
+    "marked": "^9.1.2",
+    "mongodb": "^6.20.0",
+    "turndown": "^7.2.1"
   },
-  "devDependencies": {},
-  "keywords": ["blog", "cms", "static", "markdown"],
+  "keywords": [
+    "blog",
+    "cms",
+    "static",
+    "markdown"
+  ],
   "author": "Digital Allies",
   "license": "MIT"
 }

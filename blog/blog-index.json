@@ -3,24 +3,26 @@
     {
       "title": "ADA Compliance for Websites: A Small Business Guide",
       "slug": "ada-compliance-for-websites",
-      "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance. This guide covers the essentials you need to know.",
-      "category": "accessibility",
+      "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional.",
+      "category": "Accessibility",
       "author": "Digital Allies",
-      "publishDate": "2025-10-01T08:00:47.920Z",
+      "publishDate": "2025-10-01T00:00:00.000Z",
       "tags": [
-        "ada compliance",
-        "website accessibility",
-        "small business",
-        "web design",
-        "legal requirements",
-        "wcag guidelines",
-        "inclusive design",
-        "digital inclusion",
-        "disability rights"
+        "ada-compliance",
+        "website-accessibility",
+        "small-business",
+        "web-design",
+        "legal-requirements",
+        "wcag-guidelines",
+        "inclusive-design",
+        "digital-inclusion",
+        "disability-rights"
       ],
-      "wordCount": 697,
+      "wordCount": 735,
       "readingTime": 4,
-      "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards evolving, small businesses can’t afford to ignore ADA compliance."
+      "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional.",
+      "featuredImage": "",
+      "imageAlt": ""
     },
     {
       "title": "Advanced SEO Techniques for 2025",
@@ -28,16 +30,18 @@
       "description": "Master modern SEO with proven techniques for better rankings and visibility",
       "category": "SEO",
       "author": "Digital Allies",
-      "publishDate": "2025-09-28T13:55:47.920Z",
+      "publishDate": "2025-09-28T00:00:00.000Z",
       "tags": [
         "seo",
         "optimization",
         "rankings",
         "technical-seo"
       ],
-      "wordCount": 158,
-      "readingTime": 1,
-      "excerpt": "Master modern SEO with proven techniques for better rankings and visibility"
+      "wordCount": 243,
+      "readingTime": 2,
+      "excerpt": "Master modern SEO with proven techniques for better rankings and visibility",
+      "featuredImage": "",
+      "imageAlt": ""
     },
     {
       "title": "Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)",
@@ -61,34 +65,32 @@
     }
   ],
   "categories": [
+    "Accessibility",
     "SEO",
-    "Web Design",
-    "accessibility"
+    "Web Design"
   ],
   "tags": [
     "accessibility",
-    "ada compliance",
-    "digital inclusion",
-    "disability rights",
-    "inclusive design",
-    "legal requirements",
+    "ada-compliance",
+    "digital-inclusion",
+    "disability-rights",
+    "inclusive-design",
+    "legal-requirements",
     "optimization",
     "rankings",
     "redesign",
     "seo",
-    "small business",
     "small-business",
     "technical-seo",
-    "wcag guidelines",
-    "web design",
+    "wcag-guidelines",
     "web-design",
-    "website accessibility"
+    "website-accessibility"
   ],
-  "lastUpdated": "2025-10-03T06:11:09.634Z",
+  "lastUpdated": "2025-10-05T23:40:38.089Z",
   "totalPosts": 3,
   "metadata": {
     "generatedBy": "sync-pages-cms-content.js",
-    "generatedAt": "2025-10-03T06:11:09.634Z",
+    "generatedAt": "2025-10-05T23:40:38.089Z",
     "source": "content/*.md"
   }
 }
