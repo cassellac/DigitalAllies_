@@ -22,7 +22,33 @@
       "readingTime": 4,
       "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional.",
       "featuredImage": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "canonicalUrl": "https://digitalallies.net/content/posts/ada-compliance-for-websites/",
+      "publicUrl": "/content/posts/ada-compliance-for-websites/"
+    },
+    {
+      "title": " Kingman Local: Innovation & Digital Opportunities",
+      "slug": "local-innovation-digital-opportunities",
+      "description": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online. Read more",
+      "category": "Community",
+      "author": "Digital Allies",
+      "publishDate": "2025-10-01T00:00:00.000Z",
+      "tags": [
+        "kingman tech scene",
+        "mohave county digital innovation",
+        "kingman web development",
+        "arizona small business technology",
+        "tech companies in Kingman Arizona",
+        "digital accessibility mohave county",
+        "bilingual web design kingman"
+      ],
+      "wordCount": 1230,
+      "readingTime": 7,
+      "excerpt": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online. Read more",
+      "featuredImage": "/images/Digital Allies Kingman Local.svg",
+      "imageAlt": "A graphic with colorful geometric shapes like squares, circles, and triangles on a light background. A central blue banner reads, \"Digital Allies - Local Edition\" and \"Innovation & Digital Opportunities\".",
+      "canonicalUrl": "https://digitalallies.net/content/posts/local-innovation-digital-opportunities/",
+      "publicUrl": "/content/posts/local-innovation-digital-opportunities/"
     },
     {
       "title": "Advanced SEO Techniques for 2025",
@@ -41,7 +67,9 @@
       "readingTime": 2,
       "excerpt": "Master modern SEO with proven techniques for better rankings and visibility",
       "featuredImage": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "canonicalUrl": "https://digitalallies.net/content/posts/advanced-seo-techniques-for-2025/",
+      "publicUrl": "/content/posts/advanced-seo-techniques-for-2025/"
     },
     {
       "title": "Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)",
@@ -57,40 +85,50 @@
         "seo",
         "redesign"
       ],
-      "wordCount": 1419,
+      "wordCount": 1439,
       "readingTime": 8,
       "excerpt": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
       "featuredImage": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "canonicalUrl": "https://digitalallies.net/content/posts/5-signs-your-small-business-needs-a-new-website/",
+      "publicUrl": "/content/posts/5-signs-your-small-business-needs-a-new-website/"
     }
   ],
   "categories": [
     "Accessibility",
+    "Community",
     "SEO",
     "Web Design"
   ],
   "tags": [
     "accessibility",
     "ada-compliance",
+    "arizona small business technology",
+    "bilingual web design kingman",
+    "digital accessibility mohave county",
     "digital-inclusion",
     "disability-rights",
     "inclusive-design",
+    "kingman tech scene",
+    "kingman web development",
     "legal-requirements",
+    "mohave county digital innovation",
     "optimization",
     "rankings",
     "redesign",
     "seo",
     "small-business",
+    "tech companies in Kingman Arizona",
     "technical-seo",
     "wcag-guidelines",
     "web-design",
     "website-accessibility"
   ],
-  "lastUpdated": "2025-10-05T23:40:38.089Z",
-  "totalPosts": 3,
+  "lastUpdated": "2025-10-06T18:49:12.212Z",
+  "totalPosts": 4,
   "metadata": {
     "generatedBy": "sync-pages-cms-content.js",
-    "generatedAt": "2025-10-05T23:40:38.089Z",
+    "generatedAt": "2025-10-06T18:49:12.212Z",
     "source": "content/*.md"
   }
 }
