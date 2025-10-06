@@ -13,13 +13,21 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 const { marked } = require('marked');
+const {
+    buildContextScript,
+    buildCanonical,
+    resolvePublicPostPath,
+    resolveOutputDirectory
+} = require('./utils/global-context');
 
 // Paths and constants
 const ROOT = path.join(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'content');
-const BLOG_DIR = path.join(ROOT, 'blog');
+const POSTS_HTML_DIR = path.join(CONTENT_DIR, 'posts');
 const TEMPLATE_PATH = path.join(__dirname, 'templates', 'post-template.html');
-const INDEX_PATH = path.join(BLOG_DIR, 'blog-index.json');
+const INDEX_JSON_PATH = path.join(CONTENT_DIR, 'blog-index.json');
+const INDEX_HTML_PATH = path.join(CONTENT_DIR, 'index.html');
+const INDEX_TEMPLATE_PATH = path.join(__dirname, 'templates', 'blog-index-template.html');
 
 function ensureDir(dir) {
     if (!fs.existsSync(dir)) {
@@ -178,7 +186,7 @@ function buildAuthorBlock(author) {
 }
 
 function readExistingIndex() {
-    if (!fs.existsSync(INDEX_PATH)) {
+    if (!fs.existsSync(INDEX_JSON_PATH)) {
         return {
             posts: [],
             categories: [],
@@ -190,7 +198,7 @@ function readExistingIndex() {
     }
 
     try {
-        const raw = fs.readFileSync(INDEX_PATH, 'utf8');
+        const raw = fs.readFileSync(INDEX_JSON_PATH, 'utf8');
         return JSON.parse(raw);
     } catch (error) {
         console.warn('⚠️  Unable to parse existing blog index. Rebuilding from scratch.', error);
@@ -206,12 +214,65 @@ function readExistingIndex() {
 }
 
 function saveIndex(index) {
-    fs.writeFileSync(INDEX_PATH, JSON.stringify(index, null, 2));
+    fs.writeFileSync(INDEX_JSON_PATH, JSON.stringify(index, null, 2));
+}
+
+function buildIndexHtml(index) {
+    if (!fs.existsSync(INDEX_TEMPLATE_PATH)) {
+        throw new Error(`Blog index template not found at ${INDEX_TEMPLATE_PATH}`);
+    }
+
+    const template = fs.readFileSync(INDEX_TEMPLATE_PATH, 'utf8');
+    const postsMarkup = (index.posts || []).map(post => {
+        const dateDisplay = formatDisplayDate(post.publishDate);
+        const excerpt = escapeHtml(post.excerpt || 'Read the latest insights from Digital Allies.');
+        const category = post.category ? `<span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">${escapeHtml(post.category)}</span>` : '';
+
+        const tagsMarkup = (post.tags || []).slice(0, 3).map(tag => `
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#${escapeHtml(tag)}</span>`).join('');
+
+        const moreTags = (post.tags || []).length > 3
+            ? `<span class="text-gray-400 text-xs">+${post.tags.length - 3} more</span>`
+            : '';
+
+        return `
+        <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            ${category ? `<div class="mb-4">${category}</div>` : ''}
+            <h2 class="text-3xl font-bold text-gray-dark mb-3">
+                <a href="${escapeHtml(post.publicUrl)}" class="hover:underline text-primary-blue">
+                    ${escapeHtml(post.title)}
+                </a>
+            </h2>
+            <div class="flex flex-wrap items-center gap-3 text-sm text-gray-medium mb-4">
+                <span>${dateDisplay}</span>
+                <span>•</span>
+                <span>${post.readingTime} min read</span>
+                ${post.author && post.author !== 'Digital Allies' ? `<span>•</span><span>By ${escapeHtml(post.author)}</span>` : ''}
+            </div>
+            <p class="text-gray-medium mb-6 leading-relaxed">${excerpt}</p>
+            ${(post.tags || []).length ? `<div class="flex flex-wrap gap-2 mb-6">${tagsMarkup}${moreTags}</div>` : ''}
+            <a href="${escapeHtml(post.publicUrl)}" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
+                Read More
+                <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </article>`;
+    }).join('\n');
+
+    const populated = template
+        .replace(/\{\{totalPosts\}\}/g, index.totalPosts || 0)
+        .replace(/\{\{generatedAt\}\}/g, formatDisplayDate(index.lastUpdated))
+        .replace(/\{\{posts\}\}/g, postsMarkup)
+        .replace(/\{\{globalContextScript\}\}/g, buildContextScript());
+
+    fs.writeFileSync(INDEX_HTML_PATH, populated, 'utf8');
+    console.log(`📄  Rebuilt static blog index at ${INDEX_HTML_PATH}`);
 }
 
 function main() {
     ensureDir(CONTENT_DIR);
-    ensureDir(BLOG_DIR);
+    ensureDir(POSTS_HTML_DIR);
 
     const template = loadTemplate();
     const contentFiles = fs.readdirSync(CONTENT_DIR).filter(file => file.endsWith('.md'));
@@ -257,6 +318,8 @@ function main() {
 
         const safeAuthor = escapeHtml(author);
 
+        const canonicalUrl = buildCanonical(slug);
+        const publicUrl = resolvePublicPostPath(slug);
         const rendered = renderTemplate(template, {
             title: escapeHtml(data.title),
             slug,
@@ -271,10 +334,16 @@ function main() {
             wordCount,
             readingTime,
             featuredImage: escapeHtml(featuredImage),
-            imageAlt: escapeHtml(featuredImageAlt)
+            imageAlt: escapeHtml(featuredImageAlt),
+            canonicalUrl,
+            shareUrl: canonicalUrl,
+            publicPostPath: publicUrl,
+            globalContextScript: buildContextScript()
         });
 
-        const postPath = path.join(BLOG_DIR, `${slug}.html`);
+        const postDir = resolveOutputDirectory(POSTS_HTML_DIR, slug);
+        ensureDir(postDir);
+        const postPath = path.join(postDir, 'index.html');
         fs.writeFileSync(postPath, rendered, 'utf8');
         console.log(`✅ Generated ${postPath}`);
 
@@ -290,7 +359,9 @@ function main() {
             readingTime,
             excerpt,
             featuredImage,
-            imageAlt: featuredImageAlt
+            imageAlt: featuredImageAlt,
+            canonicalUrl,
+            publicUrl: `${publicUrl}`
         });
     });
 
@@ -321,6 +392,7 @@ function main() {
     };
 
     saveIndex(updatedIndex);
+    buildIndexHtml(updatedIndex);
     console.log(`🗂️  Updated blog index with ${combinedPosts.length} posts.`);
 }
 

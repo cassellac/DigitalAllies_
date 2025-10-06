@@ -8,8 +8,8 @@
     
     // Configuration
     const CONFIG = {
-        indexPath: 'blog/blog-index.json',
-        blogPath: 'blog/',
+        indexPath: 'content/blog-index.json',
+        blogPath: 'content/posts/',
         postsPerPage: 9,
         gridSelector: '#blog-posts-grid'
     };
@@ -96,10 +96,11 @@
     function createPostCard(post) {
         const card = document.createElement('article');
         card.className = 'bg-white p-6 rounded-2xl gradient-shadow border border-pale-blue transition-transform hover:scale-105';
-        
+
         const publishDate = new Date(post.publishDate);
         const readingTime = calculateReadingTime(post.wordCount || 0);
         const excerpt = post.description || post.excerpt || 'Read this interesting post...';
+        const postUrl = escapeHtml(post.publicUrl || `${CONFIG.blogPath}${post.slug}/`);
         
         // Featured image (if available)
         const imageBlock = post.featuredImage ? `
@@ -145,7 +146,7 @@
                 </div>
             ` : ''}
             
-            <a href="${CONFIG.blogPath}${escapeHtml(post.slug)}.html" 
+            <a href="${postUrl}"
                class="text-primary-blue hover:underline font-medium inline-flex items-center group"
                data-post-slug="${escapeHtml(post.slug)}">
                 Read More
