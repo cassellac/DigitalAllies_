@@ -315,9 +315,18 @@
                     return false;
                 }
 
-                if (input.id === 'phone' && value && !phonePattern.test(value)) {
-                    toggleError(input, config.pattern);
-                    return false;
+                // Generic pattern validation based on config
+                if (config.pattern && value) {
+                    let pattern;
+                    // Map config keys to their patterns
+                    if (input.id === 'phone') {
+                        pattern = phonePattern;
+                    }
+                    // Add more patterns here if needed
+                    if (pattern && !pattern.test(value)) {
+                        toggleError(input, config.pattern);
+                        return false;
+                    }
                 }
 
                 toggleError(input);
