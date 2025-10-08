@@ -45,6 +45,7 @@
   gtag('config', 'G-9HVGNEKE8R');
 </script>
 <body class="font-primary bg-white text-gray-dark">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Language Toggle -->
     <div class="bg-pale-blue py-2">
         <div class="max-w-7xl mx-auto px-4 flex justify-end">
@@ -56,8 +57,8 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
-        <nav class="max-w-7xl mx-auto px-4 py-4">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
+        <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
                     <div class="relative w-4 h-4 flex items-center justify-center">
@@ -97,26 +98,27 @@
     </header>
 
     <!-- Hero Section -->
+    <main id="main-content" role="main">
     <section class="gradient-bg py-20 lg:py-32 relative">
         <!-- Floating Shapes Background -->
-        <div id="hero-shapes" class="floating-shapes-container" data-floating-shapes>
+        <div id="hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
             <div class="floating-shape" data-speed="0.5" data-rotation="0" style="top: 10%; left: 5%; width: 80px; height: 80px;">
-                <img src="assets/shapes/circle.svg" alt="">
+                <img src="assets/shapes/circle.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.3" data-rotation="1" style="top: 15%; left: 85%; width: 60px; height: 60px;">
-                <img src="assets/shapes/triangle.svg" alt="">
+                <img src="assets/shapes/triangle.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.7" data-rotation="0" style="bottom: 15%; left: 15%; width: 100px; height: 100px;">
-                <img src="assets/shapes/triangle.svg" alt="">
+                <img src="assets/shapes/triangle.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.4" data-rotation="1.5" style="top: 50%; left: 80%; width: 70px; height: 70px;">
-                <img src="assets/shapes/square.svg" alt="">
+                <img src="assets/shapes/square.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.6" data-rotation="0.5" style="bottom: 20%; left: 75%; width: 90px; height: 90px;">
-                <img src="assets/shapes/hexagon.svg" alt="">
+                <img src="assets/shapes/hexagon.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.8" data-rotation="0" style="top: 60%; left: 8%; width: 50px; height: 50px;">
-                <img src="assets/shapes/diamond.svg" alt="">
+                <img src="assets/shapes/diamond.svg" alt="" aria-hidden="true">
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
@@ -128,20 +130,21 @@
                     <h3 class="text-xl text-gray-medium mb-8 font-secondary" data-en="We help small businesses thrive with accessible, beautiful web solutions that connect with your community." data-es="Ayudamos a pequeñas empresas a prosperar con soluciones web accesibles y hermosas que conectan con tu comunidad.">
                         We help small businesses thrive with accessible, beautiful web solutions that connect with your community.
                     </h3>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-primary-blue text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all hover-lift gradient-shadow font-medium" data-en="Get Started" data-es="Comenzar">
-                            Get Started
+                    <div class="flex flex-col gap-4">
+                        <button class="bg-[#0F172A] text-white px-8 py-4 rounded-full transition-all hover-lift font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto" aria-label="Start your project">
+                            Start Your Project
                         </button>
-                        <button class="border-2 border-primary-blue text-primary-blue px-8 py-4 rounded-full hover:bg-primary-blue hover:text-white transition-all font-medium" data-en="View Our Work" data-es="Ver Nuestro Trabajo">
-                            View Our Work
-                        </button>
+                        <a href="/services" class="text-primary-blue font-medium underline underline-offset-4 w-fit" data-en="View our latest wins" data-es="Ver nuestros logros recientes">
+                            View our latest wins
+                        </a>
                     </div>
                 </div>
-                
+
                 <div class="fade-in-delay-1">
                     <div class="relative">
                         <div class="floating">
-                            <svg class="w-full h-auto max-w-lg mx-auto" viewBox="0 0 500 400" fill="none">
+                            <svg class="w-full h-auto max-w-lg mx-auto" viewBox="0 0 500 400" fill="none" role="img" aria-labelledby="hero-illustration-title">
+                                <title id="hero-illustration-title">Illustration of a collaborative website project</title>
                                 <!-- Main Device -->
                                 <rect x="50" y="50" width="400" height="300" rx="20" fill="#DBEAFE" class="gradient-shadow"/>
                                 <rect x="70" y="70" width="360" height="200" rx="10" fill="white"/>
@@ -440,8 +443,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer class="bg-gray-dark text-white py-16">
+    <footer class="bg-gray-dark text-white py-16" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <!-- Company Info -->

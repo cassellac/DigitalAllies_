@@ -45,6 +45,7 @@
   gtag('config', 'G-9HVGNEKE8R');
 </script>
 <body class="font-primary bg-white text-gray-dark">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Language Toggle -->
     <div class="bg-pale-blue py-2">
         <div class="max-w-7xl mx-auto px-4 flex justify-end">
@@ -56,8 +57,8 @@
     </div>
 
   <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue">
-        <nav class="max-w-7xl mx-auto px-4 py-4">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue" role="banner">
+        <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
                     <div class="relative w-4 h-4 flex items-center justify-center">
@@ -96,21 +97,22 @@
         </nav>
     </header>
 
+  <main id="main-content" role="main">
   <!-- Hero -->
   <section class="gradient-bg py-20 text-center relative">
     <!-- Floating Shapes Background -->
-    <div id="services-hero-shapes" class="floating-shapes-container" data-floating-shapes>
+    <div id="services-hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
       <div class="floating-shape" data-speed="0.5" data-rotation="0.5" style="top: 10%; left: 8%; width: 70px; height: 70px;">
-        <img src="assets/shapes/circle.svg" alt="">
+        <img src="assets/shapes/circle.svg" alt="" aria-hidden="true">
       </div>
       <div class="floating-shape" data-speed="0.4" data-rotation="1" style="top: 15%; left: 86%; width: 80px; height: 80px;">
-        <img src="assets/shapes/diamond.svg" alt="">
+        <img src="assets/shapes/diamond.svg" alt="" aria-hidden="true">
       </div>
       <div class="floating-shape" data-speed="0.6" data-rotation="0" style="bottom: 10%; left: 12%; width: 65px; height: 65px;">
-        <img src="assets/shapes/hexagon.svg" alt="">
+        <img src="assets/shapes/hexagon.svg" alt="" aria-hidden="true">
       </div>
       <div class="floating-shape" data-speed="0.7" data-rotation="1.5" style="bottom: 15%; left: 81%; width: 75px; height: 75px;">
-        <img src="assets/shapes/triangle.svg" alt="">
+        <img src="assets/shapes/triangle.svg" alt="" aria-hidden="true">
       </div>
     </div>
     <div class="relative z-10">
@@ -145,8 +147,114 @@
     </div>
   </section>
 
+  <!-- Case Studies -->
+  <section class="py-20 bg-light-blue/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl font-bold text-gray-dark mb-4" data-en="Recent Wins" data-es="Logros Recientes">Recent Wins</h2>
+        <p class="text-lg text-gray-medium" data-en="See how measurable outcomes, clear timelines, and polished visuals help our clients convert curious visitors into loyal customers." data-es="Descubre cómo los resultados medibles, los plazos claros y los visuales pulidos ayudan a nuestros clientes a convertir visitantes curiosos en clientes fieles.">
+          See how measurable outcomes, clear timelines, and polished visuals help our clients convert curious visitors into loyal customers.
+        </p>
+      </div>
+
+      <div class="grid gap-10 md:grid-cols-3">
+        <article class="bg-white rounded-2xl gradient-shadow border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-havasu">
+          <header class="mb-6">
+            <p class="text-sm font-semibold uppercase tracking-wide text-primary-blue">Case Study</p>
+            <h3 id="case-study-havasu" class="text-2xl font-bold text-gray-dark mt-2" data-en="Lake Havasu Kayaks" data-es="Kayaks de Lake Havasu">Lake Havasu Kayaks</h3>
+          </header>
+          <p class="text-gray-medium mb-6 flex-1" data-en="Rebuilt their site with a streamlined booking flow and mobile-first layout." data-es="Reconstruimos su sitio con un flujo de reservas simplificado y un diseño mobile-first.">
+            Rebuilt their site with a streamlined booking flow and mobile-first layout.
+          </p>
+          <dl class="grid grid-cols-2 gap-4 text-left">
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Before</dt>
+              <dd class="text-2xl font-bold text-gray-dark">1.2% CTR</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">After</dt>
+              <dd class="text-2xl font-bold text-success-green">4.8% CTR</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Launch Timeline</dt>
+              <dd class="text-lg font-semibold text-gray-dark" data-en="6 weeks" data-es="6 semanas">6 weeks</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Highlight</dt>
+              <dd class="text-lg font-semibold text-gray-dark" data-en="Booking page heatmaps" data-es="Mapas de calor de reservas">Booking page heatmaps</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="bg-white rounded-2xl gradient-shadow border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-downtown">
+          <header class="mb-6">
+            <p class="text-sm font-semibold uppercase tracking-wide text-primary-blue">Case Study</p>
+            <h3 id="case-study-downtown" class="text-2xl font-bold text-gray-dark mt-2" data-en="Downtown Diner" data-es="Cafetería del Centro">Downtown Diner</h3>
+          </header>
+          <p class="text-gray-medium mb-6 flex-1" data-en="Introduced mouthwatering photography with alt text and bilingual menus for traveling families." data-es="Introducimos fotografías atractivas con texto alternativo y menús bilingües para familias viajeras.">
+            Introduced mouthwatering photography with alt text and bilingual menus for traveling families.
+          </p>
+          <dl class="grid grid-cols-2 gap-4 text-left">
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Before</dt>
+              <dd class="text-2xl font-bold text-gray-dark">18% bounce</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">After</dt>
+              <dd class="text-2xl font-bold text-success-green">6% bounce</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Launch Timeline</dt>
+              <dd class="text-lg font-semibold text-gray-dark" data-en="4 weeks" data-es="4 semanas">4 weeks</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Highlight</dt>
+              <dd class="text-lg font-semibold text-gray-dark" data-en="Before & after gallery" data-es="Galería del antes y después">Before &amp; after gallery</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="bg-white rounded-2xl gradient-shadow border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-outfitters">
+          <header class="mb-6">
+            <p class="text-sm font-semibold uppercase tracking-wide text-primary-blue">Case Study</p>
+            <h3 id="case-study-outfitters" class="text-2xl font-bold text-gray-dark mt-2" data-en="Route 66 Outfitters" data-es="Route 66 Outfitters">Route 66 Outfitters</h3>
+          </header>
+          <p class="text-gray-medium mb-6 flex-1" data-en="Added ADA-compliant product cards and comparison charts that highlight seasonal packages." data-es="Añadimos tarjetas de productos compatibles con ADA y tablas comparativas que resaltan paquetes de temporada.">
+            Added ADA-compliant product cards and comparison charts that highlight seasonal packages.
+          </p>
+          <dl class="grid grid-cols-2 gap-4 text-left">
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Before</dt>
+              <dd class="text-2xl font-bold text-gray-dark">12 inquiries/mo</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">After</dt>
+              <dd class="text-2xl font-bold text-success-green">29 inquiries/mo</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Launch Timeline</dt>
+              <dd class="text-lg font-semibold text-gray-dark" data-en="5 weeks" data-es="5 semanas">5 weeks</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-medium uppercase tracking-wide">Highlight</dt>
+              <dd class="text-lg font-semibold text-gray-dark" data-en="Interactive before/after slider" data-es="Control deslizante antes/después interactivo">Interactive before/after slider</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="mt-16 text-center">
+        <button class="bg-[#0F172A] text-white px-8 py-4 rounded-full transition-all hover-lift font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
+          Start Your Project
+        </button>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
   <!-- Footer -->
-    <footer class="bg-gray-dark text-white py-16">
+    <footer class="bg-gray-dark text-white py-16" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <!-- Company Info -->
