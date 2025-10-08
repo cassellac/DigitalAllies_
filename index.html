@@ -58,7 +58,6 @@
 
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
-        <nav class="max-w-7xl mx-auto px-4 py-4" aria-label="Primary">
         <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
@@ -67,32 +66,33 @@
                     </div>
                     <h1 class="text-xl font-bold text-gradient">Digital Allies</h1>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="text-primary-blue font-medium" data-en="Home" data-es="Inicio">Home</a>
                     <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
                     <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
-                
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                    <span class="sr-only">Open navigation</span>
                 </button>
             </div>
-            
+
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue" role="menu">
                 <div class="flex flex-col space-y-4 pt-4">
-                    <a href="/" class="text-primary-blue font-medium" data-en="Home" data-es="Inicio">Home</a>
-                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca">About</a>
-                    <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios">Services</a>
-                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog">Blog</a>
-                    <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/" class="text-primary-blue font-medium" data-en="Home" data-es="Inicio" role="menuitem">Home</a>
+                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca" role="menuitem">About</a>
+                    <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios" role="menuitem">Services</a>
+                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog" role="menuitem">Blog</a>
+                    <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto" role="menuitem">Contact</a>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto" role="menuitem">Start Your Project</a>
                 </div>
             </div>
         </nav>
@@ -101,8 +101,6 @@
     <main id="main-content" role="main">
     <!-- Hero Section -->
     <section class="gradient-bg py-20 lg:py-32 relative" aria-labelledby="hero-heading">
-    <main id="main-content" role="main">
-    <section class="gradient-bg py-20 lg:py-32 relative">
         <!-- Floating Shapes Background -->
         <div id="hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
             <div class="floating-shape" data-speed="0.5" data-rotation="0" style="top: 10%; left: 5%; width: 80px; height: 80px;">
@@ -149,17 +147,16 @@
                     <h3 class="text-xl text-gray-medium mb-8 font-secondary" data-en="We launch conversion-ready sites with measurable ROI so you can focus on serving your customers." data-es="Lanzamos sitios listos para convertir con ROI medible para que puedas concentrarte en atender a tus clientes.">
                         We launch conversion-ready sites with measurable ROI so you can focus on serving your customers.
                     </h3>
-                    <div class="flex flex-col sm:flex-row gap-4" role="group" aria-label="Primary call to action">
-                        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-[#1d4ed8] rounded-full shadow-lg transition-all duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Start Your Project" data-es="Inicia Tu Proyecto">
-                            Start Your Project
-                        </a>
-                        <a href="/services" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#1d4ed8] border-2 border-[#1d4ed8] rounded-full transition-all duration-200 hover:bg-[#1d4ed8] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Explore Services" data-es="Explorar Servicios">
-                            Explore Services
-                    <div class="flex flex-col gap-4">
-                        <button class="bg-[#0F172A] text-white px-8 py-4 rounded-full transition-all hover-lift font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto" aria-label="Start your project">
-                            Start Your Project
-                        </button>
-                        <a href="/services" class="text-primary-blue font-medium underline underline-offset-4 w-fit" data-en="View our latest wins" data-es="Ver nuestros logros recientes">
+                    <div class="space-y-4">
+                        <div class="flex flex-col sm:flex-row gap-4" role="group" aria-label="Primary call to action">
+                            <a href="/contact" class="btn btn-primary px-10 py-4 text-lg hover-lift" data-en="Start Your Project" data-es="Inicia Tu Proyecto">
+                                Start Your Project
+                            </a>
+                            <a href="/services" class="btn btn-secondary px-8 py-4 text-lg" data-en="Explore Services" data-es="Explorar Servicios">
+                                Explore Services
+                            </a>
+                        </div>
+                        <a href="/services#recent-wins" class="btn-link" data-en="View our latest wins" data-es="Ver nuestros logros recientes">
                             View our latest wins
                         </a>
                     </div>
@@ -595,11 +592,11 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
+                        <li><a href="/services#service-web-development" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
+                        <li><a href="/services#service-design-branding" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
+                        <li><a href="/services#service-tech-consulting" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
+                        <li><a href="/services#service-seo" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
+                        <li><a href="/services#service-maintenance" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
                     </ul>
                 </div>
             </div>

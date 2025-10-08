@@ -44,8 +44,20 @@ function toggleLanguage(lang) {
 }
 
 // Mobile Menu
-function toggleMobileMenu() {
-  document.getElementById('mobile-menu').classList.toggle('hidden');
+function toggleMobileMenu(button) {
+  const trigger = button instanceof HTMLElement ? button : document.querySelector('button[onclick*="toggleMobileMenu"]');
+  const menuId = trigger?.getAttribute('aria-controls') || 'mobile-menu';
+  const menu = document.getElementById(menuId);
+  if (!menu) return;
+
+  const isHidden = menu.classList.toggle('hidden');
+  if (trigger) {
+    trigger.setAttribute('aria-expanded', String(!isHidden));
+    const srOnly = trigger.querySelector('.sr-only');
+    if (srOnly) {
+      srOnly.textContent = isHidden ? 'Open navigation' : 'Close navigation';
+    }
+  }
 }
 
 // Init

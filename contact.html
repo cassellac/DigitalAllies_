@@ -58,7 +58,6 @@
 
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
-        <nav class="max-w-7xl mx-auto px-4 py-4" aria-label="Primary">
         <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
@@ -67,23 +66,24 @@
                     </div>
                     <span class="text-xl font-bold text-gradient">Digital Allies</span>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home" data-es="Inicio">Home</a>
                     <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
                     <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-primary-blue font-medium" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
-                
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                    <span class="sr-only">Open navigation</span>
                 </button>
             </div>
-            
+
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
                 <div class="flex flex-col space-y-4 pt-4">
@@ -92,7 +92,7 @@
                     <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-primary-blue font-medium" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
             </div>
         </nav>
@@ -222,48 +222,30 @@
                                 <div>
                                     <label for="firstName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="First Name" data-es="Nombre">First Name</label>
                                     <input type="text" id="firstName" name="firstName" autocomplete="given-name" required aria-describedby="firstName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                    <p id="firstName-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
+                                    <p id="firstName-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 </div>
                                 <div>
                                     <label for="lastName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Last Name" data-es="Apellido">Last Name</label>
                                     <input type="text" id="lastName" name="lastName" autocomplete="family-name" required aria-describedby="lastName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                    <p id="lastName-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
-                        <h2 class="text-3xl font-bold text-gray-dark mb-8" data-en="Send Us a Message" data-es="Envíanos un Mensaje">Send Us a Message</h2>
-                        
-                        <form class="space-y-6" data-validate="contact" novalidate>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="firstName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="First Name" data-es="Nombre">First Name</label>
-                                    <input type="text" id="firstName" name="firstName" required autocomplete="given-name" data-validate-field data-error-required="First name is required." aria-invalid="false" aria-describedby="firstName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                    <p id="firstName-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
-                                </div>
-                                <div>
-                                    <label for="lastName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Last Name" data-es="Apellido">Last Name</label>
-                                    <input type="text" id="lastName" name="lastName" required autocomplete="family-name" data-validate-field data-error-required="Last name is required." aria-invalid="false" aria-describedby="lastName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                    <p id="lastName-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
+                                    <p id="lastName-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="email" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Email Address" data-es="Dirección de Email">Email Address</label>
-                                <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                <p id="email-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
-                                <input type="email" id="email" name="email" required autocomplete="email" inputmode="email" data-validate-field data-error-required="Email is required." data-error-invalid="Enter a valid email address." aria-invalid="false" aria-describedby="email-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                <p id="email-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
+                                <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                <p id="email-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
 
                             <div>
                                 <label for="phone" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" aria-describedby="phone-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all" placeholder="Optional">
-                                <p id="phone-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
-                                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" data-validate-field data-error-invalid="Enter a valid phone number." aria-invalid="false" aria-describedby="phone-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                <p id="phone-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phone-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all" placeholder="Optional">
+                                <p id="phone-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
 
                             <div>
                                 <label for="service" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Service Interested In" data-es="Servicio de Interés">Service Interested In</label>
                                 <select id="service" name="service" required aria-describedby="service-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
-                                <select id="service" name="service" required class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all" data-validate-field data-error-required="Select a service to help us prepare." aria-invalid="false" aria-describedby="service-error">
                                     <option value="" data-en="Select a service..." data-es="Selecciona un servicio...">Select a service...</option>
                                     <option value="web-development" data-en="Web Development" data-es="Desarrollo Web">Web Development</option>
                                     <option value="design-branding" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</option>
@@ -272,22 +254,16 @@
                                     <option value="maintenance" data-en="Maintenance" data-es="Mantenimiento">Maintenance</option>
                                     <option value="other" data-en="Other" data-es="Otro">Other</option>
                                 </select>
-                                <p id="service-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
-                                <p id="service-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
+                                <p id="service-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
 
                             <div>
                                 <label for="message" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Message" data-es="Mensaje">Message</label>
                                 <textarea id="message" name="message" rows="5" required aria-describedby="message-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all resize-vertical" data-en="Tell us about your project..." data-es="Cuéntanos sobre tu proyecto..." placeholder="Tell us about your project..."></textarea>
-                                <p id="message-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
+                                <p id="message-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
 
-                            <button type="submit" class="w-full bg-primary-blue text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all hover-lift gradient-shadow font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Send Message" data-es="Enviar Mensaje">
-                                <textarea id="message" name="message" rows="5" required data-validate-field data-error-required="Let us know what you'd like to build." aria-invalid="false" aria-describedby="message-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all resize-vertical" data-en="Tell us about your project..." data-es="Cuéntanos sobre tu proyecto..." placeholder="Tell us about your project..."></textarea>
-                                <p id="message-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
-                            </div>
-
-                            <button type="submit" class="w-full bg-[#0F172A] text-white px-8 py-4 rounded-lg transition-all hover-lift font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Send Message" data-es="Enviar Mensaje">
+                            <button type="submit" class="btn btn-primary w-full px-8 py-4 text-lg gradient-shadow hover-lift" data-en="Send Message" data-es="Enviar Mensaje">
                                 Send Message
                             </button>
                         </form>
@@ -467,11 +443,11 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
+                        <li><a href="/services#service-web-development" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
+                        <li><a href="/services#service-design-branding" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
+                        <li><a href="/services#service-tech-consulting" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
+                        <li><a href="/services#service-seo" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
+                        <li><a href="/services#service-maintenance" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
                     </ul>
                 </div>
             </div>
