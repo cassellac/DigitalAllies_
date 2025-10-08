@@ -41,13 +41,14 @@
                     <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-primary-blue font-medium" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
 
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                    <span class="sr-only">Open navigation</span>
                 </button>
             </div>
 
@@ -58,7 +59,7 @@
                     <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-primary-blue font-medium" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
             </div>
         </nav>
@@ -225,11 +226,11 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
+                        <li><a href="/services#service-web-development" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
+                        <li><a href="/services#service-design-branding" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
+                        <li><a href="/services#service-tech-consulting" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
+                        <li><a href="/services#service-seo" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
+                        <li><a href="/services#service-maintenance" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
                     </ul>
                 </div>
             </div>

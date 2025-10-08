@@ -66,32 +66,33 @@
                     </div>
                     <span class="text-xl font-bold text-gradient">Digital Allies</span>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home" data-es="Inicio">Home</a>
                     <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
-                    <a href="/services" class="text-primary-blue font-medium" data-en="Services" data-es="Servicios">Services</a>
+                    <a href="/services" class="text-primary-blue font-semibold" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
-                
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                    <span class="sr-only">Open navigation</span>
                 </button>
             </div>
-            
+
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue" role="menu">
                 <div class="flex flex-col space-y-4 pt-4">
-                    <a href="/" class="text-gray-dark hover:text-primary-blue" data-en="Home" data-es="Inicio">Home</a>
-                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca">About</a>
-                    <a href="/services" class="text-primary-blue font-medium" data-en="Services" data-es="Servicios">Services</a>
-                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog">Blog</a>
-                    <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/" class="text-gray-dark hover:text-primary-blue" data-en="Home" data-es="Inicio" role="menuitem">Home</a>
+                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca" role="menuitem">About</a>
+                    <a href="/services" class="text-primary-blue font-semibold" data-en="Services" data-es="Servicios" role="menuitem">Services</a>
+                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog" role="menuitem">Blog</a>
+                    <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto" role="menuitem">Contact</a>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto" role="menuitem">Start Your Project</a>
                 </div>
             </div>
         </nav>
@@ -124,31 +125,31 @@
   <!-- Services Grid -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-      <div class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue">
-        <h3 class="text-2xl font-bold text-gray-dark mb-4">Web Development</h3>
+      <article id="service-web-development" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-web-development-title">
+        <h3 id="service-web-development-title" class="text-2xl font-bold text-gray-dark mb-4">Web Development</h3>
         <p class="text-gray-medium">Custom, responsive websites designed to meet your business needs.</p>
-      </div>
-      <div class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue">
-        <h3 class="text-2xl font-bold text-gray-dark mb-4">Design & Branding</h3>
+      </article>
+      <article id="service-design-branding" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-design-branding-title">
+        <h3 id="service-design-branding-title" class="text-2xl font-bold text-gray-dark mb-4">Design & Branding</h3>
         <p class="text-gray-medium">Cohesive branding and design to strengthen your identity.</p>
-      </div>
-      <div class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue">
-        <h3 class="text-2xl font-bold text-gray-dark mb-4">Tech Consulting</h3>
+      </article>
+      <article id="service-tech-consulting" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-tech-consulting-title">
+        <h3 id="service-tech-consulting-title" class="text-2xl font-bold text-gray-dark mb-4">Tech Consulting</h3>
         <p class="text-gray-medium">Strategic guidance to simplify technology and boost growth.</p>
-      </div>
-      <div class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue">
-        <h3 class="text-2xl font-bold text-gray-dark mb-4">SEO Optimization</h3>
+      </article>
+      <article id="service-seo" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-seo-title">
+        <h3 id="service-seo-title" class="text-2xl font-bold text-gray-dark mb-4">SEO Optimization</h3>
         <p class="text-gray-medium">Improve visibility and connect with your audience online.</p>
-      </div>
-      <div class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue">
-        <h3 class="text-2xl font-bold text-gray-dark mb-4">Maintenance</h3>
+      </article>
+      <article id="service-maintenance" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-maintenance-title">
+        <h3 id="service-maintenance-title" class="text-2xl font-bold text-gray-dark mb-4">Maintenance</h3>
         <p class="text-gray-medium">Keep your site secure, updated, and performing smoothly.</p>
-      </div>
+      </article>
     </div>
   </section>
 
   <!-- Case Studies -->
-  <section class="py-20 bg-light-blue/40">
+  <section id="recent-wins" class="py-20 bg-light-blue/40">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-4xl font-bold text-gray-dark mb-4" data-en="Recent Wins" data-es="Logros Recientes">Recent Wins</h2>
@@ -308,11 +309,11 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
+                        <li><a href="/services#service-web-development" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
+                        <li><a href="/services#service-design-branding" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
+                        <li><a href="/services#service-tech-consulting" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
+                        <li><a href="/services#service-seo" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
+                        <li><a href="/services#service-maintenance" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
                     </ul>
                 </div>
             </div>
