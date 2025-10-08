@@ -6,6 +6,7 @@ tailwind.config = {
         'primary-blue': '#2563EB',
         'light-blue': '#E0F2FE',
         'pale-blue': '#DBEAFE',
+        'light-pink':'#FADEEB',
         'gray-medium': '#828489',
         'gray-dark': '#414243',
         'success-green': '#059669',
