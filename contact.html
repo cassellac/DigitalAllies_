@@ -45,6 +45,7 @@
   gtag('config', 'G-9HVGNEKE8R');
 </script>
 <body class="font-primary bg-white text-gray-dark">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Language Toggle -->
     <div class="bg-pale-blue py-2">
         <div class="max-w-7xl mx-auto px-4 flex justify-end">
@@ -56,8 +57,8 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
-        <nav class="max-w-7xl mx-auto px-4 py-4">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
+        <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
                     <div class="relative w-4 h-4 flex items-center justify-center">
@@ -65,23 +66,24 @@
                     </div>
                     <span class="text-xl font-bold text-gradient">Digital Allies</span>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home" data-es="Inicio">Home</a>
                     <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
                     <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-primary-blue font-medium" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors gradient-shadow" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
-                
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                    <span class="sr-only">Open navigation</span>
                 </button>
             </div>
-            
+
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
                 <div class="flex flex-col space-y-4 pt-4">
@@ -90,32 +92,43 @@
                     <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/contact" class="text-primary-blue font-medium" data-en="Contact" data-es="Contacto">Contact</a>
-                    <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors w-fit" data-en="Book Now" data-es="Reservar">Book Now</button>
+                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
             </div>
         </nav>
     </header>
 
+    <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="gradient-bg py-20 relative">
+    <section class="gradient-bg py-20 relative" aria-labelledby="contact-hero-heading">
         <!-- Floating Shapes Background -->
-        <div id="contact-hero-shapes" class="floating-shapes-container" data-floating-shapes>
+        <div id="contact-hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
             <div class="floating-shape" data-speed="0.6" data-rotation="1" style="top: 10%; left: 10%; width: 75px; height: 75px;">
-                <img src="assets/shapes/square.svg" alt="">
+                <img src="assets/shapes/square.svg" alt="" role="presentation" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.4" data-rotation="0" style="top: 12%; left: 88%; width: 70px; height: 70px;">
-                <img src="assets/shapes/diamond.svg" alt="">
+                <img src="assets/shapes/diamond.svg" alt="" role="presentation" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.5" data-rotation="1.5" style="bottom: 15%; left: 12%; width: 80px; height: 80px;">
-                <img src="assets/shapes/circle.svg" alt="">
+                <img src="assets/shapes/circle.svg" alt="" role="presentation" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.7" data-rotation="0.5" style="bottom: 10%; left: 81%; width: 65px; height: 65px;">
-                <img src="assets/shapes/hexagon.svg" alt="">
+                <img src="assets/shapes/hexagon.svg" alt="" role="presentation" aria-hidden="true">
+                <img src="assets/shapes/square.svg" alt="" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.4" data-rotation="0" style="top: 12%; left: 88%; width: 70px; height: 70px;">
+                <img src="assets/shapes/diamond.svg" alt="" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.5" data-rotation="1.5" style="bottom: 15%; left: 12%; width: 80px; height: 80px;">
+                <img src="assets/shapes/circle.svg" alt="" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.7" data-rotation="0.5" style="bottom: 10%; left: 81%; width: 65px; height: 65px;">
+                <img src="assets/shapes/hexagon.svg" alt="" aria-hidden="true">
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16 fade-in">
-                <h1 class="text-5xl font-bold text-gray-dark mb-6" data-en="Contact Us" data-es="Contáctanos">Contact Us</h1>
+                <h1 id="contact-hero-heading" class="text-5xl font-bold text-gray-dark mb-6" data-en="Contact Us" data-es="Contáctanos">Contact Us</h1>
                 <p class="text-xl text-gray-medium font-secondary max-w-3xl mx-auto" data-en="Ready to start your digital transformation? Let's connect and discuss how we can help your business thrive." data-es="¿Listo para comenzar tu transformación digital? Conectemos y discutamos cómo podemos ayudar a tu negocio a prosperar.">
                     Ready to start your digital transformation? Let's connect and discuss how we can help your business thrive.
                 </p>
@@ -124,12 +137,12 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" aria-labelledby="contact-details-heading">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Contact Information -->
                 <div class="fade-in">
-                    <h2 class="text-3xl font-bold text-gray-dark mb-8" data-en="Get in Touch" data-es="Ponte en Contacto">Get in Touch</h2>
+                    <h2 id="contact-details-heading" class="text-3xl font-bold text-gray-dark mb-8" data-en="Get in Touch" data-es="Ponte en Contacto">Get in Touch</h2>
                     
                     <div class="space-y-6 mb-10">
                         <div class="flex items-start space-x-4">
@@ -201,33 +214,38 @@
                 <!-- Contact Form -->
                 <div class="fade-in-delay-1">
                     <div class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
-                        <h2 class="text-3xl font-bold text-gray-dark mb-8" data-en="Send Us a Message" data-es="Envíanos un Mensaje">Send Us a Message</h2>
-                        
-                        <form class="space-y-6">
+                        <h2 class="text-3xl font-bold text-gray-dark mb-4" data-en="Send Us a Message" data-es="Envíanos un Mensaje">Send Us a Message</h2>
+                        <p id="form-description" class="text-gray-medium font-secondary mb-6" data-en="Share a few details and we'll reply within one business day." data-es="Comparte algunos detalles y responderemos en un día hábil.">Share a few details and we'll reply within one business day.</p>
+
+                        <form id="project-form" class="space-y-6" novalidate aria-describedby="form-description">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="firstName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="First Name" data-es="Nombre">First Name</label>
-                                    <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                    <input type="text" id="firstName" name="firstName" autocomplete="given-name" required aria-describedby="firstName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                    <p id="firstName-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 </div>
                                 <div>
                                     <label for="lastName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Last Name" data-es="Apellido">Last Name</label>
-                                    <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                    <input type="text" id="lastName" name="lastName" autocomplete="family-name" required aria-describedby="lastName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                    <p id="lastName-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <label for="email" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Email Address" data-es="Dirección de Email">Email Address</label>
-                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                <p id="email-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
-                            
+
                             <div>
                                 <label for="phone" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phone-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all" placeholder="Optional">
+                                <p id="phone-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
-                            
+
                             <div>
                                 <label for="service" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Service Interested In" data-es="Servicio de Interés">Service Interested In</label>
-                                <select id="service" name="service" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                <select id="service" name="service" required aria-describedby="service-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
                                     <option value="" data-en="Select a service..." data-es="Selecciona un servicio...">Select a service...</option>
                                     <option value="web-development" data-en="Web Development" data-es="Desarrollo Web">Web Development</option>
                                     <option value="design-branding" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</option>
@@ -236,25 +254,141 @@
                                     <option value="maintenance" data-en="Maintenance" data-es="Mantenimiento">Maintenance</option>
                                     <option value="other" data-en="Other" data-es="Otro">Other</option>
                                 </select>
+                                <p id="service-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
-                            
+
                             <div>
                                 <label for="message" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Message" data-es="Mensaje">Message</label>
-                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all resize-vertical" data-en="Tell us about your project..." data-es="Cuéntanos sobre tu proyecto..." placeholder="Tell us about your project..."></textarea>
+                                <textarea id="message" name="message" rows="5" required aria-describedby="message-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all resize-vertical" data-en="Tell us about your project..." data-es="Cuéntanos sobre tu proyecto..." placeholder="Tell us about your project..."></textarea>
+                                <p id="message-error" class="form-error mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                             </div>
-                            
-                            <button type="submit" class="w-full bg-primary-blue text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all hover-lift gradient-shadow font-medium" data-en="Send Message" data-es="Enviar Mensaje">
+
+                            <button type="submit" class="btn btn-primary w-full px-8 py-4 text-lg gradient-shadow hover-lift" data-en="Send Message" data-es="Enviar Mensaje">
                                 Send Message
                             </button>
                         </form>
+                        <div id="form-success" class="hidden mt-6 rounded-lg border border-success-green border-opacity-20 bg-success-green bg-opacity-10 px-4 py-3 text-success-green" role="status" aria-live="polite" tabindex="-1"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('project-form');
+            if (!form) return;
+
+            const successMessage = document.getElementById('form-success');
+            const configs = {
+                firstName: { required: 'Please enter your first name.' },
+                lastName: { required: 'Please enter your last name.' },
+                email: {
+                    required: 'Please enter your email address.',
+                    format: 'Enter a valid email address.'
+                },
+                phone: {
+                    pattern: 'Use numbers, spaces, parentheses, or dashes (7 or more characters).'
+                },
+                service: { required: 'Select the service you are interested in.' },
+                message: { required: 'Tell us a bit about your project.' }
+            };
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^[0-9()+\-\s]{7,}$/;
+
+            const toggleError = (input, message = '') => {
+                const errorEl = document.getElementById(`${input.id}-error`);
+                if (!errorEl) return;
+                if (message) {
+                    errorEl.textContent = message;
+                    errorEl.classList.remove('hidden');
+                    input.setAttribute('aria-invalid', 'true');
+                } else {
+                    errorEl.textContent = '';
+                    errorEl.classList.add('hidden');
+                    input.removeAttribute('aria-invalid');
+                }
+            };
+
+            const validateField = (input) => {
+                const config = configs[input.id];
+                if (!config) return true;
+                const value = input.value.trim();
+
+                if (config.required && !value) {
+                    toggleError(input, config.required);
+                    return false;
+                }
+
+                if (input.type === 'email' && value && !emailPattern.test(value)) {
+                    toggleError(input, config.format);
+                    return false;
+                }
+
+                // Generic pattern validation based on config
+                if (config.pattern && value) {
+                    let pattern;
+                    // Map config keys to their patterns
+                    if (input.id === 'phone') {
+                        pattern = phonePattern;
+                    }
+                    // Add more patterns here if needed
+                    if (pattern && !pattern.test(value)) {
+                        toggleError(input, config.pattern);
+                        return false;
+                    }
+                }
+
+                toggleError(input);
+                return true;
+            };
+
+            Object.keys(configs).forEach((fieldId) => {
+                const field = form.querySelector(`#${fieldId}`);
+                if (!field) return;
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.hasAttribute('aria-invalid')) {
+                        validateField(field);
+                    }
+                });
+            });
+
+            form.addEventListener('submit', (event) => {
+                let isValid = true;
+                Object.keys(configs).forEach((fieldId) => {
+                    const field = form.querySelector(`#${fieldId}`);
+                    if (field && !validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    const firstInvalid = form.querySelector('[aria-invalid="true"]');
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                    }
+                    return;
+                }
+
+                event.preventDefault();
+                if (successMessage) {
+                    successMessage.textContent = 'Thanks! Your message is on its way. We will reach out within one business day.';
+                    successMessage.classList.remove('hidden');
+                    successMessage.focus();
+                }
+                form.reset();
+            });
+        });
+    </script>
+
+    </main>
+    </main>
+
     <!-- Footer -->
-    <footer class="bg-gray-dark text-white py-16">
+    <footer class="bg-gray-dark text-white py-16" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <!-- Company Info -->
@@ -309,11 +443,11 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
+                        <li><a href="/services#service-web-development" class="text-gray-300 hover:text-white transition-colors" data-en="Web Development" data-es="Desarrollo Web">Web Development</a></li>
+                        <li><a href="/services#service-design-branding" class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</a></li>
+                        <li><a href="/services#service-tech-consulting" class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</a></li>
+                        <li><a href="/services#service-seo" class="text-gray-300 hover:text-white transition-colors" data-en="SEO Optimization" data-es="Optimización SEO">SEO Optimization</a></li>
+                        <li><a href="/services#service-maintenance" class="text-gray-300 hover:text-white transition-colors" data-en="Maintenance" data-es="Mantenimiento">Maintenance</a></li>
                     </ul>
                 </div>
             </div>

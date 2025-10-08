@@ -8,6 +8,7 @@
     
     // Configuration
     const CONFIG = {
+        // Use absolute paths so the blog works whether it's served from /blog or /blog/index.html
         indexPath: '/content/blog-index.json',
         blogPath: '/content/posts/',
         postsPerPage: 9,
