@@ -5,10 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Digital Allies</title>
     <meta name="description" content="Latest insights, tips, and resources from Digital Allies. Web development trends, SEO tips, and digital solutions for businesses in Kingman, AZ and surrounding areas.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/global.css">
-    <script src="assets/js/global.js"></script>
-    <script src="assets/js/blog-dynamic-load.js" defer></script>
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#2563EB',
+                        'light-blue': '#E0F2FE',
+                        'pale-blue': '#DBEAFE',
+                        'gray-medium': '#828489',
+                        'gray-dark': '#414243',
+                        'success-green': '#059669',
+                        'light-green': '#D1FAE5'
+                    },
+                    fontFamily: {
+                        primary: ['Segoe UI', 'system-ui', 'sans-serif'],
+                        secondary: ['source-sans-pro', 'Source Sans Pro', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="/assets/global.css">
+    <script src="/assets/js/global.js"></script>
+    <script src="/assets/js/blog-dynamic-load.js" defer></script>
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 <link rel="shortcut icon" href="/assets/favicon.ico" />
