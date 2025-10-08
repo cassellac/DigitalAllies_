@@ -58,6 +58,7 @@
 
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
+        <nav class="max-w-7xl mx-auto px-4 py-4" aria-label="Primary">
         <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
@@ -97,12 +98,30 @@
         </nav>
     </header>
 
+    <main id="main-content" role="main">
     <!-- Hero Section -->
+    <section class="gradient-bg py-20 lg:py-32 relative" aria-labelledby="hero-heading">
     <main id="main-content" role="main">
     <section class="gradient-bg py-20 lg:py-32 relative">
         <!-- Floating Shapes Background -->
         <div id="hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
             <div class="floating-shape" data-speed="0.5" data-rotation="0" style="top: 10%; left: 5%; width: 80px; height: 80px;">
+                <img src="assets/shapes/circle.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.3" data-rotation="1" style="top: 15%; left: 85%; width: 60px; height: 60px;">
+                <img src="assets/shapes/triangle.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.7" data-rotation="0" style="bottom: 15%; left: 15%; width: 100px; height: 100px;">
+                <img src="assets/shapes/triangle.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.4" data-rotation="1.5" style="top: 50%; left: 80%; width: 70px; height: 70px;">
+                <img src="assets/shapes/square.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.6" data-rotation="0.5" style="bottom: 20%; left: 75%; width: 90px; height: 90px;">
+                <img src="assets/shapes/hexagon.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.8" data-rotation="0" style="top: 60%; left: 8%; width: 50px; height: 50px;">
+                <img src="assets/shapes/diamond.svg" alt="" role="presentation" aria-hidden="true">
                 <img src="assets/shapes/circle.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.3" data-rotation="1" style="top: 15%; left: 85%; width: 60px; height: 60px;">
@@ -124,12 +143,18 @@
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
-                    <h2 class="text-5xl lg:text-6xl font-bold text-gray-dark mb-6 leading-tight" data-en="Digital Solutions for the Real World" data-es="Soluciones Digitales para el Mundo Real">
+                    <h2 id="hero-heading" class="text-5xl lg:text-6xl font-bold text-gray-dark mb-6 leading-tight" data-en="Digital Solutions for the Real World" data-es="Soluciones Digitales para el Mundo Real">
                         Digital Solutions for the Real World
                     </h2>
-                    <h3 class="text-xl text-gray-medium mb-8 font-secondary" data-en="We help small businesses thrive with accessible, beautiful web solutions that connect with your community." data-es="Ayudamos a pequeñas empresas a prosperar con soluciones web accesibles y hermosas que conectan con tu comunidad.">
-                        We help small businesses thrive with accessible, beautiful web solutions that connect with your community.
+                    <h3 class="text-xl text-gray-medium mb-8 font-secondary" data-en="We launch conversion-ready sites with measurable ROI so you can focus on serving your customers." data-es="Lanzamos sitios listos para convertir con ROI medible para que puedas concentrarte en atender a tus clientes.">
+                        We launch conversion-ready sites with measurable ROI so you can focus on serving your customers.
                     </h3>
+                    <div class="flex flex-col sm:flex-row gap-4" role="group" aria-label="Primary call to action">
+                        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-[#1d4ed8] rounded-full shadow-lg transition-all duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Start Your Project" data-es="Inicia Tu Proyecto">
+                            Start Your Project
+                        </a>
+                        <a href="/services" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#1d4ed8] border-2 border-[#1d4ed8] rounded-full transition-all duration-200 hover:bg-[#1d4ed8] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Explore Services" data-es="Explorar Servicios">
+                            Explore Services
                     <div class="flex flex-col gap-4">
                         <button class="bg-[#0F172A] text-white px-8 py-4 rounded-full transition-all hover-lift font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto" aria-label="Start your project">
                             Start Your Project
@@ -177,44 +202,44 @@
     </section>
 
     <!-- Services Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" aria-labelledby="services-heading">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-dark mb-4" data-en="What We Do" data-es="Lo Que Hacemos">What We Do</h2>
+                <h2 id="services-heading" class="text-4xl font-bold text-gray-dark mb-4" data-en="What We Do" data-es="Lo Que Hacemos">What We Do</h2>
                 <p class="text-xl text-gray-medium font-secondary" data-en="Comprehensive digital solutions tailored for your success" data-es="Soluciones digitales integrales adaptadas para tu éxito">Comprehensive digital solutions tailored for your success</p>
             </div>
-            
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Web Development -->
                 <div class="fade-in-delay-1 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
                     <div class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
-                        <img src="assets/developement.svg" alt="Web Development Icon" class="w-8 h-8 object-contain" />
+                        <img src="assets/developement.svg" alt="Web development icon" class="w-8 h-8 object-contain" />
                     </div>
                     <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Web Development" data-es="Desarrollo Web">Web Development</h3>
-                    <p class="text-gray-medium font-secondary" data-en="Custom websites built with modern technologies that perform beautifully on all devices." data-es="Sitios web personalizados construidos con tecnologías modernas que funcionan hermosamente en todos los dispositivos.">
-                        Custom websites built with modern technologies that perform beautifully on all devices.
+                    <p class="text-gray-medium font-secondary" data-en="Conversion-focused sites built in 6-8 weeks with analytics, lead capture, and accessibility baked in." data-es="Sitios enfocados en la conversión construidos en 6-8 semanas con analítica, captura de leads y accesibilidad integrada.">
+                        Conversion-focused sites built in 6-8 weeks with analytics, lead capture, and accessibility baked in.
                     </p>
                 </div>
-                
+
                 <!-- Design & Branding -->
                 <div class="fade-in-delay-2 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
                     <div class="w-16 h-16 bg-gradient-to-br from-success-green to-primary-blue rounded-xl flex items-center justify-center mb-6">
-                        <img src="assets/design.svg" alt="Design & Branding Icon" class="w-8 h-8 object-contain" />
+                        <img src="assets/design.svg" alt="Design and branding icon" class="w-8 h-8 object-contain" />
                     </div>
                     <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Design & Branding" data-es="Diseño y Marca">Design & Branding</h3>
-                    <p class="text-gray-medium font-secondary" data-en="Visual identity that captures your brand's essence and connects with your audience." data-es="Identidad visual que captura la esencia de tu marca y conecta con tu audiencia.">
-                        Visual identity that captures your brand's essence and connects with your audience.
+                    <p class="text-gray-medium font-secondary" data-en="Signature visuals, messaging, and brand kits that boost recognition by up to 40% across digital and print." data-es="Visuales distintivos, mensajes y kits de marca que aumentan el reconocimiento hasta un 40 % en digital e impreso.">
+                        Signature visuals, messaging, and brand kits that boost recognition by up to 40% across digital and print.
                     </p>
                 </div>
-                
+
                 <!-- Tech Consulting -->
                 <div class="fade-in-delay-3 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
                     <div class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
-                        <img src="assets/consulting2.svg" alt="Tech Consulting Icon" class="w-8 h-8 object-contain" />
+                        <img src="assets/consulting2.svg" alt="Technology consulting icon" class="w-8 h-8 object-contain" />
                     </div>
                     <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Tech Consulting" data-es="Consultoría Tech">Tech Consulting</h3>
-                    <p class="text-gray-medium font-secondary" data-en="Strategic guidance to help you make the right technology decisions for your business." data-es="Orientación estratégica para ayudarte a tomar las decisiones tecnológicas correctas para tu negocio.">
-                        Strategic guidance to help you make the right technology decisions for your business.
+                    <p class="text-gray-medium font-secondary" data-en="Roadmaps, automations, and training that streamline operations and reduce busywork by an average of 32%." data-es="Mapas de ruta, automatizaciones y capacitación que optimizan operaciones y reducen el trabajo repetitivo en un promedio del 32 %.">
+                        Roadmaps, automations, and training that streamline operations and reduce busywork by an average of 32%.
                     </p>
                 </div>
             </div>
@@ -222,26 +247,26 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20 gradient-bg relative">
+    <section class="py-20 gradient-bg relative" aria-labelledby="why-heading">
         <!-- Floating Shapes Background -->
         <div id="why-shapes" class="floating-shapes-container" data-floating-shapes>
             <div class="floating-shape" data-speed="0.4" data-rotation="1" style="top: 10%; left: 10%; width: 70px; height: 70px;">
-                <img src="assets/shapes/triangle.svg" alt="">
+                <img src="assets/shapes/triangle.svg" alt="" role="presentation" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.6" data-rotation="0" style="top: 20%; left: 88%; width: 60px; height: 60px;">
-                <img src="assets/shapes/circle.svg" alt="">
+                <img src="assets/shapes/circle.svg" alt="" role="presentation" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.5" data-rotation="1.5" style="bottom: 10%; left: 5%; width: 80px; height: 80px;">
-                <img src="assets/shapes/circle.svg" alt="">
+                <img src="assets/shapes/circle.svg" alt="" role="presentation" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.7" data-rotation="0.5" style="top: 60%; left: 85%; width: 55px; height: 55px;">
-                <img src="assets/shapes/diamond.svg" alt="">
+                <img src="assets/shapes/diamond.svg" alt="" role="presentation" aria-hidden="true">
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="fade-in">
-                    <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Why Choose Digital Allies?" data-es="¿Por Qué Elegir Digital Allies?">Why Choose Digital Allies?</h2>
+                    <h2 id="why-heading" class="text-4xl font-bold text-gray-dark mb-6" data-en="Why Choose Digital Allies?" data-es="¿Por Qué Elegir Digital Allies?">Why Choose Digital Allies?</h2>
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
                             <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -251,8 +276,8 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-dark mb-2" data-en="Affordable Excellence" data-es="Excelencia Asequible">Affordable Excellence</h3>
-                                <p class="text-gray-medium font-secondary" data-en="High-quality solutions that don't break the bank. We believe great design should be accessible to everyone." data-es="Soluciones de alta calidad que no rompen el presupuesto. Creemos que el gran diseño debe ser accesible para todos.">
-                                    High-quality solutions that don't break the bank. We believe great design should be accessible to everyone.
+                                <p class="text-gray-medium font-secondary" data-en="Fixed-price packages start at $1,800 with two-week launch sprints—no hidden fees, just results." data-es="Los paquetes de precio fijo comienzan en $1,800 con sprints de lanzamiento de dos semanas; sin costos ocultos, solo resultados.">
+                                    Fixed-price packages start at $1,800 with two-week launch sprints—no hidden fees, just results.
                                 </p>
                             </div>
                         </div>
@@ -265,8 +290,8 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-dark mb-2" data-en="Personal Partnership" data-es="Asociación Personal">Personal Partnership</h3>
-                                <p class="text-gray-medium font-secondary" data-en="We're not just vendors - we're your digital allies, invested in your long-term success." data-es="No somos solo proveedores - somos tus aliados digitales, invertidos en tu éxito a largo plazo.">
-                                    We're not just vendors - we're your digital allies, invested in your long-term success.
+                                <p class="text-gray-medium font-secondary" data-en="Quarterly strategy sessions and 24-hour response times keep your roadmap on track all year." data-es="Sesiones estratégicas trimestrales y tiempos de respuesta de 24 horas mantienen tu plan en curso todo el año.">
+                                    Quarterly strategy sessions and 24-hour response times keep your roadmap on track all year.
                                 </p>
                             </div>
                         </div>
@@ -279,8 +304,8 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-dark mb-2" data-en="Real-World Focus" data-es="Enfoque del Mundo Real">Real-World Focus</h3>
-                                <p class="text-gray-medium font-secondary" data-en="Solutions that work in the real world, not just on paper. We understand your business challenges." data-es="Soluciones que funcionan en el mundo real, no solo en papel. Entendemos los desafíos de tu negocio.">
-                                    Solutions that work in the real world, not just on paper. We understand your business challenges.
+                                <p class="text-gray-medium font-secondary" data-en="Prototypes tested with real customers and WCAG-compliant builds mean confident, accessible launches." data-es="Prototipos probados con clientes reales y desarrollos compatibles con WCAG significan lanzamientos seguros y accesibles.">
+                                    Prototypes tested with real customers and WCAG-compliant builds mean confident, accessible launches.
                                 </p>
                             </div>
                         </div>
@@ -322,10 +347,10 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" aria-labelledby="testimonials-heading">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-dark mb-4" data-en="What Our Clients Say" data-es="Lo Que Dicen Nuestros Clientes">What Our Clients Say</h2>
+                <h2 id="testimonials-heading" class="text-4xl font-bold text-gray-dark mb-4" data-en="What Our Clients Say" data-es="Lo Que Dicen Nuestros Clientes">What Our Clients Say</h2>
                 <p class="text-xl text-gray-medium font-secondary" data-en="Real stories from real businesses we've helped grow" data-es="Historias reales de negocios reales que hemos ayudado a crecer">Real stories from real businesses we've helped grow</p>
             </div>
             
@@ -423,21 +448,91 @@
         </div>
     </section>
 
+    <!-- Case Studies -->
+    <section class="py-20 bg-pale-blue bg-opacity-40" aria-labelledby="case-studies-heading">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 id="case-studies-heading" class="text-4xl font-bold text-gray-dark mb-4" data-en="Recent Client Wins" data-es="Victorias Recientes de Clientes">Recent Client Wins</h2>
+                <p class="text-xl text-gray-medium font-secondary max-w-3xl mx-auto" data-en="See how we translate strategy into measurable outcomes for small businesses like yours." data-es="Descubre cómo convertimos la estrategia en resultados medibles para pequeñas empresas como la tuya.">See how we translate strategy into measurable outcomes for small businesses like yours.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <article class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="inline-flex items-center px-3 py-1 text-sm font-semibold text-success-green bg-success-green bg-opacity-10 rounded-full">Local Retail</span>
+                        <h3 class="text-2xl font-bold text-gray-dark" data-en="Desert Bloom Bakery" data-es="Panadería Desert Bloom">Desert Bloom Bakery</h3>
+                        <p class="text-gray-medium font-secondary" data-en="Migrated from DIY builders to a conversion-optimized storefront with bilingual content and curbside pickup flows." data-es="Migramos de constructores DIY a una tienda optimizada para la conversión con contenido bilingüe y flujos de recogida en la acera.">Migrated from DIY builders to a conversion-optimized storefront with bilingual content and curbside pickup flows.</p>
+                    </div>
+                    <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
+                        <div>
+                            <dt class="text-sm text-gray-medium">Online orders in 90 days</dt>
+                            <dd class="text-3xl font-bold text-primary-blue">+182%</dd>
+                        </div>
+                        <div>
+                            <dt class="text-sm text-gray-medium">Average order value</dt>
+                            <dd class="text-3xl font-bold text-success-green">+36%</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <article class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-10 rounded-full">Professional Services</span>
+                        <h3 class="text-2xl font-bold text-gray-dark" data-en="Summit Legal Group" data-es="Summit Legal Group">Summit Legal Group</h3>
+                        <p class="text-gray-medium font-secondary" data-en="Rebuilt their brand system, added scheduling automation, and launched an SEO plan targeting regional keywords." data-es="Reconstruimos su sistema de marca, añadimos automatización de agendas y lanzamos un plan SEO con palabras clave regionales.">Rebuilt their brand system, added scheduling automation, and launched an SEO plan targeting regional keywords.</p>
+                    </div>
+                    <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
+                        <div>
+                            <dt class="text-sm text-gray-medium">Qualified leads</dt>
+                            <dd class="text-3xl font-bold text-primary-blue">+124%</dd>
+                        </div>
+                        <div>
+                            <dt class="text-sm text-gray-medium">Discovery calls booked</dt>
+                            <dd class="text-3xl font-bold text-success-green">3.2×</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <article class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-10 rounded-full">Non-profit</span>
+                        <h3 class="text-2xl font-bold text-gray-dark" data-en="Mohave Youth Collective" data-es="Colectivo Juvenil de Mohave">Mohave Youth Collective</h3>
+                        <p class="text-gray-medium font-secondary" data-en="Introduced donation funnels, improved accessibility, and trained volunteers on content updates." data-es="Introdujimos embudos de donación, mejoramos la accesibilidad y capacitamos a voluntarios en actualizaciones de contenido.">Introduced donation funnels, improved accessibility, and trained volunteers on content updates.</p>
+                    </div>
+                    <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
+                        <div>
+                            <dt class="text-sm text-gray-medium">Donations per month</dt>
+                            <dd class="text-3xl font-bold text-primary-blue">+78%</dd>
+                        </div>
+                        <div>
+                            <dt class="text-sm text-gray-medium">Volunteer sign-ups</dt>
+                            <dd class="text-3xl font-bold text-success-green">+94%</dd>
+                        </div>
+                    </dl>
+                </article>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-[#1d4ed8] rounded-full shadow-lg transition-all duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Plan Your Win" data-es="Planifica Tu Victoria">Plan Your Win</a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
-    <section class="py-20 gradient-bg">
+    <section class="py-20 gradient-bg" aria-labelledby="cta-heading">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="fade-in">
-                <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Ready to Transform Your Business?" data-es="¿Listo para Transformar Tu Negocio?">Ready to Transform Your Business?</h2>
+                <h2 id="cta-heading" class="text-4xl font-bold text-gray-dark mb-6" data-en="Ready to Transform Your Business?" data-es="¿Listo para Transformar Tu Negocio?">Ready to Transform Your Business?</h2>
                 <p class="text-xl text-gray-medium mb-8 font-secondary" data-en="Let's create something amazing together. Your success story starts with a conversation." data-es="Creemos algo increíble juntos. Tu historia de éxito comienza con una conversación.">
                     Let's create something amazing together. Your success story starts with a conversation.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-primary-blue text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all hover-lift gradient-shadow font-medium" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
+                <div class="flex flex-col items-center gap-4" role="group" aria-label="Final call to action">
+                    <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-[#1d4ed8] rounded-full shadow-lg transition-all duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
                         Start Your Project
-                    </button>
-                    <button class="border-2 border-primary-blue text-primary-blue px-8 py-4 rounded-full hover:bg-primary-blue hover:text-white transition-all font-medium" data-en="Schedule a Call" data-es="Programar una Llamada">
-                        Schedule a Call
-                    </button>
+                    </a>
+                    <a href="tel:+19282285769" class="text-lg font-semibold text-[#1d4ed8] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Prefer to chat? Call 928-228-5769" data-es="¿Prefieres hablar? Llama al 928-228-5769">
+                        Prefer to chat? Call 928-228-5769
+                    </a>
                 </div>
             </div>
         </div>
@@ -524,14 +619,8 @@
             </div>
         </div>
     </footer>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d71aaf95ed9925',t:'MTc1NzU5MzA3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
-                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
-                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors" data-en="Cookie Policy" data-es="Política de Cookies">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <a href="/contact#project-form" class="sticky-cta" aria-label="Schedule a call with Digital Allies">
+        Schedule a Call
+    </a>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d71aaf95ed9925',t:'MTc1NzU5MzA3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

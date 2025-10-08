@@ -58,6 +58,7 @@
 
     <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
+        <nav class="max-w-7xl mx-auto px-4 py-4" aria-label="Primary">
         <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1">
@@ -99,10 +100,20 @@
 
     <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="gradient-bg py-20 relative">
+    <section class="gradient-bg py-20 relative" aria-labelledby="contact-hero-heading">
         <!-- Floating Shapes Background -->
         <div id="contact-hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
             <div class="floating-shape" data-speed="0.6" data-rotation="1" style="top: 10%; left: 10%; width: 75px; height: 75px;">
+                <img src="assets/shapes/square.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.4" data-rotation="0" style="top: 12%; left: 88%; width: 70px; height: 70px;">
+                <img src="assets/shapes/diamond.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.5" data-rotation="1.5" style="bottom: 15%; left: 12%; width: 80px; height: 80px;">
+                <img src="assets/shapes/circle.svg" alt="" role="presentation" aria-hidden="true">
+            </div>
+            <div class="floating-shape" data-speed="0.7" data-rotation="0.5" style="bottom: 10%; left: 81%; width: 65px; height: 65px;">
+                <img src="assets/shapes/hexagon.svg" alt="" role="presentation" aria-hidden="true">
                 <img src="assets/shapes/square.svg" alt="" aria-hidden="true">
             </div>
             <div class="floating-shape" data-speed="0.4" data-rotation="0" style="top: 12%; left: 88%; width: 70px; height: 70px;">
@@ -117,7 +128,7 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16 fade-in">
-                <h1 class="text-5xl font-bold text-gray-dark mb-6" data-en="Contact Us" data-es="Contáctanos">Contact Us</h1>
+                <h1 id="contact-hero-heading" class="text-5xl font-bold text-gray-dark mb-6" data-en="Contact Us" data-es="Contáctanos">Contact Us</h1>
                 <p class="text-xl text-gray-medium font-secondary max-w-3xl mx-auto" data-en="Ready to start your digital transformation? Let's connect and discuss how we can help your business thrive." data-es="¿Listo para comenzar tu transformación digital? Conectemos y discutamos cómo podemos ayudar a tu negocio a prosperar.">
                     Ready to start your digital transformation? Let's connect and discuss how we can help your business thrive.
                 </p>
@@ -126,12 +137,12 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" aria-labelledby="contact-details-heading">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Contact Information -->
                 <div class="fade-in">
-                    <h2 class="text-3xl font-bold text-gray-dark mb-8" data-en="Get in Touch" data-es="Ponte en Contacto">Get in Touch</h2>
+                    <h2 id="contact-details-heading" class="text-3xl font-bold text-gray-dark mb-8" data-en="Get in Touch" data-es="Ponte en Contacto">Get in Touch</h2>
                     
                     <div class="space-y-6 mb-10">
                         <div class="flex items-start space-x-4">
@@ -203,6 +214,20 @@
                 <!-- Contact Form -->
                 <div class="fade-in-delay-1">
                     <div class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
+                        <h2 class="text-3xl font-bold text-gray-dark mb-4" data-en="Send Us a Message" data-es="Envíanos un Mensaje">Send Us a Message</h2>
+                        <p id="form-description" class="text-gray-medium font-secondary mb-6" data-en="Share a few details and we'll reply within one business day." data-es="Comparte algunos detalles y responderemos en un día hábil.">Share a few details and we'll reply within one business day.</p>
+
+                        <form id="project-form" class="space-y-6" novalidate aria-describedby="form-description">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="First Name" data-es="Nombre">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" autocomplete="given-name" required aria-describedby="firstName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                    <p id="firstName-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Last Name" data-es="Apellido">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" autocomplete="family-name" required aria-describedby="lastName-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                    <p id="lastName-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                         <h2 class="text-3xl font-bold text-gray-dark mb-8" data-en="Send Us a Message" data-es="Envíanos un Mensaje">Send Us a Message</h2>
                         
                         <form class="space-y-6" data-validate="contact" novalidate>
@@ -221,18 +246,23 @@
 
                             <div>
                                 <label for="email" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Email Address" data-es="Dirección de Email">Email Address</label>
+                                <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
+                                <p id="email-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 <input type="email" id="email" name="email" required autocomplete="email" inputmode="email" data-validate-field data-error-required="Email is required." data-error-invalid="Enter a valid email address." aria-invalid="false" aria-describedby="email-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
                                 <p id="email-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
                             </div>
 
                             <div>
                                 <label for="phone" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" aria-describedby="phone-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all" placeholder="Optional">
+                                <p id="phone-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" data-validate-field data-error-invalid="Enter a valid phone number." aria-invalid="false" aria-describedby="phone-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
                                 <p id="phone-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
                             </div>
 
                             <div>
                                 <label for="service" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Service Interested In" data-es="Servicio de Interés">Service Interested In</label>
+                                <select id="service" name="service" required aria-describedby="service-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all">
                                 <select id="service" name="service" required class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all" data-validate-field data-error-required="Select a service to help us prepare." aria-invalid="false" aria-describedby="service-error">
                                     <option value="" data-en="Select a service..." data-es="Selecciona un servicio...">Select a service...</option>
                                     <option value="web-development" data-en="Web Development" data-es="Desarrollo Web">Web Development</option>
@@ -242,11 +272,17 @@
                                     <option value="maintenance" data-en="Maintenance" data-es="Mantenimiento">Maintenance</option>
                                     <option value="other" data-en="Other" data-es="Otro">Other</option>
                                 </select>
+                                <p id="service-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
                                 <p id="service-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
                             </div>
 
                             <div>
                                 <label for="message" class="block text-sm font-semibold text-gray-dark mb-2" data-en="Message" data-es="Mensaje">Message</label>
+                                <textarea id="message" name="message" rows="5" required aria-describedby="message-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all resize-vertical" data-en="Tell us about your project..." data-es="Cuéntanos sobre tu proyecto..." placeholder="Tell us about your project..."></textarea>
+                                <p id="message-error" class="mt-2 text-sm text-red-600 hidden" aria-live="polite"></p>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary-blue text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all hover-lift gradient-shadow font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Send Message" data-es="Enviar Mensaje">
                                 <textarea id="message" name="message" rows="5" required data-validate-field data-error-required="Let us know what you'd like to build." aria-invalid="false" aria-describedby="message-error" class="w-full px-4 py-3 border border-pale-blue rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent outline-none transition-all resize-vertical" data-en="Tell us about your project..." data-es="Cuéntanos sobre tu proyecto..." placeholder="Tell us about your project..."></textarea>
                                 <p id="message-error" class="form-error text-sm text-red-600 mt-2" aria-live="polite"></p>
                             </div>
@@ -255,12 +291,124 @@
                                 Send Message
                             </button>
                         </form>
+                        <div id="form-success" class="hidden mt-6 rounded-lg border border-success-green border-opacity-20 bg-success-green bg-opacity-10 px-4 py-3 text-success-green" role="status" aria-live="polite" tabindex="-1"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('project-form');
+            if (!form) return;
+
+            const successMessage = document.getElementById('form-success');
+            const configs = {
+                firstName: { required: 'Please enter your first name.' },
+                lastName: { required: 'Please enter your last name.' },
+                email: {
+                    required: 'Please enter your email address.',
+                    format: 'Enter a valid email address.'
+                },
+                phone: {
+                    pattern: 'Use numbers, spaces, parentheses, or dashes (7 or more characters).'
+                },
+                service: { required: 'Select the service you are interested in.' },
+                message: { required: 'Tell us a bit about your project.' }
+            };
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^[0-9()+\-\s]{7,}$/;
+
+            const toggleError = (input, message = '') => {
+                const errorEl = document.getElementById(`${input.id}-error`);
+                if (!errorEl) return;
+                if (message) {
+                    errorEl.textContent = message;
+                    errorEl.classList.remove('hidden');
+                    input.setAttribute('aria-invalid', 'true');
+                } else {
+                    errorEl.textContent = '';
+                    errorEl.classList.add('hidden');
+                    input.removeAttribute('aria-invalid');
+                }
+            };
+
+            const validateField = (input) => {
+                const config = configs[input.id];
+                if (!config) return true;
+                const value = input.value.trim();
+
+                if (config.required && !value) {
+                    toggleError(input, config.required);
+                    return false;
+                }
+
+                if (input.type === 'email' && value && !emailPattern.test(value)) {
+                    toggleError(input, config.format);
+                    return false;
+                }
+
+                // Generic pattern validation based on config
+                if (config.pattern && value) {
+                    let pattern;
+                    // Map config keys to their patterns
+                    if (input.id === 'phone') {
+                        pattern = phonePattern;
+                    }
+                    // Add more patterns here if needed
+                    if (pattern && !pattern.test(value)) {
+                        toggleError(input, config.pattern);
+                        return false;
+                    }
+                }
+
+                toggleError(input);
+                return true;
+            };
+
+            Object.keys(configs).forEach((fieldId) => {
+                const field = form.querySelector(`#${fieldId}`);
+                if (!field) return;
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.hasAttribute('aria-invalid')) {
+                        validateField(field);
+                    }
+                });
+            });
+
+            form.addEventListener('submit', (event) => {
+                let isValid = true;
+                Object.keys(configs).forEach((fieldId) => {
+                    const field = form.querySelector(`#${fieldId}`);
+                    if (field && !validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    const firstInvalid = form.querySelector('[aria-invalid="true"]');
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                    }
+                    return;
+                }
+
+                event.preventDefault();
+                if (successMessage) {
+                    successMessage.textContent = 'Thanks! Your message is on its way. We will reach out within one business day.';
+                    successMessage.classList.remove('hidden');
+                    successMessage.focus();
+                }
+                form.reset();
+            });
+        });
+    </script>
+
+    </main>
     </main>
 
     <!-- Footer -->
