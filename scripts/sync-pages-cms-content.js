@@ -137,8 +137,13 @@ function normalizeMarkdown(content) {
     return content
         .replace(/\r\n/g, '\n')
         .replace(/\\([\\`*_{}\[\]()#+.!>\-])/g, '$1')
+        // Fixes malformed nested Markdown links where a link is nested inside another link's parentheses,
+        // e.g. `]([text](url))` should be corrected to `](url)`. This regex matches such patterns and replaces
+        // them with the correct link syntax.
         .replace(/\]\(\[([^\]]+)\]\((https?:\/\/[^)]+)\)\)/g, ']($2)')
+        // Ensures a space before a Markdown link if it directly follows an alphanumeric character (e.g. "word[link]" → "word [link]")
         .replace(/([A-Za-z0-9])\[/g, '$1 [')
+        // Ensures a space between bold/strong formatting and a following link (e.g. "**[link]" → "** [link]", "__[link]" → "__ [link]")
         .replace(/(\*\*|__)(?=\[)/g, '$1 ');
 }
 

@@ -42,7 +42,7 @@
         "digital accessibility mohave county",
         "bilingual web design kingman"
       ],
-      "wordCount": 1230,
+      "wordCount": 1218,
       "readingTime": 7,
       "excerpt": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online. Read more",
       "featuredImage": "/images/Digital Allies Kingman Local.svg",
@@ -124,11 +124,11 @@
     "web-design",
     "website-accessibility"
   ],
-  "lastUpdated": "2025-10-08T22:58:56.976Z",
+  "lastUpdated": "2025-10-06T17:34:13.014Z",
   "totalPosts": 4,
   "metadata": {
     "generatedBy": "sync-pages-cms-content.js",
-    "generatedAt": "2025-10-08T22:58:56.976Z",
+    "generatedAt": "2025-10-06T17:34:13.014Z",
     "source": "content/*.md"
   }
 }

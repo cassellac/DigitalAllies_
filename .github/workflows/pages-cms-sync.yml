@@ -41,6 +41,6 @@ jobs:
           commit_user_email: actions@github.com
           skip_dirty_check: false
           file_pattern: |
-            content/index.html
+            content/posts/**/*.html
             content/blog-index.json
-            content/posts/**
+            content/index.html
