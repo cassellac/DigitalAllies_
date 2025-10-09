@@ -5,12 +5,22 @@ publishDate: 2025-10-01
 author: Digital Allies
 description: Explore Kingman's growing tech scene! Discover local digital
   innovation, tri-city opportunities, and how Mohave County businesses are
-  thriving online. Read more
+  thriving online.
 category: Community
-featuredImage: /images/Digital Allies Kingman Local.svg
-featuredImageAlt: A graphic with colorful geometric shapes like squares,
-  circles, and triangles on a light background. A central blue banner reads,
-  "Digital Allies - Local Edition" and "Innovation & Digital Opportunities".
+tags:
+  - Kingman
+  - LHC
+  - BHC
+  - Digital Innovation
+  - Small Business
+  - Mohave County
+  - ADA Compliance
+  - Digital Accessibility
+  - Tri-Cities
+  - Community Development
+featuredImage: /images/digital-allies-post5-featured.svg
+featuredImageAlt: "Post Brand Template. Post 5: Kingman Local Edition:
+  Innovation and Digital Opportunities "
 ---
 # **Kingman Tech Scene: Local Innovation & Digital Opportunities**
 
