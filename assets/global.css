@@ -25,7 +25,7 @@
     position: relative;
     z-index: 1;
 }
-.gradient-shadow { box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.1), 0 20px 30px -10px rgba(37, 99, 235, 0.04); }
+.gradient-shadow { box-shadow: 0 20px 30px -10px rgba(250, 222, 235, 0.1), 0 20px 30px -10px rgba(206, 216, 226, 0.04); }
 .hover-lift { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.15); }
 
