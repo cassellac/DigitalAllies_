@@ -289,3 +289,72 @@ textarea:focus-visible {
 .form-error.active {
     display: block;
 }
+
+/* Knowledge Base Specific Styles */
+.prose h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.prose h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.prose h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.prose p {
+    color: #374151;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.prose li {
+    color: #374151;
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.prose strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Chatbot animations */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.5rem);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+    #chatbot-window {
+        right: 1rem;
+        left: 1rem;
+        bottom: 5.5rem;
+        width: auto;
+    }
+}
