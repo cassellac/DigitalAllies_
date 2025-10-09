@@ -1,32 +1,6 @@
 {
   "posts": [
     {
-      "title": "ADA Compliance for Websites: A Small Business Guide",
-      "slug": "ada-compliance-for-websites",
-      "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional.",
-      "category": "Accessibility",
-      "author": "Digital Allies",
-      "publishDate": "2025-10-01T00:00:00.000Z",
-      "tags": [
-        "ada-compliance",
-        "website-accessibility",
-        "small-business",
-        "web-design",
-        "legal-requirements",
-        "wcag-guidelines",
-        "inclusive-design",
-        "digital-inclusion",
-        "disability-rights"
-      ],
-      "wordCount": 735,
-      "readingTime": 4,
-      "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers. With legal pressure rising and accessibility standards becoming clearer, making your site inclusive is no longer optional.",
-      "featuredImage": "",
-      "imageAlt": "",
-      "canonicalUrl": "https://digitalallies.net/content/posts/ada-compliance-for-websites/",
-      "publicUrl": "/content/posts/ada-compliance-for-websites/"
-    },
-    {
       "title": " Kingman Local: Innovation & Digital Opportunities",
       "slug": "local-innovation-digital-opportunities",
       "description": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online. Read more",
@@ -72,12 +46,38 @@
       "publicUrl": "/content/posts/advanced-seo-techniques-for-2025/"
     },
     {
+      "title": "ADA Compliance for Websites: A Small Business Guide",
+      "slug": "ada-compliance-for-websites",
+      "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers.",
+      "category": "Accessibility",
+      "author": "Digital Allies",
+      "publishDate": "2025-09-01T00:00:00.000Z",
+      "tags": [
+        "ada-compliance",
+        "website-accessibility",
+        "small-business",
+        "web-design",
+        "legal-requirements",
+        "wcag-guidelines",
+        "inclusive-design",
+        "digital-inclusion",
+        "disability-rights"
+      ],
+      "wordCount": 749,
+      "readingTime": 4,
+      "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers.",
+      "featuredImage": "/images/digital-allies-post3-featured.svg",
+      "imageAlt": "Featured Photo - purple background with the text \"ada compliance for websites - a small business guide\"",
+      "canonicalUrl": "https://digitalallies.net/content/posts/ada-compliance-for-websites/",
+      "publicUrl": "/content/posts/ada-compliance-for-websites/"
+    },
+    {
       "title": "Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)",
       "slug": "5-signs-your-small-business-needs-a-new-website",
       "description": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
       "category": "Web Design",
       "author": "Digital Allies",
-      "publishDate": "2024-10-01T00:00:00.000Z",
+      "publishDate": "2024-08-01T00:00:00.000Z",
       "tags": [
         "web-design",
         "small-business",
@@ -124,11 +124,11 @@
     "web-design",
     "website-accessibility"
   ],
-  "lastUpdated": "2025-10-06T17:34:13.014Z",
+  "lastUpdated": "2025-10-09T01:43:12.979Z",
   "totalPosts": 4,
   "metadata": {
     "generatedBy": "sync-pages-cms-content.js",
-    "generatedAt": "2025-10-06T17:34:13.014Z",
+    "generatedAt": "2025-10-09T01:43:12.979Z",
     "source": "content/*.md"
   }
 }
