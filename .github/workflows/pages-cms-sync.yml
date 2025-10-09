@@ -3,6 +3,7 @@ name: Sync Pages CMS content
 on:
   push:
     branches:
+      - Master
       - main
       - work
     paths:
@@ -10,6 +11,18 @@ on:
       - 'scripts/templates/**'
       - 'scripts/sync-pages-cms-content.js'
       - '.pages.yml'
+  pull_request:
+    branches:
+      - Master
+      - main
+      - work
+    paths:
+      - 'content/**'
+      - 'scripts/templates/**'
+      - 'scripts/sync-pages-cms-content.js'
+      - '.pages.yml'
+  schedule:
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 jobs:
@@ -37,8 +50,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403
         with:
           commit_message: 'chore: sync Pages CMS content'
-          commit_user_name: Digital Allies Bot
-          commit_user_email: actions@github.com
+          commit_user_name: 'Digital Allies Bot'
+          commit_user_email: 'actions@github.com'
           skip_dirty_check: false
           file_pattern: |
             content/posts/**/*.html
