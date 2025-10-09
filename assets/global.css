@@ -133,6 +133,23 @@
 
 footer { background: linear-gradient(135deg, #414243, #6B6B6B)}
 
+/* Footer logo styles - high contrast white version */
+footer .logo {
+    color: white;
+    text-decoration: none;
+}
+
+footer .logo:hover {
+    opacity: 0.9;
+}
+
+/* Ensure footer logo dot is white and animated */
+footer .logo-dot,
+footer .brand-pulse {
+    background: white;
+    animation: brand-pulse 3s ease-in-out infinite;
+}
+
 /* ADA contrast improvement */
 button.bg-primary-blue { color: #fff; }
 button.bg-primary-blue:hover { background-color: #1E40AF; }
