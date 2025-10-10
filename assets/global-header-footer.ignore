@@ -9,11 +9,11 @@
                     <h1 class="text-xl font-bold text-gradient">Digital Allies</h1>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home" data-es="Inicio">Home</a>
+                    <a href="/"class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home" data-es="Inicio">Home</a>
                     <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About" data-es="Acerca">About</a>
                     <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Services" data-es="Servicios">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
-                    <a href="/knowledge-base" class="text-primary-blue font-medium" data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a>
+                    <a href="/knowledge-base"class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
                     <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
@@ -31,7 +31,7 @@
                     <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca" role="menuitem">About</a>
                     <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services" data-es="Servicios" role="menuitem">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog" role="menuitem">Blog</a>
-                    <a href="/knowledge-base" class="text-primary-blue font-medium" data-en="Knowledge Base" data-es="Base de Conocimientos" role="menuitem">Knowledge Base</a>
+                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue" data-en="Knowledge Base" data-es="Base de Conocimientos" role="menuitem">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto" role="menuitem">Contact</a>
                     <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto" role="menuitem">Start Your Project</a>
                 </div>
