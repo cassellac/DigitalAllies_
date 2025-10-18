@@ -45,6 +45,7 @@ function resolvePublicPostPath(slug) {
 }
 
 function resolveOutputDirectory(rootDir, slug) {
+    if (slug.includes('..')) throw new Error('Invalid directory name');
     return path.join(rootDir, slug);
 }
 

@@ -362,6 +362,9 @@ function main() {
 
         const postDir = resolveOutputDirectory(POSTS_HTML_DIR, slug);
         ensureDir(postDir);
+        if (slug.includes('..')) {
+            throw new Error('Invalid slug format');
+        }
         const postPath = path.join(postDir, 'index.html');
         fs.writeFileSync(postPath, rendered, 'utf8');
         console.log(`✅ Generated ${postPath}`);
