@@ -18,7 +18,7 @@ const GLOBAL_CONTEXT = {
         { label: 'About', path: '/about' },
         { label: 'Services', path: '/services' },
         { label: 'Blog', path: '/blog' },
-        { label: 'Knowledge-base.html', path: '/knowledge base' },
+        { label: 'Knowledge Base', path: '/knowledge-base' },
         { label: 'Contact', path: '/contact' }
     ],
     language: {
@@ -27,8 +27,10 @@ const GLOBAL_CONTEXT = {
     },
     assets: {
         stylesheet: '/assets/global.css',
-        script: '/assets/js/global.js'
-        script: '/assets/js/knowledge-base.js'
+        scripts: [
+            '/assets/js/global.js',
+            '/assets/js/knowledge-base.js'
+        ]
     }
 };
 
