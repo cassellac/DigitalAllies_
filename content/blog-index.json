@@ -3,16 +3,27 @@
     {
       "title": " Kingman Local: Innovation & Digital Opportunities",
       "slug": "local-innovation-digital-opportunities",
-      "description": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online. Read more",
+      "description": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online.",
       "category": "Community",
       "author": "Digital Allies",
       "publishDate": "2025-10-01T00:00:00.000Z",
-      "tags": [],
+      "tags": [
+        "Kingman",
+        "LHC",
+        "BHC",
+        "Digital Innovation",
+        "Small Business",
+        "Mohave County",
+        "ADA Compliance",
+        "Digital Accessibility",
+        "Tri-Cities",
+        "Community Development"
+      ],
       "wordCount": 1222,
       "readingTime": 7,
-      "excerpt": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online. Read more",
-      "featuredImage": "/images/Digital Allies Kingman Local.svg",
-      "imageAlt": "A graphic with colorful geometric shapes like squares, circles, and triangles on a light background. A central blue banner reads, \"Digital Allies - Local Edition\" and \"Innovation & Digital Opportunities\".",
+      "excerpt": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online.",
+      "featuredImage": "/images/digital-allies-post5-featured.svg",
+      "imageAlt": "Post Brand Template. Post 5: Kingman Local Edition: Innovation and Digital Opportunities",
       "canonicalUrl": "https://digitalallies.net/content/posts/local-innovation-digital-opportunities/",
       "publicUrl": "/content/posts/local-innovation-digital-opportunities/"
     },
@@ -96,7 +107,7 @@
       "wordCount": 1439,
       "readingTime": 8,
       "excerpt": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
-      "featuredImage": "",
+      "featuredImage": "/images/digital-allies-post1-featured (1).svg",
       "imageAlt": "",
       "canonicalUrl": "https://digitalallies.net/content/posts/5-signs-your-small-business-needs-a-new-website/",
       "publicUrl": "/content/posts/5-signs-your-small-business-needs-a-new-website/"
@@ -109,6 +120,16 @@
     "Web Design"
   ],
   "tags": [
+    "ADA Compliance",
+    "BHC",
+    "Community Development",
+    "Digital Accessibility",
+    "Digital Innovation",
+    "Kingman",
+    "LHC",
+    "Mohave County",
+    "Small Business",
+    "Tri-Cities",
     "accessibility",
     "ada-compliance",
     "digital-inclusion",
@@ -125,11 +146,11 @@
     "web-design",
     "website-accessibility"
   ],
-  "lastUpdated": "2025-10-09T01:45:04.767Z",
+  "lastUpdated": "2025-10-18T23:54:24.547Z",
   "totalPosts": 5,
   "metadata": {
     "generatedBy": "sync-pages-cms-content.js",
-    "generatedAt": "2025-10-09T01:45:04.767Z",
+    "generatedAt": "2025-10-18T23:54:24.547Z",
     "source": "content/*.md"
   }
 }
