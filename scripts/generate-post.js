@@ -92,6 +92,10 @@ function ensureContentDir() {
 function createPostFile(options) {
     ensureContentDir();
     const filename = `${options.slug}.md`;
+    if (options.slug.includes('..')) {
+        console.error(`❌  Invalid slug: '${options.slug}'`);
+        process.exit(1);
+    }
     const filePath = path.join(CONTENT_DIR, filename);
 
     if (fs.existsSync(filePath)) {
