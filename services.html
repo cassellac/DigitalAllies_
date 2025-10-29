@@ -73,7 +73,7 @@
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/knowledge-base"class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
-                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
+                    <a href="/contact" class="btn btn--primary px-6 py-3 text-sm" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
                 <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -91,7 +91,7 @@
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog" role="menuitem">Blog</a>
                     <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue" data-en="Knowledge Base" data-es="Base de Conocimientos" role="menuitem">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact" data-es="Contacto" role="menuitem">Contact</a>
-                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm w-full justify-center gradient-shadow" data-en="Start Your Project" data-es="Comienza Tu Proyecto" role="menuitem">Start Your Project</a>
+                    <a href="/contact" class="btn btn--primary px-6 py-3 text-sm w-full justify-center" data-en="Start Your Project" data-es="Comienza Tu Proyecto" role="menuitem">Start Your Project</a>
                 </div>
             </div>
         </nav>
@@ -99,7 +99,7 @@
 
   <main id="main-content" role="main">
   <!-- Hero -->
-  <section class="gradient-bg py-20 text-center relative">
+  <section class="bg-white py-20 text-center relative">
     <!-- Floating Shapes Background -->
     <div id="services-hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
       <div class="floating-shape" data-speed="0.5" data-rotation="0.5" style="top: 10%; left: 8%; width: 70px; height: 70px;">
@@ -124,23 +124,23 @@
   <!-- Services Grid -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-      <article id="service-web-development" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-web-development-title">
+      <article id="service-web-development" class="card p-8 rounded-2xl" aria-labelledby="service-web-development-title">
         <h3 id="service-web-development-title" class="text-2xl font-bold text-gray-dark mb-4">Web Development</h3>
         <p class="text-gray-medium">Custom, responsive websites designed to meet your business needs.</p>
       </article>
-      <article id="service-design-branding" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-design-branding-title">
+      <article id="service-design-branding" class="card p-8 rounded-2xl" aria-labelledby="service-design-branding-title">
         <h3 id="service-design-branding-title" class="text-2xl font-bold text-gray-dark mb-4">Design & Branding</h3>
         <p class="text-gray-medium">Cohesive branding and design to strengthen your identity.</p>
       </article>
-      <article id="service-tech-consulting" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-tech-consulting-title">
+      <article id="service-tech-consulting" class="card p-8 rounded-2xl" aria-labelledby="service-tech-consulting-title">
         <h3 id="service-tech-consulting-title" class="text-2xl font-bold text-gray-dark mb-4">Tech Consulting</h3>
         <p class="text-gray-medium">Strategic guidance to simplify technology and boost growth.</p>
       </article>
-      <article id="service-seo" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-seo-title">
+      <article id="service-seo" class="card p-8 rounded-2xl" aria-labelledby="service-seo-title">
         <h3 id="service-seo-title" class="text-2xl font-bold text-gray-dark mb-4">SEO Optimization</h3>
         <p class="text-gray-medium">Improve visibility and connect with your audience online.</p>
       </article>
-      <article id="service-maintenance" class="p-8 bg-white rounded-2xl gradient-shadow border border-pale-blue" aria-labelledby="service-maintenance-title">
+      <article id="service-maintenance" class="card p-8 rounded-2xl" aria-labelledby="service-maintenance-title">
         <h3 id="service-maintenance-title" class="text-2xl font-bold text-gray-dark mb-4">Maintenance</h3>
         <p class="text-gray-medium">Keep your site secure, updated, and performing smoothly.</p>
       </article>
@@ -158,7 +158,7 @@
       </div>
 
       <div class="grid gap-10 md:grid-cols-3">
-        <article class="bg-white rounded-2xl gradient-shadow border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-havasu">
+        <article class="bg-white rounded-2xl border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-havasu">
           <header class="mb-6">
             <p class="text-sm font-semibold uppercase tracking-wide text-primary-blue">Case Study</p>
             <h3 id="case-study-havasu" class="text-2xl font-bold text-gray-dark mt-2" data-en="Lake Havasu Kayaks" data-es="Kayaks de Lake Havasu">Lake Havasu Kayaks</h3>
@@ -186,7 +186,7 @@
           </dl>
         </article>
 
-        <article class="bg-white rounded-2xl gradient-shadow border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-downtown">
+        <article class="bg-white rounded-2xl border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-downtown">
           <header class="mb-6">
             <p class="text-sm font-semibold uppercase tracking-wide text-primary-blue">Case Study</p>
             <h3 id="case-study-downtown" class="text-2xl font-bold text-gray-dark mt-2" data-en="Downtown Diner" data-es="Cafetería del Centro">Downtown Diner</h3>
@@ -214,7 +214,7 @@
           </dl>
         </article>
 
-        <article class="bg-white rounded-2xl gradient-shadow border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-outfitters">
+        <article class="bg-white rounded-2xl border border-pale-blue p-8 h-full flex flex-col" aria-labelledby="case-study-outfitters">
           <header class="mb-6">
             <p class="text-sm font-semibold uppercase tracking-wide text-primary-blue">Case Study</p>
             <h3 id="case-study-outfitters" class="text-2xl font-bold text-gray-dark mt-2" data-en="Route 66 Outfitters" data-es="Route 66 Outfitters">Route 66 Outfitters</h3>
@@ -244,7 +244,7 @@
       </div>
 
       <div class="mt-16 text-center">
-        <button class="bg-[#0F172A] text-white px-8 py-4 rounded-full transition-all hover-lift font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
+        <button class="bg-[#0F172A] text-white px-8 py-4 rounded-full transition-all font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
           Start Your Project
         </button>
       </div>
@@ -327,6 +327,7 @@
                         <a href="/privacy" class="text-gray-300 hover:text-white text-sm transition-colors" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
                         <a href="/terms" class="text-gray-300 hover:text-white text-sm transition-colors" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
                         <a href="/cookies" class="text-gray-300 hover:text-white text-sm transition-colors" data-en="Cookie Policy" data-es="Política de Cookies">Cookie Policy</a>
+                        <a href="https://brand.digitalallies.net" class="text-gray-300 hover:text-white text-sm transition-colors" target="_blank" rel="noopener noreferrer" data-en="Brand Style Guide" data-es="Guía de Estilo de Marca">Brand Style Guide</a>
                     </div>
                 </div>
             </div>
