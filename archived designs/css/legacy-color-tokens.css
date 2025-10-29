@@ -1,0 +1,37 @@
+/*
+  Archived Asset: Legacy Color Tokens
+  Original Path: /assets/js/global.js (Tailwind config)
+  Archived On: 2025-10-29
+  Reason: Brand merge — color values updated to match brand style guide
+  To Re-enable:
+    1) Copy these values back into the Tailwind config in global.js
+*/
+
+/* Legacy Tailwind Color Configuration */
+/*
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'primary-blue': '#438eff',
+        'light-blue': '#E0F2FE',
+        'pale-blue': '#DBEAFE',
+        'light-pink':'#FADEEB',
+        'gray-medium': '#414243',
+        'gray-dark': '#000000',
+        'success-green': '#059669',
+        'light-green': '#D1FAE5'
+      },
+      fontFamily: {
+        'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
+        'secondary': ['source-sans-pro', 'Source Sans Pro', 'sans-serif']
+      }
+    }
+  }
+};
+*/
+
+/* Legacy CSS Custom Properties (if any existed) */
+:root {
+    --gradient-header: linear-gradient(135deg, #438eff, #2563EB);
+}

@@ -1,20 +1,36 @@
-// Tailwind Config
+// Tailwind Config - Brand Colors (Updated 2025-10-29)
 tailwind.config = {
   theme: {
     extend: {
       colors: {
-        'primary-blue': '#438eff',
+        primary: '#2563EB',
+        'primary-blue': '#2563EB',
+        blue: { 
+          50:'#E0F2FE', 
+          100:'#DBEAFE', 
+          500:'#2563EB' 
+        },
         'light-blue': '#E0F2FE',
         'pale-blue': '#DBEAFE',
-        'light-pink':'#FADEEB',
-        'gray-medium': '#414243',
-        'gray-dark': '#000000',
+        green:{ 
+          100:'#D1FAE5', 
+          500:'#059669' 
+        },
         'success-green': '#059669',
-        'light-green': '#D1FAE5'
+        'light-green': '#D1FAE5',
+        red: { 
+          500:'#EF4444' 
+        },
+        gray: { 
+          500:'#6B7280', 
+          700:'#414243' 
+        },
+        'gray-medium': '#414243',
+        'gray-dark': '#000000'
       },
       fontFamily: {
-        'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
-        'secondary': ['source-sans-pro', 'Source Sans Pro', 'sans-serif']
+        primary: ['Segoe UI','system-ui','sans-serif'],
+        secondary: ['Source Sans Pro','system-ui','sans-serif']
       }
     }
   }

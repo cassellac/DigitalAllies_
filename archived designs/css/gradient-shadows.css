@@ -1,0 +1,48 @@
+/*
+  Archived Asset: Gradient Shadow Utilities
+  Original Path: /assets/global.css (gradient shadow utilities)
+  Archived On: 2025-10-29
+  Reason: Brand merge — gradient glows removed, replaced with subtle elevation
+  To Re-enable:
+    1) Re-link this file or copy rules back into global.css
+    2) Remove the intentionally inert stubs from new global.css
+*/
+
+/* Gradient Shadow */
+.gradient-shadow { 
+    box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.1), 
+                0 20px 30px -10px rgba(37, 99, 235, 0.04); 
+}
+
+/* Hover Lift with Gradient Shadow */
+.hover-lift { 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.hover-lift:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.15); 
+}
+
+/* Button Primary with Gradient Shadow */
+.btn-primary {
+    box-shadow: 0 22px 45px -20px rgba(15, 23, 42, 0.55);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 28px 55px -18px rgba(15, 23, 42, 0.6);
+}
+
+/* Skip Link Shadow */
+.skip-link:focus {
+    box-shadow: 0 20px 40px -15px rgba(29, 78, 216, 0.45);
+}
+
+/* Sticky CTA Shadow */
+.sticky-cta {
+    box-shadow: 0 25px 45px -20px rgba(29, 78, 216, 0.45);
+}
+
+.sticky-cta:hover {
+    box-shadow: 0 30px 50px -15px rgba(29, 78, 216, 0.55);
+}

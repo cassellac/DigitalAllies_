@@ -1,0 +1,54 @@
+/*
+  Archived Asset: Animated Gradient Background
+  Original Path: /assets/global.css (sections with gradient)
+  Archived On: 2025-10-29
+  Reason: Brand merge — gradients removed for current pass
+  To Re-enable:
+    1) Re-link this file (or copy rules back into global.css)
+    2) Remove body/background overrides in the new tokens section
+    3) Restore keyframes + container classes in templates
+*/
+
+/* Gradient Background Classes */
+.gradient-bg { 
+    background: linear-gradient(135deg, #E0F2FE 15%, #DBEAFE 50%, #BFDBFE 100%); 
+}
+
+/* Text Gradient */
+.text-gradient { 
+    background: linear-gradient(135deg, #2563EB, #059669); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text; 
+}
+
+/* Header Gradient */
+.site-header {
+    background: var(--gradient-header);
+}
+
+/* Footer Gradient */
+footer { 
+    background: linear-gradient(135deg, #414243, #6B6B6B);
+}
+
+/* Sticky CTA Gradient */
+.sticky-cta {
+    background: linear-gradient(135deg, #2563EB, #1d4ed8);
+}
+
+/* Brand Pulse Animation */
+.brand-pulse { 
+    animation: brand-pulse 3s ease-in-out infinite; 
+}
+
+@keyframes brand-pulse { 
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    } 
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    } 
+}
