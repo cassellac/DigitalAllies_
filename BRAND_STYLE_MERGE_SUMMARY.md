@@ -26,7 +26,7 @@ Created `/archived designs/` directory structure containing:
   --da-blue-500: #2563EB;   /* Primary Blue */
   --da-blue-100: #DBEAFE;   /* Light Blue */
   --da-blue-50:  #E0F2FE;   /* Pale Blue */
-  --da-green-500:#059669;   /* Success Green */
+  --da-green-500: #059669;   /* Success Green */
   --da-green-100:#D1FAE5;   /* Light Green */
   --da-red-500:  #EF4444;   /* Alert Red */
   --da-gray-700: #414243;
