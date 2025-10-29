@@ -183,7 +183,7 @@ footer a:focus-visible,
     justify-content: center;
     gap: 0.5rem;
     padding: 0.625rem 0.95rem;
-    border-radius: 0.8rem;
+    border-radius: 0.15rem;
     border: 1px solid transparent;
     line-height: 1;
     text-decoration: none;
@@ -202,7 +202,7 @@ footer a:focus-visible,
 }
 
 .btn--primary:hover {
-    filter: brightness(0.95);
+    filter: brightness(0.90);
 }
 
 .btn--primary:active {
@@ -215,7 +215,7 @@ footer a:focus-visible,
 }
 
 .btn--secondary:hover {
-    filter: brightness(0.96);
+    filter: brightness(0.90);
 }
 
 .btn--outline {
@@ -256,15 +256,18 @@ footer a:focus-visible,
 /* Animated gradient background */
 .gradient-bg,
 .animated-gradient {
-    background: linear-gradient(135deg, var(--da-blue-50) 15%, var(--da-blue-100) 50%, #1C4DD1 100%);
+    background: linear-gradient(145deg, var(--da-blue-30) 15%, var(--da-blue-70) 35%, #1C4DD1 50%);
     background-size: 210% 210%;
-    animation: gradientShift 11s ease-in-out infinite;
+    animation: gradientShift 15s ease-in-out infinite;
     position: relative;
 }
 
 @keyframes gradientShift {
     0% {
-        background-position: 0% 50%;
+        background-position: 0% 25%;
+    }
+    25% {
+        background-position: 25% 50%;
     }
     50% {
         background-position: 100% 50%;
@@ -291,9 +294,9 @@ footer a:focus-visible,
     inset: -8px;
     z-index: -1;
     border-radius: inherit;
-    filter: blur(22px);
-    opacity: 0.55;
-    transition: opacity 0.2s ease;
+    filter: blur(15px);
+    opacity: 0.65;
+    transition: opacity 0.5s ease;
 }
 
 .card--shadow-gradient::before {
