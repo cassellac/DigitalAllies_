@@ -7,6 +7,7 @@
     --da-green-100: #D1FAE5;
     --da-green-500: #059669;
     --da-red-500: #EF4444;
+    --da-gray-500: #6B7280;
     --da-gray-700: #414243;
     --da-black: #000000;
     --da-white: #ffffff;
@@ -25,6 +26,10 @@
     --btn-primary-text: var(--da-white);
     --btn-secondary-bg: var(--da-green-500);
     --btn-secondary-text: var(--da-white);
+    --btn-success-bg: var(--da-green-500);
+    --btn-success-text: var(--da-white);
+    --btn-danger-bg: var(--da-red-500);
+    --btn-danger-text: var(--da-white);
     --btn-outline-border: var(--da-blue-500);
     --btn-outline-text: var(--da-blue-500);
     --btn-quiet-text: var(--da-blue-500);
@@ -218,6 +223,36 @@ footer a:focus-visible,
     filter: brightness(0.90);
 }
 
+.btn--secondary:active {
+    transform: translateY(1px);
+}
+
+.btn--success {
+    background: var(--btn-success-bg);
+    color: var(--btn-success-text);
+}
+
+.btn--success:hover {
+    filter: brightness(0.90);
+}
+
+.btn--success:active {
+    transform: translateY(1px);
+}
+
+.btn--danger {
+    background: var(--btn-danger-bg);
+    color: var(--btn-danger-text);
+}
+
+.btn--danger:hover {
+    filter: brightness(0.90);
+}
+
+.btn--danger:active {
+    transform: translateY(1px);
+}
+
 .btn--outline {
     background: transparent;
     color: var(--btn-outline-text);
@@ -241,40 +276,23 @@ footer a:focus-visible,
 
 /* Hover and depth utilities */
 .gradient-shadow {
-    box-shadow: 0 20px 30px -12px rgba(37, 99, 235, 0.25), 0 12px 20px -12px rgba(37, 99, 235, 0.18);
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.10), 0 2px 4px -1px rgba(37, 99, 235, 0.06);
 }
 
 .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -18px rgba(29, 78, 216, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.10);
 }
 
-/* Animated gradient background */
+/* Animated gradient background - archived, use static backgrounds instead */
 .gradient-bg,
 .animated-gradient {
-    background: linear-gradient(145deg, var(--da-blue-30) 15%, var(--da-blue-70) 35%, #1C4DD1 50%);
-    background-size: 210% 210%;
-    animation: gradientShift 15s ease-in-out infinite;
+    background: var(--da-blue-50);
     position: relative;
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 25%;
-    }
-    25% {
-        background-position: 25% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 /* Cards */
@@ -284,9 +302,32 @@ footer a:focus-visible,
     border: 1px solid var(--color-border);
     border-radius: 1rem;
     padding: 1.25rem;
-    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.06);
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
 }
 
+.card:hover {
+    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.10);
+}
+
+.card--outline-blue {
+    border: 2px solid var(--da-blue-500);
+}
+
+.card--outline-green {
+    border: 2px solid var(--da-green-500);
+}
+
+.card--outline-red {
+    border: 2px solid var(--da-red-500);
+}
+
+.card--featured {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08));
+    border: 2px solid var(--da-blue-500);
+}
+
+/* Deprecated - remove gradient shadow effects */
 .card--shadow-gradient::before,
 .card--shadow-solid::before {
     content: "";
@@ -295,7 +336,7 @@ footer a:focus-visible,
     z-index: -1;
     border-radius: inherit;
     filter: blur(15px);
-    opacity: 0.65;
+    opacity: 0;
     transition: opacity 0.5s ease;
 }
 
@@ -508,6 +549,29 @@ footer .logo:hover {
 .prose strong {
     font-weight: 700;
     color: var(--color-text);
+}
+
+/* Icon utilities */
+.icon {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.icon--blue {
+    color: var(--da-blue-500);
+}
+
+.icon--green {
+    color: var(--da-green-500);
+}
+
+.icon--purple {
+    color: #9333EA;
+}
+
+.icon--red {
+    color: var(--da-red-500);
 }
 
 /* Reduced motion */
