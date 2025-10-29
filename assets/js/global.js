@@ -3,18 +3,36 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        'primary-blue': '#438eff',
+        primary: '#2563EB',
+        blue: {
+          50: '#E0F2FE',
+          100: '#DBEAFE',
+          500: '#2563EB',
+          600: '#1D4ED8'
+        },
+        green: {
+          100: '#D1FAE5',
+          500: '#059669'
+        },
+        red: {
+          500: '#EF4444'
+        },
+        gray: {
+          700: '#414243',
+          900: '#000000'
+        },
+        'primary-blue': '#2563EB',
         'light-blue': '#E0F2FE',
         'pale-blue': '#DBEAFE',
-        'light-pink':'#FADEEB',
+        'light-pink': '#FADEEB',
         'gray-medium': '#414243',
-        'gray-dark': '#000000',
+        'gray-dark': '#111827',
         'success-green': '#059669',
         'light-green': '#D1FAE5'
       },
       fontFamily: {
-        'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
-        'secondary': ['source-sans-pro', 'Source Sans Pro', 'sans-serif']
+        primary: ['Segoe UI', 'system-ui', 'sans-serif'],
+        secondary: ['Source Sans Pro', 'system-ui', 'sans-serif']
       }
     }
   }
