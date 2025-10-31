@@ -73,7 +73,7 @@
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog" data-es="Blog">Blog</a>
                     <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Contact" data-es="Contacto">Contact</a>
-                    <a href="/contact" class="btn btn-primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
+                    <a href="/contact" class="btn btn--primary px-6 py-3 text-sm gradient-shadow hover-lift" data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
                 </div>
                 <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -98,7 +98,7 @@
 
     <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="gradient-bg py-20 lg:py-32 relative" aria-labelledby="hero-heading">
+    <section class="gradient-bg section--gradient py-20 lg:py-32 relative" aria-labelledby="hero-heading">
         <!-- Floating Shapes Background -->
         <div id="hero-shapes" class="floating-shapes-container" data-floating-shapes aria-hidden="true">
             <div class="floating-shape" data-speed="0.5" data-rotation="0" style="top: 10%; left: 5%; width: 80px; height: 80px;">
@@ -160,10 +160,10 @@
                 </div>
                     <div class="space-y-4">
                         <div class="flex flex-col sm:flex-row gap-2" role="group" aria-label="Primary call to action">
-                            <a href="/contact" class="btn btn-primary px-8 py-4 text-lg hover-lift" data-en="Start Your Project" data-es="Inicia Tu Proyecto"> Start Your Project
+                            <a href="/contact" class="btn btn--primary gradient-shadow hover-lift px-8 py-4 text-lg" data-en="Start Your Project" data-es="Inicia Tu Proyecto"> Start Your Project
                             </a>
                         </div>
-                        <a href="/services" class="btn btn-secondary px-8 py-4 text-lg" data-en="Explore Services" data-es="Explorar Servicios"> Explore Services
+                        <a href="/services" class="btn btn--secondary px-8 py-4 text-lg" data-en="Explore Services" data-es="Explorar Servicios"> Explore Services
                             </a>
              </div>
          </div>
@@ -180,7 +180,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Web Development -->
-                <div class="fade-in-delay-1 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
+                <div class="fade-in-delay-1 card card--shadow-gradient hover-lift p-8 rounded-2xl">
                     <div class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
                         <img src="assets/developement.svg" alt="Web development icon" class="w-8 h-8 object-contain" />
                     </div>
@@ -191,7 +191,7 @@
                 </div>
 
                 <!-- Design & Branding -->
-                <div class="fade-in-delay-2 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
+                <div class="fade-in-delay-2 card card--shadow-gradient hover-lift p-8 rounded-2xl">
                     <div class="w-16 h-16 bg-gradient-to-br from-success-green to-primary-blue rounded-xl flex items-center justify-center mb-6">
                         <img src="assets/design.svg" alt="Design and branding icon" class="w-8 h-8 object-contain" />
                     </div>
@@ -202,7 +202,7 @@
                 </div>
 
                 <!-- Tech Consulting -->
-                <div class="fade-in-delay-3 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue">
+                <div class="fade-in-delay-3 card card--shadow-gradient hover-lift p-8 rounded-2xl">
                     <div class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
                         <img src="assets/consulting2.svg" alt="Technology consulting icon" class="w-8 h-8 object-contain" />
                     </div>
@@ -216,7 +216,7 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20 gradient-bg relative" aria-labelledby="why-heading">
+    <section class="py-20 gradient-bg section--gradient relative" aria-labelledby="why-heading">
         <!-- Floating Shapes Background -->
         <div id="why-shapes" class="floating-shapes-container" data-floating-shapes>
             <div class="floating-shape" data-speed="0.4" data-rotation="1" style="top: 10%; left: 10%; width: 70px; height: 70px;">
@@ -283,8 +283,8 @@
                 
                 <div class="fade-in-delay-1">
                     <div class="relative">
-                        <div class="absolute inset-0 gradient-bg rounded-3xl transform rotate-6"></div>
-                        <div class="relative bg-white p-8 rounded-3xl gradient-shadow">
+                        <div class="absolute inset-0 gradient-bg section--gradient rounded-3xl transform rotate-6"></div>
+                        <div class="relative card card--shadow-solid p-8 rounded-3xl">
                             <div class="text-center">
                                 <div class="grid grid-cols-2 gap-6 mb-8">
                                     <div>
@@ -325,7 +325,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="fade-in-delay-1 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-primary-blue">
+                <div class="fade-in-delay-1 card card--shadow-gradient hover-lift p-8 rounded-2xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-gradient-to-br from-primary-blue to-success-green rounded-95% flex items-center justify-center text-white font-regular text-lg">
                             SE
@@ -355,7 +355,7 @@
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="fade-in-delay-2 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-primary-blue">
+                <div class="fade-in-delay-2 card card--shadow-gradient hover-lift p-8 rounded-2xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-gradient-to-br from-success-green to-primary-blue rounded-95% flex items-center justify-center text-white font-regular text-lg">
                             VB
@@ -385,7 +385,7 @@
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="fade-in-delay-3 hover-lift bg-white p-8 rounded-2xl gradient-shadow border border-primary-blue">
+                <div class="fade-in-delay-3 card card--shadow-gradient hover-lift p-8 rounded-2xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-gradient-to-br from-primary-blue to-success-green rounded-95% flex items-center justify-center text-white font-regular text-lg">
                             TW
@@ -427,7 +427,7 @@
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8">
-                <article class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue flex flex-col justify-between">
+                <article class="card card--shadow-gradient p-8 rounded-2xl flex flex-col justify-between">
                     <div class="space-y-4">
                         <span class="inline-flex items-center px-3 py-1 text-sm font-semibold text-success-green bg-success-green bg-opacity-10 rounded-full">Local Retail</span>
                         <h3 class="text-2xl font-bold text-gray-dark" data-en="Desert Bloom Bakery" data-es="Panadería Desert Bloom">Desert Bloom Bakery</h3>
@@ -445,7 +445,7 @@
                     </dl>
                 </article>
 
-                <article class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue flex flex-col justify-between">
+                <article class="card card--shadow-gradient p-8 rounded-2xl flex flex-col justify-between">
                     <div class="space-y-4">
                         <span class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-10 rounded-full">Professional Services</span>
                         <h3 class="text-2xl font-bold text-gray-dark" data-en="Summit Legal Group" data-es="Summit Legal Group">Summit Legal Group</h3>
@@ -463,7 +463,7 @@
                     </dl>
                 </article>
 
-                <article class="bg-white p-8 rounded-2xl gradient-shadow border border-pale-blue flex flex-col justify-between">
+                <article class="card card--shadow-gradient p-8 rounded-2xl flex flex-col justify-between">
                     <div class="space-y-4">
                         <span class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-10 rounded-full">Non-profit</span>
                         <h3 class="text-2xl font-bold text-gray-dark" data-en="Mohave Youth Collective" data-es="Colectivo Juvenil de Mohave">Mohave Youth Collective</h3>
@@ -483,13 +483,13 @@
             </div>
 
             <div class="mt-12 text-center">
-                <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-[#1d4ed8] rounded-full shadow-lg transition-all duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Plan Your Win" data-es="Planifica Tu Victoria">Plan Your Win</a>
+                <a href="/contact" class="btn btn--primary gradient-shadow hover-lift text-lg" data-en="Plan Your Win" data-es="Planifica Tu Victoria">Plan Your Win</a>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 gradient-bg" aria-labelledby="cta-heading">
+    <section class="py-20 gradient-bg section--gradient" aria-labelledby="cta-heading">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="fade-in">
                 <h2 id="cta-heading" class="text-4xl font-bold text-gray-dark mb-6" data-en="Ready to Transform Your Business?" data-es="¿Listo para Transformar Tu Negocio?">Ready to Transform Your Business?</h2>
@@ -497,10 +497,10 @@
                     Let's create something amazing together. Your success story starts with a conversation.
                 </p>
                 <div class="flex flex-col items-center gap-4" role="group" aria-label="Final call to action">
-                    <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white bg-[#1d4ed8] rounded-full shadow-lg transition-all duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
+                    <a href="/contact" class="btn btn--primary gradient-shadow hover-lift text-lg" data-en="Start Your Project" data-es="Comienza Tu Proyecto">
                         Start Your Project
                     </a>
-                    <a href="tel:+19282285769" class="text-lg font-semibold text-[#1d4ed8] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4ed8]" data-en="Prefer to chat? Call 928-228-5769" data-es="¿Prefieres hablar? Llama al 928-228-5769">
+                    <a href="tel:+19282285769" class="btn btn--quiet text-lg" data-en="Prefer to chat? Call 928-228-5769" data-es="¿Prefieres hablar? Llama al 928-228-5769">
                         Prefer to chat? Call 928-228-5769
                     </a>
                 </div>
@@ -557,6 +557,7 @@
                     <div class="flex space-x-6">
                         <a href="/privacy" class="text-white hover:text-gray-300 text-sm transition-colors" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
                         <a href="/terms" class="text-white hover:text-gray-300 text-sm transition-colors" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
+                        <a href="https://brand.digitalallies.net" class="text-white hover:text-gray-300 text-sm transition-colors" rel="noopener" target="_blank" data-en="Brand Style Guide" data-es="Guía de Estilo de la Marca">Brand Style Guide</a>
                     </div>
                 </div>
             </div>

@@ -61,11 +61,11 @@ class FloatingShapes {
             const rotation = parseFloat(shape.dataset.rotation) || 0;
             
             // Calculate parallax movement based on mouse position
-            const moveX = this.mouseX * speed * 25;
-            const moveY = this.mouseY * speed * 25;
-            
+            const moveX = this.mouseX * speed * 32;
+            const moveY = this.mouseY * speed * 32;
+
             // Calculate rotation if enabled
-            const rotateZ = rotation ? this.mouseX * rotation * 8 : 0;
+            const rotateZ = rotation ? this.mouseX * rotation * 9.5 : 0;
             
             // Apply transform smoothly
             shape.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px) rotateZ(${rotateZ}deg)`;
