@@ -1,5 +1,19 @@
+/* ========================================
+   🎨 DIGITAL ALLIES GLOBAL DESIGN TOKENS
+   Source: brand.digitalallies.net
+   Merged from tokens.css + global.css
+   ======================================== */
+
 :root {
-    /* Brand palette */
+    /* Primary Brand Palette (from brand guide tokens.css) */
+    --blue: #2563EB;        /* Primary Blue */
+    --blue-light: #60A5FA;
+    --green: #059669;       /* Ally Green */
+    --green-light: #34D399;
+    --purple: #7C3AED;      /* Accent Purple */
+    --purple-light: #C4B5FD;
+
+    /* Extended Brand Palette (legacy compatibility) */
     --da-blue-50: #E0F2FE;
     --da-blue-100: #DBEAFE;
     --da-blue-500: #2563EB;
@@ -16,11 +30,26 @@
     --da-black: #000000;
     --da-white: #ffffff;
 
+    /* Neutral Palette (from brand guide tokens.css) */
+    --neutral-900: #111827;
+    --neutral-800: #1F2937;
+    --neutral-700: #374151;
+    --neutral-600: #4B5563;
+    --neutral-500: #6B7280;
+    --neutral-300: #D1D5DB;
+    --neutral-100: #F3F4F6;
+    --white: #FFFFFF;
+
+    /* Utility Colors (from brand guide tokens.css) */
+    --error: #DC2626;
+    --warning: #F59E0B;
+    --success: #10B981;
+
     /* Semantic tokens */
     --color-bg: var(--da-white);
-    --color-text: #111827;
-    --color-text-muted: #4B5563;
-    --color-link: var(--da-blue-500);
+    --color-text: var(--neutral-900);
+    --color-text-muted: var(--neutral-600);
+    --color-link: var(--blue);
     --color-link-hover: var(--da-blue-600);
     --color-link-visited: #1C3FAA;
     --color-border: #E5E7EB;
@@ -47,33 +76,39 @@
     --card-shadow-dark: #438EFF;
     --card-shadow-solid: var(--da-blue-500);
 
-    /* Typography */
+    /* Typography (from brand guide tokens.css) */
+    --font-body: "Source Sans Pro", "Segoe UI", system-ui, sans-serif;
+    --font-heading: "Segoe UI", "Source Sans Pro", sans-serif;
+    --text-color: var(--neutral-900);
+    --text-light: var(--neutral-700);
+    
+    /* Legacy typography aliases */
     --font-primary: 'Segoe UI', system-ui, sans-serif;
     --font-secondary: 'Source Sans Pro', system-ui, sans-serif;
 
     /* Layout */
     --header-height: 4.5rem;
     
-    /* Border Radius */
-    --border-radius-sm: 0.375rem;
-    --border-radius-md: 0.5rem;
-    --border-radius-lg: 0.75rem;
-    --border-radius-xl: 1rem;
+    /* Border Radius (from brand guide tokens.css) */
+    --border-radius-sm: 0.375rem; /* 6px */
+    --border-radius-md: 0.5rem;   /* 8px */
+    --border-radius-lg: 0.75rem;  /* 12px */
+    --border-radius-xl: 1rem;     /* 16px */
     
-    /* Brand Shadows */
+    /* Shadows (from brand guide tokens.css) */
     --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.05);
     --shadow-button: 0 3px 8px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.12);
     
-    /* Card Border Rotation (sets of 3) */
-    --card-border-1: var(--da-blue-500);
-    --card-border-2: var(--da-green-500);
-    --card-border-3: var(--da-purple-500);
+    /* Card Border Rotation (sets of 3) - from brand guide tokens.css */
+    --card-border-1: var(--blue);
+    --card-border-2: var(--green);
+    --card-border-3: var(--purple);
     
-    /* Icon Background Rotation (sets of 3) */
-    --icon-bg-1: var(--da-blue-light);
-    --icon-bg-2: var(--da-green-light);
-    --icon-bg-3: var(--da-purple-light);
+    /* Icon Background Rotation (sets of 3) - from brand guide tokens.css */
+    --icon-bg-1: var(--blue-light);
+    --icon-bg-2: var(--green-light);
+    --icon-bg-3: var(--purple-light);
 }
 
 html {
