@@ -5,32 +5,20 @@
    ======================================== */
 
 :root {
-    /* Primary Brand Palette (from brand guide tokens.css) */
-    --blue: #2563EB;        /* Primary Blue */
+    /* ============================================
+       🎨 BRAND COLORS (from brand.digitalallies.net)
+       ============================================ */
+    
+    /* Primary Brand Palette */
+    --blue: #2563EB;              /* Primary Blue */
     --blue-light: #60A5FA;
-    --green: #059669;       /* Ally Green */
+    --blue-dark: #1D4ED8;
+    --green: #059669;             /* Ally Green */
     --green-light: #34D399;
-    --purple: #7C3AED;      /* Accent Purple */
+    --purple: #7C3AED;            /* Accent Purple */
     --purple-light: #C4B5FD;
-
-    /* Extended Brand Palette (legacy compatibility) */
-    --da-blue-50: #E0F2FE;
-    --da-blue-100: #DBEAFE;
-    --da-blue-500: #2563EB;
-    --da-blue-600: #1D4ED8;
-    --da-blue-light: #60A5FA;
-    --da-green-100: #D1FAE5;
-    --da-green-500: #059669;
-    --da-green-light: #34D399;
-    --da-purple-500: #7C3AED;
-    --da-purple-light: #C4B5FD;
-    --da-red-500: #EF4444;
-    --da-gray-500: #6B7280;
-    --da-gray-700: #414243;
-    --da-black: #000000;
-    --da-white: #ffffff;
-
-    /* Neutral Palette (from brand guide tokens.css) */
+    
+    /* Neutral Palette */
     --neutral-900: #111827;
     --neutral-800: #1F2937;
     --neutral-700: #374151;
@@ -38,83 +26,124 @@
     --neutral-500: #6B7280;
     --neutral-300: #D1D5DB;
     --neutral-100: #F3F4F6;
-    --white: #FFFFFF;
-
-    /* Utility Colors (from brand guide tokens.css) */
+    --neutral-50: #F9FAFB;
+    
+    /* Utility Colors */
     --error: #DC2626;
     --warning: #F59E0B;
     --success: #10B981;
-
-    /* Semantic tokens */
-    --color-bg: var(--da-white);
-    --color-text: var(--neutral-900);
-    --color-text-muted: var(--neutral-600);
-    --color-link: var(--blue);
-    --color-link-hover: var(--da-blue-600);
-    --color-link-visited: #1C3FAA;
-    --color-border: #E5E7EB;
-
-    /* Buttons */
-    --btn-primary-bg: var(--da-blue-500);
-    --btn-primary-text: var(--da-white);
-    --btn-secondary-bg: var(--da-green-500);
-    --btn-secondary-text: var(--da-white);
-    --btn-success-bg: var(--da-green-500);
-    --btn-success-text: var(--da-white);
-    --btn-danger-bg: var(--da-red-500);
-    --btn-danger-text: var(--da-white);
-    --btn-outline-border: var(--da-blue-500);
-    --btn-outline-text: var(--da-blue-500);
-    --btn-quiet-text: var(--da-blue-500);
-
-    /* Focus */
-    --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.35);
-
-    /* Card shadows */
-    --card-shadow-light: var(--da-blue-100);
-    --card-shadow-mid: #8AB6FF;
-    --card-shadow-dark: #438EFF;
-    --card-shadow-solid: var(--da-blue-500);
-
-    /* Typography (from brand guide tokens.css) */
+    
+    /* Color Shades */
+    --blue-50: #E0F2FE;
+    --blue-100: #DBEAFE;
+    --green-100: #D1FAE5;
+    --red: #EF4444;
+    --gray: #414243;
+    --white: #FFFFFF;
+    --black: #000000;
+    
+    
+    /* ============================================
+       📐 DESIGN TOKENS (from brand guide)
+       ============================================ */
+    
+    /* Typography */
     --font-body: "Source Sans Pro", "Segoe UI", system-ui, sans-serif;
     --font-heading: "Segoe UI", "Source Sans Pro", sans-serif;
-    --text-color: var(--neutral-900);
-    --text-light: var(--neutral-700);
     
-    /* Legacy typography aliases */
-    --font-primary: 'Segoe UI', system-ui, sans-serif;
-    --font-secondary: 'Source Sans Pro', system-ui, sans-serif;
-
-    /* Layout */
-    --header-height: 4.5rem;
-    
-    /* Border Radius (from brand guide tokens.css) */
+    /* Border Radius */
     --border-radius-sm: 0.375rem; /* 6px */
     --border-radius-md: 0.5rem;   /* 8px */
     --border-radius-lg: 0.75rem;  /* 12px */
     --border-radius-xl: 1rem;     /* 16px */
+    --border-radius-full: 9999px; /* Pill shape */
     
-    /* Shadows (from brand guide tokens.css) */
+    /* Shadows */
     --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.05);
     --shadow-button: 0 3px 8px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.12);
+    --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.35);
     
-    /* Card Border Rotation (sets of 3) - from brand guide tokens.css */
+    /* Layout */
+    --header-height: 4.5rem;
+    
+    
+    /* ============================================
+       🎯 SEMANTIC TOKENS (Applied usage)
+       ============================================ */
+    
+    /* Text Colors */
+    --text-primary: var(--neutral-900);
+    --text-secondary: var(--neutral-700);
+    --text-muted: var(--neutral-600);
+    
+    /* Link Colors */
+    --link-color: var(--blue);
+    --link-hover: var(--blue-dark);
+    --link-visited: #1C3FAA;
+    
+    /* Borders */
+    --border-color: #E5E7EB;
+    
+    /* Backgrounds */
+    --bg-primary: var(--white);
+    --bg-secondary: var(--neutral-50);
+    
+    
+    /* ============================================
+       🔘 BUTTON TOKENS
+       ============================================ */
+    
+    /* Primary Button (Blue) */
+    --btn-primary-bg: var(--blue);
+    --btn-primary-text: var(--white);
+    --btn-primary-hover: var(--blue-light);
+    
+    /* Secondary Button (Outline) */
+    --btn-secondary-bg: var(--white);
+    --btn-secondary-text: var(--blue);
+    --btn-secondary-border: var(--blue);
+    --btn-secondary-hover-bg: var(--blue-light);
+    --btn-secondary-hover-text: var(--white);
+    
+    /* Success Button (Green) */
+    --btn-success-bg: var(--green);
+    --btn-success-text: var(--white);
+    
+    /* Danger Button (Red) */
+    --btn-danger-bg: var(--red);
+    --btn-danger-text: var(--white);
+    
+    /* Outline Button (Transparent) */
+    --btn-outline-bg: transparent;
+    --btn-outline-text: var(--blue);
+    --btn-outline-border: var(--blue);
+    --btn-outline-hover-bg: var(--blue-50);
+    
+    /* Quiet Button (Text-only) */
+    --btn-quiet-bg: transparent;
+    --btn-quiet-text: var(--blue);
+    
+    
+    /* ============================================
+       🎴 CARD & ICON TOKENS
+       ============================================ */
+    
+    /* Card Border Rotation (sets of 3) */
     --card-border-1: var(--blue);
     --card-border-2: var(--green);
     --card-border-3: var(--purple);
     
-    /* Icon Background Rotation (sets of 3) - from brand guide tokens.css */
+    /* Icon Background Rotation (sets of 3) */
     --icon-bg-1: var(--blue-light);
     --icon-bg-2: var(--green-light);
     --icon-bg-3: var(--purple-light);
 }
 
 html {
-    font-family: var(--font-primary);
-    color: var(--color-text);
-    background: var(--color-bg);
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    background: var(--bg-primary);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -126,7 +155,7 @@ body {
 }
 
 a {
-    color: var(--color-link);
+    color: var(--link-color);
     text-decoration: none;
     text-underline-offset: 0.125em;
     transition: color 0.15s ease;
@@ -134,25 +163,25 @@ a {
 
 a:hover,
 a:focus-visible {
-    color: var(--color-link-hover);
+    color: var(--link-hover);
 }
 
 a:visited {
-    color: var(--color-link-visited);
+    color: var(--link-visited);
 }
 
 a:focus-visible {
     outline: none;
-    box-shadow: var(--focus-ring);
+    box-shadow: var(--shadow-focus);
 }
 
 header[role="banner"] a {
-    color: var(--color-text);
+    color: var(--text-primary);
 }
 
 header[role="banner"] a:hover,
 header[role="banner"] a:focus-visible {
-    color: var(--color-link-hover);
+    color: var(--link-hover);
 }
 
 footer a,
@@ -164,7 +193,7 @@ footer a:hover,
 footer a:focus-visible,
 .site-footer a:hover,
 .site-footer a:focus-visible {
-    color: var(--da-white);
+    color: var(--white);
 }
 
 /* Header */
@@ -196,7 +225,7 @@ footer a:focus-visible,
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--da-white);
+    color: var(--white);
     font-size: 1.25rem;
     font-weight: 600;
     gap: 0.6rem;
@@ -209,7 +238,7 @@ footer a:focus-visible,
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--card-shadow-mid), var(--da-blue-600)) !important;
+    background: linear-gradient(135deg, var(--blue-light), var(--blue-dark)) !important;
     mask: url('assets/brand/logo-glyph.svg') no-repeat center / contain;
     -webkit-mask: url('assets/brand/logo-glyph.svg') no-repeat center / contain;
     animation: brand-pulse 3s ease-in-out infinite;
@@ -232,7 +261,7 @@ footer a:focus-visible,
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--da-blue-500), var(--da-green-500));
+    background: linear-gradient(135deg, var(--blue), var(--green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -241,7 +270,7 @@ footer a:focus-visible,
 /* Buttons */
 .btn {
     -webkit-font-smoothing: antialiased;
-    font-family: var(--font-primary);
+    font-family: var(--font-heading);
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -259,9 +288,10 @@ footer a:focus-visible,
 
 .btn:focus-visible {
     outline: none;
-    box-shadow: var(--focus-ring);
+    box-shadow: var(--shadow-focus);
 }
 
+/* Primary Button - Blue */
 .btn--primary {
     background: var(--btn-primary-bg);
     color: var(--btn-primary-text);
@@ -269,7 +299,7 @@ footer a:focus-visible,
 }
 
 .btn--primary:hover {
-    background-color: var(--da-blue-light);
+    background: var(--btn-primary-hover);
     box-shadow: var(--shadow-hover);
     transform: translateY(-1px);
 }
@@ -278,15 +308,16 @@ footer a:focus-visible,
     transform: translateY(1px);
 }
 
+/* Secondary Button - Outline */
 .btn--secondary {
-    background: var(--da-white);
-    color: var(--btn-outline-text);
-    border: 2px solid var(--btn-outline-border);
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 2px solid var(--btn-secondary-border);
 }
 
 .btn--secondary:hover {
-    background-color: var(--da-blue-light);
-    color: var(--da-white);
+    background: var(--btn-secondary-hover-bg);
+    color: var(--btn-secondary-hover-text);
     transform: translateY(-1px);
 }
 
@@ -294,6 +325,7 @@ footer a:focus-visible,
     transform: translateY(1px);
 }
 
+/* Success Button - Green */
 .btn--success {
     background: var(--btn-success-bg);
     color: var(--btn-success-text);
@@ -301,12 +333,14 @@ footer a:focus-visible,
 
 .btn--success:hover {
     filter: brightness(0.90);
+    transform: translateY(-1px);
 }
 
 .btn--success:active {
     transform: translateY(1px);
 }
 
+/* Danger Button - Red */
 .btn--danger {
     background: var(--btn-danger-bg);
     color: var(--btn-danger-text);
@@ -314,27 +348,31 @@ footer a:focus-visible,
 
 .btn--danger:hover {
     filter: brightness(0.90);
+    transform: translateY(-1px);
 }
 
 .btn--danger:active {
     transform: translateY(1px);
 }
 
+/* Outline Button - Transparent with border */
 .btn--outline {
-    background: transparent;
+    background: var(--btn-outline-bg);
     color: var(--btn-outline-text);
-    border-color: var(--btn-outline-border);
+    border: 2px solid var(--btn-outline-border);
 }
 
 .btn--outline:hover {
-    background: var(--da-blue-50);
+    background: var(--btn-outline-hover-bg);
 }
 
+/* Quiet Button - Text-only */
 .btn--quiet {
-    background: transparent;
+    background: var(--btn-quiet-bg);
     color: var(--btn-quiet-text);
     padding-inline: 0;
     border: none;
+    box-shadow: none;
 }
 
 .btn--quiet:hover {
@@ -358,15 +396,15 @@ footer a:focus-visible,
 /* Animated gradient background - archived, use static backgrounds instead */
 .gradient-bg,
 .animated-gradient {
-    background: var(--da-blue-50);
+    background: var(--blue-50);
     position: relative;
 }
 
 /* Cards */
 .card {
     position: relative;
-    background: var(--da-white);
-    border: 2px solid var(--color-border);
+    background: var(--white);
+    border: 2px solid var(--border-color);
     border-radius: var(--border-radius-md);
     padding: 1.5rem;
     box-shadow: var(--shadow-soft);
@@ -390,24 +428,24 @@ footer a:focus-visible,
 }
 
 .card--outline-blue {
-    border: 2px solid var(--da-blue-500);
+    border: 2px solid var(--blue);
 }
 
 .card--outline-green {
-    border: 2px solid var(--da-green-500);
+    border: 2px solid var(--green);
 }
 
 .card--outline-red {
-    border: 2px solid var(--da-red-500);
+    border: 2px solid var(--red);
 }
 
 .card--outline-purple {
-    border: 2px solid var(--da-purple-500);
+    border: 2px solid var(--purple);
 }
 
 .card--featured {
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08));
-    border: 2px solid var(--da-blue-500);
+    border: 2px solid var(--blue);
 }
 
 /* Deprecated - remove gradient shadow effects */
@@ -424,11 +462,11 @@ footer a:focus-visible,
 }
 
 .card--shadow-gradient::before {
-    background: radial-gradient(120% 120% at 20% 10%, var(--card-shadow-light) 0%, var(--card-shadow-mid) 45%, var(--card-shadow-dark) 100%);
+    background: radial-gradient(120% 120% at 20% 10%, var(--blue-100) 0%, var(--blue-light) 45%, var(--blue) 100%);
 }
 
 .card--shadow-solid::before {
-    background: radial-gradient(100% 100% at 50% 50%, var(--card-shadow-solid), var(--card-shadow-solid));
+    background: radial-gradient(100% 100% at 50% 50%, var(--blue), var(--blue));
     filter: blur(18px);
     opacity: 0.45;
 }
@@ -443,17 +481,17 @@ footer a:focus-visible,
 
 .card:focus-within {
     outline: none;
-    box-shadow: var(--focus-ring), 0 1px 2px rgba(17, 24, 39, 0.08);
+    box-shadow: var(--shadow-focus), 0 1px 2px rgba(17, 24, 39, 0.08);
 }
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, #2C2D2E, var(--da-gray-700));
-    color: var(--da-white);
+    background: linear-gradient(135deg, #2C2D2E, var(--gray));
+    color: var(--white);
 }
 
 footer .logo {
-    color: var(--da-white);
+    color: var(--white);
 }
 
 footer .logo:hover {
@@ -465,10 +503,10 @@ footer .logo:hover {
     position: absolute;
     left: 1rem;
     top: -100%;
-    background: var(--da-blue-500);
-    color: var(--da-white);
+    background: var(--blue);
+    color: var(--white);
     padding: 0.75rem 1rem;
-    border-radius: 9999px;
+    border-radius: var(--border-radius-full);
     z-index: 100;
     transition: top 0.2s ease-in-out;
     box-shadow: 0 10px 25px -10px rgba(37, 99, 235, 0.4);
@@ -555,9 +593,9 @@ footer .logo:hover {
     justify-content: center;
     padding: 0.9rem 1.75rem;
     font-weight: 600;
-    color: var(--da-white);
-    background: linear-gradient(135deg, var(--da-blue-500), var(--da-blue-600));
-    border-radius: 9999px;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    border-radius: var(--border-radius-full);
     box-shadow: 0 25px 45px -20px rgba(29, 78, 216, 0.45);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -569,7 +607,7 @@ footer .logo:hover {
 
 .sticky-cta:focus-visible {
     outline: none;
-    box-shadow: var(--focus-ring);
+    box-shadow: var(--shadow-focus);
 }
 
 @media (max-width: 640px) {
@@ -588,14 +626,14 @@ footer .logo:hover {
 
 .form-error.active {
     display: block;
-    color: var(--da-red-500);
+    color: var(--error);
 }
 
 /* Knowledge base typography */
 .prose h1 {
     font-size: 2.25rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
     line-height: 1.2;
 }
@@ -603,7 +641,7 @@ footer .logo:hover {
 .prose h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-top: 2rem;
     margin-bottom: 1rem;
     line-height: 1.3;
@@ -612,7 +650,7 @@ footer .logo:hover {
 .prose h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--text-primary);
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     line-height: 1.4;
@@ -620,7 +658,7 @@ footer .logo:hover {
 
 .prose p,
 .prose li {
-    color: var(--color-text-muted);
+    color: var(--text-muted);
     margin-bottom: 1rem;
     line-height: 1.7;
 }
@@ -631,7 +669,7 @@ footer .logo:hover {
 
 .prose strong {
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--text-primary);
 }
 
 /* Icon utilities */
@@ -642,19 +680,19 @@ footer .logo:hover {
 }
 
 .icon--blue {
-    color: var(--da-blue-500);
+    color: var(--blue);
 }
 
 .icon--green {
-    color: var(--da-green-500);
+    color: var(--green);
 }
 
 .icon--purple {
-    color: var(--da-purple-500);
+    color: var(--purple);
 }
 
 .icon--red {
-    color: var(--da-red-500);
+    color: var(--red);
 }
 
 /* Icon Backgrounds - Rotational (sets of 3) */
