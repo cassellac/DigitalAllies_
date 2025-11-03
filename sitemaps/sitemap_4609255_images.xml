@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+       <loc>https://digitalallies.net/</loc>
+       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>1.0000</priority>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/shapes/circle.svg</image:loc>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/shapes/triangle.svg</image:loc>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/shapes/square.svg</image:loc>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/shapes/hexagon.svg</image:loc>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/shapes/diamond.svg</image:loc>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/images/icons/developement.svg</image:loc>
+         <image:caption>Web development icon</image:caption>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/images/icons/design.svg</image:loc>
+         <image:caption>Design and branding icon</image:caption>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/images/icons/consulting2.svg</image:loc>
+         <image:caption>Technology consulting icon</image:caption>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/favicon/favicon-96x96.png</image:loc>
+       </image:image>
+       <image:image>
+         <image:loc>https://digitalallies.net/assets/favicon/apple-touch-icon.png</image:loc>
+       </image:image>
+  </url>
+</urlset>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+
+  <url>
+       <loc>https://digitalallies.net/</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/about</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/services</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/blog</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/knowledge-base</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/contact</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/accessibility-guide</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/privacy</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/terms</loc>
+       <mobile:mobile/>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/cookies</loc>
+       <mobile:mobile/>
+  </url>
+</urlset>
