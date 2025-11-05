@@ -430,6 +430,17 @@ footer .text-gray-300,
     border: none;
 }
 
+/* Rotational Card Borders (for sets of 3) */
+.card:nth-of-type(3n+1) { 
+    border: 2px solid var(--card-border-1); 
+}
+.card:nth-of-type(3n+2) { 
+    border: 2px solid var(--card-border-2); 
+}
+.card:nth-of-type(3n+3) { 
+    border: 2px solid var(--card-border-3); 
+}
+
 .card--outline-blue {
     border: 2px solid var(--blue);
 }
