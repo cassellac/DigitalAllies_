@@ -319,6 +319,10 @@ footer .text-gray-300,
     border: 2px solid var(--blue);
 }
 
+.btn--primary:visited {
+    color: var(--white);
+}
+
 .btn--primary:hover {
     background: var(--white);
     color: var(--blue);
