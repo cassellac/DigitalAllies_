@@ -314,13 +314,15 @@ footer .text-gray-300,
 
 /* Primary Button - Blue */
 .btn--primary {
-    background: var(--btn-primary-bg);
-    color: var(--btn-primary-text);
-    border: none;
+    background: var(--blue);
+    color: var(--white);
+    border: 2px solid var(--blue);
 }
 
 .btn--primary:hover {
-    background: var(--btn-primary-hover);
+    background: var(--white);
+    color: var(--blue);
+    border-color: var(--blue);
     box-shadow: var(--shadow-hover);
     transform: translateY(-1px);
 }
