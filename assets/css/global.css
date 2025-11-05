@@ -186,24 +186,33 @@ header[role="banner"] a:focus-visible {
 
 footer a,
 .site-footer a {
-    color: rgba(224, 242, 254, 0.9);
+    color: var(--white);
 }
 
 footer a:hover,
 footer a:focus-visible,
 .site-footer a:hover,
 .site-footer a:focus-visible {
-    color: var(--white);
+    color: rgba(224, 242, 254, 0.9);
 }
 
 footer a:visited,
 .site-footer a:visited {
-    color: rgba(224, 242, 254, 0.9);
+    color: var(--white);
 }
 
 footer a:visited:hover,
 .site-footer a:visited:hover {
-    color: var(--white);
+    color: rgba(224, 242, 254, 0.9);
+}
+
+/* Ensure footer text is all white */
+footer,
+footer p,
+footer .text-gray-300,
+.site-footer,
+.site-footer p {
+    color: var(--white) !important;
 }
 
 /* Header */
@@ -241,8 +250,7 @@ footer a:visited:hover,
     gap: 0.6rem;
 }
 
-.logo-icon,
-.brand-pulse {
+.logo-icon {
     inline-size: 100%;
     block-size: 100%;
     display: inline-flex;
@@ -251,6 +259,9 @@ footer a:visited:hover,
     background: linear-gradient(135deg, var(--blue-light), var(--blue-dark)) !important;
     mask: url('assets/brand/logo-glyph.svg') no-repeat center / contain;
     -webkit-mask: url('assets/brand/logo-glyph.svg') no-repeat center / contain;
+}
+
+.brand-pulse {
     animation: brand-pulse 3s ease-in-out infinite;
 }
 
