@@ -166,10 +166,6 @@ a:focus-visible {
     color: var(--link-hover);
 }
 
-a:visited {
-    color: var(--link-visited);
-}
-
 a:focus-visible {
     outline: none;
     box-shadow: var(--shadow-focus);
@@ -193,16 +189,6 @@ footer a:hover,
 footer a:focus-visible,
 .site-footer a:hover,
 .site-footer a:focus-visible {
-    color: rgba(224, 242, 254, 0.9);
-}
-
-footer a:visited,
-.site-footer a:visited {
-    color: var(--white);
-}
-
-footer a:visited:hover,
-.site-footer a:visited:hover {
     color: rgba(224, 242, 254, 0.9);
 }
 
@@ -317,10 +303,6 @@ footer .text-gray-300,
     background: var(--blue);
     color: var(--white);
     border: 2px solid var(--blue);
-}
-
-.btn--primary:visited {
-    color: var(--white);
 }
 
 .btn--primary:hover {
