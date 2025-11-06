@@ -731,18 +731,18 @@ footer .logo:hover {
 }
 
 /* Card icon backgrounds matching border colors at 75% opacity */
-.card:nth-of-type(3n+1) .w-16.bg-gradient-to-br,
-.card:nth-of-type(3n+1) .w-20.bg-gradient-to-br {
+.card:nth-of-type(3n+1) > div.w-16,
+.card:nth-of-type(3n+1) > div.w-20 {
     background: rgba(37, 99, 235, 0.75) !important; /* Blue at 75% */
 }
 
-.card:nth-of-type(3n+2) .w-16.bg-gradient-to-br,
-.card:nth-of-type(3n+2) .w-20.bg-gradient-to-br {
+.card:nth-of-type(3n+2) > div.w-16,
+.card:nth-of-type(3n+2) > div.w-20 {
     background: rgba(5, 150, 105, 0.75) !important; /* Green at 75% */
 }
 
-.card:nth-of-type(3n+3) .w-16.bg-gradient-to-br,
-.card:nth-of-type(3n+3) .w-20.bg-gradient-to-br {
+.card:nth-of-type(3n+3) > div.w-16,
+.card:nth-of-type(3n+3) > div.w-20 {
     background: rgba(124, 58, 237, 0.75) !important; /* Purple at 75% */
 }
 
