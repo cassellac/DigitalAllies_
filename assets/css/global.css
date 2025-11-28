@@ -1,19 +1,19 @@
 /* ========================================
-   🎨 DIGITAL ALLIES GLOBAL DESIGN TOKENS
+   DIGITAL ALLIES GLOBAL DESIGN TOKENS
    Source: brand.digitalallies.net
    Merged from tokens.css + global.css
    ======================================== */
 
 :root {
     /* ============================================
-       🎨 BRAND COLORS (from brand.digitalallies.net)
+       BRAND COLORS (from brand.digitalallies.net)
        ============================================ */
     
     /* Primary Brand Palette */
     --blue: #2563EB;              /* Primary Blue */
     --blue-light: #60A5FA;
     --blue-dark: #1D4ED8;
-    --green: #059669;             /* Ally Green */
+    --green: #059669;             /* Success Green */
     --green-light: #34D399;
     --purple: #7C3AED;            /* Accent Purple */
     --purple-light: #C4B5FD;
@@ -41,10 +41,11 @@
     --gray: #414243;
     --white: #FFFFFF;
     --black: #000000;
-    
+
+      }
     
     /* ============================================
-       📐 DESIGN TOKENS (from brand guide)
+       DESIGN TOKENS (from brand guide)
        ============================================ */
     
     /* Typography */
@@ -69,7 +70,7 @@
     
     
     /* ============================================
-       🎯 SEMANTIC TOKENS (Applied usage)
+       SEMANTIC TOKENS (Applied usage)
        ============================================ */
     
     /* Text Colors */
@@ -91,19 +92,21 @@
     
     
     /* ============================================
-       🔘 BUTTON TOKENS
+       BUTTON TOKENS
        ============================================ */
     
     /* Primary Button (Blue) */
     --btn-primary-bg: var(--blue);
-    --btn-primary-text: var(--white);
-    --btn-primary-hover: var(--blue-light);
+    --btn-primary-text: var(--white);   
+    --btn-primary-hover-bg: var(--white);
+    --btn-primary-hover-text: var(--blue);
+    --btn-primary-hover-border: var(--blue);
     
     /* Secondary Button (Outline) */
     --btn-secondary-bg: var(--white);
     --btn-secondary-text: var(--blue);
     --btn-secondary-border: var(--blue);
-    --btn-secondary-hover-bg: var(--blue-light);
+    --btn-secondary-hover-bg: var(--blue-50);
     --btn-secondary-hover-text: var(--white);
     
     /* Success Button (Green) */
@@ -123,21 +126,136 @@
     /* Quiet Button (Text-only) */
     --btn-quiet-bg: transparent;
     --btn-quiet-text: var(--blue);
-    
-    
-    /* ============================================
-       🎴 CARD & ICON TOKENS
-       ============================================ */
-    
-    /* Card Border Rotation (sets of 3) */
-    --card-border-1: var(--blue);
-    --card-border-2: var(--green);
-    --card-border-3: var(--purple);
-    
-    /* Icon Background Rotation (sets of 3) */
+
+   /* Hover and depth utilities */
+.gradient-shadow {
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.10), 0 2px 4px -1px rgba(37, 99, 235, 0.06);
+}
+
+.hover-lift {
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.10);
+}
+
+/* Animated gradient background - archived, use static backgrounds instead */
+.gradient-bg,
+.animated-gradient {
+    background: var(--blue-50);
+    position: relative;
+}
+
+ /* ===========================================
+    CARD & ICON TOKENS
+    =========================================== */
+.card {
+    position: relative;
+    background: var(--white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* card without border */
+.card--no-border {
+    border: none;
+}
+
+/* rotational card borders (for sets of 3) */
+.card:nth-of-type(3n+1) { 
+    border: 2px solid var(--card-border-1); 
+}
+.card:nth-of-type(3n+2) { 
+    border: 2px solid var(--card-border-2); 
+}
+.card:nth-of-type(3n+3) { 
+    border: 2px solid var(--card-border-3); 
+}
+
+.card--outline-blue {
+    border: 2px solid var(--blue);
+}
+
+.card--outline-green {
+    border: 2px solid var(--green);
+}
+
+.card--outline-red {
+    border: 2px solid var(--red);
+}
+
+.card--outline-purple {
+    border: 2px solid var(--purple);
+}
+
+.card--featured {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08));
+    border: 2px solid var(--blue);
+}
+
+   /* icon utilities */
+.icon {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.icon--blue {
+    color: var(--blue);
+}
+
+.icon--green {
+    color: var(--green);
+}
+
+.icon--purple {
+    color: var(--purple);
+}
+
+.icon--red {
+    color: var(--red);
+}
+
+/* icon background rotation (sets of 3) */
+   
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
+    padding: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+}
     --icon-bg-1: var(--blue-light);
     --icon-bg-2: var(--green-light);
     --icon-bg-3: var(--purple-light);
+}
+
+/* card icon backgrounds matching border colors at 75% opacity */
+.card:nth-of-type(3n+1) > div.w-16,
+.card:nth-of-type(3n+1) > div.w-20 {
+    background: rgba(37, 99, 235, 0.75) !important; /* Blue at 75% */
+}
+
+.card:nth-of-type(3n+2) > div.w-16,
+.card:nth-of-type(3n+2) > div.w-20 {
+    background: rgba(5, 150, 105, 0.75) !important; /* Green at 75% */
+}
+
+.card:nth-of-type(3n+3) > div.w-16,
+.card:nth-of-type(3n+3) > div.w-20 {
+    background: rgba(124, 58, 237, 0.75) !important; /* Purple at 75% */
 }
 
 html {
@@ -180,22 +298,10 @@ header[role="banner"] a:focus-visible {
     color: var(--link-hover);
 }
 
-footer a,
-.site-footer a {
-    color: var(--white);
-}
-
-footer a:hover,
-footer a:focus-visible,
-.site-footer a:hover,
-.site-footer a:focus-visible {
-    color: rgba(224, 242, 254, 0.9);
-}
-
 /* Ensure footer text is all white */
 footer,
 footer p,
-footer .text-gray-300,
+footer .text--white
 .site-footer,
 .site-footer p {
     color: var(--white) !important;
@@ -274,229 +380,6 @@ footer .text-gray-300,
     background-clip: text;
 }
 
-/* Buttons */
-.btn {
-    -webkit-font-smoothing: antialiased;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.625rem 0.95rem;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid transparent;
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow: var(--shadow-button);
-    transition: all 0.2s ease-in-out;
-}
-
-.btn:focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
-}
-
-/* Primary Button - Blue */
-.btn--primary {
-    background: var(--blue);
-    color: var(--white);
-    border: 2px solid var(--blue);
-}
-
-.btn--primary:hover {
-    background: var(--white);
-    color: var(--blue);
-    border-color: var(--blue);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-1px);
-}
-
-.btn--primary:active {
-    transform: translateY(1px);
-}
-
-/* Secondary Button - Outline */
-.btn--secondary {
-    background: var(--btn-secondary-bg);
-    color: var(--btn-secondary-text);
-    border: 2px solid var(--btn-secondary-border);
-}
-
-.btn--secondary:hover {
-    background: var(--btn-secondary-hover-bg);
-    color: var(--btn-secondary-hover-text);
-    transform: translateY(-1px);
-}
-
-.btn--secondary:active {
-    transform: translateY(1px);
-}
-
-/* Success Button - Green */
-.btn--success {
-    background: var(--btn-success-bg);
-    color: var(--btn-success-text);
-}
-
-.btn--success:hover {
-    filter: brightness(0.90);
-    transform: translateY(-1px);
-}
-
-.btn--success:active {
-    transform: translateY(1px);
-}
-
-/* Danger Button - Red */
-.btn--danger {
-    background: var(--btn-danger-bg);
-    color: var(--btn-danger-text);
-}
-
-.btn--danger:hover {
-    filter: brightness(0.90);
-    transform: translateY(-1px);
-}
-
-.btn--danger:active {
-    transform: translateY(1px);
-}
-
-/* Outline Button - Transparent with border */
-.btn--outline {
-    background: var(--btn-outline-bg);
-    color: var(--btn-outline-text);
-    border: 2px solid var(--btn-outline-border);
-}
-
-.btn--outline:hover {
-    background: var(--btn-outline-hover-bg);
-}
-
-/* Quiet Button - Text-only */
-.btn--quiet {
-    background: var(--btn-quiet-bg);
-    color: var(--btn-quiet-text);
-    padding-inline: 0;
-    border: none;
-    box-shadow: none;
-}
-
-.btn--quiet:hover {
-    text-decoration: underline;
-}
-
-/* Hover and depth utilities */
-.gradient-shadow {
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.10), 0 2px 4px -1px rgba(37, 99, 235, 0.06);
-}
-
-.hover-lift {
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.10);
-}
-
-/* Animated gradient background - archived, use static backgrounds instead */
-.gradient-bg,
-.animated-gradient {
-    background: var(--blue-50);
-    position: relative;
-}
-
-/* Cards */
-.card {
-    position: relative;
-    background: var(--white);
-    border: 2px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-soft);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
-}
-
-/* Card without border */
-.card--no-border {
-    border: none;
-}
-
-/* Rotational Card Borders (for sets of 3) */
-.card:nth-of-type(3n+1) { 
-    border: 2px solid var(--card-border-1); 
-}
-.card:nth-of-type(3n+2) { 
-    border: 2px solid var(--card-border-2); 
-}
-.card:nth-of-type(3n+3) { 
-    border: 2px solid var(--card-border-3); 
-}
-
-.card--outline-blue {
-    border: 2px solid var(--blue);
-}
-
-.card--outline-green {
-    border: 2px solid var(--green);
-}
-
-.card--outline-red {
-    border: 2px solid var(--red);
-}
-
-.card--outline-purple {
-    border: 2px solid var(--purple);
-}
-
-.card--featured {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08));
-    border: 2px solid var(--blue);
-}
-
-/* Deprecated - remove gradient shadow effects */
-.card--shadow-gradient::before,
-.card--shadow-solid::before {
-    content: "";
-    position: absolute;
-    inset: -8px;
-    z-index: -1;
-    border-radius: inherit;
-    filter: blur(15px);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.card--shadow-gradient::before {
-    background: radial-gradient(120% 120% at 20% 10%, var(--blue-100) 0%, var(--blue-light) 45%, var(--blue) 100%);
-}
-
-.card--shadow-solid::before {
-    background: radial-gradient(100% 100% at 50% 50%, var(--blue), var(--blue));
-    filter: blur(18px);
-    opacity: 0.45;
-}
-
-.card[data-elevate="hover"]:hover::before {
-    opacity: 0.7;
-}
-
-.section--gradient .card--shadow-gradient::before {
-    opacity: 0.35;
-}
-
-.card:focus-within {
-    outline: none;
-    box-shadow: var(--shadow-focus), 0 1px 2px rgba(17, 24, 39, 0.08);
-}
 
 /* Footer */
 footer {
@@ -684,66 +567,6 @@ footer .logo:hover {
 .prose strong {
     font-weight: 700;
     color: var(--text-primary);
-}
-
-/* Icon utilities */
-.icon {
-    width: 28px;
-    height: 28px;
-    display: inline-block;
-}
-
-.icon--blue {
-    color: var(--blue);
-}
-
-.icon--green {
-    color: var(--green);
-}
-
-.icon--purple {
-    color: var(--purple);
-}
-
-.icon--red {
-    color: var(--red);
-}
-
-/* Icon Backgrounds - Rotational (sets of 3) */
-.icon-bg {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--border-radius-lg);
-    padding: 0.5rem;
-    width: 4rem;
-    height: 4rem;
-}
-
-.icon-bg:nth-of-type(3n+1) { 
-    background: var(--icon-bg-1); 
-}
-.icon-bg:nth-of-type(3n+2) { 
-    background: var(--icon-bg-2); 
-}
-.icon-bg:nth-of-type(3n+3) { 
-    background: var(--icon-bg-3); 
-}
-
-/* Card icon backgrounds matching border colors at 75% opacity */
-.card:nth-of-type(3n+1) > div.w-16,
-.card:nth-of-type(3n+1) > div.w-20 {
-    background: rgba(37, 99, 235, 0.75) !important; /* Blue at 75% */
-}
-
-.card:nth-of-type(3n+2) > div.w-16,
-.card:nth-of-type(3n+2) > div.w-20 {
-    background: rgba(5, 150, 105, 0.75) !important; /* Green at 75% */
-}
-
-.card:nth-of-type(3n+3) > div.w-16,
-.card:nth-of-type(3n+3) > div.w-20 {
-    background: rgba(124, 58, 237, 0.75) !important; /* Purple at 75% */
 }
 
 /* Reduced motion */
