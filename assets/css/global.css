@@ -407,7 +407,7 @@ footer .text-gray-300,
 /* Animated gradient background */
 .gradient-bg,
 .animated-gradient {
-    linear-gradient(145deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08))
+    linear-gradient(135deg, blue-light(#60A5FA), white(#FFFFFF))
     position: relative;
 }
 
