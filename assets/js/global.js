@@ -200,8 +200,9 @@ function initParticleBackground() {
   if (!document.querySelector('[data-bg-shapes]')) return;
   if (document.getElementById('particle-bg')) return; // already initialized
 
+  // prefer a CSS override, otherwise use a darker purple (good contrast on light backgrounds)
   const colorVar = getComputedStyle(document.documentElement).getPropertyValue('--particle-color') || '';
-  const defaultColor = colorVar.trim() || 'rgba(37,99,235,0.10)';
+  const defaultColor = colorVar.trim() || 'rgba(94,53,177,0.12)';
 
   const canvas = document.createElement('canvas');
   canvas.id = 'particle-bg';
@@ -222,7 +223,8 @@ function initParticleBackground() {
   let height = (canvas.height = window.innerHeight);
 
   const particles = [];
-  const num = Math.max(12, Math.round((width * height) / 100000));
+  // fewer particles by default to keep subtlety on light backgrounds
+  const num = Math.max(10, Math.round((width * height) / 150000));
 
   function rand(min, max) { return Math.random() * (max - min) + min; }
 
@@ -230,10 +232,13 @@ function initParticleBackground() {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: rand(-0.25, 0.25),
-      vy: rand(-0.15, 0.15),
-      r: rand(6, 28) * (Math.random() < 0.5 ? 0.6 : 1),
-      alpha: rand(0.06, 0.18),
+      // slower base velocity for a calm feeling
+      vx: rand(-0.18, 0.18),
+      vy: rand(-0.12, 0.12),
+      // slightly smaller sizes so they read well on light backgrounds
+      r: rand(4, 20) * (Math.random() < 0.5 ? 0.7 : 1),
+      // low opacity for subtle contrast
+      alpha: rand(0.04, 0.12),
       hue: defaultColor
     });
   }
@@ -264,9 +269,9 @@ function initParticleBackground() {
         const dx = p.x - pointer.x;
         const dy = p.y - pointer.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const influence = 140;
+        const influence = 120;
         if (dist < influence) {
-          const factor = 1 + (1 - dist / influence) * 1.2; // up to ~2.2x
+          const factor = 1 + (1 - dist / influence) * 1.0; // up to ~2.0x
           drawR = p.r * factor;
           // subtle repulse effect
           const repulse = (1 - dist / influence) * 0.5;
@@ -302,21 +307,21 @@ function initParticleBackground() {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const burstRadius = 120;
+    const burstRadius = 100;
     particles.forEach(p => {
       const dx = p.x - x;
       const dy = p.y - y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < burstRadius) {
-        // explode outward
-        const force = (1 - dist / burstRadius) * 3.2;
+        // gentler outward impulse to avoid harsh motion
+        const force = (1 - dist / burstRadius) * 2.2;
         p.vx += (dx / (dist || 1)) * force;
         p.vy += (dy / (dist || 1)) * force;
-        // temporarily increase alpha and size
-        p.alpha = Math.min(0.6, p.alpha + 0.18);
-        p.r = p.r * 1.2;
+        // temporarily increase alpha and size (subtle)
+        p.alpha = Math.min(0.45, p.alpha + 0.12);
+        p.r = p.r * 1.12;
         // schedule gentle decay back to baseline
-        setTimeout(() => { p.r = Math.max(4, p.r * 0.85); p.alpha = Math.max(0.04, p.alpha - 0.12); }, 450 + Math.random() * 300);
+        setTimeout(() => { p.r = Math.max(3, p.r * 0.88); p.alpha = Math.max(0.03, p.alpha - 0.08); }, 380 + Math.random() * 260);
       }
     });
   }
