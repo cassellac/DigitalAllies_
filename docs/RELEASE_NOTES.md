@@ -1,3 +1,25 @@
+# Release Notes — v1.0.0
+
+Release: v1.0.0
+Date: 2025-11-30
+
+Summary
+- Retired the legacy floating SVG shapes and parallax script.
+- Added CSS-driven decorative shapes and a lightweight canvas particle background.
+- Particles are implemented in `assets/js/particles.js`, lazy-loaded by `assets/js/global.js` when a page contains a `data-bg-shapes` container.
+- Per-page controls: `data-particles`, `data-particle-color`, `data-particle-influence`, `data-particle-burst`.
+- Accessibility: respects `prefers-reduced-motion`; pointer interactions are non-essential and non-blocking.
+
+How to preview locally
+1. From the repo root run a static server (examples):
+   - `python3 -m http.server 5000`
+   - or `npx serve .`
+2. Open `http://localhost:5000` and navigate to `index`, `about`, `services`, `contact` pages.
+
+Notes for maintainers
+- To change default particle color use the CSS variable `--particle-color` or set `data-particle-color` on the page container.
+- To disable particles on a page set `data-particles="off"` on the `data-bg-shapes` container.
+- The module exposes `window.initParticleBackground(options)` and returns a `{ destroy }` handle; global helper sets `window.__particleHandle`.
 # Release Notes
 
 ## v1.0.0 — Shapes retired & particle background
