@@ -240,26 +240,90 @@ function initParticleBackground() {
 
   let raf = null;
 
+  // pointer interaction state
+  const pointer = { x: null, y: null, active: false };
+
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy + Math.sin((Date.now() + p.x) / 600) * 0.1;
+    const time = Date.now();
 
+    particles.forEach(p => {
+      // gentle movement + subtle vertical bob
+      p.x += p.vx;
+      p.y += p.vy + Math.sin((time + p.x) / 600) * 0.1;
+
+      // wrap edges
       if (p.x < -50) p.x = width + 50;
       if (p.x > width + 50) p.x = -50;
       if (p.y < -50) p.y = height + 50;
       if (p.y > height + 50) p.y = -50;
 
+      // interaction: scale when pointer is near
+      let drawR = p.r;
+      if (pointer.active && pointer.x !== null && pointer.y !== null) {
+        const dx = p.x - pointer.x;
+        const dy = p.y - pointer.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const influence = 140;
+        if (dist < influence) {
+          const factor = 1 + (1 - dist / influence) * 1.2; // up to ~2.2x
+          drawR = p.r * factor;
+          // subtle repulse effect
+          const repulse = (1 - dist / influence) * 0.5;
+          p.vx += (dx / dist) * repulse * 0.15 || 0;
+          p.vy += (dy / dist) * repulse * 0.12 || 0;
+        }
+      }
+
       ctx.beginPath();
       ctx.fillStyle = typeof p.hue === 'string' ? p.hue : defaultColor;
       ctx.globalAlpha = p.alpha;
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, drawR, 0, Math.PI * 2);
       ctx.fill();
     });
     ctx.globalAlpha = 1;
     raf = requestAnimationFrame(draw);
   }
+
+  // pointer handlers: scale on hover, burst on click/tap
+  function onPointerMove(e) {
+    pointer.active = true;
+    const rect = canvas.getBoundingClientRect();
+    pointer.x = e.clientX - rect.left;
+    pointer.y = e.clientY - rect.top;
+  }
+
+  function onPointerLeave() {
+    pointer.active = false;
+    pointer.x = pointer.y = null;
+  }
+
+  function onPointerDown(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const burstRadius = 120;
+    particles.forEach(p => {
+      const dx = p.x - x;
+      const dy = p.y - y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < burstRadius) {
+        // explode outward
+        const force = (1 - dist / burstRadius) * 3.2;
+        p.vx += (dx / (dist || 1)) * force;
+        p.vy += (dy / (dist || 1)) * force;
+        // temporarily increase alpha and size
+        p.alpha = Math.min(0.6, p.alpha + 0.18);
+        p.r = p.r * 1.2;
+        // schedule gentle decay back to baseline
+        setTimeout(() => { p.r = Math.max(4, p.r * 0.85); p.alpha = Math.max(0.04, p.alpha - 0.12); }, 450 + Math.random() * 300);
+      }
+    });
+  }
+
+  canvas.addEventListener('pointermove', onPointerMove);
+  canvas.addEventListener('pointerleave', onPointerLeave);
+  canvas.addEventListener('pointerdown', onPointerDown);
 
   function onResize() {
     width = canvas.width = window.innerWidth;
@@ -287,6 +351,11 @@ function initParticleBackground() {
     if (raf) cancelAnimationFrame(raf);
     window.removeEventListener('resize', onResize);
     document.removeEventListener('visibilitychange', onVisibility);
+    try {
+      canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerleave', onPointerLeave);
+      canvas.removeEventListener('pointerdown', onPointerDown);
+    } catch (e) {}
     const el = document.getElementById('particle-bg');
     if (el && el.parentNode) el.parentNode.removeChild(el);
     raf = null;
