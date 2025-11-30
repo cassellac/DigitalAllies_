@@ -92,11 +92,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Initialize lightweight particle background (canvas)
   try {
-    initParticleBackground();
+    // lazy-load particle module and initialize with per-page options
+    loadAndInitParticles();
   } catch (e) {
     console.warn('initParticleBackground failed', e);
   }
 });
+
+// Lazy-load `assets/js/particles.js` and initialize it with options
+function loadAndInitParticles() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const container = document.querySelector('[data-bg-shapes]');
+  if (!container) return;
+  const setting = (container.getAttribute('data-particles') || 'med').toLowerCase();
+  if (setting === 'off') return;
+
+  // color: per-container override, CSS var `--particle-color`, or site purple token
+  const colorAttr = container.getAttribute('data-particle-color') || '';
+  const cssColor = getComputedStyle(document.documentElement).getPropertyValue('--particle-color') || '';
+  const rootPurple = getComputedStyle(document.documentElement).getPropertyValue('--purple') || '';
+  const color = (colorAttr || cssColor || rootPurple || '#7C3AED').trim();
+
+  const densityMap = { low: 0.6, med: 1, high: 1.6 };
+  const densityScale = densityMap[setting] || (isFinite(parseFloat(setting)) ? parseFloat(setting) : 1);
+
+  const options = {
+    densityScale: densityScale,
+    color: color,
+    influence: parseFloat(container.getAttribute('data-particle-influence')) || 120,
+    burstForce: parseFloat(container.getAttribute('data-particle-burst')) || undefined
+  };
+
+  if (window.initParticleBackground) {
+    try { window.__particleHandle = window.initParticleBackground(options); } catch (e) { console.warn(e); }
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = '/assets/js/particles.js';
+  script.async = true;
+  script.onload = () => {
+    try { window.__particleHandle = window.initParticleBackground(options); } catch (e) { console.warn('particle init failed', e); }
+  };
+  script.onerror = (e) => { console.warn('Failed to load particles.js', e); };
+  document.head.appendChild(script);
+}
 
 function initFormValidation() {
   const forms = document.querySelectorAll('[data-validate="contact"]');
