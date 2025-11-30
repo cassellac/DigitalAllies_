@@ -1,0 +1,64 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <noscript>
+      <style>
+        #container {
+          display: none;
+        }
+      </style>
+    </noscript>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href="/_runtimes/sites-runtime.d908c28f5a9755c27e9bc338d3df65124ed55fa79f725a62d3b7f0999c7c0338.js" as="script" crossorigin />
+    <link rel="preload" href="/_components/v2/41e705df864f8cad84c2e799179d17d8250f137c.js" as="script" crossorigin />
+    <link rel="preload" href="/_json/cca87a9c-6fc3-4a05-8e0c-64558db8d9af/_index.json" as="fetch" />
+        <style id="reset-css"> @layer figreset,figoverridable,reset,theme,base,figutils,components,utilities;@layer figreset{:root{--100dvw:100vw;--100dvh:100vh;--banner-height:48px;--banner-height-v2:40px;--full-height-with-banner:calc(100dvh - var(--banner-height));font-synthesis:none;text-align:left;button{text-align:left}}@supports (width:100dvw){:root{--100dvw:100dvw;--100dvh:100dvh}}}@media (max-width:600px){.banner-v2-container{left:0 !important;right:0 !important;margin:0 auto !important}}.wrapper-with-banner .min-h-screen{min-height:var(--full-height-with-banner)}.wrapper-with-banner .h-screen{height:var(--full-height-with-banner)}</style><style id="font-faces-0"></style><style id="body-background-color">body:has([data-breakpoint-id="node-0_4"]) { background-color: #FFF }</style><style id="ssr-css">#container .css-vh2lqg {width: var(--viewport-width-scaled); min-height: var(--viewport-height-scaled); height: 100%; top: 0px;}#container .css-tzn6qh {display: block; position: absolute;}#container .css-6gkcj1 {transform-origin: top left; --max-layout-width: 2048px; --min-layout-width: 320px; --max-font-size: 288px; --min-font-size: 6px; --viewport-width-scaled: calc(var(--100dvw) / var(--viewport-scale)); --viewport-height-scaled: calc(var(--100dvh) / var(--viewport-scale)); --content-width-scaled: calc(var(--content-width-unscaled) / var(--viewport-scale)); --content-margin-x-scaled: max(calc((var(--viewport-width) - var(--max-layout-width)) / var(--viewport-scale) / 2), 0px);}#container .css-myl2ny {position: relative; flex-shrink: 0; flex: 1 0 0; display: block;}#container .css-exq74d {min-width: 1px; min-height: 1px; width: 100%; height: 100dvh;}#container .css-j9f0op {width: 100%; height: 100%;}</style><script>window.__serverRenderedCSSClassNames = {"css-vh2lqg":"{\"width\":\"var(--viewport-width-scaled)\",\"minHeight\":\"var(--viewport-height-scaled)\",\"height\":\"100%\",\"top\":\"0px\"}","css-tzn6qh":"{\"display\":\"block\",\"position\":\"absolute\"}","css-6gkcj1":"{\"transformOrigin\":\"top left\",\"--max-layout-width\":\"2048px\",\"--min-layout-width\":\"320px\",\"--max-font-size\":\"288px\",\"--min-font-size\":\"6px\",\"--viewport-width-scaled\":\"calc(var(--100dvw) / var(--viewport-scale))\",\"--viewport-height-scaled\":\"calc(var(--100dvh) / var(--viewport-scale))\",\"--content-width-scaled\":\"calc(var(--content-width-unscaled) / var(--viewport-scale))\",\"--content-margin-x-scaled\":\"max(calc((var(--viewport-width) - var(--max-layout-width)) / var(--viewport-scale) / 2), 0px)\"}","css-myl2ny":"{\"position\":\"relative\",\"flexShrink\":0,\"flex\":\"1 0 0\",\"display\":\"block\"}","css-exq74d":"{\"minWidth\":1,\"minHeight\":1,\"width\":\"100%\",\"height\":\"100dvh\"}","css-j9f0op":"{\"width\":\"100%\",\"height\":\"100%\"}"}</script><meta id="meta-mkapgg" name="description" content="The one and only source for information on the Digital Allies brand"><meta id="meta-yw3oin" name="robots" content="noindex"><link id="link-n8bniz" rel="icon" href="/_assets/v11/f7d0e04aa0e13c4a05244454c6d0082e1547d330.png"><title id="title-m77p49">Digital Allies Brand Guide</title>
+    <link rel="stylesheet" href="/_components/v2/41e705df864f8cad84c2e799179d17d8250f137c.css">
+  </head>
+  <body>
+    
+    
+    <script data-template-id="country-code">window.__cf_country = "US"</script>
+    <script type="module">
+      import {SitesRuntime} from '/_runtimes/sites-runtime.d908c28f5a9755c27e9bc338d3df65124ed55fa79f725a62d3b7f0999c7c0338.js';
+      const sitesRuntime = new SitesRuntime({
+        container: document.getElementById('container'),
+        env: 'published',
+        bundleId: 'cca87a9c-6fc3-4a05-8e0c-64558db8d9af',
+        
+        loadComponentsOverNetwork: true,
+        assetsVersion: 'v11',
+        fontsVersion: 'v1',
+        videosVersion: 'v1',
+        codeComponentsVersion: 'v2',
+        wasServerRendered: true,
+        withBaseStyles: false,
+        reportingDomain: "https://www.figma.com",
+        bundleCreationDate: '2025-11-12 00:44:10 UTC',
+        isFigmake: true,
+      });
+    </script>
+    
+    <div id="container"><div class="tailwind css-myl2ny css-exq74d"></div></div>
+    
+
+     <noscript data-nosnippet>
+      <main style="height: 100vh; width: 100vw; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+        <h1 style="font-size: 24px; padding: 8px; color: black">
+        This site requires JavaScript
+        </h1>
+        <p style="font-size: 16px; padding: 8px; color: #00000080">To view this website, enable JavaScript in your browser settings and reload the page.</p>
+        <form style="margin-top: 12px;" action="">
+          <button type="submit" style="font-size: 14px; color: black; border: 1px solid #0000001a; border-radius: 5px; width: 256px; height: 32px;">
+          Reload page
+          </button>
+        </form>
+      </main>
+    </noscript>
+  </body>
+</html>
