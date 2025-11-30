@@ -140,7 +140,14 @@
 
     <!-- Hero Section -->
     <section class="gradient-bg section--gradient py-20 relative">
-        <!-- Floating Shapes Background -->
+        <!-- Particle background (lazy-loaded).
+             Data attributes available on this container:
+             - data-particles: "off" | "low" | "med" | "high"  (or numeric scale) — controls density
+             - data-particle-color: CSS color value or CSS var (e.g. "var(--purple)")
+             - data-particle-influence: number (px) for hover influence radius
+             - data-particle-burst: number for burst force multiplier
+             The particle script is lazy-loaded by `assets/js/global.js` and respects `prefers-reduced-motion`.
+        -->
         <div id="about-hero-shapes" class="floating-shapes-container" data-bg-shapes data-particles="low"
             data-particle-color="var(--purple)">
             <div class="floating-shape" data-shape="hexagon" data-speed="0.5" data-rotation="1"

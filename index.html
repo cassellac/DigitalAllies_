@@ -142,6 +142,14 @@
             <!-- Floating Shapes Background -->
             <div id="hero-shapes" class="floating-shapes-container" data-bg-shapes data-particles="low"
                 data-particle-color="var(--purple)" aria-hidden="true">
+                <!-- Particle background (lazy-loaded).
+                         Data attributes available on this container:
+                         - data-particles: "off" | "low" | "med" | "high"  (or numeric scale) — controls density
+                         - data-particle-color: CSS color value or CSS var (e.g. "var(--purple)")
+                         - data-particle-influence: number (px) for hover influence radius
+                         - data-particle-burst: number for burst force multiplier
+                         The particle script is lazy-loaded by `assets/js/global.js` and respects `prefers-reduced-motion`.
+                    -->
                 <div class="floating-shape" data-shape="circle" data-speed="0.5" data-rotation="0"
                     style="top: 10%; left: 5%; width: 80px; height: 80px;"></div>
                 <div class="floating-shape" data-shape="triangle" data-speed="0.3" data-rotation="1"
