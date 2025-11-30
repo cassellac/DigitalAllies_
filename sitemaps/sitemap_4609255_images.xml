@@ -8,21 +8,7 @@
        <lastmod>2025-11-02T20:05:16+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>1.0000</priority>
-       <image:image>
-         <image:loc>https://digitalallies.net/assets/shapes/circle.svg</image:loc>
-       </image:image>
-       <image:image>
-         <image:loc>https://digitalallies.net/assets/shapes/triangle.svg</image:loc>
-       </image:image>
-       <image:image>
-         <image:loc>https://digitalallies.net/assets/shapes/square.svg</image:loc>
-       </image:image>
-       <image:image>
-         <image:loc>https://digitalallies.net/assets/shapes/hexagon.svg</image:loc>
-       </image:image>
-       <image:image>
-         <image:loc>https://digitalallies.net/assets/shapes/diamond.svg</image:loc>
-       </image:image>
+       <!-- Shape images retired; replaced with CSS-driven backgrounds -->
        <image:image>
          <image:loc>https://digitalallies.net/assets/images/icons/developement.svg</image:loc>
          <image:caption>Web development icon</image:caption>

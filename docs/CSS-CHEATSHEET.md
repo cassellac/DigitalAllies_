@@ -890,7 +890,7 @@ Auto-validates on:```html
 
 ```html```
 
-<div id="hero-shapes" data-floating-shapes>
+<div id="hero-shapes" data-bg-shapes>
 
   <div class="floating-shape" data-speed="0.5" data-rotation="1">**Validation runs on:**
 
@@ -908,7 +908,7 @@ Auto-validates on:```html
 
 - `blog-posts-grid` - Container for blog posts
 
-- `data-floating-shapes` - Enable on container- `blog-search` - Search container (auto-created)
+- `data-bg-shapes` (previously `data-floating-shapes`) - Enable background shapes on container - `blog-search` - Search container (auto-created)
 
 - `data-speed` - Parallax speed (default: 0.5)- `blog-search-input` - Search input field
 
@@ -1004,7 +1004,7 @@ showArticle(articleId)      // Show single article
 
 ```html
 
-```css<div id="unique-id" data-floating-shapes>
+```css<div id="unique-id" data-bg-shapes>
 
 /* ❌ Wrong */  <div class="floating-shape" data-speed="0.5" data-rotation="1">
 
@@ -1020,7 +1020,7 @@ color: var(--blue);
 
 background: var(--text-primary);**Data Attributes:**
 
-```- `data-floating-shapes` - Marks container for initialization
+```- `data-bg-shapes` - Marks container for initialization (replacement for `data-floating-shapes`)
 
 - `data-speed` - Parallax speed (default: 0.5)
 
@@ -1242,7 +1242,7 @@ All features auto-initialize on `DOMContentLoaded````
 - `data-es="Spanish text"` - Spanish translation
 
 ### Floating Shapes
-- `data-floating-shapes` - Enable floating shapes on container
+- `data-bg-shapes` - Enable background shapes on container (CSS-driven replacement)
 - `data-speed="0.5"` - Parallax speed multiplier
 - `data-rotation="1"` - Rotation effect multiplier
 
@@ -1336,9 +1336,9 @@ All features auto-initialize on `DOMContentLoaded````
    ```
 
 4. ❌ **Don't forget floating shapes container ID**
-   ```html
-   <div id="hero-shapes" data-floating-shapes> <!-- ID required! -->
-   ```
+  ```html
+  <div id="hero-shapes" data-bg-shapes> <!-- ID required! -->
+  ```
 
 5. ✅ **Do include both language attributes**
    ```html
