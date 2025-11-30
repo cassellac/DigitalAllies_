@@ -404,10 +404,10 @@ footer .text-gray-300,
     box-shadow: 0 6px 16px rgba(17, 24, 39, 0.10);
 }
 
-/* Animated gradient background - archived, use static backgrounds instead */
+/* Animated gradient background */
 .gradient-bg,
 .animated-gradient {
-    background: var(--blue-50);
+    linear-gradient(145deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08))
     position: relative;
 }
 
