@@ -517,7 +517,7 @@ footer .logo:hover {
 /* Skip link */
 .skip-link {
     position: absolute;
-    left: 1rem;
+    inset-inline-start: 1rem;
     top: -100%;
     background: var(--blue);
     color: var(--white);
@@ -557,6 +557,64 @@ footer .logo:hover {
     width: 100%;
     height: 100%;
     display: block;
+}
+
+/* CSS-driven background shapes (replacement for retired `assets/shapes/*`) */
+.floating-shape::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    display: block;
+    opacity: 0.65;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+}
+
+/* Shape variants (simple, accessible approximations)
+   - Use `data-shape` attribute on `.floating-shape` elements.
+   - Multiple comma-separated values are allowed (first recognized wins).
+*/
+.floating-shape[data-shape^="circle"]::before,
+.floating-shape[data-shape*=",circle"]::before {
+    background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.12), rgba(96,165,250,0.06));
+    border-radius: 999px;
+}
+
+.floating-shape[data-shape^="triangle"]::before,
+.floating-shape[data-shape*=",triangle"]::before {
+    background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(5,150,105,0.08));
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.floating-shape[data-shape^="square"]::before,
+.floating-shape[data-shape*=",square"]::before {
+    background: linear-gradient(135deg, rgba(124,58,237,0.10), rgba(96,165,250,0.06));
+    border-radius: 8px;
+}
+
+.floating-shape[data-shape^="diamond"]::before,
+.floating-shape[data-shape*=",diamond"]::before {
+    background: linear-gradient(135deg, rgba(5,150,105,0.12), rgba(37,99,235,0.06));
+    transform: rotate(45deg);
+}
+
+.floating-shape[data-shape^="hexagon"]::before,
+.floating-shape[data-shape*=",hexagon"]::before {
+    background: linear-gradient(180deg, rgba(37,99,235,0.10), rgba(7,89,133,0.04));
+    clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+}
+
+/* Fade/animate shapes when JS toggles `.floating` */
+.floating-shape.floating::before {
+    opacity: 0.9;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .floating-shape::before {
+        transition: none !important;
+        animation: none !important;
+    }
 }
 
 /* Animations & utilities */

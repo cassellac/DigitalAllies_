@@ -83,6 +83,19 @@ function toggleMobileMenu(button) {
 document.addEventListener('DOMContentLoaded', () => {
   toggleLanguage('en');
   initFormValidation();
+  // Initialize CSS-driven background shapes (replacement for floating-shapes.js)
+  try {
+    initBackgroundShapes();
+  } catch (e) {
+    // non-fatal: shapes are decorative
+    console.warn('initBackgroundShapes failed', e);
+  }
+  // Initialize lightweight particle background (canvas)
+  try {
+    initParticleBackground();
+  } catch (e) {
+    console.warn('initParticleBackground failed', e);
+  }
 });
 
 function initFormValidation() {
@@ -158,4 +171,124 @@ function initFormValidation() {
       }
     });
   });
+}
+
+// Initialize simple floating animation for `.floating-shape` elements.
+// Uses `data-speed` to vary duration and `data-shape` for CSS-only visuals.
+function initBackgroundShapes() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const containers = document.querySelectorAll('[data-bg-shapes], [data-floating-shapes]');
+  containers.forEach(container => {
+    const shapes = Array.from(container.querySelectorAll('.floating-shape'));
+    shapes.forEach(shape => {
+      const speed = Math.max(0.15, parseFloat(shape.dataset.speed) || 0.5);
+      // Faster speed (higher number) -> shorter duration
+      const duration = (6 / speed).toFixed(2) + 's';
+      const delay = (Math.random() * 2).toFixed(2) + 's';
+      shape.style.animation = `float ${duration} ease-in-out ${delay} infinite`;
+      // Add class for CSS tweaks
+      shape.classList.add('floating');
+    });
+  });
+}
+
+// Lightweight canvas particle background. Initializes only when a `[data-bg-shapes]`
+// container exists on the page. Respects `prefers-reduced-motion`.
+function initParticleBackground() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!document.querySelector('[data-bg-shapes]')) return;
+  if (document.getElementById('particle-bg')) return; // already initialized
+
+  const colorVar = getComputedStyle(document.documentElement).getPropertyValue('--particle-color') || '';
+  const defaultColor = colorVar.trim() || 'rgba(37,99,235,0.10)';
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'particle-bg';
+  canvas.style.position = 'fixed';
+  canvas.style.inset = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '-1';
+  canvas.setAttribute('aria-hidden', 'true');
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  document.body.insertBefore(canvas, document.body.firstChild);
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  const particles = [];
+  const num = Math.max(12, Math.round((width * height) / 100000));
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  for (let i = 0; i < num; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: rand(-0.25, 0.25),
+      vy: rand(-0.15, 0.15),
+      r: rand(6, 28) * (Math.random() < 0.5 ? 0.6 : 1),
+      alpha: rand(0.06, 0.18),
+      hue: defaultColor
+    });
+  }
+
+  let raf = null;
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy + Math.sin((Date.now() + p.x) / 600) * 0.1;
+
+      if (p.x < -50) p.x = width + 50;
+      if (p.x > width + 50) p.x = -50;
+      if (p.y < -50) p.y = height + 50;
+      if (p.y > height + 50) p.y = -50;
+
+      ctx.beginPath();
+      ctx.fillStyle = typeof p.hue === 'string' ? p.hue : defaultColor;
+      ctx.globalAlpha = p.alpha;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    raf = requestAnimationFrame(draw);
+  }
+
+  function onResize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  function onVisibility() {
+    if (document.hidden) {
+      if (raf) cancelAnimationFrame(raf);
+      raf = null;
+    } else if (!raf) {
+      raf = requestAnimationFrame(draw);
+    }
+  }
+
+  window.addEventListener('resize', onResize);
+  document.addEventListener('visibilitychange', onVisibility);
+
+  // start
+  raf = requestAnimationFrame(draw);
+
+  // expose a simple cleanup handle in case other scripts need to remove it
+  window.__initParticleBackground = window.__initParticleBackground || {};
+  window.__initParticleBackground.destroy = () => {
+    if (raf) cancelAnimationFrame(raf);
+    window.removeEventListener('resize', onResize);
+    document.removeEventListener('visibilitychange', onVisibility);
+    const el = document.getElementById('particle-bg');
+    if (el && el.parentNode) el.parentNode.removeChild(el);
+    raf = null;
+  };
 }

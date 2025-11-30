@@ -56,27 +56,11 @@ class FloatingShapes {
     }
     
     updateShapes() {
-        this.shapes.forEach((shape) => {
-            const speed = parseFloat(shape.dataset.speed) || 0.5;
-            const rotation = parseFloat(shape.dataset.rotation) || 0;
-            
-            // Increased parallax movement based on mouse position - more dramatic effect
-            const moveX = this.mouseX * speed * 80; // Increased from 32 to 80
-            const moveY = this.mouseY * speed * 80; // Increased from 32 to 80
+        // Retired: interactive floating shapes have been replaced by CSS-driven shapes
+        // and a small initializer in `assets/js/global.js`.
+        // This file is left as a placeholder for historical context and can be
+        // safely removed if desired; remove only after verifying sitemaps and
+        // references have been updated.
 
-            // Increased rotation for more dynamic movement
-            const rotateZ = rotation ? this.mouseX * rotation * 20 : 0; // Increased from 9.5 to 20
-            
-            // Apply transform smoothly
-            shape.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px) rotateZ(${rotateZ}deg)`;
-        });
-    }
-}
+        /* no-op */
 
-// Initialize floating shapes on all containers when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const containers = document.querySelectorAll('[data-floating-shapes]');
-    containers.forEach(container => {
-        new FloatingShapes(container.id);
-    });
-});
