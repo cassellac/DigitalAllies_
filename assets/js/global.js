@@ -129,7 +129,7 @@ function loadAndInitParticles() {
   }
 
   const script = document.createElement('script');
-  script.src = '/assets/js/particles.js';
+  script.src = 'assets/js/particles.js';
   script.async = true;
   script.onload = () => {
     try { window.__particleHandle = window.initParticleBackground(options); } catch (e) { console.warn('particle init failed', e); }
