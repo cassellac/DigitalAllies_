@@ -404,10 +404,10 @@ footer .text-gray-300,
     box-shadow: 0 6px 16px rgba(17, 24, 39, 0.10);
 }
 
-/* Animated gradient background */
+/* Animated gradient background (from design tokens: lightBlue gradient) */
 .gradient-bg,
 .animated-gradient {
-    linear-gradient(135deg, blue-light(#60A5FA), white(#FFFFFF))
+    background: linear-gradient(135deg, #DBEAFE, #FFFFFF);
     position: relative;
 }
 
@@ -607,6 +607,13 @@ footer .logo:hover {
 /* Fade/animate shapes when JS toggles `.floating` */
 .floating-shape.floating::before {
     opacity: 0.9;
+}
+
+/* Hide decorative shapes on mobile for cleaner layout */
+@media (max-width: 767px) {
+    .floating-shape {
+        display: none;
+    }
 }
 
 /* Respect reduced motion */
