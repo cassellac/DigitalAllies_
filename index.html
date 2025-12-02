@@ -4,9 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Allies - Digital Solutions for the Real World</title>
+    <title>Digital Allies | Web Design & Digital Solutions in Kingman, AZ</title>
     <meta name="description"
-        content="Digital Allies provides web design, graphic design, and digital solutions for businesses in Kingman, AZ. Creating accessible, bilingual and beautiful websites that connect with your community.">
+        content="Digital Allies provides expert web design, accessible development, and digital marketing strategies for small businesses in Kingman, AZ. We build bilingual, conversion-focused websites.">
+    <meta name="keywords" content="Web Design Kingman AZ, Digital Marketing, Accessibility, Bilingual Websites, Small Business SEO, Digital Allies">
+    <meta name="author" content="Digital Allies">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://digitalallies.net/">
+    <meta property="og:title" content="Digital Allies - Digital Solutions for the Real World">
+    <meta property="og:description" content="Helping small businesses thrive with accessible, beautiful web solutions that connect with your community.">
+    <meta property="og:image" content="https://digitalallies.net/assets/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://digitalallies.net/">
+    <meta property="twitter:title" content="Digital Allies - Digital Solutions for the Real World">
+    <meta property="twitter:description" content="Helping small businesses thrive with accessible, beautiful web solutions that connect with your community.">
+    <meta property="twitter:image" content="https://digitalallies.net/assets/images/og-image.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,7 +36,8 @@
                         'alert-red': '#EF4444',
                         'gray-dark': '#414243',
                         'gray-medium': '#6B7280',
-                        'pale-blue': '#DBEAFE'
+                        'pale-blue': '#DBEAFE',
+                        'indigo-brand': '#6366f1'
                     },
                     fontFamily: {
                         'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
@@ -28,6 +47,30 @@
             }
         }
     </script>
+    
+    <!-- Custom Animations for Hero Graphic -->
+    <style>
+        @keyframes grow-bar {
+            from { width: 0; opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pop-in {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-bar-1 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.2s; }
+        .animate-bar-2 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.4s; }
+        .animate-bar-3 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.6s; }
+        .animate-pop { animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; transform-origin: center; animation-delay: 1.2s; }
+        .animate-float { animation: float-card 6s ease-in-out infinite; }
+    </style>
+
     <link rel="stylesheet" href="assets/css/global.css">
     <script src="assets/js/global.js"></script>
 
@@ -38,23 +81,55 @@
     <meta name="apple-mobile-web-app-title" content="DA" />
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
-    <!-- Structured Data -->
+    <!-- Structured Data (Enhanced for AI Search) -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Digital Allies",
-        "email": "contact@digitalallies.net",
-        "telephone": "928-228-5769",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kingman",
-            "addressRegion": "AZ",
-            "addressCountry": "US"
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Digital Allies",
+            "url": "https://digitalallies.net",
+            "logo": "https://digitalallies.net/assets/logo.png",
+            "email": "contact@digitalallies.net",
+            "telephone": "928-228-5769",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Kingman",
+                "addressRegion": "AZ",
+                "addressCountry": "US"
+            },
+            "sameAs": [
+                "https://www.facebook.com/digitalallies",
+                "https://www.linkedin.com/company/digitalallies"
+            ],
+            "description": "Professional web development and digital solutions for businesses in Kingman, AZ and surrounding areas."
         },
-        "url": "https://digitalallies.net",
-        "description": "Professional web development and digital solutions for businesses in Kingman, AZ and surrounding areas."
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Web Design and Development",
+            "provider": {
+                "@type": "Organization",
+                "name": "Digital Allies"
+            },
+            "areaServed": {
+                "@type": "City",
+                "name": "Kingman"
+            },
+            "description": "Custom, accessible, and bilingual website design and development services."
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Digital Allies",
+            "url": "https://digitalallies.net",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://digitalallies.net/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    ]
     </script>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -171,20 +246,30 @@
                         </div>
                     </div>
 
-                    <div class="fade-in-delay-1 hidden lg:flex justify-center items-center">
-                        <svg class="w-full max-w-md" viewBox="0 0 400 300" fill="none">
-                            <rect x="50" y="50" width="300" height="200" rx="20" fill="#FADEEB" />
+                    <!-- Animated Hero Graphic -->
+                    <div class="fade-in-delay-1 hidden lg:flex justify-center items-center animate-float">
+                        <svg class="w-full max-w-md drop-shadow-xl" viewBox="0 0 400 300" fill="none">
+                            <!-- Background Card -->
+                            <rect x="50" y="50" width="300" height="200" rx="20" fill="#FADEEB" class="shadow-lg" />
+                            
+                            <!-- Header Bar -->
                             <rect x="70" y="70" width="260" height="20" rx="10" fill="#2563EB" />
-                            <rect x="70" y="110" width="180" height="15" rx="7" fill="#D6E2FF" />
-                            <rect x="70" y="135" width="220" height="15" rx="7" fill="#D6E2FF" />
-                            <rect x="70" y="160" width="160" height="15" rx="7" fill="#D6E2FF" />
-                            <circle cx="280" cy="180" r="30" fill="#059669" />
-                            <path d="M270 180 L278 188 L290 172" stroke="white" stroke-width="3" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                            
+                            <!-- Loading Bars (Animated) -->
+                            <rect x="70" y="110" height="15" rx="7" fill="#D6E2FF" class="animate-bar-1" width="180" />
+                            <rect x="70" y="135" height="15" rx="7" fill="#D6E2FF" class="animate-bar-2" width="220" />
+                            <rect x="70" y="160" height="15" rx="7" fill="#D6E2FF" class="animate-bar-3" width="160" />
+                            
+                            <!-- Success Checkmark (Pop In Animation) -->
+                            <g class="animate-pop">
+                                <circle cx="280" cy="180" r="30" fill="#059669" class="shadow-md" />
+                                <path d="M270 180 L278 188 L290 172" stroke="white" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
                         </svg>
                     </div>
                 </div>
-
+            </div>
         </section>
 
         <!-- Services Section -->
@@ -535,85 +620,172 @@
                         See how we translate strategy into measurable outcomes for small businesses like yours.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <article class="card p-8 flex flex-col justify-between">
+                <!-- Changed to 2 columns on medium/large to accommodate 4 items nicely -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- E17 Live-In Cooperative (New from Request) -->
+                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-success-green bg-success-green bg-opacity-30 rounded-full">Local
-                                Retail</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Desert Bloom Bakery"
-                                data-es="Panadería Desert Bloom">Desert Bloom Bakery</h3>
+                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-success-green bg-success-green bg-opacity-30 rounded-full">Community
+                                Portal</span>
+                            <h3 class="text-2xl font-bold text-gray-dark" data-en="E17 Live-In Cooperative"
+                                data-es="Cooperativa E17">E17 Live-In Cooperative</h3>
                             <p class="text-gray-dark font-secondary"
-                                data-en="Migrated from DIY builders to a conversion-optimized storefront with bilingual content and curbside pickup flows."
-                                data-es="Migramos de constructores DIY a una tienda optimizada para la conversión con contenido bilingüe y flujos de recogida en la acera.">
-                                Migrated from DIY builders to a conversion-optimized storefront with bilingual content
-                                and curbside pickup flows.</p>
+                                data-en="Streamlined backend logistics and enhanced communication through a custom member intranet with automated systems."
+                                data-es="Logística de backend optimizada y comunicación mejorada a través de una intranet personalizada para miembros con sistemas automatizados.">
+                                Streamlined backend logistics and enhanced communication through a custom member intranet with automated systems.</p>
+                            <a href="/case-study-e17" class="text-primary-blue font-semibold hover:underline inline-block mt-2" data-en="Read Case Study →" data-es="Leer Estudio de Caso →">Read Case Study →</a>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
-                                <dt class="text-sm text-gray-dark">Online orders in 90 days</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">+182%</dd>
+                                <dt class="text-sm text-gray-dark">Admin Time Saved</dt>
+                                <dd class="text-3xl font-bold text-primary-blue">-75%</dd>
                             </div>
                             <div>
-                                <dt class="text-sm text-gray-dark">Average order value</dt>
-                                <dd class="text-3xl font-bold text-success-green">+36%</dd>
+                                <dt class="text-sm text-gray-dark">Event Participation</dt>
+                                <dd class="text-3xl font-bold text-success-green">+90%</dd>
                             </div>
                         </dl>
                     </article>
 
-                    <article class="card p-8 flex flex-col justify-between">
+                    <!-- Sasha Esposito (Derived from Client Reviews) -->
+                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-30 rounded-full">Professional
-                                Services</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Summit Legal Group"
-                                data-es="Summit Legal Group">Summit Legal Group</h3>
+                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-indigo-brand bg-indigo-100 rounded-full">Healthcare
+                                & Branding</span>
+                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Sasha Esposito Therapy"
+                                data-es="Terapia Sasha Esposito">Sasha Esposito Therapy</h3>
                             <p class="text-gray-dark font-secondary"
-                                data-en="Rebuilt their brand system, added scheduling automation, and launched an SEO plan targeting regional keywords."
-                                data-es="Reconstruimos su sistema de marca, añadimos automatización de agendas y lanzamos un plan SEO con palabras clave regionales.">
-                                Rebuilt their brand system, added scheduling automation, and launched an SEO plan
-                                targeting regional keywords.</p>
+                                data-en="Crafted a unique brand identity and digital platform that reflects the personal connection and focus of the practice."
+                                data-es="Creamos una identidad de marca única y una plataforma digital que refleja la conexión personal y el enfoque de la práctica.">
+                                Crafted a unique brand identity and digital platform that reflects the personal connection and focus of the practice.</p>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
-                                <dt class="text-sm text-gray-dark">Qualified leads</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">+124%</dd>
+                                <dt class="text-sm text-gray-dark">Client Connection</dt>
+                                <dd class="text-3xl font-bold text-primary-blue">+40%</dd>
                             </div>
                             <div>
-                                <dt class="text-sm text-gray-dark">Discovery calls booked</dt>
-                                <dd class="text-3xl font-bold text-success-green">3.2×</dd>
+                                <dt class="text-sm text-gray-dark">Brand Clarity</dt>
+                                <dd class="text-3xl font-bold text-success-green">2x</dd>
                             </div>
                         </dl>
                     </article>
 
-                    <article class="card p-8 flex flex-col justify-between">
+                    <!-- Victoria Buckholz (Derived from Client Reviews) -->
+                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text=var(--purple) bg=var(--purple-light) rounded-full">Non-profit</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Mohave Youth Collective"
-                                data-es="Colectivo Juvenil de Mohave">Mohave Youth Collective</h3>
+                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-30 rounded-full">Non-Profit Strategy</span>
+                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Journey to the Center of Hope"
+                                data-es="Viaje al Centro de la Esperanza">Journey to the Center of Hope</h3>
                             <p class="text-gray-dark font-secondary"
-                                data-en="Introduced donation funnels, improved accessibility, and trained volunteers on content updates."
-                                data-es="Introdujimos embudos de donación, mejoramos la accesibilidad y capacitamos a voluntarios en actualizaciones de contenido.">
-                                Introduced donation funnels, improved accessibility, and trained volunteers on content
-                                updates.</p>
+                                data-en="Developed a complex digital strategy to enhance outreach and ensure an impactful online presence for a growing NPO."
+                                data-es="Desarrollamos una estrategia digital compleja para mejorar el alcance y asegurar una presencia en línea impactante para una ONG en crecimiento.">
+                                Developed a complex digital strategy to enhance outreach and ensure an impactful online presence for a growing NPO.</p>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
-                                <dt class="text-sm text-gray-dark">Donations per month</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">+78%</dd>
+                                <dt class="text-sm text-gray-dark">Outreach Impact</dt>
+                                <dd class="text-3xl font-bold text-primary-blue">+60%</dd>
                             </div>
                             <div>
-                                <dt class="text-sm text-gray-dark">Volunteer sign-ups</dt>
-                                <dd class="text-3xl font-bold text-success-green">+94%</dd>
+                                <dt class="text-sm text-gray-dark">Volunteer Engagement</dt>
+                                <dd class="text-3xl font-bold text-success-green">3x</dd>
                             </div>
                         </dl>
                     </article>
+
+                    <!-- Tao Wei (Derived from Client Reviews) -->
+                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+                        <div class="space-y-4">
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-gray-medium bg-gray-200 rounded-full">Design Consulting</span>
+                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Tao Wei Designs"
+                                data-es="Diseños Tao Wei">Tao Wei Designs</h3>
+                            <p class="text-gray-dark font-secondary"
+                                data-en="Strategic collaboration and guidance to navigate industry complexities and establish a successful design business foundation."
+                                data-es="Colaboración estratégica y orientación para navegar las complejidades de la industria y establecer una base exitosa para el negocio de diseño.">
+                                Strategic collaboration and guidance to navigate industry complexities and establish a successful design business foundation.</p>
+                        </div>
+                        <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
+                            <div>
+                                <dt class="text-sm text-gray-dark">Project Efficiency</dt>
+                                <dd class="text-3xl font-bold text-primary-blue">+50%</dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm text-gray-dark">Strategy Alignment</dt>
+                                <dd class="text-3xl font-bold text-success-green">100%</dd>
+                            </div>
+                        </dl>
+                    </article>
+
                 </div>
 
                 <div class="mt-12 text-center">
                     <a href="/contact" class="btn btn--secondary text-lg px-8 py-4" data-en="Plan Your Win"
                         data-es="Planifica Tu Victoria">Plan Your Win</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Feed Preview (New Section) -->
+        <section class="py-20 bg-white" aria-labelledby="blog-preview-heading">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16 fade-in">
+                    <h2 id="blog-preview-heading" class="text-4xl font-bold text-gray-dark mb-4"
+                        data-en="Latest Insights" data-es="Últimas Noticias">Latest Insights</h2>
+                    <p class="text-xl text-gray-dark font-secondary max-w-3xl mx-auto"
+                        data-en="Tips, trends, and resources to help your business grow online."
+                        data-es="Consejos, tendencias y recursos para ayudar a que tu negocio crezca en línea.">
+                        Tips, trends, and resources to help your business grow online.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="text-xs font-semibold text-primary-blue bg-pale-blue px-2 py-1 rounded">Accessibility</span>
+                            <span class="text-xs text-gray-medium ml-2">March 15, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-dark mb-2">Why Web Accessibility Matters for Small Business</h3>
+                        <p class="text-gray-dark font-secondary mb-4 flex-grow">
+                            Ensuring your website is accessible isn't just about compliance—it's about reaching your entire community and improving SEO.
+                        </p>
+                        <a href="/blog/accessibility-matters" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="text-xs font-semibold text-success-green bg-green-100 px-2 py-1 rounded">SEO</span>
+                            <span class="text-xs text-gray-medium ml-2">February 28, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-dark mb-2">Unlocking Local SEO Potential</h3>
+                        <p class="text-gray-dark font-secondary mb-4 flex-grow">
+                            Learn the key strategies to get your business found by customers right in your neighborhood using Google My Business and local keywords.
+                        </p>
+                        <a href="/blog/local-seo-guide" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="text-xs font-semibold text-indigo-brand bg-indigo-100 px-2 py-1 rounded">Branding</span>
+                            <span class="text-xs text-gray-medium ml-2">February 10, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-dark mb-2">Building a Brand That Connects</h3>
+                        <p class="text-gray-dark font-secondary mb-4 flex-grow">
+                            Your brand is more than just a logo. Discover how to create a cohesive identity that resonates with your target audience.
+                        </p>
+                        <a href="/blog/branding-basics" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
+                    </article>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="/blog" class="btn btn--secondary text-lg px-8 py-4" data-en="View All Posts" data-es="Ver Todas las Publicaciones">View All Posts</a>
                 </div>
             </div>
         </section>
