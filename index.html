@@ -247,26 +247,40 @@
                     </div>
 
                     <!-- Animated Hero Graphic -->
-                    <div class="fade-in-delay-1 hidden lg:flex justify-center items-center animate-float">
-                        <svg class="w-full max-w-md drop-shadow-xl" viewBox="0 0 400 300" fill="none">
-                            <!-- Background Card -->
-                            <rect x="50" y="50" width="300" height="200" rx="20" fill="#FADEEB" class="shadow-lg" />
-                            
-                            <!-- Header Bar -->
-                            <rect x="70" y="70" width="260" height="20" rx="10" fill="#2563EB" />
-                            
-                            <!-- Loading Bars (Animated) -->
-                            <rect x="70" y="110" height="15" rx="7" fill="#D6E2FF" class="animate-bar-1" width="180" />
-                            <rect x="70" y="135" height="15" rx="7" fill="#D6E2FF" class="animate-bar-2" width="220" />
-                            <rect x="70" y="160" height="15" rx="7" fill="#D6E2FF" class="animate-bar-3" width="160" />
-                            
-                            <!-- Success Checkmark (Pop In Animation) -->
-                            <g class="animate-pop">
-                                <circle cx="280" cy="180" r="30" fill="#059669" class="shadow-md" />
-                                <path d="M270 180 L278 188 L290 172" stroke="white" stroke-width="3" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </g>
-                        </svg>
+                    <div class="fade-in-delay-1 hidden lg:flex justify-center items-center relative">
+                        <!-- Contrast Grid Background -->
+                        <div class="absolute inset-0 -z-10 transform scale-125 opacity-25">
+                            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2563EB" stroke-width="2"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#hero-grid)" />
+                            </svg>
+                        </div>
+                        
+                        <div class="animate-float">
+                            <svg class="w-full max-w-md drop-shadow-xl" viewBox="0 0 400 300" fill="none">
+                                <!-- Background Card -->
+                                <rect x="50" y="50" width="300" height="200" rx="20" fill="#FADEEB" class="shadow-lg" />
+                                
+                                <!-- Header Bar -->
+                                <rect x="70" y="70" width="260" height="20" rx="10" fill="#2563EB" />
+                                
+                                <!-- Loading Bars (Animated) -->
+                                <rect x="70" y="110" height="15" rx="7" fill="#D6E2FF" class="animate-bar-1" width="180" />
+                                <rect x="70" y="135" height="15" rx="7" fill="#D6E2FF" class="animate-bar-2" width="220" />
+                                <rect x="70" y="160" height="15" rx="7" fill="#D6E2FF" class="animate-bar-3" width="160" />
+                                
+                                <!-- Success Checkmark (Pop In Animation) -->
+                                <g class="animate-pop">
+                                    <circle cx="280" cy="180" r="30" fill="#059669" class="shadow-md" />
+                                    <path d="M270 180 L278 188 L290 172" stroke="white" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
