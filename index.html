@@ -216,12 +216,13 @@
         <section class="gradient-bg section--gradient py-20 lg:py-32 relative overflow-hidden" aria-labelledby="hero-heading">
             
             <!-- Global Hero Grid Background -->
-            <div class="absolute inset-0 z-0 opacity-40">
+            <!-- Increased Opacity to 0.8 (less transparent) and darkened stroke -->
+            <div class="absolute inset-0 z-0 opacity-80">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <!-- Darker grey stroke for better visibility -->
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1"/>
+                            <!-- Darkened stroke color to slate-500 (#64748b) for better visibility -->
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748b" stroke-width="1"/>
                         </pattern>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#hero-grid)" />
@@ -264,8 +265,8 @@
                     <!-- Animated Hero Graphic -->
                     <div class="fade-in-delay-1 hidden lg:flex justify-center items-center relative">
                         <div class="animate-float">
-                            <!-- Increased max-width to max-w-xl for a bigger graphic -->
-                            <svg class="w-full max-w-xl drop-shadow-xl" viewBox="0 0 400 300" fill="none">
+                            <!-- Added Dark Blue Custom Shadow -->
+                            <svg class="w-full max-w-xl drop-shadow-[0_25px_25px_rgba(30,58,138,0.45)]" viewBox="0 0 400 300" fill="none">
                                 <!-- Background Card -->
                                 <rect x="50" y="50" width="300" height="200" rx="20" fill="#FADEEB" class="shadow-lg" />
                                 
@@ -622,188 +623,6 @@
                             </svg>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Case Studies -->
-        <section class="py-20 bg-pale-blue bg-opacity-40" aria-labelledby="case-studies-heading">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-16 fade-in">
-                    <h2 id="case-studies-heading" class="text-4xl font-bold text-gray-dark mb-4"
-                        data-en="Recent Client Wins" data-es="Victorias Recientes de Clientes">Recent Client Wins</h2>
-                    <p class="text-xl text-gray-dark font-secondary max-w-3xl mx-auto"
-                        data-en="See how we translate strategy into measurable outcomes for small businesses like yours."
-                        data-es="Descubre cómo convertimos la estrategia en resultados medibles para pequeñas empresas como la tuya.">
-                        See how we translate strategy into measurable outcomes for small businesses like yours.</p>
-                </div>
-
-                <!-- Changed to 2 columns on medium/large to accommodate 4 items nicely -->
-                <div class="grid md:grid-cols-2 gap-8">
-                    
-                    <!-- E17 Live-In Cooperative (New from Request) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-                        <div class="space-y-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-success-green bg-success-green bg-opacity-30 rounded-full">Community
-                                Portal</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="E17 Live-In Cooperative"
-                                data-es="Cooperativa E17">E17 Live-In Cooperative</h3>
-                            <p class="text-gray-dark font-secondary"
-                                data-en="Streamlined backend logistics and enhanced communication through a custom member intranet with automated systems."
-                                data-es="Logística de backend optimizada y comunicación mejorada a través de una intranet personalizada para miembros con sistemas automatizados.">
-                                Streamlined backend logistics and enhanced communication through a custom member intranet with automated systems.</p>
-                            <a href="/case-study-e17" class="text-primary-blue font-semibold hover:underline inline-block mt-2" data-en="Read Case Study →" data-es="Leer Estudio de Caso →">Read Case Study →</a>
-                        </div>
-                        <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
-                            <div>
-                                <dt class="text-sm text-gray-dark">Admin Time Saved</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">-75%</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm text-gray-dark">Event Participation</dt>
-                                <dd class="text-3xl font-bold text-success-green">+90%</dd>
-                            </div>
-                        </dl>
-                    </article>
-
-                    <!-- Sasha Esposito (Derived from Client Reviews) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-                        <div class="space-y-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-indigo-brand bg-indigo-100 rounded-full">Healthcare
-                                & Branding</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Sasha Esposito Therapy"
-                                data-es="Terapia Sasha Esposito">Sasha Esposito Therapy</h3>
-                            <p class="text-gray-dark font-secondary"
-                                data-en="Crafted a unique brand identity and digital platform that reflects the personal connection and focus of the practice."
-                                data-es="Creamos una identidad de marca única y una plataforma digital que refleja la conexión personal y el enfoque de la práctica.">
-                                Crafted a unique brand identity and digital platform that reflects the personal connection and focus of the practice.</p>
-                        </div>
-                        <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
-                            <div>
-                                <dt class="text-sm text-gray-dark">Client Connection</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">+40%</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm text-gray-dark">Brand Clarity</dt>
-                                <dd class="text-3xl font-bold text-success-green">2x</dd>
-                            </div>
-                        </dl>
-                    </article>
-
-                    <!-- Victoria Buckholz (Derived from Client Reviews) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-                        <div class="space-y-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-30 rounded-full">Non-Profit Strategy</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Journey to the Center of Hope"
-                                data-es="Viaje al Centro de la Esperanza">Journey to the Center of Hope</h3>
-                            <p class="text-gray-dark font-secondary"
-                                data-en="Developed a complex digital strategy to enhance outreach and ensure an impactful online presence for a growing NPO."
-                                data-es="Desarrollamos una estrategia digital compleja para mejorar el alcance y asegurar una presencia en línea impactante para una ONG en crecimiento.">
-                                Developed a complex digital strategy to enhance outreach and ensure an impactful online presence for a growing NPO.</p>
-                        </div>
-                        <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
-                            <div>
-                                <dt class="text-sm text-gray-dark">Outreach Impact</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">+60%</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm text-gray-dark">Volunteer Engagement</dt>
-                                <dd class="text-3xl font-bold text-success-green">3x</dd>
-                            </div>
-                        </dl>
-                    </article>
-
-                    <!-- Tao Wei (Derived from Client Reviews) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-                        <div class="space-y-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-gray-medium bg-gray-200 rounded-full">Design Consulting</span>
-                            <h3 class="text-2xl font-bold text-gray-dark" data-en="Tao Wei Designs"
-                                data-es="Diseños Tao Wei">Tao Wei Designs</h3>
-                            <p class="text-gray-dark font-secondary"
-                                data-en="Strategic collaboration and guidance to navigate industry complexities and establish a successful design business foundation."
-                                data-es="Colaboración estratégica y orientación para navegar las complejidades de la industria y establecer una base exitosa para el negocio de diseño.">
-                                Strategic collaboration and guidance to navigate industry complexities and establish a successful design business foundation.</p>
-                        </div>
-                        <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
-                            <div>
-                                <dt class="text-sm text-gray-dark">Project Efficiency</dt>
-                                <dd class="text-3xl font-bold text-primary-blue">+50%</dd>
-                            </div>
-                            <div>
-                                <dt class="text-sm text-gray-dark">Strategy Alignment</dt>
-                                <dd class="text-3xl font-bold text-success-green">100%</dd>
-                            </div>
-                        </dl>
-                    </article>
-
-                </div>
-
-                <div class="mt-12 text-center">
-                    <a href="/contact" class="btn btn--secondary text-lg px-8 py-4" data-en="Plan Your Win"
-                        data-es="Planifica Tu Victoria">Plan Your Win</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Feed Preview (New Section) -->
-        <section class="py-20 bg-white" aria-labelledby="blog-preview-heading">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-16 fade-in">
-                    <h2 id="blog-preview-heading" class="text-4xl font-bold text-gray-dark mb-4"
-                        data-en="Latest Insights" data-es="Últimas Noticias">Latest Insights</h2>
-                    <p class="text-xl text-gray-dark font-secondary max-w-3xl mx-auto"
-                        data-en="Tips, trends, and resources to help your business grow online."
-                        data-es="Consejos, tendencias y recursos para ayudar a que tu negocio crezca en línea.">
-                        Tips, trends, and resources to help your business grow online.</p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Blog Post 1 -->
-                    <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
-                        <div class="mb-4">
-                            <span class="text-xs font-semibold text-primary-blue bg-pale-blue px-2 py-1 rounded">Accessibility</span>
-                            <span class="text-xs text-gray-medium ml-2">March 15, 2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-dark mb-2">Why Web Accessibility Matters for Small Business</h3>
-                        <p class="text-gray-dark font-secondary mb-4 flex-grow">
-                            Ensuring your website is accessible isn't just about compliance—it's about reaching your entire community and improving SEO.
-                        </p>
-                        <a href="/blog/accessibility-matters" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
-                    </article>
-
-                    <!-- Blog Post 2 -->
-                    <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
-                        <div class="mb-4">
-                            <span class="text-xs font-semibold text-success-green bg-green-100 px-2 py-1 rounded">SEO</span>
-                            <span class="text-xs text-gray-medium ml-2">February 28, 2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-dark mb-2">Unlocking Local SEO Potential</h3>
-                        <p class="text-gray-dark font-secondary mb-4 flex-grow">
-                            Learn the key strategies to get your business found by customers right in your neighborhood using Google My Business and local keywords.
-                        </p>
-                        <a href="/blog/local-seo-guide" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
-                    </article>
-
-                    <!-- Blog Post 3 -->
-                    <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
-                        <div class="mb-4">
-                            <span class="text-xs font-semibold text-indigo-brand bg-indigo-100 px-2 py-1 rounded">Branding</span>
-                            <span class="text-xs text-gray-medium ml-2">February 10, 2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-dark mb-2">Building a Brand That Connects</h3>
-                        <p class="text-gray-dark font-secondary mb-4 flex-grow">
-                            Your brand is more than just a logo. Discover how to create a cohesive identity that resonates with your target audience.
-                        </p>
-                        <a href="/blog/branding-basics" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
-                    </article>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <a href="/blog" class="btn btn--secondary text-lg px-8 py-4" data-en="View All Posts" data-es="Ver Todas las Publicaciones">View All Posts</a>
                 </div>
             </div>
         </section>
