@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive ADA Accessibility Guide - Digital Allies</title>
+    <meta name="description"
+        content="Comprehensive ADA accessibility guide from Digital Allies in Kingman, AZ. Learn to create accessible websites and comply with accessibility standards.">
+
+    <!-- Vite Entry Point -->
+    <!-- Accessibility Guide Logic -->
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96-FYmMx2re.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-t5AYRlCZ.svg" />
+    <link rel="shortcut icon" href="/assets/favicon-Z6XAHVfh.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-B1KXCsB_.png" />
+    <meta name="apple-mobile-web-app-title" content="DA" />
+    <link rel="manifest" href="/assets/site-CJjUc_p_.webmanifest" />
+    <link rel="stylesheet" href="https://use.typekit.net/zzm6lbu.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Digital Allies",
+        "email": "contact@digitalallies.net",
+        "telephone": "928-228-5769",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kingman",
+            "addressRegion": "AZ",
+            "addressCountry": "US"
+        },
+        "url": "https://digitalallies.net",
+        "description": "Professional web development and digital solutions for businesses in Kingman, AZ and surrounding areas."
+    }
+    </script>
+  <script type="module" crossorigin src="/assets/accessibility-guide-CjyfPqZb.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-CxpxTHpI.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-By4P10_j.css">
+  <link rel="stylesheet" crossorigin href="/assets/accessibility-guide-T-9U7d5y.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HVGNEKE8R"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HVGNEKE8R');
+</script>
+
+<body class="font-primary bg-white text-gray-dark">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Language Toggle -->
+    <div class="bg-pale-blue py-2">
+        <div class="max-w-7xl mx-auto px-4 flex justify-end">
+            <div class="flex items-center space-x-2">
+                <button onclick="toggleLanguage('en')" id="lang-en"
+                    class="px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm">EN</button>
+                <button onclick="toggleLanguage('es')" id="lang-es"
+                    class="px-3 py-1 text-sm font-medium text-gray-dark hover:text-primary-blue transition-colors">ES</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header (Custom for this tool) -->
+    <header class="container mt-8">
+        <div class="header-content text-center">
+            <h1 data-en="Accessibility Guide" data-es="Guía de Accesibilidad">Accessibility Guide</h1>
+            <h2 class="subtitle" data-en="Digital Accessibility best practices and resources"
+                data-es="Mejores prácticas y recursos de accesibilidad digital">Digital Accessibility best practices and
+                resources</h2>
+
+            <nav class="nav-tabs justify-center" role="tablist">
+                <button class="tab-button active" onclick="showTab('overview')" role="tab" aria-selected="true"
+                    data-en="Overview" data-es="Resumen">Overview</button>
+                <button class="tab-button" onclick="showTab('guidelines')" role="tab" data-en="Guidelines"
+                    data-es="Pautas">Guidelines</button>
+                <button class="tab-button" onclick="showTab('testing')" role="tab" data-en="Testing Tools"
+                    data-es="Herramientas de Prueba">Testing Tools</button>
+                <button class="tab-button" onclick="showTab('examples')" role="tab" data-en="Examples"
+                    data-es="Ejemplos">Examples</button>
+                <button class="tab-button" onclick="showTab('resources')" role="tab" data-en="Resources"
+                    data-es="Recursos">Resources</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="container">
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active" role="tabpanel">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Understanding ADA Compliance"
+                        data-es="Entendiendo el Cumplimiento ADA">Understanding ADA Compliance</h2>
+                    <p class="section-description"
+                        data-en="The Americans with Disabilities Act (ADA) ensures equal access to digital content. Learn the fundamentals and why it matters for your business."
+                        data-es="La Ley de Estadounidenses con Discapacidades (ADA) garantiza el acceso igualitario al contenido digital. Aprende los fundamentos y por qué es importante para tu negocio.">
+                        The Americans with Disabilities Act (ADA) ensures equal access to digital content. Learn the
+                        fundamentals and why it matters for your business.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">⚖️</div>
+                        <h3 class="card-title" data-en="Legal Requirements" data-es="Requisitos Legales">Legal
+                            Requirements</h3>
+                        <p class="card-description"
+                            data-en="ADA Title III requires places of public accommodation to be accessible. This includes websites for businesses serving the public."
+                            data-es="El Título III de ADA requiere que los lugares de acomodación pública sean accesibles. Esto incluye sitios web para negocios que sirven al público.">
+                            ADA Title III requires places of public accommodation to be accessible. This includes
+                            websites for businesses serving the public.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">✓</span><span
+                                    data-en="Applies to businesses open to the public"
+                                    data-es="Se aplica a negocios abiertos al público">Applies to businesses open to the
+                                    public</span></li>
+                            <li><span class="checklist-icon">✓</span><span
+                                    data-en="Includes digital properties and websites"
+                                    data-es="Incluye propiedades digitales y sitios web">Includes digital properties and
+                                    websites</span></li>
+                            <li><span class="checklist-icon">✓</span><span data-en="WCAG 2.1 Level AA is the standard"
+                                    data-es="WCAG 2.1 Nivel AA es el estándar">WCAG 2.1 Level AA is the standard</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">👥</div>
+                        <h3 class="card-title" data-en="Who It Helps" data-es="A Quién Ayuda">Who It Helps</h3>
+                        <p class="card-description"
+                            data-en="Accessibility benefits everyone, not just people with disabilities. It creates better user experiences across the board."
+                            data-es="La accesibilidad beneficia a todos, no solo a personas con discapacidades. Crea mejores experiencias de usuario en general.">
+                            Accessibility benefits everyone, not just people with disabilities. It creates better user
+                            experiences across the board.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">👁️</span><span
+                                    data-en="Visual impairments (blind, low vision)"
+                                    data-es="Impedimentos visuales (ciego, baja visión)">Visual impairments (blind, low
+                                    vision)</span></li>
+                            <li><span class="checklist-icon">👂</span><span data-en="Hearing impairments"
+                                    data-es="Impedimentos auditivos">Hearing impairments</span></li>
+                            <li><span class="checklist-icon">🤲</span><span data-en="Motor disabilities"
+                                    data-es="Discapacidades motoras">Motor disabilities</span></li>
+                            <li><span class="checklist-icon">🧠</span><span data-en="Cognitive disabilities"
+                                    data-es="Discapacidades cognitivas">Cognitive disabilities</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">💼</div>
+                        <h3 class="card-title" data-en="Business Benefits" data-es="Beneficios Comerciales">Business
+                            Benefits</h3>
+                        <p class="card-description"
+                            data-en="Beyond compliance, accessibility improves SEO, user experience, and opens your business to a larger audience."
+                            data-es="Más allá del cumplimiento, la accesibilidad mejora el SEO, la experiencia del usuario y abre tu negocio a una audiencia más amplia.">
+                            Beyond compliance, accessibility improves SEO, user experience, and opens your business to a
+                            larger audience.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">📈</span><span data-en="Better SEO rankings"
+                                    data-es="Mejores rankings de SEO">Better SEO rankings</span></li>
+                            <li><span class="checklist-icon">🌟</span><span data-en="Improved user experience"
+                                    data-es="Experiencia de usuario mejorada">Improved user experience</span></li>
+                            <li><span class="checklist-icon">🎯</span><span data-en="Larger target audience"
+                                    data-es="Audiencia objetivo más grande">Larger target audience</span></li>
+                            <li><span class="checklist-icon">🛡️</span><span data-en="Reduced legal risk"
+                                    data-es="Riesgo legal reducido">Reduced legal risk</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guidelines Tab -->
+            <div id="guidelines" class="tab-content" role="tabpanel">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="WCAG 2.1 Guidelines" data-es="Pautas WCAG 2.1">WCAG 2.1
+                        Guidelines</h2>
+                    <p class="section-description"
+                        data-en="The Web Content Accessibility Guidelines provide the framework for accessible web design. Follow these principles to ensure compliance."
+                        data-es="Las Pautas de Accesibilidad del Contenido Web proporcionan el marco para el diseño web accesible. Sigue estos principios para asegurar el cumplimiento.">
+                        The Web Content Accessibility Guidelines provide the framework for accessible web design. Follow
+                        these principles to ensure compliance.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">👁️</div>
+                        <h3 class="card-title" data-en="1. Perceivable" data-es="1. Perceptible">1. Perceivable</h3>
+                        <p class="card-description"
+                            data-en="Information must be presentable in ways users can perceive, regardless of their abilities."
+                            data-es="La información debe ser presentable de maneras que los usuarios puedan percibir, sin importar sus habilidades.">
+                            Information must be presentable in ways users can perceive, regardless of their abilities.
+                        </p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">🖼️</span><span data-en="Provide alt text for images"
+                                    data-es="Proporcionar texto alt para imágenes">Provide alt text for images</span>
+                            </li>
+                            <li><span class="checklist-icon">📝</span><span data-en="Use proper heading structure"
+                                    data-es="Usar estructura de encabezados apropiada">Use proper heading
+                                    structure</span></li>
+                            <li><span class="checklist-icon">🎨</span><span data-en="Ensure sufficient color contrast"
+                                    data-es="Asegurar contraste de color suficiente">Ensure sufficient color
+                                    contrast</span></li>
+                            <li><span class="checklist-icon">📱</span><span
+                                    data-en="Make content adaptable to different presentations"
+                                    data-es="Hacer el contenido adaptable a diferentes presentaciones">Make content
+                                    adaptable to different presentations</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">⌨️</div>
+                        <h3 class="card-title" data-en="2. Operable" data-es="2. Operable">2. Operable</h3>
+                        <p class="card-description"
+                            data-en="User interface components must be operable by everyone, including keyboard-only users."
+                            data-es="Los componentes de la interfaz de usuario deben ser operables por todos, incluyendo usuarios que solo usan teclado.">
+                            User interface components must be operable by everyone, including keyboard-only users.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">⌨️</span><span data-en="Keyboard accessible navigation"
+                                    data-es="Navegación accesible por teclado">Keyboard accessible navigation</span>
+                            </li>
+                            <li><span class="checklist-icon">⏱️</span><span
+                                    data-en="Give users enough time to read content"
+                                    data-es="Dar a los usuarios tiempo suficiente para leer contenido">Give users enough
+                                    time to read content</span></li>
+                            <li><span class="checklist-icon">🚫</span><span data-en="Avoid content that causes seizures"
+                                    data-es="Evitar contenido que cause convulsiones">Avoid content that causes
+                                    seizures</span></li>
+                            <li><span class="checklist-icon">🎯</span><span
+                                    data-en="Help users navigate and find content"
+                                    data-es="Ayudar a los usuarios a navegar y encontrar contenido">Help users navigate
+                                    and find content</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🤔</div>
+                        <h3 class="card-title" data-en="3. Understandable" data-es="3. Comprensible">3. Understandable
+                        </h3>
+                        <p class="card-description"
+                            data-en="Information and operation of the interface must be understandable to all users."
+                            data-es="La información y operación de la interfaz debe ser comprensible para todos los usuarios.">
+                            Information and operation of the interface must be understandable to all users.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">📖</span><span data-en="Use clear, simple language"
+                                    data-es="Usar lenguaje claro y simple">Use clear, simple language</span></li>
+                            <li><span class="checklist-icon">🔄</span><span
+                                    data-en="Make content appear and operate predictably"
+                                    data-es="Hacer que el contenido aparezca y opere de manera predecible">Make content
+                                    appear and operate predictably</span></li>
+                            <li><span class="checklist-icon">❗</span><span data-en="Provide clear error messages"
+                                    data-es="Proporcionar mensajes de error claros">Provide clear error messages</span>
+                            </li>
+                            <li><span class="checklist-icon">🏷️</span><span data-en="Label form fields clearly"
+                                    data-es="Etiquetar campos de formulario claramente">Label form fields clearly</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔧</div>
+                        <h3 class="card-title" data-en="4. Robust" data-es="4. Robusto">4. Robust</h3>
+                        <p class="card-description"
+                            data-en="Content must be robust enough to work with various assistive technologies."
+                            data-es="El contenido debe ser lo suficientemente robusto para funcionar con varias tecnologías de asistencia.">
+                            Content must be robust enough to work with various assistive technologies.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">🏗️</span><span data-en="Use valid, semantic HTML"
+                                    data-es="Usar HTML válido y semántico">Use valid, semantic HTML</span></li>
+                            <li><span class="checklist-icon">🔧</span><span
+                                    data-en="Ensure compatibility with assistive technologies"
+                                    data-es="Asegurar compatibilidad con tecnologías de asistencia">Ensure compatibility
+                                    with assistive technologies</span></li>
+                            <li><span class="checklist-icon">📱</span><span
+                                    data-en="Work across different browsers and devices"
+                                    data-es="Funcionar en diferentes navegadores y dispositivos">Work across different
+                                    browsers and devices</span></li>
+                            <li><span class="checklist-icon">🔄</span><span
+                                    data-en="Maintain accessibility as technology evolves"
+                                    data-es="Mantener accesibilidad mientras la tecnología evoluciona">Maintain
+                                    accessibility as technology evolves</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Tools Tab -->
+            <div id="testing" class="tab-content" role="tabpanel">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Accessibility Testing Tools"
+                        data-es="Herramientas de Prueba de Accesibilidad">Accessibility Testing Tools</h2>
+                    <p class="section-description"
+                        data-en="Use these interactive tools to test and validate the accessibility of your web content."
+                        data-es="Usa estas herramientas interactivas para probar y validar la accesibilidad de tu contenido web.">
+                        Use these interactive tools to test and validate the accessibility of your web content.</p>
+                </div>
+
+                <div class="testing-tool">
+                    <h3 class="demo-title" data-en="Color Contrast Checker" data-es="Verificador de Contraste de Color">
+                        Color Contrast Checker</h3>
+                    <div class="demo-controls">
+                        <input type="color" id="foregroundColor" value="#000000" aria-label="Foreground color">
+                        <input type="color" id="backgroundColor" value="#ffffff" aria-label="Background color">
+                        <button class="demo-button" onclick="checkContrast()" data-en="Check Contrast"
+                            data-es="Verificar Contraste">Check Contrast</button>
+                    </div>
+                    <div id="contrastResults" class="results-container"></div>
+                </div>
+
+                <div class="testing-tool">
+                    <h3 class="demo-title" data-en="Alt Text Analyzer" data-es="Analizador de Texto Alt">Alt Text
+                        Analyzer</h3>
+                    <input type="text" id="altTextInput" class="tool-input"
+                        placeholder="Enter image alt text to analyze..." data-en="Enter image alt text to analyze..."
+                        data-es="Ingresa texto alt de imagen para analizar...">
+                    <button class="demo-button" onclick="analyzeAltText()" data-en="Analyze Alt Text"
+                        data-es="Analizar Texto Alt">Analyze Alt Text</button>
+                    <div id="altTextResults" class="results-container"></div>
+                </div>
+
+                <div class="testing-tool">
+                    <h3 class="demo-title" data-en="Heading Structure Validator"
+                        data-es="Validador de Estructura de Encabezados">Heading Structure Validator</h3>
+                    <textarea id="htmlInput" class="tool-input" rows="8" placeholder="Paste your HTML content here..."
+                        data-en="Paste your HTML content here..." data-es="Pega tu contenido HTML aquí..."></textarea>
+                    <button class="demo-button" onclick="validateHeadings()" data-en="Validate Structure"
+                        data-es="Validar Estructura">Validate Structure</button>
+                    <div id="headingResults" class="results-container"></div>
+                </div>
+            </div>
+
+            <!-- Examples Tab -->
+            <div id="examples" class="tab-content" role="tabpanel">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Interactive Examples" data-es="Ejemplos Interactivos">Interactive
+                        Examples</h2>
+                    <p class="section-description"
+                        data-en="See accessibility principles in action with these interactive demonstrations."
+                        data-es="Ve los principios de accesibilidad en acción con estas demostraciones interactivas.">
+                        See accessibility principles in action with these interactive demonstrations.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3 class="demo-title" data-en="Keyboard Navigation Demo" data-es="Demo de Navegación por Teclado">
+                        Keyboard Navigation Demo</h3>
+                    <p data-en="Use Tab, Shift+Tab, and Enter to navigate through these elements:"
+                        data-es="Usa Tab, Shift+Tab, y Enter para navegar por estos elementos:">Use Tab, Shift+Tab, and
+                        Enter to navigate through these elements:</p>
+                    <div class="demo-controls">
+                        <button class="demo-button" onclick="showMessage('Button 1 activated!')" data-en="Button 1"
+                            data-es="Botón 1">Button 1</button>
+                        <button class="demo-button" onclick="showMessage('Button 2 activated!')" data-en="Button 2"
+                            data-es="Botón 2">Button 2</button>
+                        <input type="text" placeholder="Focus me with Tab"
+                            style="padding: 0.8rem; border: 2px solid var(--border-color); border-radius: 8px;">
+                        <button class="demo-button" onclick="showMessage('Button 3 activated!')" data-en="Button 3"
+                            data-es="Botón 3">Button 3</button>
+                    </div>
+                    <div id="keyboardMessage" class="demo-output"></div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3 class="demo-title" data-en="Screen Reader Simulation"
+                        data-es="Simulación de Lector de Pantalla">Screen Reader Simulation</h3>
+                    <p data-en="Click elements below to see how they would be announced by a screen reader:"
+                        data-es="Haz clic en los elementos de abajo para ver cómo serían anunciados por un lector de pantalla:">
+                        Click elements below to see how they would be announced by a screen reader:</p>
+                    <div class="demo-controls">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect width='100' height='60' fill='%23e2e8f0'/%3E%3Ctext x='50' y='35' text-anchor='middle' fill='%2364748b'%3EImage%3C/text%3E%3C/svg%3E"
+                            alt="A beautiful landscape with mountains and trees"
+                            onclick="announceElement('Image: A beautiful landscape with mountains and trees')"
+                            style="cursor: pointer; border: 2px solid var(--border-color); border-radius: 8px;">
+                        <button class="demo-button" onclick="announceElement('Button: Submit form')" data-en="Submit"
+                            data-es="Enviar">Submit</button>
+                        <a href="#"
+                            onclick="event.preventDefault(); announceElement('Link: Learn more about accessibility')"
+                            style="color: var(--primary-blue); text-decoration:none;" data-en="Learn more"
+                            data-es="Aprende más">Learn more</a>
+                    </div>
+                    <div id="screenReaderOutput" class="demo-output"></div>
+                </div>
+            </div>
+
+            <!-- Resources Tab -->
+            <div id="resources" class="tab-content" role="tabpanel">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Additional Resources" data-es="Recursos Adicionales">Additional
+                        Resources</h2>
+                    <p class="section-description"
+                        data-en="Expand your accessibility knowledge with these curated resources and tools."
+                        data-es="Expande tu conocimiento de accesibilidad con estos recursos y herramientas seleccionados.">
+                        Expand your accessibility knowledge with these curated resources and tools.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">📚</div>
+                        <h3 class="card-title" data-en="Documentation & Guidelines" data-es="Documentación y Pautas">
+                            Documentation & Guidelines</h3>
+                        <p class="card-description"
+                            data-en="Official resources for understanding accessibility requirements."
+                            data-es="Recursos oficiales para entender los requisitos de accesibilidad.">Official
+                            resources for understanding accessibility requirements.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">🔗</span><a href="https://www.w3.org/TR/WCAG21/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="WCAG 2.1 Official Guidelines" data-es="Pautas Oficiales WCAG 2.1">WCAG 2.1
+                                    Official Guidelines</a></li>
+                            <li><span class="checklist-icon">🔗</span><a href="https://www.ada.gov/" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="ADA.gov Official Website" data-es="Sitio Web Oficial ADA.gov">ADA.gov
+                                    Official Website</a></li>
+                            <li><span class="checklist-icon">🔗</span><a href="https://www.section508.gov/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="Section 508 Guidelines" data-es="Pautas Sección 508">Section 508
+                                    Guidelines</a></li>
+                            <li><span class="checklist-icon">🔗</span><a href="https://webaim.org/" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="WebAIM Resources" data-es="Recursos WebAIM">WebAIM Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🛠️</div>
+                        <h3 class="card-title" data-en="Testing Tools" data-es="Herramientas de Prueba">Testing Tools
+                        </h3>
+                        <p class="card-description" data-en="Automated and manual tools to help you test accessibility."
+                            data-es="Herramientas automáticas y manuales para ayudarte a probar la accesibilidad.">
+                            Automated and manual tools to help you test accessibility.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">🔍</span><a href="https://www.deque.com/axe/devtools/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="axe DevTools Browser Extension"
+                                    data-es="Extensión de Navegador axe DevTools">axe DevTools Browser Extension</a>
+                            </li>
+                            <li><span class="checklist-icon">🔍</span><a href="https://wave.webaim.org/" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="WAVE Web Accessibility Evaluator"
+                                    data-es="Evaluador de Accesibilidad Web WAVE">WAVE Web Accessibility Evaluator</a>
+                            </li>
+                            <li><span class="checklist-icon">🔍</span><a
+                                    href="https://developers.google.com/web/tools/lighthouse" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="Lighthouse Accessibility Audit"
+                                    data-es="Auditoría de Accesibilidad Lighthouse">Lighthouse Accessibility Audit</a>
+                            </li>
+                            <li><span class="checklist-icon">🔍</span><a href="https://colororacle.org/" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="Color Oracle Color Blindness Simulator"
+                                    data-es="Simulador de Daltonismo Color Oracle">Color Oracle Color Blindness
+                                    Simulator</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎓</div>
+                        <h3 class="card-title" data-en="Learning Resources" data-es="Recursos de Aprendizaje">Learning
+                            Resources</h3>
+                        <p class="card-description"
+                            data-en="Courses, tutorials, and training materials for accessibility."
+                            data-es="Cursos, tutoriales y materiales de entrenamiento para accesibilidad.">Courses,
+                            tutorials, and training materials for accessibility.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">📖</span><a href="https://www.a11yproject.com/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);" data-en="A11y Project"
+                                    data-es="Proyecto A11y">A11y Project</a></li>
+                            <li><span class="checklist-icon">📖</span><a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/Accessibility" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="MDN Accessibility Guide" data-es="Guía de Accesibilidad MDN">MDN
+                                    Accessibility Guide</a></li>
+                            <li><span class="checklist-icon">📖</span><a href="https://dequeuniversity.com/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);" data-en="Deque University"
+                                    data-es="Universidad Deque">Deque University</a></li>
+                            <li><span class="checklist-icon">📖</span><a href="https://www.w3.org/WAI/ARIA/apg/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="ARIA Authoring Practices Guide"
+                                    data-es="Guía de Prácticas de Autoría ARIA">ARIA Authoring Practices Guide</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">👨‍⚖️</div>
+                        <h3 class="card-title" data-en="Legal & Compliance" data-es="Legal y Cumplimiento">Legal &
+                            Compliance</h3>
+                        <p class="card-description" data-en="Understanding the legal landscape of web accessibility."
+                            data-es="Entendiendo el panorama legal de la accesibilidad web.">Understanding the legal
+                            landscape of web accessibility.</p>
+                        <ul class="checklist">
+                            <li><span class="checklist-icon">⚖️</span><a href="https://www.adatitleiii.com/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="ADA Title III Info" data-es="Información Título III ADA">ADA Title III
+                                    Info</a></li>
+                            <li><span class="checklist-icon">⚖️</span><a
+                                    href="https://www.ada.gov/resources/web-guidance/" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="DOJ Web Accessibility Guidance" data-es="Guía de Accesibilidad Web DOJ">DOJ
+                                    Web Accessibility Guidance</a></li>
+                            <li><span class="checklist-icon">⚖️</span><a href="https://www.w3.org/WAI/policies/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="Web Accessibility Laws & Policies"
+                                    data-es="Leyes y Políticas de Accesibilidad Web">Web Accessibility Laws &
+                                    Policies</a></li>
+                            <li><span class="checklist-icon">⚖️</span><a
+                                    href="https://www.w3.org/WAI/standards-guidelines/" target="_blank"
+                                    rel="noopener noreferrer" style="text-decoration:none; color: var(--primary-blue);"
+                                    data-en="International Accessibility Standards"
+                                    data-es="Estándares Internacionales de Accesibilidad">International Accessibility
+                                    Standards</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+</body>
+
+</html>
