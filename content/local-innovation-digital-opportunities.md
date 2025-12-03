@@ -1,7 +1,7 @@
 ---
 title: " Kingman Local: Innovation & Digital Opportunities"
 slug: local-innovation-digital-opportunities
-publishDate: 2025-10-01
+publishDate: 2025-08-01
 author: Digital Allies
 description: Explore Kingman's growing tech scene! Discover local digital
   innovation, tri-city opportunities, and how Mohave County businesses are
@@ -18,7 +18,6 @@ tags:
   - Digital Accessibility
   - Tri-Cities
   - Community Development
-featuredImage: /images/Kingman Local Edition Innovation & Digital Opportunities.png
 featuredImageAlt: "Post Brand Template. Post 5: Kingman Local Edition:
   Innovation and Digital Opportunities "
 ---
