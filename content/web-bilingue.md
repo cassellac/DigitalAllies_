@@ -1,10 +1,11 @@
 ---
 title: ¿Por qué tu negocio necesita un sitio web bilingüe?
 slug: web-bilingue
-publishDate: 2025-05-05
+publishDate: 2025-01-03
 author: Jennyfer Figueroa
-description: Los consumidores hispanos representan un poder adquisitivo de $1.7 billones de dólares en Estados Unidos. Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.
-category: Accessibility
+description: Si tu negocio solo tiene presencia en inglés en línea, estás
+  perdiendo la oportunidad de conectar con esta comunidad vibrante y en
+  crecimiento.
 featuredImage: /images/digital-allies-post2-featured.svg
 featuredImageAlt: ¿Por qué tu negocio necesita un sitio web bilingüe?
 ---
