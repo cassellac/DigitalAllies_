@@ -16,6 +16,7 @@ tags:
   - inclusive-design
   - digital-inclusion
   - disability-rights
+featuredImage: /images/digital-allies-post3-featured.svg
 featuredImageAlt: 'a purple square with a grid overlay and white rectangle in
   the center that displays the title of the blog: "ADA Compliance for Websites:
   A Small Business Guide"'
