@@ -1,7 +1,7 @@
 ---
 title: ¿Por qué tu negocio necesita un sitio web bilingüe?
 slug: web-bilingue
-publishDate: 2025-01-03
+publishDate: 2025-04-04
 author: Jennyfer Figueroa
 description: Si tu negocio solo tiene presencia en inglés en línea, estás
   perdiendo la oportunidad de conectar con esta comunidad vibrante y en
