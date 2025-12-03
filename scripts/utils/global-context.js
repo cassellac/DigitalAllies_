@@ -24,13 +24,6 @@ const GLOBAL_CONTEXT = {
     language: {
         default: 'en',
         supported: ['en', 'es']
-    },
-    assets: {
-        stylesheet: '/assets/global.css',
-        scripts: [
-            '/assets/js/global.js',
-            '/assets/js/knowledge-base.js'
-        ]
     }
 };
 

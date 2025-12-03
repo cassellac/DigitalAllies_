@@ -7,7 +7,8 @@
     <title>Digital Allies | Web Design & Digital Solutions in Kingman, AZ</title>
     <meta name="description"
         content="Digital Allies provides expert web design, accessible development, and digital marketing strategies for small businesses in Kingman, AZ. We build bilingual, conversion-focused websites.">
-    <meta name="keywords" content="Web Design Kingman AZ, Digital Marketing, Accessibility, Bilingual Websites, Small Business SEO, Digital Allies">
+    <meta name="keywords"
+        content="Web Design Kingman AZ, Digital Marketing, Accessibility, Bilingual Websites, Small Business SEO, Digital Allies">
     <meta name="author" content="Digital Allies">
     <meta name="robots" content="index, follow">
 
@@ -15,64 +16,20 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://digitalallies.net/">
     <meta property="og:title" content="Digital Allies - Digital Solutions for the Real World">
-    <meta property="og:description" content="Helping small businesses thrive with accessible, beautiful web solutions that connect with your community.">
+    <meta property="og:description"
+        content="Helping small businesses thrive with accessible, beautiful web solutions that connect with your community.">
     <meta property="og:image" content="https://digitalallies.net/assets/images/og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://digitalallies.net/">
     <meta property="twitter:title" content="Digital Allies - Digital Solutions for the Real World">
-    <meta property="twitter:description" content="Helping small businesses thrive with accessible, beautiful web solutions that connect with your community.">
+    <meta property="twitter:description"
+        content="Helping small businesses thrive with accessible, beautiful web solutions that connect with your community.">
     <meta property="twitter:image" content="https://digitalallies.net/assets/images/og-image.jpg">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-blue': '#2563EB',
-                        'success-green': '#059669',
-                        'alert-red': '#EF4444',
-                        'gray-dark': '#414243',
-                        'gray-medium': '#6B7280',
-                        'pale-blue': '#DBEAFE',
-                        'indigo-brand': '#6366f1'
-                    },
-                    fontFamily: {
-                        'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
-                        'secondary': ['Source Sans Pro', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Custom Animations for Hero Graphic -->
-    <style>
-        @keyframes grow-bar {
-            from { width: 0; opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes pop-in {
-            0% { transform: scale(0); opacity: 0; }
-            70% { transform: scale(1.1); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes float-card {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .animate-bar-1 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.2s; }
-        .animate-bar-2 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.4s; }
-        .animate-bar-3 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.6s; }
-        .animate-pop { animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; transform-origin: center; animation-delay: 1.2s; }
-        .animate-float { animation: float-card 6s ease-in-out infinite; }
-    </style>
-
-    <link rel="stylesheet" href="assets/css/global.css">
-    <script src="assets/js/global.js"></script>
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
 
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
@@ -144,6 +101,7 @@
 
 <body class="font-primary bg-white text-gray-dark">
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Language Toggle -->
     <div class="bg-pale-blue py-2">
         <div class="max-w-7xl mx-auto px-4 flex justify-end">
@@ -156,65 +114,14 @@
         </div>
     </div>
 
-    <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
-        <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
-            <div class="flex items-center justify-between">
-                <a href="/" class="flex items-center space-x-1">
-                    <div class="relative w-4 h-4 flex items-center justify-center">
-                        <div class="w-2 h-2 bg-primary-blue rounded-full brand-pulse"></div>
-                    </div>
-                    <h1 class="text-xl font-bold text-gradient">Digital Allies</h1>
-                </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home"
-                        data-es="Inicio">Home</a>
-                    <a href="/about" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="About"
-                        data-es="Acerca">About</a>
-                    <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors"
-                        data-en="Services" data-es="Servicios">Services</a>
-                    <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog"
-                        data-es="Blog">Blog</a>
-                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue transition-colors"
-                        data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a>
-                    <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors"
-                        data-en="Contact" data-es="Contacto">Contact</a>
-                    <a href="/contact" class="btn btn--secondary px-8 py-4 text-sm" data-en="Start Your Project"
-                        data-es="Comienza Tu Proyecto">Start Your Project</a>
-                </div>
-                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <span class="sr-only">Open navigation</span>
-                </button>
-            </div>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue" role="menu">
-                <div class="flex flex-col space-y-4 pt-4">
-                    <a href="/" class="text-gray-dark hover:text-primary-blue" data-en="Home" data-es="Inicio"
-                        role="menuitem">Home</a>
-                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca"
-                        role="menuitem">About</a>
-                    <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services"
-                        data-es="Servicios" role="menuitem">Services</a>
-                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog"
-                        role="menuitem">Blog</a>
-                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue" data-en="Knowledge Base"
-                        data-es="Base de Conocimientos" role="menuitem">Knowledge Base</a>
-                    <a href="/contact" class="btn btn--secondary px-8 py-4 text-sm" data-en="Contact" data-es="Contacto"
-                        role="menuitem">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
 
     <main id="main-content" role="main">
         <!-- Hero Section -->
-        <section class="gradient-bg section--gradient py-20 lg:py-32 relative overflow-hidden" aria-labelledby="hero-heading">
-            
+        <section class="gradient-bg section--gradient py-20 lg:py-32 relative overflow-hidden"
+            aria-labelledby="hero-heading">
+
             <!-- Global Hero Grid Background -->
             <!-- Increased Opacity to 0.8 (less transparent) and darkened stroke -->
             <div class="absolute inset-0 z-0 opacity-80">
@@ -222,13 +129,13 @@
                     <defs>
                         <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
                             <!-- Darkened stroke color to slate-500 (#64748b) for better visibility -->
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748b" stroke-width="1"/>
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748b" stroke-width="1" />
                         </pattern>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#hero-grid)" />
                 </svg>
             </div>
-            
+
             <div class="max-w-7xl mx-auto px-4 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="fade-in">
@@ -260,23 +167,27 @@
                     <div class="fade-in-delay-1 hidden lg:flex justify-center items-center relative">
                         <div class="animate-float">
                             <!-- Added Dark Blue Custom Shadow -->
-                            <svg class="w-full max-w-xl drop-shadow-[0_25px_25px_rgba(30,58,138,0.45)]" viewBox="0 0 400 300" fill="none">
+                            <svg class="w-full max-w-xl drop-shadow-[0_25px_25px_rgba(30,58,138,0.45)]"
+                                viewBox="0 0 400 300" fill="none">
                                 <!-- Background Card -->
                                 <rect x="50" y="50" width="300" height="200" rx="20" fill="#FADEEB" class="shadow-lg" />
-                                
+
                                 <!-- Header Bar -->
                                 <rect x="70" y="70" width="260" height="20" rx="10" fill="#2563EB" />
-                                
+
                                 <!-- Loading Bars (Animated with Darker Blue) -->
-                                <rect x="70" y="110" height="15" rx="7" fill="#3B82F6" class="animate-bar-1" width="180" />
-                                <rect x="70" y="135" height="15" rx="7" fill="#3B82F6" class="animate-bar-2" width="220" />
-                                <rect x="70" y="160" height="15" rx="7" fill="#3B82F6" class="animate-bar-3" width="160" />
-                                
+                                <rect x="70" y="110" height="15" rx="7" fill="#3B82F6" class="animate-bar-1"
+                                    width="180" />
+                                <rect x="70" y="135" height="15" rx="7" fill="#3B82F6" class="animate-bar-2"
+                                    width="220" />
+                                <rect x="70" y="160" height="15" rx="7" fill="#3B82F6" class="animate-bar-3"
+                                    width="160" />
+
                                 <!-- Success Checkmark (Pop In Animation) -->
                                 <g class="animate-pop">
                                     <circle cx="280" cy="180" r="30" fill="#059669" class="shadow-md" />
-                                    <path d="M270 180 L278 188 L290 172" stroke="white" stroke-width="3" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M270 180 L278 188 L290 172" stroke="white" stroke-width="3"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </g>
                             </svg>
                         </div>
@@ -425,18 +336,20 @@
                     <div class="fade-in-delay-1">
                         <div class="relative">
                             <div class="absolute inset-0 gradient-bg section--gradient rounded-3xl transform rotate-6">
-                                
+
                             </div>
                             <div class="relative card p-8 rounded-3xl overflow-hidden">
                                 <div class="absolute inset-0 z-0 opacity-80 pointer-events-none">
-    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <pattern id="stats-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748b" stroke-width="1"/>
-            </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#stats-grid)" />
-    </svg>
+                                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <pattern id="stats-grid" width="40" height="40"
+                                                patternUnits="userSpaceOnUse">
+                                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748b"
+                                                    stroke-width="1" />
+                                            </pattern>
+                                        </defs>
+                                        <rect width="100%" height="100%" fill="url(#stats-grid)" />
+                                    </svg>
                                 </div>
                                 <div class="relative z-10 text-center">
                                     <div class="grid grid-cols-2 gap-6 mb-8">
@@ -643,9 +556,10 @@
 
                 <!-- Changed to 2 columns on medium/large to accommodate 4 items nicely -->
                 <div class="grid md:grid-cols-2 gap-8">
-                    
+
                     <!-- E17 Live-In Cooperative (New from Request) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+                    <article
+                        class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
                                 class="inline-flex items-center px-3 py-1 text-sm font-semibold text-success-green bg-success-green bg-opacity-30 rounded-full">Community
@@ -655,8 +569,11 @@
                             <p class="text-gray-dark font-secondary"
                                 data-en="Streamlined backend logistics and enhanced communication through a custom member intranet with automated systems."
                                 data-es="Logística de backend optimizada y comunicación mejorada a través de una intranet personalizada para miembros con sistemas automatizados.">
-                                Streamlined backend logistics and enhanced communication through a custom member intranet with automated systems.</p>
-                            <a href="/case-study-e17" class="text-primary-blue font-semibold hover:underline inline-block mt-2" data-en="Read Case Study →" data-es="Leer Estudio de Caso →">Read Case Study →</a>
+                                Streamlined backend logistics and enhanced communication through a custom member
+                                intranet with automated systems.</p>
+                            <a href="/case-study-e17"
+                                class="text-primary-blue font-semibold hover:underline inline-block mt-2"
+                                data-en="Read Case Study →" data-es="Leer Estudio de Caso →">Read Case Study →</a>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
@@ -671,7 +588,8 @@
                     </article>
 
                     <!-- Sasha Esposito (Derived from Client Reviews) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+                    <article
+                        class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
                                 class="inline-flex items-center px-3 py-1 text-sm font-semibold text-indigo-brand bg-indigo-100 rounded-full">Healthcare
@@ -681,7 +599,8 @@
                             <p class="text-gray-dark font-secondary"
                                 data-en="Crafted a unique brand identity and digital platform that reflects the personal connection and focus of the practice."
                                 data-es="Creamos una identidad de marca única y una plataforma digital que refleja la conexión personal y el enfoque de la práctica.">
-                                Crafted a unique brand identity and digital platform that reflects the personal connection and focus of the practice.</p>
+                                Crafted a unique brand identity and digital platform that reflects the personal
+                                connection and focus of the practice.</p>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
@@ -696,16 +615,19 @@
                     </article>
 
                     <!-- Victoria Buckholz (Derived from Client Reviews) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+                    <article
+                        class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-30 rounded-full">Non-Profit Strategy</span>
+                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-primary-blue bg-primary-blue bg-opacity-30 rounded-full">Non-Profit
+                                Strategy</span>
                             <h3 class="text-2xl font-bold text-gray-dark" data-en="Journey to the Center of Hope"
                                 data-es="Viaje al Centro de la Esperanza">Journey to the Center of Hope</h3>
                             <p class="text-gray-dark font-secondary"
                                 data-en="Developed a complex digital strategy to enhance outreach and ensure an impactful online presence for a growing NPO."
                                 data-es="Desarrollamos una estrategia digital compleja para mejorar el alcance y asegurar una presencia en línea impactante para una ONG en crecimiento.">
-                                Developed a complex digital strategy to enhance outreach and ensure an impactful online presence for a growing NPO.</p>
+                                Developed a complex digital strategy to enhance outreach and ensure an impactful online
+                                presence for a growing NPO.</p>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
@@ -720,16 +642,19 @@
                     </article>
 
                     <!-- Tao Wei (Derived from Client Reviews) -->
-                    <article class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+                    <article
+                        class="card p-8 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                         <div class="space-y-4">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-gray-medium bg-gray-200 rounded-full">Design Consulting</span>
+                                class="inline-flex items-center px-3 py-1 text-sm font-semibold text-gray-medium bg-gray-200 rounded-full">Design
+                                Consulting</span>
                             <h3 class="text-2xl font-bold text-gray-dark" data-en="Tao Wei Designs"
                                 data-es="Diseños Tao Wei">Tao Wei Designs</h3>
                             <p class="text-gray-dark font-secondary"
                                 data-en="Strategic collaboration and guidance to navigate industry complexities and establish a successful design business foundation."
                                 data-es="Colaboración estratégica y orientación para navegar las complejidades de la industria y establecer una base exitosa para el negocio de diseño.">
-                                Strategic collaboration and guidance to navigate industry complexities and establish a successful design business foundation.</p>
+                                Strategic collaboration and guidance to navigate industry complexities and establish a
+                                successful design business foundation.</p>
                         </div>
                         <dl class="mt-8 grid grid-cols-2 gap-4 text-left">
                             <div>
@@ -768,45 +693,55 @@
                     <!-- Placeholder Blog Post 1 -->
                     <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
                         <div class="mb-4">
-                            <span class="text-xs font-semibold text-primary-blue bg-pale-blue px-2 py-1 rounded">Web Design</span>
+                            <span class="text-xs font-semibold text-primary-blue bg-pale-blue px-2 py-1 rounded">Web
+                                Design</span>
                             <span class="text-xs text-gray-medium ml-2">April 5, 2024</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-dark mb-2">5 Web Design Trends for 2025</h3>
                         <p class="text-gray-dark font-secondary mb-4 flex-grow">
-                            Discover the top design trends shaping the web this year, from minimalist interfaces to immersive 3D experiences.
+                            Discover the top design trends shaping the web this year, from minimalist interfaces to
+                            immersive 3D experiences.
                         </p>
-                        <a href="/blog/web-design-trends-2024" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
+                        <a href="/blog/web-design-trends-2024"
+                            class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
                     </article>
 
                     <!-- Placeholder Blog Post 2 -->
                     <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
                         <div class="mb-4">
-                            <span class="text-xs font-semibold text-success-green bg-green-100 px-2 py-1 rounded">Local SEO</span>
+                            <span class="text-xs font-semibold text-success-green bg-green-100 px-2 py-1 rounded">Local
+                                SEO</span>
                             <span class="text-xs text-gray-medium ml-2">Sept 20, 2025</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-dark mb-2">Boosting Your Local Presence in Kingman</h3>
                         <p class="text-gray-dark font-secondary mb-4 flex-grow">
-                            Learn effective local SEO strategies to help your business stand out in search results and attract more customers in the Kingman area.
+                            Learn effective local SEO strategies to help your business stand out in search results and
+                            attract more customers in the Kingman area.
                         </p>
-                        <a href="/blog/local-seo-kingman" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
+                        <a href="/blog/local-seo-kingman"
+                            class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
                     </article>
 
                     <!-- Placeholder Blog Post 3 -->
                     <article class="card p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
                         <div class="mb-4">
-                            <span class="text-xs font-semibold text-indigo-brand bg-indigo-100 px-2 py-1 rounded">Accessibility</span>
+                            <span
+                                class="text-xs font-semibold text-indigo-brand bg-indigo-100 px-2 py-1 rounded">Accessibility</span>
                             <span class="text-xs text-gray-medium ml-2">August 31, 2025</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-dark mb-2">The Importance of Web Accessibility</h3>
                         <p class="text-gray-dark font-secondary mb-4 flex-grow">
-                            Understand why making your website accessible to everyone is crucial for inclusivity and legal compliance, and how to get started.
+                            Understand why making your website accessible to everyone is crucial for inclusivity and
+                            legal compliance, and how to get started.
                         </p>
-                        <a href="/blog/web-accessibility-importance" class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
+                        <a href="/blog/web-accessibility-importance"
+                            class="text-primary-blue font-semibold hover:underline mt-auto">Read Article →</a>
                     </article>
                 </div>
-                
+
                 <div class="mt-12 text-center">
-                    <a href="/blog" class="btn btn--secondary text-lg px-8 py-4" data-en="View All Posts" data-es="Ver Todas las Publicaciones">View All Posts</a>
+                    <a href="/blog" class="btn btn--secondary text-lg px-8 py-4" data-en="View All Posts"
+                        data-es="Ver Todas las Publicaciones">View All Posts</a>
                 </div>
             </div>
         </section>
@@ -840,88 +775,8 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-dark text-white py-16" role="contentinfo">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
-                <!-- Company Info -->
-                <div class="md:col-span-2">
-                    <a href="/" class="flex items-center space-x-1 mb-4 logo">
-                        <div class="relative w-4 h-4 flex items-center justify-center">
-                            <div class="w-2 h-2 bg-white rounded-full brand-pulse"></div>
-                        </div>
-                        <span class="text-xl font-bold text-white">Digital Allies</span>
-                    </a>
-                    <p class="text-gray-300 mb-6 max-w-md"
-                        data-en="Creating digital solutions for the real world. We help small businesses thrive with accessible, beautiful web solutions that connect with your community."
-                        data-es="Creando soluciones digitales para el mundo real. Ayudamos a pequeñas empresas a prosperar con soluciones web accesibles y hermosas que conectan con tu comunidad.">
-                        Creating digital solutions for the real world. We help small businesses thrive with accessible,
-                        beautiful web solutions that connect with your community.
-                    </p>
-                </div>
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4" data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links
-                    </h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors" data-en="Home"
-                                data-es="Inicio">Home</a></li>
-                        <li><a href="/about" class="text-gray-300 hover:text-white transition-colors" data-en="About"
-                                data-es="Acerca">About</a></li>
-                        <li><a href="/services" class="text-gray-300 hover:text-white transition-colors"
-                                data-en="Services" data-es="Servicios">Services</a></li>
-                        <li><a href="/blog" class="text-gray-300 hover:text-white transition-colors" data-en="Blog"
-                                data-es="Blog">Blog</a></li>
-                        <li><a href="/knowledge-base" class="text-gray-300 hover:text-white transition-colors"
-                                data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a></li>
-                        <li><a href="/accessibility-guide" class="text-gray-300 hover:text-white transition-colors"
-                                data-en="Accessibility Guide" data-es="Guía de Accesibilidad">Accessibility Guide</a>
-                        </li>
-                        <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors"
-                                data-en="Contact" data-es="Contacto">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Services -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4" data-en="Services" data-es="Servicios">Services</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/services#service-web-development"
-                                class="text-gray-300 hover:text-white transition-colors" data-en="Web Development"
-                                data-es="Desarrollo Web">Web Development</a></li>
-                        <li><a href="/services#service-design-branding"
-                                class="text-gray-300 hover:text-white transition-colors" data-en="Design & Branding"
-                                data-es="Diseño y Marca">Design & Branding</a></li>
-                        <li><a href="/services#service-tech-consulting"
-                                class="text-gray-300 hover:text-white transition-colors" data-en="Tech Consulting"
-                                data-es="Consultoría Tech">Tech Consulting</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Bottom Bar -->
-            <div class="border-t border-gray-600 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-300 text-sm mb-4 md:mb-0" data-en="© 2025 Digital Allies. All rights reserved."
-                        data-es="© 2025 Digital Allies. Todos los derechos reservados.">
-                        © 2025 Digital Allies. All rights reserved.
-                    </p>
-                    <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-end">
-                        <a href="/privacy" class="text-white hover:text-gray-300 text-sm transition-colors"
-                            data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
-                        <a href="/terms" class="text-white hover:text-gray-300 text-sm transition-colors"
-                            data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
-                        <a href="/cookies" class="text-white hover:text-gray-300 text-sm transition-colors"
-                            data-en="Cookie Policy" data-es="Política de Cookies">Cookie Policy</a>
-                        <a href="/sitemap.xml" class="text-white hover:text-gray-300 text-sm transition-colors"
-                            data-en="Sitemap" data-es="Mapa del Sitio">Sitemap</a>
-                        <a href="https://brand.digitalallies.net"
-                            class="text-white hover:text-gray-300 text-sm transition-colors" rel="noopener"
-                            target="_blank" data-en="Brand Style Guide" data-es="Guía de Estilo de la Marca">Brand Style
-                            Guide</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97d71aaf95ed9925',t:'MTc1NzU5MzA3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     </div>
 </body>

@@ -1,31 +1,22 @@
 {
   "posts": [
     {
-      "title": " Kingman Local: Innovation & Digital Opportunities",
-      "slug": "local-innovation-digital-opportunities",
-      "description": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online.",
-      "category": "Community",
+      "title": "What exactly is Local AI?",
+      "slug": "local-ai",
+      "description": "Emerging trends within the broader AI landscape is what we call \"Local AI.\" But what exactly is Local AI, and why is it becoming increasingly important?",
+      "category": "Business",
       "author": "Digital Allies",
-      "publishDate": "2025-10-01T00:00:00.000Z",
+      "publishDate": "2025-10-03T00:00:00.000Z",
       "tags": [
-        "Kingman",
-        "LHC",
-        "BHC",
-        "Digital Innovation",
-        "Small Business",
-        "Mohave County",
-        "ADA Compliance",
-        "Digital Accessibility",
-        "Tri-Cities",
-        "Community Development"
+        "local-ai"
       ],
-      "wordCount": 1222,
-      "readingTime": 7,
-      "excerpt": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online.",
+      "wordCount": 526,
+      "readingTime": 3,
+      "excerpt": "Emerging trends within the broader AI landscape is what we call \"Local AI.\" But what exactly is Local AI, and why is it becoming increasingly important?",
       "featuredImage": "/images/digital-allies-post5-featured.svg",
-      "imageAlt": "Post Brand Template. Post 5: Kingman Local Edition: Innovation and Digital Opportunities",
-      "canonicalUrl": "https://digitalallies.net/content/posts/local-innovation-digital-opportunities/",
-      "publicUrl": "/content/posts/local-innovation-digital-opportunities/"
+      "imageAlt": "a blue square with a grid overlay and white rectangle in the center that displays the title of the blog: \"what exactly is local AI?\"",
+      "canonicalUrl": "https://digitalallies.net/content/posts/local-ai/",
+      "publicUrl": "/content/posts/local-ai/"
     },
     {
       "title": "Advanced SEO Techniques for 2025",
@@ -49,12 +40,39 @@
       "publicUrl": "/content/posts/advanced-seo-techniques-for-2025/"
     },
     {
+      "title": " Kingman Local: Innovation & Digital Opportunities",
+      "slug": "local-innovation-digital-opportunities",
+      "description": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online.",
+      "category": "Community",
+      "author": "Digital Allies",
+      "publishDate": "2025-08-01T00:00:00.000Z",
+      "tags": [
+        "Kingman",
+        "LHC",
+        "BHC",
+        "Digital Innovation",
+        "Small Business",
+        "Mohave County",
+        "ADA Compliance",
+        "Digital Accessibility",
+        "Tri-Cities",
+        "Community Development"
+      ],
+      "wordCount": 1222,
+      "readingTime": 7,
+      "excerpt": "Explore Kingman's growing tech scene! Discover local digital innovation, tri-city opportunities, and how Mohave County businesses are thriving online.",
+      "featuredImage": "/images/digital-allies-post4-featured.svg",
+      "imageAlt": "an orange square with a grid overlay and white rectangle in the center that displays the title of the blog: \" Kingman Local: Innovation & Digital Opportunities\"",
+      "canonicalUrl": "https://digitalallies.net/content/posts/local-innovation-digital-opportunities/",
+      "publicUrl": "/content/posts/local-innovation-digital-opportunities/"
+    },
+    {
       "title": "ADA Compliance for Websites: A Small Business Guide",
       "slug": "ada-compliance-for-websites",
       "description": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers.",
       "category": "Accessibility",
       "author": "Digital Allies",
-      "publishDate": "2025-09-01T00:00:00.000Z",
+      "publishDate": "2025-06-06T00:00:00.000Z",
       "tags": [
         "ada-compliance",
         "website-accessibility",
@@ -70,23 +88,23 @@
       "readingTime": 4,
       "excerpt": "Website accessibility isn’t just about doing the right thing — it protects your business and helps you reach more customers.",
       "featuredImage": "/images/digital-allies-post3-featured.svg",
-      "imageAlt": "Featured Photo - purple background with the text \"ada compliance for websites - a small business guide\"",
+      "imageAlt": "a purple square with a grid overlay and white rectangle in the center that displays the title of the blog: \"ADA Compliance for Websites: A Small Business Guide\"",
       "canonicalUrl": "https://digitalallies.net/content/posts/ada-compliance-for-websites/",
       "publicUrl": "/content/posts/ada-compliance-for-websites/"
     },
     {
       "title": "¿Por qué tu negocio necesita un sitio web bilingüe?",
       "slug": "web-bilingue",
-      "description": "Los consumidores hispanos representan un poder adquisitivo de $1.7 billones de dólares en Estados Unidos. Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.",
-      "category": "Accessibility",
+      "description": "Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.",
+      "category": "",
       "author": "Jennyfer Figueroa",
-      "publishDate": "2025-05-05T00:00:00.000Z",
+      "publishDate": "2025-04-04T00:00:00.000Z",
       "tags": [],
       "wordCount": 536,
       "readingTime": 3,
-      "excerpt": "Los consumidores hispanos representan un poder adquisitivo de $1.7 billones de dólares en Estados Unidos. Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.",
+      "excerpt": "Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.",
       "featuredImage": "/images/digital-allies-post2-featured.svg",
-      "imageAlt": "¿Por qué tu negocio necesita un sitio web bilingüe?",
+      "imageAlt": "a green square with a grid overlay and white rectangle in the center that displays the title of the blog: \"¿Por qué tu negocio necesita un sitio web bilingüe?\"",
       "canonicalUrl": "https://digitalallies.net/content/posts/web-bilingue/",
       "publicUrl": "/content/posts/web-bilingue/"
     },
@@ -96,7 +114,7 @@
       "description": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
       "category": "Web Design",
       "author": "Digital Allies",
-      "publishDate": "2024-08-01T00:00:00.000Z",
+      "publishDate": "2025-01-03T00:00:00.000Z",
       "tags": [
         "web-design",
         "small-business",
@@ -107,14 +125,15 @@
       "wordCount": 1439,
       "readingTime": 8,
       "excerpt": "Learn the five warning signs that your small business website needs a redesign and get practical steps to start the project with confidence.",
-      "featuredImage": "/images/digital-allies-post1-featured (1).svg",
-      "imageAlt": "",
+      "featuredImage": "/images/digital-allies-post1-featured.svg",
+      "imageAlt": "a blue square with a grid overlay and white rectangle in the center that displays the title of the blog: \"Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)\"",
       "canonicalUrl": "https://digitalallies.net/content/posts/5-signs-your-small-business-needs-a-new-website/",
       "publicUrl": "/content/posts/5-signs-your-small-business-needs-a-new-website/"
     }
   ],
   "categories": [
     "Accessibility",
+    "Business",
     "Community",
     "SEO",
     "Web Design"
@@ -136,6 +155,7 @@
     "disability-rights",
     "inclusive-design",
     "legal-requirements",
+    "local-ai",
     "optimization",
     "rankings",
     "redesign",
@@ -146,11 +166,11 @@
     "web-design",
     "website-accessibility"
   ],
-  "lastUpdated": "2025-10-18T23:54:24.547Z",
-  "totalPosts": 5,
+  "lastUpdated": "2025-12-03T15:39:14.157Z",
+  "totalPosts": 6,
   "metadata": {
     "generatedBy": "sync-pages-cms-content.js",
-    "generatedAt": "2025-10-18T23:54:24.547Z",
+    "generatedAt": "2025-12-03T15:39:14.157Z",
     "source": "content/*.md"
   }
 }
