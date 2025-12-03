@@ -7,7 +7,9 @@ description: Si tu negocio solo tiene presencia en inglés en línea, estás
   perdiendo la oportunidad de conectar con esta comunidad vibrante y en
   crecimiento.
 featuredImage: /images/digital-allies-post2-featured.svg
-featuredImageAlt: ¿Por qué tu negocio necesita un sitio web bilingüe?
+featuredImageAlt: 'a green square with a grid overlay and white rectangle in the
+  center that displays the title of the blog: "¿Por qué tu negocio necesita un
+  sitio web bilingüe?"'
 ---
 Los consumidores hispanos representan un poder adquisitivo de $1.7 billones de dólares en Estados Unidos. Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.
 
