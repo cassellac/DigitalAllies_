@@ -20,16 +20,16 @@
       }
       .pulsing-dot {
         animation: pulse 3s ease-in-out infinite;
-        transform-origin: 12px 20px;
+        transform-origin: 50% 50%; /* Center of the element's bounding box */
         transform-box: fill-box;
       }
     </style>
   </defs>
   
-  <circle class="pulsing-dot" cx="12" cy="20" r="6" fill="#ffffff" />
+  <circle class="pulsing-dot" cx="12" cy="20" r="6" fill="#438eff" />
   
-  <text x="28" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" 
-        fill="#ffffff"
+  <text x="28" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" 
+        fill="url(#defaultGradient)"
         >
     Digital Allies
   </text>

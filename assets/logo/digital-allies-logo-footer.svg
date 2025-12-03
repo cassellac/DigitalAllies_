@@ -26,10 +26,10 @@
     </style>
   </defs>
   
-  <circle class="pulsing-dot" cx="12" cy="20" r="6" fill="#438eff" />
+  <circle class="pulsing-dot" cx="12" cy="20" r="6" fill="#ffffff" />
   
-  <text x="28" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" 
-        fill="url(#defaultGradient)"
+  <text x="28" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" 
+        fill="#ffffff"
         >
     Digital Allies
   </text>
