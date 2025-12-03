@@ -1,7 +1,7 @@
 ---
 title: "ADA Compliance for Websites: A Small Business Guide"
 slug: ada-compliance-for-websites
-publishDate: 2025-09-01
+publishDate: 2025-06-06
 author: Digital Allies
 description: "Website accessibility isn’t just about doing the right thing — it
   protects your business and helps you reach more customers. "
