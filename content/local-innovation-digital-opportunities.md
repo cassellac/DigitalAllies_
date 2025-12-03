@@ -18,7 +18,7 @@ tags:
   - Digital Accessibility
   - Tri-Cities
   - Community Development
-featuredImage: /images/digital-allies-post5-featured.svg
+featuredImage: /images/Kingman Local Edition Innovation & Digital Opportunities.png
 featuredImageAlt: "Post Brand Template. Post 5: Kingman Local Edition:
   Innovation and Digital Opportunities "
 ---
