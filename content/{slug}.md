@@ -2,7 +2,7 @@
 title: What exactly is Local AI?
 slug: local-ai
 publishDate: 2025-10-03
-author: Digital Allies
+author: Anthony Cassella
 description: Emerging trends within the broader AI landscape is what we call
   "Local AI." But what exactly is Local AI, and why is it becoming increasingly
   important?
