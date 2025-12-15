@@ -88,6 +88,61 @@
         }
     ]
     </script>
+    <style>
+        /* New Hero Animation Styles */
+        #hero-container {
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+        }
+
+        .grid-overlay {
+            background-image:
+                repeating-linear-gradient(0deg, rgba(14, 165, 233, 0.15) 0px, rgba(14, 165, 233, 0.15) 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, rgba(14, 165, 233, 0.15) 0px, rgba(14, 165, 233, 0.15) 1px, transparent 1px, transparent 40px);
+        }
+
+        .animated-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .dot-sky {
+            background-color: #0ea5e9;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+        }
+
+        .dot-cyan {
+            background-color: #06b6d4;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+
+        .dot-teal {
+            background-color: #14b8a6;
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+        }
+
+        .dot-blue {
+            background-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.15);
+            }
+        }
+    </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HVGNEKE8R"></script>
@@ -124,16 +179,16 @@
 
             <!-- Global Hero Grid Background -->
             <!-- Increased Opacity to 0.8 (less transparent) and darkened stroke -->
-            <div class="absolute inset-0 z-0 opacity-80">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <!-- Darkened stroke color to slate-500 (#64748b) for better visibility -->
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748b" stroke-width="1" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hero-grid)" />
-                </svg>
+            <!-- New Hero Grid Background -->
+            <div id="hero-container" class="absolute inset-0 z-0 overflow-hidden">
+                <div class="grid-overlay absolute inset-0 w-full h-full pointer-events-none"></div>
+                <!-- Animated Dots -->
+                <div class="animated-dot dot-sky" id="dot1" style="width: 14px; height: 14px;"></div>
+                <div class="animated-dot dot-cyan" id="dot2"></div>
+                <div class="animated-dot dot-teal" id="dot3" style="width: 16px; height: 16px;"></div>
+                <div class="animated-dot dot-blue" id="dot4"></div>
+                <div class="animated-dot dot-sky" id="dot5" style="width: 14px; height: 14px;"></div>
+                <div class="animated-dot dot-cyan" id="dot6"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-4 relative z-10">
@@ -779,6 +834,92 @@
     <div id="footer-placeholder"></div>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97d71aaf95ed9925',t:'MTc1NzU5MzA3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
     </div>
+    <script>
+        (function () {
+            const gridSize = 40;
+            const container = document.getElementById('hero-container');
+
+            class Dot {
+                constructor(id, colorClass, isHorizontal) {
+                    this.element = document.getElementById(id);
+                    this.colorClass = colorClass;
+                    this.isHorizontal = isHorizontal;
+                    this.speed = 20 + Math.random() * 10;
+
+                    if (isHorizontal) {
+                        this.gridY = Math.floor(Math.random() * 15) + 3;
+                        this.fixedY = (this.gridY * gridSize) + 0.5;
+                        this.position = { x: gridSize * 2, y: this.fixedY };
+                        this.direction = 1;
+                    } else {
+                        this.gridX = Math.floor(Math.random() * 25) + 5;
+                        this.fixedX = (this.gridX * gridSize) + 0.5;
+                        this.position = { x: this.fixedX, y: gridSize * 2 };
+                        this.direction = 1;
+                    }
+
+                    this.lastTime = Date.now();
+                    this.updateVisualPosition();
+                    this.startMoving();
+                }
+
+                updateVisualPosition() {
+                    const dotSize = parseInt(this.element.style.width) || 12;
+                    const offset = dotSize / 2;
+                    this.element.style.left = `${this.position.x - offset}px`;
+                    this.element.style.top = `${this.position.y - offset}px`;
+                }
+
+                move() {
+                    if (!container) return;
+                    const width = container.clientWidth;
+                    const height = container.clientHeight;
+
+                    const currentTime = Date.now();
+                    const deltaTime = (currentTime - this.lastTime) / 1000;
+                    this.lastTime = currentTime;
+
+                    const moveDistance = this.speed * deltaTime;
+
+                    if (this.isHorizontal) {
+                        this.position.x += moveDistance * this.direction;
+                        this.position.y = this.fixedY;
+
+                        if (this.position.x > width) {
+                            this.position.x = 0;
+                        } else if (this.position.x < 0) {
+                            this.position.x = width;
+                        }
+                    } else {
+                        this.position.y += moveDistance * this.direction;
+                        this.position.x = this.fixedX;
+
+                        if (this.position.y > height) {
+                            this.position.y = 0;
+                        } else if (this.position.y < 0) {
+                            this.position.y = height;
+                        }
+                    }
+
+                    this.updateVisualPosition();
+                    requestAnimationFrame(() => this.move());
+                }
+
+                startMoving() {
+                    requestAnimationFrame(() => this.move());
+                }
+            }
+
+            const dots = [
+                new Dot('dot1', 'dot-sky', true),
+                new Dot('dot2', 'dot-cyan', false),
+                new Dot('dot3', 'dot-teal', true),
+                new Dot('dot4', 'dot-blue', false),
+                new Dot('dot5', 'dot-sky', true),
+                new Dot('dot6', 'dot-cyan', false)
+            ];
+        })();
+    </script>
 </body>
 
 </html>

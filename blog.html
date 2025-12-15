@@ -38,6 +38,56 @@
         "description": "Professional web development and digital solutions for businesses in Kingman, AZ and surrounding areas."
     }
     </script>
+    <style>
+        .grid-overlay {
+            background-image:
+                repeating-linear-gradient(0deg, rgba(59, 130, 246, 0.25) 0px, rgba(59, 130, 246, 0.25) 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, rgba(59, 130, 246, 0.25) 0px, rgba(59, 130, 246, 0.25) 1px, transparent 1px, transparent 40px);
+        }
+
+        .animated-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .dot-blue {
+            background-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .dot-cyan {
+            background-color: #06b6d4;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+        }
+
+        .dot-purple {
+            background-color: #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+        }
+
+        .dot-pink {
+            background-color: #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.15);
+            }
+        }
+    </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HVGNEKE8R"></script>
@@ -68,10 +118,26 @@
 
     <main id="main-content" role="main">
         <!-- Hero -->
-        <section class="gradient-bg section--gradient py-20 text-center">
-            <h1 class="text-5xl font-bold text-gray-dark mb-4" data-en="Blog" data-es="Blog">Blog</h1>
-            <p class="text-xl text-gray-medium max-w-3xl mx-auto">Insights, updates, and resources from Digital Allies.
-            </p>
+        <!-- Hero -->
+        <section class="py-20 text-center relative overflow-hidden"
+            style="background: linear-gradient(135deg, #1F2937, #111827);">
+            <!-- New Hero Grid Background -->
+            <div id="hero-container" class="absolute inset-0 z-0 overflow-hidden">
+                <div class="grid-overlay absolute inset-0 w-full h-full pointer-events-none"></div>
+                <!-- Animated Dots -->
+                <div class="animated-dot dot-blue" id="dot1" style="width: 14px; height: 14px;"></div>
+                <div class="animated-dot dot-cyan" id="dot2"></div>
+                <div class="animated-dot dot-purple" id="dot3" style="width: 16px; height: 16px;"></div>
+                <div class="animated-dot dot-pink" id="dot4"></div>
+                <div class="animated-dot dot-blue" id="dot5" style="width: 14px; height: 14px;"></div>
+                <div class="animated-dot dot-cyan" id="dot6"></div>
+            </div>
+
+            <div class="relative z-10">
+                <h1 class="text-5xl font-bold text-white mb-4" data-en="Blog" data-es="Blog">Blog</h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Insights, updates, and resources from Digital Allies.
+                </p>
+            </div>
         </section>
 
         <!-- Blog Posts -->
@@ -92,6 +158,92 @@
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
+    <script>
+        (function () {
+            const gridSize = 40;
+            const container = document.getElementById('hero-container');
+
+            class Dot {
+                constructor(id, colorClass, isHorizontal) {
+                    this.element = document.getElementById(id);
+                    this.colorClass = colorClass;
+                    this.isHorizontal = isHorizontal;
+                    this.speed = 20 + Math.random() * 10;
+
+                    if (isHorizontal) {
+                        this.gridY = Math.floor(Math.random() * 15) + 3;
+                        this.fixedY = (this.gridY * gridSize) + 0.5;
+                        this.position = { x: gridSize * 2, y: this.fixedY };
+                        this.direction = 1;
+                    } else {
+                        this.gridX = Math.floor(Math.random() * 25) + 5;
+                        this.fixedX = (this.gridX * gridSize) + 0.5;
+                        this.position = { x: this.fixedX, y: gridSize * 2 };
+                        this.direction = 1;
+                    }
+
+                    this.lastTime = Date.now();
+                    this.updateVisualPosition();
+                    this.startMoving();
+                }
+
+                updateVisualPosition() {
+                    const dotSize = parseInt(this.element.style.width) || 12;
+                    const offset = dotSize / 2;
+                    this.element.style.left = `${this.position.x - offset}px`;
+                    this.element.style.top = `${this.position.y - offset}px`;
+                }
+
+                move() {
+                    if (!container) return;
+                    const width = container.clientWidth;
+                    const height = container.clientHeight;
+
+                    const currentTime = Date.now();
+                    const deltaTime = (currentTime - this.lastTime) / 1000;
+                    this.lastTime = currentTime;
+
+                    const moveDistance = this.speed * deltaTime;
+
+                    if (this.isHorizontal) {
+                        this.position.x += moveDistance * this.direction;
+                        this.position.y = this.fixedY;
+
+                        if (this.position.x > width) {
+                            this.position.x = 0;
+                        } else if (this.position.x < 0) {
+                            this.position.x = width;
+                        }
+                    } else {
+                        this.position.y += moveDistance * this.direction;
+                        this.position.x = this.fixedX;
+
+                        if (this.position.y > height) {
+                            this.position.y = 0;
+                        } else if (this.position.y < 0) {
+                            this.position.y = height;
+                        }
+                    }
+
+                    this.updateVisualPosition();
+                    requestAnimationFrame(() => this.move());
+                }
+
+                startMoving() {
+                    requestAnimationFrame(() => this.move());
+                }
+            }
+
+            const dots = [
+                new Dot('dot1', 'dot-blue', true),
+                new Dot('dot2', 'dot-cyan', false),
+                new Dot('dot3', 'dot-purple', true),
+                new Dot('dot4', 'dot-pink', false),
+                new Dot('dot5', 'dot-blue', true),
+                new Dot('dot6', 'dot-cyan', false)
+            ];
+        })();
+    </script>
 </body>
 
 </html>
