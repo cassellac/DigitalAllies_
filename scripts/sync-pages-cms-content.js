@@ -2,425 +2,113 @@
 
 /**
  * Pages CMS Sync Script
- *
- * Converts Markdown entries created via Pages CMS into production-ready
- * HTML blog posts that use the global Digital Allies layout and keeps the
- * blog index in sync. Designed to run locally (npm run sync-cms) or inside
- * the GitHub Action workflow when new content is committed.
+ * Updated to support multiple collections (blog, pages) and settings (style.json).
  */
 
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 const { marked } = require('marked');
-const {
-    buildContextScript,
-    buildCanonical,
-    resolvePublicPostPath,
-    resolveOutputDirectory
-} = require('./utils/global-context');
+const yaml = require('js-yaml');
 
-// Paths and constants
+// Paths
 const ROOT = path.join(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'content');
-const POSTS_HTML_DIR = path.join(CONTENT_DIR, 'posts');
-const TEMPLATE_PATH = path.join(__dirname, 'templates', 'post-template.html');
-const INDEX_JSON_PATH = path.join(CONTENT_DIR, 'blog-index.json');
-const INDEX_HTML_PATH = path.join(CONTENT_DIR, 'index.html');
-const INDEX_TEMPLATE_PATH = path.join(__dirname, 'templates', 'blog-index-template.html');
+const BLOG_DIR = path.join(CONTENT_DIR, 'blog');
+const PAGES_DIR = path.join(CONTENT_DIR, 'pages');
+const SETTINGS_DIR = path.join(CONTENT_DIR, 'settings');
 
 function ensureDir(dir) {
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
-function loadTemplate() {
-    if (!fs.existsSync(TEMPLATE_PATH)) {
-        throw new Error(`Post template not found at ${TEMPLATE_PATH}`);
-    }
-    return fs.readFileSync(TEMPLATE_PATH, 'utf8');
+function slugify(text) {
+    return text.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-');
 }
 
-function generateSlug(input) {
-    return input
-        .toString()
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
+/**
+ * Converts YAML setting files (like style.yaml) into JSON for the Global Loader.
+ */
+function syncSettings() {
+    if (!fs.existsSync(SETTINGS_DIR)) return;
+    const files = fs.readdirSync(SETTINGS_DIR).filter(f => f.endsWith('.yaml') || f.endsWith('.yml'));
+    
+    files.forEach(file => {
+        const filePath = path.join(SETTINGS_DIR, file);
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const data = yaml.load(fileContent);
+        const outputJson = path.join(SETTINGS_DIR, file.replace(/\.(yaml|yml)$/, '.json'));
+        
+        fs.writeFileSync(outputJson, JSON.stringify(data, null, 2));
+        console.log(`⚙️  Processed settings: ${file} -> ${path.basename(outputJson)}`);
+    });
 }
 
-function escapeHtml(text = '') {
-    return text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
+/**
+ * Processes a directory of markdown files and generates a JSON index.
+ */
+function processCollection(dir, type) {
+    if (!fs.existsSync(dir)) return { items: [] };
 
-function renderTemplate(template, data) {
-    let output = template;
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
+    const items = [];
 
-    Object.entries(data).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-            return; // handled later
-        }
-        const safeValue = value == null ? '' : value;
-        const pattern = new RegExp(`\\{\\{${key}\\}\\}`, 'g');
-        output = output.replace(pattern, safeValue);
+    files.forEach(file => {
+        const filePath = path.join(dir, file);
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const { data, content } = matter(raw);
+
+        if (!data.title) return;
+
+        const slug = data.slug || slugify(data.title);
+        const excerpt = data.description || content.slice(0, 160).replace(/[#*`]/g, '') + '...';
+
+        items.push({
+            ...data,
+            slug,
+            excerpt,
+            type,
+            wordCount: content.split(/\s+/).length
+        });
     });
 
-    output = output.replace(/\{\{formatDate publishDate\}\}/g, formatDisplayDate(data.publishDate));
+    // Sort by date (newest first)
+    items.sort((a, b) => new Date(b.publishDate || 0) - new Date(a.publishDate || 0));
 
-    // Tags block
-    if (Array.isArray(data.tags)) {
-        const tagMetaIndent = ' '.repeat(4);
-        const tagMeta = data.tags
-            .map(tag => `${tagMetaIndent}<meta property="article:tag" content="${escapeHtml(tag)}">`)
-            .join('\n');
-        output = output.replace(/\{\{#each tags\}\}[\s\S]*?\{\{\/each\}\}/g, tagMeta);
+    const categories = Array.from(new Set(items.map(i => i.category).filter(Boolean)));
+    const indexPath = path.join(dir, 'index.json');
+    
+    // The Site Loader expects { posts: [] } for blog and { pages: [] } for pages
+    const output = {
+        [type === 'blog' ? 'posts' : 'pages']: items,
+        categories,
+        lastUpdated: new Date().toISOString()
+    };
 
-        const tagChips = buildTagChips(data.tags);
-        output = output.replace(/^[\t ]*\{\{#if tags\}\}[\s\S]*?\{\{\/if\}\}\n?/gm, tagChips ? `${tagChips}\n` : '');
-    }
-
-    // Conditional blocks for category, description, featured image, etc.
-    output = replaceConditional(output, 'category', Boolean(data.category));
-    output = replaceConditional(output, 'description', Boolean(data.description));
-    output = replaceConditional(output, 'imageAlt', Boolean(data.imageAlt));
-    output = replaceConditional(output, 'featuredImage', Boolean(data.featuredImage));
-
+    fs.writeFileSync(indexPath, JSON.stringify(output, null, 2));
+    console.log(`🗂️  Index generated for ${type}: ${indexPath} (${items.length} items)`);
+    
     return output;
 }
 
-function formatDisplayDate(isoString) {
-    if (!isoString) {
-        return '';
-    }
-    const date = new Date(isoString);
-    if (Number.isNaN(date.getTime())) {
-        return isoString;
-    }
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-function replaceConditional(template, name, condition) {
-    const regex = new RegExp(`\\{\\{#if ${name}\\}\\}([\\s\\S]*?)\\{\\{\\/if\\}\\}`, 'g');
-    return template.replace(regex, condition ? '$1' : '');
-}
-
-function stripHtml(html) {
-    return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-function buildExcerpt({ description, markdown, html }) {
-    if (description) {
-        return description.trim();
-    }
-    const base = stripHtml(html || markdown || '');
-    return base.substring(0, 200).trim() + (base.length > 200 ? '…' : '');
-}
-
-function normalizeMarkdown(content) {
-    if (!content) {
-        return '';
-    }
-
-    return content
-        .replace(/\r\n/g, '\n')
-        .replace(/\\([\\`*_{}\[\]()#+.!>\-])/g, '$1')
-        // Fixes malformed nested Markdown links where a link is nested inside another link's parentheses,
-        // e.g. `]([text](url))` should be corrected to `](url)`. This regex matches such patterns and replaces
-        // them with the correct link syntax.
-        .replace(/\]\(\[([^\]]+)\]\((https?:\/\/[^)]+)\)\)/g, ']($2)')
-        // Ensures a space before a Markdown link if it directly follows an alphanumeric character (e.g. "word[link]" → "word [link]")
-        .replace(/([A-Za-z0-9])\[/g, '$1 [')
-        // Ensures a space between bold/strong formatting and a following link (e.g. "**[link]" → "** [link]", "__[link]" → "__ [link]")
-        .replace(/(\*\*|__)(?=\[)/g, '$1 ');
-}
-
-function buildTagChips(tags) {
-    if (!Array.isArray(tags) || !tags.length) {
-        return '';
-    }
-
-    const containerIndent = ' '.repeat(12);
-    const chipIndent = ' '.repeat(16);
-
-    const chipMarkup = tags
-        .map(tag => `${chipIndent}<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#${escapeHtml(tag)}</span>`)
-        .join('\n');
-
-    return [
-        `${containerIndent}<div class="flex flex-wrap gap-2">`,
-        chipMarkup,
-        `${containerIndent}</div>`
-    ].join('\n');
-}
-
-function normalizeTags(tags) {
-    if (!tags) return [];
-    if (Array.isArray(tags)) {
-        return tags.map(tag => tag.toString().trim()).filter(Boolean);
-    }
-    return tags.toString().split(',').map(tag => tag.trim()).filter(Boolean);
-}
-
-function resolvePublishDate(value, fallback) {
-    if (!value) return fallback;
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) {
-        console.warn(`⚠️  Invalid publishDate '${value}' encountered. Using fallback ${fallback}`);
-        return fallback;
-    }
-    return date.toISOString();
-}
-
-function buildAuthorBlock(author) {
-    if (!author || author === 'Digital Allies') {
-        return '';
-    }
-
-    const containerIndent = ' '.repeat(16);
-    const iconIndent = ' '.repeat(20);
-    const pathIndent = ' '.repeat(24);
-
-    return [
-        `${containerIndent}<div class="flex items-center">`,
-        `${iconIndent}<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">`,
-        `${pathIndent}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>`,
-        `${iconIndent}</svg>`,
-        `${iconIndent}By ${author}`,
-        `${containerIndent}</div>`
-    ].join('\n');
-}
-
-function readExistingIndex() {
-    if (!fs.existsSync(INDEX_JSON_PATH)) {
-        return {
-            posts: [],
-            categories: [],
-            tags: [],
-            lastUpdated: new Date(0).toISOString(),
-            totalPosts: 0,
-            metadata: {}
-        };
-    }
-
-    try {
-        const raw = fs.readFileSync(INDEX_JSON_PATH, 'utf8');
-        return JSON.parse(raw);
-    } catch (error) {
-        console.warn('⚠️  Unable to parse existing blog index. Rebuilding from scratch.', error);
-        return {
-            posts: [],
-            categories: [],
-            tags: [],
-            lastUpdated: new Date(0).toISOString(),
-            totalPosts: 0,
-            metadata: {}
-        };
-    }
-}
-
-function saveIndex(index) {
-    fs.writeFileSync(INDEX_JSON_PATH, JSON.stringify(index, null, 2));
-}
-
-function buildIndexHtml(index) {
-    if (!fs.existsSync(INDEX_TEMPLATE_PATH)) {
-        throw new Error(`Blog index template not found at ${INDEX_TEMPLATE_PATH}`);
-    }
-
-    const template = fs.readFileSync(INDEX_TEMPLATE_PATH, 'utf8');
-    const postsMarkup = (index.posts || []).map(post => {
-        const dateDisplay = formatDisplayDate(post.publishDate);
-        const excerpt = escapeHtml(post.excerpt || 'Read the latest insights from Digital Allies.');
-        const category = post.category ? `<span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">${escapeHtml(post.category)}</span>` : '';
-
-        const tagsMarkup = (post.tags || []).slice(0, 3).map(tag => `
-                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#${escapeHtml(tag)}</span>`).join('');
-
-        const moreTags = (post.tags || []).length > 3
-            ? `<span class="text-gray-400 text-xs">+${post.tags.length - 3} more</span>`
-            : '';
-
-        return `
-        <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-            ${category ? `<div class="mb-4">${category}</div>` : ''}
-            <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                <a href="${escapeHtml(post.publicUrl)}" class="hover:underline text-primary-blue">
-                    ${escapeHtml(post.title)}
-                </a>
-            </h2>
-            <div class="flex flex-wrap items-center gap-3 text-sm text-gray-medium mb-4">
-                <span>${dateDisplay}</span>
-                <span>•</span>
-                <span>${post.readingTime} min read</span>
-                ${post.author && post.author !== 'Digital Allies' ? `<span>•</span><span>By ${escapeHtml(post.author)}</span>` : ''}
-            </div>
-            <p class="text-gray-medium mb-6 leading-relaxed">${excerpt}</p>
-            ${(post.tags || []).length ? `<div class="flex flex-wrap gap-2 mb-6">${tagsMarkup}${moreTags}</div>` : ''}
-            <a href="${escapeHtml(post.publicUrl)}" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
-                Read More
-                <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </a>
-        </article>`;
-    }).join('\n');
-
-    const populated = template
-        .replace(/\{\{totalPosts\}\}/g, index.totalPosts || 0)
-        .replace(/\{\{generatedAt\}\}/g, formatDisplayDate(index.lastUpdated))
-        .replace(/\{\{posts\}\}/g, postsMarkup)
-        .replace(/\{\{globalContextScript\}\}/g, buildContextScript());
-
-    fs.writeFileSync(INDEX_HTML_PATH, populated, 'utf8');
-    console.log(`📄  Rebuilt static blog index at ${INDEX_HTML_PATH}`);
-}
-
 function main() {
-    ensureDir(CONTENT_DIR);
-    ensureDir(POSTS_HTML_DIR);
+    console.log('🚀 Starting CMS Sync...');
+    
+    // 1. Sync Style Guide and Admin Settings
+    syncSettings();
 
-    const template = loadTemplate();
-    const contentFiles = fs.readdirSync(CONTENT_DIR).filter(file => file.endsWith('.md'));
+    // 2. Process Blog Collection
+    processCollection(BLOG_DIR, 'blog');
 
-    if (!contentFiles.length) {
-        console.log('ℹ️  No markdown content found. Nothing to sync.');
-        return;
-    }
+    // 3. Process Pages Collection
+    processCollection(PAGES_DIR, 'pages');
 
-    const existingIndex = readExistingIndex();
-    const newPosts = [];
-
-    contentFiles.forEach(file => {
-        const filePath = path.join(CONTENT_DIR, file);
-        const fileRaw = fs.readFileSync(filePath, 'utf8');
-        const parsed = matter(fileRaw);
-        const data = parsed.data || {};
-        const body = parsed.content.trim();
-        const markdownBody = normalizeMarkdown(body);
-
-        if (!data.title) {
-            console.warn(`⚠️  Skipping ${file} because the title field is missing.`);
-            return;
-        }
-
-        const slug = data.slug ? data.slug.toString().trim() : generateSlug(data.title);
-        if (!slug) {
-            console.warn(`⚠️  Skipping ${file} because a valid slug could not be generated.`);
-            return;
-        }
-
-        const publishDateIso = resolvePublishDate(data.publishDate, fs.statSync(filePath).mtime.toISOString());
-        const tags = normalizeTags(data.tags);
-        const author = data.author ? data.author.toString().trim() : 'Digital Allies';
-        const description = data.description ? data.description.toString().trim() : '';
-        const category = data.category ? data.category.toString().trim() : '';
-        const featuredImage = data.featuredImage ? data.featuredImage.toString().trim() : '';
-        const featuredImageAlt = data.featuredImageAlt ? data.featuredImageAlt.toString().trim() : '';
-
-        const htmlContent = marked.parse(markdownBody, { mangle: false, headerIds: false });
-        const wordCount = markdownBody ? markdownBody.split(/\s+/).filter(Boolean).length : 0;
-        const readingTime = Math.max(1, Math.ceil(wordCount / 200));
-        const excerpt = buildExcerpt({ description, markdown: markdownBody, html: htmlContent });
-
-        const safeAuthor = escapeHtml(author);
-
-        const canonicalUrl = buildCanonical(slug);
-        const publicUrl = resolvePublicPostPath(slug);
-        const rendered = renderTemplate(template, {
-            title: escapeHtml(data.title),
-            slug,
-            description: escapeHtml(description),
-            keywords: tags.map(escapeHtml).join(', '),
-            category: escapeHtml(category),
-            author: safeAuthor,
-            authorBlock: buildAuthorBlock(safeAuthor),
-            publishDate: publishDateIso,
-            content: htmlContent,
-            tags,
-            wordCount,
-            readingTime,
-            featuredImage: escapeHtml(featuredImage),
-            imageAlt: escapeHtml(featuredImageAlt),
-            canonicalUrl,
-            shareUrl: canonicalUrl,
-            publicPostPath: publicUrl,
-            globalContextScript: buildContextScript()
-        });
-
-        const postDir = resolveOutputDirectory(POSTS_HTML_DIR, slug);
-        ensureDir(postDir);
-        if (slug.includes('..')) {
-            throw new Error('Invalid slug format');
-        }
-        const postPath = path.join(postDir, 'index.html');
-        fs.writeFileSync(postPath, rendered, 'utf8');
-        console.log(`✅ Generated ${postPath}`);
-
-        newPosts.push({
-            title: data.title,
-            slug,
-            description,
-            category,
-            author,
-            publishDate: publishDateIso,
-            tags,
-            wordCount,
-            readingTime,
-            excerpt,
-            featuredImage,
-            imageAlt: featuredImageAlt,
-            canonicalUrl,
-            publicUrl: `${publicUrl}`
-        });
-    });
-
-    if (!newPosts.length) {
-        console.log('ℹ️  No posts generated. Index remains unchanged.');
-        return;
-    }
-
-    const existingWithoutNew = (existingIndex.posts || []).filter(post => !newPosts.find(np => np.slug === post.slug));
-    const combinedPosts = [...newPosts, ...existingWithoutNew];
-    combinedPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
-
-    const categories = Array.from(new Set(combinedPosts.map(post => post.category).filter(Boolean))).sort();
-    const tags = Array.from(new Set(combinedPosts.flatMap(post => post.tags || []).filter(Boolean))).sort();
-    const now = new Date().toISOString();
-
-    const updatedIndex = {
-        posts: combinedPosts,
-        categories,
-        tags,
-        lastUpdated: now,
-        totalPosts: combinedPosts.length,
-        metadata: {
-            generatedBy: 'sync-pages-cms-content.js',
-            generatedAt: now,
-            source: 'content/*.md'
-        }
-    };
-
-    saveIndex(updatedIndex);
-    buildIndexHtml(updatedIndex);
-    console.log(`🗂️  Updated blog index with ${combinedPosts.length} posts.`);
+    console.log('✅ Sync Complete.');
 }
 
 try {
     main();
-} catch (error) {
-    console.error('❌ Pages CMS sync failed:', error);
+} catch (err) {
+    console.error('❌ Sync failed:', err);
     process.exit(1);
 }
