@@ -18,7 +18,8 @@ tags:
   - Digital Accessibility
   - Tri-Cities
   - Community Development
-featuredImage: /images/digital-allies-post4-featured.svg
+featuredImage: content/images/blog/Kingman Local Edition Innovation & Digital
+  Opportunities - digital-allies-post4-featured.png
 featuredImageAlt: 'an orange square with a grid overlay and white rectangle in
   the center that displays the title of the blog: " Kingman Local: Innovation &
   Digital Opportunities"'
