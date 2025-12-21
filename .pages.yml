@@ -98,18 +98,19 @@ content:
             label: Section Type
             type: select
             options:
-              - label: "Hero Header"
-                value: "hero"
-              - label: "Standard Content"
-                value: "content"
-              - label: "Feature Grid"
-                value: "features"
-              - label: "Image Gallery"
-                value: "gallery"
-              - label: "Contact/Custom Form"
-                value: "form"
-              - label: "User Login"
-                value: "login"
+              values:
+                - label: "Hero Header"
+                  value: "hero"
+                - label: "Standard Content"
+                  value: "content"
+                - label: "Feature Grid"
+                  value: "features"
+                - label: "Image Gallery"
+                  value: "gallery"
+                - label: "Contact/Custom Form"
+                  value: "form"
+                - label: "User Login"
+                  value: "login"
             default: "content"
           
           - name: sectionTitle
@@ -139,7 +140,8 @@ content:
               - name: formType
                 label: Form Type
                 type: select
-                options: ["Contact", "Newsletter", "Booking", "Custom"]
+                options: 
+                  values: ["Contact", "Newsletter", "Booking", "Custom"]
 
           # Specific settings for Login
           - name: loginSettings
@@ -275,7 +277,8 @@ content:
           - name: buttonStyle
             label: Button Style
             type: select
-            options: ["Solid", "Outline", "Flat"]
+            options: 
+              values: ["Solid", "Outline", "Flat"]
             default: "Solid"
 
       - name: brandAssets
