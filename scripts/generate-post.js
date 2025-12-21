@@ -1,116 +1,94 @@
 #!/usr/bin/env node
 
+/**
+ * generate-post.js
+ * CLI tool to generate a new blog post markdown file.
+ * Updated to include 'description' and 'featuredImageAlt'.
+ */
+
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
+const readline = require('readline');
 
-const ROOT_CONTENT_DIR = path.join(__dirname, '..', 'content');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-function usage() {
-    console.log(`
-Digital Allies Content Generator
+const POSTS_DIR = path.join(__dirname, '..', 'content', 'blog');
 
-Usage: npm run generate -- --type=[blog|page] --title="Title" [options]
-
-Options:
-  --type="type"              (required) 'blog' or 'page'
-  --title="Title"            (required) Title used for H1 and slug
-  --slug="custom-slug"       Optional slug (auto-generated from title)
-  --description="Summary"    Optional SEO description
-  --category="Category"      Optional category label
-  --tags="tag-one,tag-two"   Optional comma separated list of tags
-  --author="Author Name"     Optional author (defaults to "Digital Allies")
-  --date=YYYY-MM-DD          Optional publish date (defaults to today)
-`);
+// Ensure directory exists
+if (!fs.existsSync(POSTS_DIR)) {
+    fs.mkdirSync(POSTS_DIR, { recursive: true });
 }
 
-function parseArgs() {
-    const args = process.argv.slice(2);
-    const options = {
-        type: 'blog',
-        title: '',
-        slug: '',
-        description: '',
-        category: '',
-        tags: [],
-        author: 'Digital Allies',
-        date: new Date().toISOString().slice(0, 10)
-    };
+const questions = [
+    { key: 'title', query: 'Post Title: ' },
+    { key: 'slug', query: 'Slug (leave empty to auto-generate): ' },
+    { key: 'description', query: 'Meta Description (SEO): ' },
+    { key: 'author', query: 'Author (default: Digital Allies): ' },
+    { key: 'category', query: 'Category: ' },
+    { key: 'tags', query: 'Tags (comma separated): ' },
+    { key: 'featuredImage', query: 'Featured Image Path (e.g., /images/post1.jpg): ' },
+    { key: 'featuredImageAlt', query: 'Image Alt Text (Accessibility): ' }
+];
 
-    args.forEach(arg => {
-        if (arg === '--help' || arg === '-h') {
-            usage();
-            process.exit(0);
-        } else if (arg.startsWith('--type=')) {
-            options.type = arg.substring(7).toLowerCase();
-        } else if (arg.startsWith('--title=')) {
-            options.title = arg.substring(8).replace(/^["']|["']$/g, '');
-        } else if (arg.startsWith('--slug=')) {
-            options.slug = arg.substring(7).replace(/^["']|["']$/g, '');
-        } else if (arg.startsWith('--description=')) {
-            options.description = arg.substring(14).replace(/^["']|["']$/g, '');
-        } else if (arg.startsWith('--category=')) {
-            options.category = arg.substring(11).replace(/^["']|["']$/g, '');
-        } else if (arg.startsWith('--tags=')) {
-            const raw = arg.substring(7).replace(/^["']|["']$/g, '');
-            options.tags = raw.split(',').map(tag => tag.trim()).filter(Boolean);
-        } else if (arg.startsWith('--author=')) {
-            options.author = arg.substring(9).replace(/^["']|["']$/g, '') || 'Digital Allies';
-        } else if (arg.startsWith('--date=')) {
-            options.date = arg.substring(7).replace(/^["']|["']$/g, '');
-        }
+const answers = {};
+
+function slugify(text) {
+    return text.toString().toLowerCase().trim()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+}
+
+function ask(index) {
+    if (index === questions.length) {
+        createPost();
+        rl.close();
+        return;
+    }
+
+    const q = questions[index];
+    rl.question(q.query, (ans) => {
+        answers[q.key] = ans.trim();
+        ask(index + 1);
     });
-
-    if (!options.title) {
-        console.error('❌ A --title value is required.');
-        process.exit(1);
-    }
-
-    if (!['blog', 'page'].includes(options.type)) {
-        console.error('❌ --type must be "blog" or "page".');
-        process.exit(1);
-    }
-
-    if (!options.slug) {
-        options.slug = options.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    }
-
-    return options;
 }
 
-function main() {
-    const options = parseArgs();
-    const targetDir = path.join(ROOT_CONTENT_DIR, options.type === 'page' ? 'pages' : 'blog');
+function createPost() {
+    const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const slug = answers.slug || slugify(answers.title);
+    const filename = `${slug}.md`;
+    const filepath = path.join(POSTS_DIR, filename);
     
-    if (!fs.existsSync(targetDir)) {
-        fs.mkdirSync(targetDir, { recursive: true });
-    }
+    // Handle tags array
+    const tagsList = answers.tags 
+        ? '\n' + answers.tags.split(',').map(t => `  - ${t.trim()}`).join('\n')
+        : '';
 
-    const filename = `${options.slug}.md`;
-    const filePath = path.join(targetDir, filename);
+    const author = answers.author || 'Digital Allies';
 
-    if (fs.existsSync(filePath)) {
-        console.error(`❌ Content already exists: ${filePath}`);
-        process.exit(1);
-    }
+    const content = `---
+title: "${answers.title.replace(/"/g, '\\"')}"
+slug: ${slug}
+publishDate: ${date}
+author: "${author}"
+description: "${answers.description.replace(/"/g, '\\"')}"
+category: ${answers.category}
+tags:${tagsList}
+featuredImage: ${answers.featuredImage}
+featuredImageAlt: "${answers.featuredImageAlt.replace(/"/g, '\\"')}"
+---
 
-    const frontMatter = {
-        title: options.title,
-        slug: options.slug,
-        publishDate: options.date,
-        author: options.author,
-        description: options.description,
-        category: options.category,
-        tags: options.tags,
-        // Page specific field support for the site loader
-        ...(options.type === 'page' ? { heroImage: '' } : { featuredImage: '' })
-    };
+# ${answers.title}
 
-    const body = `# ${options.title}\n\nStart writing your ${options.type} content here.\n`;
-    const fileContents = matter.stringify(body, frontMatter);
-    
-    fs.writeFileSync(filePath, fileContents, 'utf8');
-    console.log(`✅ Created ${options.type} at content/${options.type === 'page' ? 'pages' : 'blog'}/${filename}`);
+Write your content here...
+`;
+
+    fs.writeFileSync(filepath, content);
+    console.log(`\n✅ Post created successfully: ${filepath}`);
 }
 
-main();
+console.log('📝 Generate New Blog Post\n');
+ask(0);
