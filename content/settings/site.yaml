@@ -2,11 +2,11 @@ siteName: Digital Allies
 siteDescription: Creating digital solutions for the real world.
 logo: /assets/logo/digital-allies-logo-default.svg
 security:
-  enableUserRegistration: true
-  requireEmailVerification: true
+  enableUserRegistration: false
+  requireEmailVerification: false
   maintenanceMode: false
 features:
   enableBlog: true
   enableShop: false
-  enableComments: true
+  enableComments: false
 contactEmail: contact@digitalallies.net
