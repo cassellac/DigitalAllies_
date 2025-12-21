@@ -4,23 +4,25 @@ on:
   push:
     branches:
       - Master
-      - main
       - work
     paths:
-      - 'content/**'
+      - 'content/blog/**'
+      - 'content/images/blog/**'
+      - 'content/settings**'
       - 'scripts/templates/**'
       - 'scripts/sync-pages-cms-content.js'
-      - '.pages.yml'
+      - '.pages.yaml'
   pull_request:
     branches:
       - Master
-      - main
       - work
     paths:
-      - 'content/**'
+      - 'content/blog/**'
+      - 'content/images/blog/**'
+      - 'content/settings**'
       - 'scripts/templates/**'
       - 'scripts/sync-pages-cms-content.js'
-      - '.pages.yml'
+      - '.pages.yaml'
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
@@ -54,6 +56,10 @@ jobs:
           commit_user_email: 'actions@github.com'
           skip_dirty_check: false
           file_pattern: |
-            content/posts/**/*.html
-            content/blog-index.json
-            content/index.html
+            content/blog/**/.md
+            content/blog/_archive_index.md
+            content/blog/_index.md
+            content/blog/blog-index.json
+            content/_index.md
+            content/images/blog/**/.svg
+            content/settings/**/.yaml

@@ -1,15 +1,15 @@
 import os
 import yaml
 
-# Configuration based on cms.yml structure
+# Configuration based on cms.yaml structure
 # We scan 'content' because the CMS config uses content/blog, content/pages, etc.
 content_dir = "content"
-output_file = ".pages.yml"
+output_file = ".pages.yaml"
 
 # Define the collections we want to include based on the Canvas configuration
 collections = ["blog", "pages", "settings"]
 
-# Initialize the structure for .pages.yml content
+# Initialize the structure for .pages.yaml content
 pages_structure = []
 
 def generate_structure():
@@ -24,7 +24,7 @@ def generate_structure():
             # For settings, we might want to list individual files as they are singletons
             if item == "settings":
                 for file in os.listdir(item_path):
-                    if file.endswith((".yaml", ".yml")):
+                    if file.endswith((".yaml", ".yaml")):
                         name = file.split(".")[0].replace("_", " ").capitalize()
                         pages_structure.append({
                             "name": f"Admin: {name}",
@@ -39,11 +39,11 @@ def generate_structure():
                     "type": "collection"
                 })
 
-    # Save the structure to .pages.yml
+    # Save the structure to .pages.yaml
     with open(output_file, "w") as f:
         yaml.dump(pages_structure, f, default_flow_style=False, sort_keys=False)
 
-    print(f".pages.yml has been generated with {len(pages_structure)} top-level categories.")
+    print(f".pages.yaml has been generated with {len(pages_structure)} top-level categories.")
 
 if __name__ == "__main__":
     generate_structure()

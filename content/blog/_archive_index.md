@@ -79,7 +79,7 @@
         <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="mb-4"><span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">Community</span></div>
             <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                <a href="/content/posts/local-innovation-digital-opportunities/" class="hover:underline text-primary-blue">
+                <a href="/content/blog/local-innovation-digital-opportunities/" class="hover:underline text-primary-blue">
                      Kingman Local: Innovation &amp; Digital Opportunities
                 </a>
             </h2>
@@ -94,7 +94,7 @@
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#Kingman</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#LHC</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#BHC</span><span class="text-gray-400 text-xs">+7 more</span></div>
-            <a href="/content/posts/local-innovation-digital-opportunities/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
+            <a href="/content/blog/local-innovation-digital-opportunities/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
                 Read More
                 <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -105,7 +105,7 @@
         <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="mb-4"><span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">SEO</span></div>
             <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                <a href="/content/posts/advanced-seo-techniques-for-2025/" class="hover:underline text-primary-blue">
+                <a href="/content/blog/advanced-seo-techniques-for-2025/" class="hover:underline text-primary-blue">
                     Advanced SEO Techniques for 2025
                 </a>
             </h2>
@@ -120,7 +120,7 @@
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#seo</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#optimization</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#rankings</span><span class="text-gray-400 text-xs">+1 more</span></div>
-            <a href="/content/posts/advanced-seo-techniques-for-2025/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
+            <a href="/content/blog/advanced-seo-techniques-for-2025/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
                 Read More
                 <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -131,7 +131,7 @@
         <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="mb-4"><span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">Accessibility</span></div>
             <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                <a href="/content/posts/ada-compliance-for-websites/" class="hover:underline text-primary-blue">
+                <a href="/content/blog/ada-compliance-for-websites/" class="hover:underline text-primary-blue">
                     ADA Compliance for Websites: A Small Business Guide
                 </a>
             </h2>
@@ -146,7 +146,7 @@
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#ada-compliance</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#website-accessibility</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#small-business</span><span class="text-gray-400 text-xs">+6 more</span></div>
-            <a href="/content/posts/ada-compliance-for-websites/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
+            <a href="/content/blog/ada-compliance-for-websites/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
                 Read More
                 <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -157,7 +157,7 @@
         <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="mb-4"><span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">Accessibility</span></div>
             <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                <a href="/content/posts/web-bilingue/" class="hover:underline text-primary-blue">
+                <a href="/content/blog/web-bilingue/" class="hover:underline text-primary-blue">
                     ¿Por qué tu negocio necesita un sitio web bilingüe?
                 </a>
             </h2>
@@ -169,7 +169,7 @@
             </div>
             <p class="text-gray-medium mb-6 leading-relaxed">Los consumidores hispanos representan un poder adquisitivo de $1.7 billones de dólares en Estados Unidos. Si tu negocio solo tiene presencia en inglés en línea, estás perdiendo la oportunidad de conectar con esta comunidad vibrante y en crecimiento.</p>
             
-            <a href="/content/posts/web-bilingue/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
+            <a href="/content/blog/web-bilingue/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
                 Read More
                 <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -180,7 +180,7 @@
         <article class="bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="mb-4"><span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">Web Design</span></div>
             <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                <a href="/content/posts/5-signs-your-small-business-needs-a-new-website/" class="hover:underline text-primary-blue">
+                <a href="/content/blog/5-signs-your-small-business-needs-a-new-website/" class="hover:underline text-primary-blue">
                     Is It Time for a New Website? 5 Signs Your Small Business Needs a Redesign (And How to Get Started)
                 </a>
             </h2>
@@ -195,7 +195,7 @@
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#web-design</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#small-business</span>
                 <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#accessibility</span><span class="text-gray-400 text-xs">+2 more</span></div>
-            <a href="/content/posts/5-signs-your-small-business-needs-a-new-website/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
+            <a href="/content/blog/5-signs-your-small-business-needs-a-new-website/" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
                 Read More
                 <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

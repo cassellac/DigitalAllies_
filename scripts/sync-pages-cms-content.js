@@ -31,7 +31,7 @@ function slugify(text) {
  */
 function syncSettings() {
     if (!fs.existsSync(SETTINGS_DIR)) return;
-    const files = fs.readdirSync(SETTINGS_DIR).filter(f => f.endsWith('.yaml') || f.endsWith('.yml'));
+    const files = fs.readdirSync(SETTINGS_DIR).filter(f => f.endsWith('.yaml') || f.endsWith('.yaml'));
     
     files.forEach(file => {
         const filePath = path.join(SETTINGS_DIR, file);

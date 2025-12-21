@@ -1,6 +1,6 @@
 {
   "name": "digitalallies-cms",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Static CMS toolkit for Digital Allies blog and page management",
   "main": "scripts/sync-cms.js",
   "scripts": {
