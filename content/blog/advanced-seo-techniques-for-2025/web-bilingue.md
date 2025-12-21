@@ -6,7 +6,8 @@ author: Jennyfer Figueroa
 description: Si tu negocio solo tiene presencia en inglés en línea, estás
   perdiendo la oportunidad de conectar con esta comunidad vibrante y en
   crecimiento.
-featuredImage: /images/digital-allies-post2-featured.svg
+featuredImage: content/images/blog/Kingman Local Edition Innovation & Digital
+  Opportunities - digital-allies-post2-featured.png
 featuredImageAlt: 'a green square with a grid overlay and white rectangle in the
   center that displays the title of the blog: "¿Por qué tu negocio necesita un
   sitio web bilingüe?"'
