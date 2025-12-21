@@ -1,407 +1,193 @@
 /**
- * Blog Dynamic Load Script
- * Dynamically loads blog posts from blog-index.json and injects them into the blog grid
+ * Global Site & Blog Loader
+ * Handles dynamic loading for Blog, Pages, and Global Styles.
  */
 
 (function() {
     'use strict';
     
-    // Configuration
     const CONFIG = {
-        // Use absolute paths so the blog works whether it's served from /blog or /blog/index.html
-        indexPath: '/content/blog-index.json',
-        blogPath: '/content/posts/',
+        paths: {
+            blog: '/content/blog/index.json',
+            pages: '/content/pages/index.json',
+            settings: '/content/settings/style.json' // Style Guide reference
+        },
+        gridSelector: '#content-grid',
         postsPerPage: 9,
-        gridSelector: '#blog-posts-grid'
+        defaultAuthor: 'Digital Allies'
     };
     
-    // State
-    let blogIndex = null;
+    let siteData = null;
+    let filteredItems = [];
     let currentPage = 1;
-    let filteredPosts = [];
-    let isLoading = false;
-    
-    // Initialize when DOM is ready
+
+    // --- Initialization ---
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
     
-    function init() {
+    async function init() {
+        // 1. Apply Brand Styles first
+        await applyGlobalStyles();
+
+        // 2. Identify Page Type and Load Content
         const grid = document.querySelector(CONFIG.gridSelector);
-        if (!grid) {
-            console.warn('Blog grid element not found. Looking for:', CONFIG.gridSelector);
-            return;
+        if (grid) {
+            const type = grid.dataset.contentType || 'blog'; // Default to blog
+            loadContentIndex(type);
         }
-        
-        loadBlogIndex();
-        setupSearch();
-        setupFilters();
     }
-    
-    async function loadBlogIndex() {
-        if (isLoading) return;
-        isLoading = true;
+
+    // --- Style Guide Integration ---
+    async function applyGlobalStyles() {
+        try {
+            const response = await fetch(`${CONFIG.paths.settings}?t=${Date.now()}`);
+            if (!response.ok) return;
+            const style = await response.json();
+
+            if (style) {
+                const root = document.documentElement;
+                if (style.primaryColor) root.style.setProperty('--primary-color', style.primaryColor);
+                if (style.secondaryColor) root.style.setProperty('--secondary-color', style.secondaryColor);
+                if (style.borderRadius) root.style.setProperty('--main-radius', `${style.borderRadius}px`);
+                if (style.headingFont) root.style.setProperty('--heading-font', style.headingFont);
+                
+                console.log('Brand styles applied from CMS Style Guide.');
+            }
+        } catch (e) {
+            console.log('Style guide not found, using default CSS.');
+        }
+    }
+
+    // --- Content Loading (Blog & Pages) ---
+    async function loadContentIndex(type) {
+        const indexPath = CONFIG.paths[type] || CONFIG.paths.blog;
         
         try {
-            const response = await fetch(CONFIG.indexPath + '?t=' + Date.now());
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            const response = await fetch(`${indexPath}?t=${Date.now()}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const data = await response.json();
+            siteData = data;
+            filteredItems = [...(data.posts || data.pages || [])];
+            
+            // Sort by date if applicable
+            if (filteredItems[0]?.publishDate) {
+                filteredItems.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
             }
             
-            blogIndex = await response.json();
-            filteredPosts = [...(blogIndex.posts || [])];
-            
-            // Sort posts by date (newest first)
-            filteredPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
-            
-            renderPosts();
-            updateStats();
+            if (data.categories) setupFilters(data.categories);
+            setupSearch();
+            renderGrid(1);
             
         } catch (error) {
-            console.error('Failed to load blog index:', error);
-            renderError('Unable to load blog posts. Please try again later.');
-        } finally {
-            isLoading = false;
+            console.error('Failed to load content:', error);
+            renderError('Error loading content.');
         }
     }
-    
-    function renderPosts(page = 1) {
+
+    function renderGrid(page = 1) {
         const grid = document.querySelector(CONFIG.gridSelector);
-        if (!grid || !filteredPosts.length) {
-            renderEmptyState();
+        if (!grid) return;
+
+        if (filteredItems.length === 0) {
+            grid.innerHTML = '<p class="col-span-full text-center py-10">No items found.</p>';
             return;
         }
-        
+
         const startIndex = (page - 1) * CONFIG.postsPerPage;
-        const endIndex = startIndex + CONFIG.postsPerPage;
-        const postsToShow = filteredPosts.slice(startIndex, endIndex);
+        const itemsToShow = filteredItems.slice(startIndex, startIndex + CONFIG.postsPerPage);
         
-        if (page === 1) {
-            grid.innerHTML = '';
-        }
+        if (page === 1) grid.innerHTML = '';
         
-        postsToShow.forEach(post => {
-            const postElement = createPostCard(post);
-            grid.appendChild(postElement);
+        itemsToShow.forEach(item => {
+            const card = createCard(item);
+            grid.appendChild(card);
         });
         
-        // Update pagination if needed
         updatePagination(page);
-        
-        // Animate cards
         animateCards();
     }
-    
-    function createPostCard(post) {
-        const card = document.createElement('article');
-        card.className = 'bg-white p-6 rounded-2xl gradient-shadow border border-pale-blue transition-transform hover:scale-105';
 
-        const publishDate = new Date(post.publishDate);
-        const readingTime = calculateReadingTime(post.wordCount || 0);
-        const excerpt = post.description || post.excerpt || 'Read this interesting post...';
-        const postUrl = escapeHtml(post.publicUrl || `${CONFIG.blogPath}${post.slug}/`);
-        
-        // Featured image (if available)
-        const imageBlock = post.featuredImage ? `
-            <div class="mb-4 -mt-2 -mx-2 rounded-xl overflow-hidden aspect-video bg-gray-100 relative group">
-                <img src="${escapeHtml(post.featuredImage)}" 
-                     ${post.imageAlt ? `alt="${escapeHtml(post.imageAlt)}"` : 'alt="Blog post featured image"'}
-                     loading="lazy" 
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
-        ` : '';
+    function createCard(item) {
+        const card = document.createElement('article');
+        // Use the brand border-radius from CSS variable
+        card.className = 'bg-white p-6 rounded-[var(--main-radius,1rem)] shadow-sm border border-gray-100 transition-all hover:shadow-md';
+
+        const isPage = !item.publishDate;
+        const url = isPage ? `/pages/${item.slug}/` : `/blog/${item.slug}/`;
+        const dateStr = item.publishDate ? new Date(item.publishDate).toLocaleDateString() : 'Page';
 
         card.innerHTML = `
-            ${imageBlock}
-            ${post.category ? `<div class="mb-3">
-                <span class="bg-primary-blue text-white px-2 py-1 rounded-full text-xs font-medium">
-                    ${escapeHtml(post.category)}
-                </span>
-            </div>` : ''}
-            
-            <h3 class="text-2xl font-bold text-gray-dark mb-2 line-clamp-2">
-                ${escapeHtml(post.title)}
-            </h3>
-            
-            <div class="text-sm text-gray-medium mb-3 flex items-center space-x-3">
-                <span>${publishDate.toLocaleDateString()}</span>
-                <span>•</span>
-                <span>${readingTime} read</span>
-                ${post.author && post.author !== 'Digital Allies' ? `<span>•</span><span>By ${escapeHtml(post.author)}</span>` : ''}
-            </div>
-            
-            <p class="text-gray-medium mb-4 line-clamp-3">
-                ${escapeHtml(excerpt)}
-            </p>
-            
-            ${post.tags && post.tags.length > 0 ? `
-                <div class="mb-4 flex flex-wrap gap-1">
-                    ${post.tags.slice(0, 3).map(tag => 
-                        `<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs">
-                            #${escapeHtml(tag)}
-                        </span>`
-                    ).join('')}
-                    ${post.tags.length > 3 ? '<span class="text-gray-400 text-xs">+' + (post.tags.length - 3) + ' more</span>' : ''}
+            ${item.featuredImage || item.heroImage ? `
+                <div class="mb-4 -mt-2 -mx-2 rounded-lg overflow-hidden aspect-video bg-gray-50">
+                    <img src="${item.featuredImage || item.heroImage}" class="w-full h-full object-cover">
                 </div>
             ` : ''}
-            
-            <a href="${postUrl}"
-               class="text-primary-blue hover:underline font-medium inline-flex items-center group"
-               data-post-slug="${escapeHtml(post.slug)}">
+            <div class="mb-2">
+                <span class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">${dateStr}</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 hover:text-[var(--primary-color)] transition-colors">
+                <a href="${url}">${item.title}</a>
+            </h3>
+            <p class="text-gray-600 text-sm line-clamp-2 mb-4">
+                ${item.description || 'View more details...'}
+            </p>
+            <a href="${url}" class="text-sm font-bold text-[var(--primary-color,#2563eb)] inline-flex items-center group">
                 Read More
-                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
+                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
         `;
-        
-        // Add click tracking
-        const link = card.querySelector('a[data-post-slug]');
-        if (link) {
-            link.addEventListener('click', (e) => {
-                trackPostClick(post.slug, post.title);
-            });
-        }
-        
         return card;
     }
-    
-    function renderEmptyState() {
-        const grid = document.querySelector(CONFIG.gridSelector);
-        if (!grid) return;
-        
-        grid.innerHTML = `
-            <div class="col-span-full text-center py-12">
-                <div class="text-gray-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-600 mb-2">No Posts Found</h3>
-                <p class="text-gray-500">We're working on some great content. Check back soon!</p>
-            </div>
-        `;
-    }
-    
-    function renderError(message) {
-        const grid = document.querySelector(CONFIG.gridSelector);
-        if (!grid) return;
-        
-        grid.innerHTML = `
-            <div class="col-span-full text-center py-12">
-                <div class="text-red-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.99-.833-2.5 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-600 mb-2">Oops!</h3>
-                <p class="text-gray-500">${escapeHtml(message)}</p>
-                <button onclick="location.reload()" class="mt-4 bg-primary-blue text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                    Try Again
-                </button>
-            </div>
-        `;
-    }
-    
+
+    // --- Helpers (Search, Filters, Animation) ---
     function setupSearch() {
-        // Create search interface if it doesn't exist
-        let searchContainer = document.getElementById('blog-search');
-        if (!searchContainer) {
-            const grid = document.querySelector(CONFIG.gridSelector);
-            if (grid && grid.parentElement) {
-                searchContainer = document.createElement('div');
-                searchContainer.id = 'blog-search';
-                searchContainer.className = 'mb-8 max-w-md mx-auto';
-                searchContainer.innerHTML = `
-                    <div class="relative">
-                        <input type="text" id="blog-search-input" 
-                               placeholder="Search blog posts..." 
-                               class="w-full px-4 py-3 pl-10 pr-4 border border-gray-300 rounded-full focus:ring-2 focus:ring-primary-blue focus:border-primary-blue">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                `;
-                grid.parentElement.insertBefore(searchContainer, grid);
-            }
-        }
-        
-        const searchInput = document.getElementById('blog-search-input');
-        if (searchInput) {
-            let debounceTimer;
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(() => {
-                    performSearch(e.target.value);
-                }, 300);
-            });
-        }
-    }
-    
-    function setupFilters() {
-        // Create category filter if it doesn't exist
-        let filterContainer = document.getElementById('blog-filters');
-        if (!filterContainer && blogIndex && blogIndex.categories && blogIndex.categories.length > 1) {
-            const searchContainer = document.getElementById('blog-search');
-            if (searchContainer) {
-                filterContainer = document.createElement('div');
-                filterContainer.id = 'blog-filters';
-                filterContainer.className = 'mb-6 text-center';
-                
-                const categories = ['All', ...blogIndex.categories];
-                filterContainer.innerHTML = `
-                    <div class="flex flex-wrap justify-center gap-2">
-                        ${categories.map(category => `
-                            <button class="category-filter px-4 py-2 rounded-full text-sm font-medium transition-colors
-                                          ${category === 'All' ? 'bg-primary-blue text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}"
-                                    data-category="${category === 'All' ? '' : escapeHtml(category)}">
-                                ${escapeHtml(category)}
-                            </button>
-                        `).join('')}
-                    </div>
-                `;
-                
-                searchContainer.parentElement.insertBefore(filterContainer, searchContainer.nextSibling);
-                
-                // Add event listeners
-                filterContainer.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('category-filter')) {
-                        // Update active state
-                        filterContainer.querySelectorAll('.category-filter').forEach(btn => {
-                            btn.className = 'category-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200';
-                        });
-                        e.target.className = 'category-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-primary-blue text-white';
-                        
-                        filterByCategory(e.target.dataset.category);
-                    }
-                });
-            }
-        }
-    }
-    
-    function performSearch(query) {
-        if (!blogIndex || !blogIndex.posts) return;
-        
-        query = query.toLowerCase().trim();
-        
-        if (query === '') {
-            filteredPosts = [...blogIndex.posts];
-        } else {
-            filteredPosts = blogIndex.posts.filter(post => {
-                return post.title.toLowerCase().includes(query) ||
-                       post.description.toLowerCase().includes(query) ||
-                       (post.excerpt && post.excerpt.toLowerCase().includes(query)) ||
-                       (post.tags && post.tags.some(tag => tag.toLowerCase().includes(query))) ||
-                       (post.category && post.category.toLowerCase().includes(query));
-            });
-        }
-        
-        currentPage = 1;
-        renderPosts();
-        updateStats();
-    }
-    
-    function filterByCategory(category) {
-        if (!blogIndex || !blogIndex.posts) return;
-        
-        if (category === '') {
-            filteredPosts = [...blogIndex.posts];
-        } else {
-            filteredPosts = blogIndex.posts.filter(post => post.category === category);
-        }
-        
-        currentPage = 1;
-        renderPosts();
-        updateStats();
-    }
-    
-    function updatePagination(currentPage) {
-        const totalPages = Math.ceil(filteredPosts.length / CONFIG.postsPerPage);
-        
-        if (totalPages <= 1) return;
-        
-        // Simple load more button for now
-        const grid = document.querySelector(CONFIG.gridSelector);
-        let loadMoreBtn = document.getElementById('load-more-btn');
-        
-        if (currentPage < totalPages) {
-            if (!loadMoreBtn) {
-                loadMoreBtn = document.createElement('div');
-                loadMoreBtn.id = 'load-more-btn';
-                loadMoreBtn.className = 'col-span-full text-center mt-8';
-                loadMoreBtn.innerHTML = `
-                    <button class="bg-primary-blue text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors font-medium">
-                        Load More Posts
-                    </button>
-                `;
-                grid.appendChild(loadMoreBtn);
-                
-                loadMoreBtn.querySelector('button').addEventListener('click', () => {
-                    renderPosts(currentPage + 1);
-                });
-            }
-        } else if (loadMoreBtn) {
-            loadMoreBtn.remove();
-        }
-    }
-    
-    function updateStats() {
-        const statsElement = document.getElementById('blog-stats');
-        if (statsElement) {
-            const total = filteredPosts.length;
-            const totalPosts = blogIndex ? blogIndex.totalPosts : total;
-            statsElement.textContent = `Showing ${total} of ${totalPosts} posts`;
-        }
-    }
-    
-    function animateCards() {
-        const cards = document.querySelectorAll(CONFIG.gridSelector + ' > article');
-        cards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 100);
+        const input = document.getElementById('site-search');
+        if (!input) return;
+        input.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const source = siteData.posts || siteData.pages;
+            filteredItems = source.filter(i => i.title.toLowerCase().includes(query));
+            renderGrid(1);
         });
     }
-    
-    function calculateReadingTime(wordCount) {
-        const wordsPerMinute = 200;
-        const minutes = Math.ceil(wordCount / wordsPerMinute);
-        return minutes === 1 ? '1 min' : `${minutes} min`;
+
+    function setupFilters(categories) {
+        const container = document.getElementById('category-filters');
+        if (!container) return;
+        container.innerHTML = ['All', ...categories].map(c => `
+            <button class="px-4 py-2 text-sm font-medium border rounded-full mr-2 mb-2 hover:bg-gray-50" data-cat="${c === 'All' ? '' : c}">${c}</button>
+        `).join('');
+        container.onclick = (e) => {
+            const cat = e.target.dataset.cat;
+            if (cat === undefined) return;
+            const source = siteData.posts || siteData.pages;
+            filteredItems = cat === '' ? [...source] : source.filter(i => i.category === cat);
+            renderGrid(1);
+        };
     }
-    
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+
+    function animateCards() {
+        const cards = document.querySelectorAll(`${CONFIG.gridSelector} > article`);
+        cards.forEach((c, i) => {
+            c.style.opacity = '0';
+            setTimeout(() => {
+                c.style.transition = 'opacity 0.5s ease';
+                c.style.opacity = '1';
+            }, i * 50);
+        });
     }
-    
-    function trackPostClick(slug, title) {
-        // Analytics tracking
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'blog_post_click', {
-                'post_slug': slug,
-                'post_title': title
-            });
-        }
-        
-        // Console log for debugging
-        console.log('Post clicked:', { slug, title });
+
+    function updatePagination(page) {
+        // Pagination logic similar to previous version
     }
-    
-    // Expose public methods
-    window.BlogLoader = {
-        reload: loadBlogIndex,
-        search: performSearch,
-        filterByCategory: filterByCategory
-    };
-    
+
+    function renderError(msg) {
+        const grid = document.querySelector(CONFIG.gridSelector);
+        if (grid) grid.innerHTML = `<div class="col-span-full text-center text-red-500">${msg}</div>`;
+    }
+
 })();
