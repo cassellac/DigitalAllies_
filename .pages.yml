@@ -1,0 +1,308 @@
+media:
+  name: images
+  label: Images
+  input: images
+  output: content/images/blog
+  categories: [image]
+
+content:
+  # --- Blog Posts Collection ---
+  - name: blog_posts
+    label: Blog Posts
+    type: collection
+    path: content/blog
+    format: yaml-frontmatter
+    filename: "{slug}.md"
+    view:
+      fields: [title, publishDate, author, category]
+      primary: title
+      sort: [publishDate, title]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        description: "URL-friendly name (e.g., my-first-post)"
+        required: true
+      - name: publishDate
+        label: Publish Date
+        type: date
+        required: true
+      - name: author
+        label: Author
+        type: string
+        default: "Digital Allies"
+      - name: description
+        label: Meta Description
+        type: text
+        description: "Brief summary for SEO (max 160 chars)"
+      - name: category
+        label: Category
+        type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: featuredImage
+        label: Featured Image
+        type: image
+        options:
+          media: images
+      - name: featuredImageAlt
+        label: Image Alt Text
+        type: string
+      - name: body
+        label: Post Body
+        type: rich-text
+        options:
+          media: images
+
+  # --- Website Pages (with Page Builder) ---
+  - name: pages
+    label: Website Pages
+    type: collection
+    path: content/pages
+    format: yaml-frontmatter
+    filename: "{slug}.md"
+    view:
+      fields: [title, slug]
+      primary: title
+    fields:
+      - name: title
+        label: Page Title
+        type: string
+        required: true
+      - name: slug
+        label: URL Slug
+        type: string
+        required: true
+      - name: description
+        label: Meta Description
+        type: text
+      - name: heroImage
+        label: Hero Image
+        type: image
+        options:
+          media: images
+      
+      # Page Builder Section
+      - name: sections
+        label: Page Builder Sections
+        type: list
+        description: "Add custom sections to build your page layout."
+        fields:
+          - name: type
+            label: Section Type
+            type: select
+            options:
+              values:
+                - label: "Hero Header"
+                  value: "hero"
+                - label: "Standard Content"
+                  value: "content"
+                - label: "Feature Grid"
+                  value: "features"
+                - label: "Image Gallery"
+                  value: "gallery"
+                - label: "Contact/Custom Form"
+                  value: "form"
+                - label: "User Login"
+                  value: "login"
+            default: "content"
+          
+          - name: sectionTitle
+            label: Section Heading
+            type: string
+          
+          - name: text
+            label: Content Text
+            type: rich-text
+            options:
+              media: images
+          
+          - name: image
+            label: Section Image
+            type: image
+            options:
+              media: images
+          
+          # Specific settings for Forms
+          - name: formSettings
+            label: Form Settings (If Form Type selected)
+            type: object
+            fields:
+              - name: formEndpoint
+                label: Form Destination Email / Endpoint
+                type: string
+              - name: formType
+                label: Form Type
+                type: select
+                options: 
+                  values: ["Contact", "Newsletter", "Booking", "Custom"]
+
+          # Specific settings for Login
+          - name: loginSettings
+            label: Login Settings (If Login Type selected)
+            type: object
+            fields:
+              - name: redirectUrl
+                label: Redirect After Login
+                type: string
+                default: "/dashboard"
+              - name: allowRegistration
+                label: Show Registration Link
+                type: boolean
+                default: true
+
+      - name: body
+        label: Legacy Body Content
+        type: rich-text
+        description: "Use this for simple pages or fallback content."
+        options:
+          media: images
+
+  # --- Site Configuration (Singleton) ---
+  - name: site_config
+    label: Site Configuration
+    type: file
+    path: content/settings/site.yaml
+    fields:
+      - name: siteName
+        label: Website Name
+        type: string
+      - name: siteDescription
+        label: Global Description
+        type: text
+      - name: logo
+        label: Site Logo
+        type: image
+        options:
+          media: images
+      
+      # Security & Admin Features
+      - name: security
+        label: Security & Access
+        type: object
+        fields:
+          - name: enableUserRegistration
+            label: Enable User Registration
+            type: boolean
+            default: false
+          - name: requireEmailVerification
+            label: Require Email Verification
+            type: boolean
+            default: true
+          - name: maintenanceMode
+            label: Maintenance Mode
+            type: boolean
+            description: "Show maintenance page to non-admins"
+            default: false
+          - name: adminEmails
+            label: Admin Emails
+            type: string
+            list: true
+            description: "List of emails with admin access"
+
+      # Feature Toggles
+      - name: features
+        label: Site Features
+        type: object
+        fields:
+          - name: enableBlog
+            label: Enable Blog
+            type: boolean
+            default: true
+          - name: enableShop
+            label: Enable E-Commerce
+            type: boolean
+            default: false
+          - name: enableComments
+            label: Enable Comments
+            type: boolean
+            default: false
+
+      - name: contactEmail
+        label: Admin Contact Email
+        type: string
+
+  # --- Brand Style Guide (Singleton) ---
+  - name: style_guide
+    label: Style Guide
+    type: file
+    path: content/settings/style.yaml
+    fields:
+      - name: branding
+        label: Brand Identity
+        type: object
+        fields:
+          - name: primaryColor
+            label: Primary Brand Color
+            type: string
+            description: "Hex code (e.g., #3B82F6)"
+          - name: secondaryColor
+            label: Secondary Brand Color
+            type: string
+          - name: accentColor
+            label: Accent Color
+            type: string
+      
+      - name: typography
+        label: Typography
+        type: object
+        fields:
+          - name: headingFont
+            label: Heading Font Family
+            type: string
+            default: "Sans-serif"
+          - name: bodyFont
+            label: Body Font Family
+            type: string
+            default: "Serif"
+          - name: baseFontSize
+            label: Base Font Size (px)
+            type: number
+            default: 16
+
+      - name: components
+        label: UI Components
+        type: object
+        fields:
+          - name: borderRadius
+            label: Component Rounding (px)
+            type: number
+            default: 8
+          - name: buttonStyle
+            label: Button Style
+            type: select
+            options: 
+              values: ["Solid", "Outline", "Flat"]
+            default: "Solid"
+
+      - name: brandAssets
+        label: Approved Brand Icons/Graphics
+        type: image
+        list: true
+        options:
+          media: images
+
+  # --- Social Media Links (Singleton) ---
+  - name: social_links
+    label: Social Media Links
+    type: file
+    path: content/settings/social.yaml
+    fields:
+      - name: twitter
+        label: Twitter URL
+        type: string
+      - name: linkedin
+        label: LinkedIn URL
+        type: string
+      - name: facebook
+        label: Facebook URL
+        type: string
+      - name: instagram
+        label: Instagram URL
+        type: string
