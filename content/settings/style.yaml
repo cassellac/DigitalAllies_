@@ -1,0 +1,12 @@
+branding:
+  primaryColor: "#0052CC"
+  secondaryColor: "#262626"
+  accentColor: "#3B82F6"
+typography:
+  headingFont: "Sans-serif"
+  bodyFont: "Serif"
+  baseFontSize: 16
+components:
+  borderRadius: 8
+  buttonStyle: "Solid"
+brandAssets: []

@@ -1,0 +1,13 @@
+siteName: "Digital Allies"
+siteDescription: "Creating digital solutions for the real world."
+logo: "/assets/logo/digital-allies-logo-default.svg"
+contactEmail: "contact@digitalallies.net"
+security:
+  enableUserRegistration: false
+  requireEmailVerification: true
+  maintenanceMode: false
+  adminEmails: []
+features:
+  enableBlog: true
+  enableShop: false
+  enableComments: false
