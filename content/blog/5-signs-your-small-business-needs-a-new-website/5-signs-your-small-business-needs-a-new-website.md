@@ -13,7 +13,8 @@ tags:
   - accessibility
   - seo
   - redesign
-featuredImage: /images/digital-allies-post1-featured.svg
+featuredImage: content/images/blog/Kingman Local Edition Innovation & Digital
+  Opportunities - digital-allies-post1-featured.png
 featuredImageAlt: 'a blue square with a grid overlay and white rectangle in the
   center that displays the title of the blog: "Is It Time for a New Website? 5
   Signs Your Small Business Needs a Redesign (And How to Get Started)"'
