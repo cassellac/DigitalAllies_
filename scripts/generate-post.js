@@ -4,17 +4,18 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const CONTENT_DIR = path.join(__dirname, '..', 'content');
+const ROOT_CONTENT_DIR = path.join(__dirname, '..', 'content');
 
 function usage() {
     console.log(`
-Digital Allies Markdown Post Generator
+Digital Allies Content Generator
 
-Usage: npm run generate-post -- --title="Post Title" [options]
+Usage: npm run generate -- --type=[blog|page] --title="Title" [options]
 
 Options:
-  --title="Title"            (required) Post title used for the H1 and slug
-  --slug="custom-slug"       Optional slug (auto-generated from title if omitted)
+  --type="type"              (required) 'blog' or 'page'
+  --title="Title"            (required) Title used for H1 and slug
+  --slug="custom-slug"       Optional slug (auto-generated from title)
   --description="Summary"    Optional SEO description
   --category="Category"      Optional category label
   --tags="tag-one,tag-two"   Optional comma separated list of tags
@@ -26,6 +27,7 @@ Options:
 function parseArgs() {
     const args = process.argv.slice(2);
     const options = {
+        type: 'blog',
         title: '',
         slug: '',
         description: '',
@@ -39,6 +41,8 @@ function parseArgs() {
         if (arg === '--help' || arg === '-h') {
             usage();
             process.exit(0);
+        } else if (arg.startsWith('--type=')) {
+            options.type = arg.substring(7).toLowerCase();
         } else if (arg.startsWith('--title=')) {
             options.title = arg.substring(8).replace(/^["']|["']$/g, '');
         } else if (arg.startsWith('--slug=')) {
@@ -53,53 +57,40 @@ function parseArgs() {
         } else if (arg.startsWith('--author=')) {
             options.author = arg.substring(9).replace(/^["']|["']$/g, '') || 'Digital Allies';
         } else if (arg.startsWith('--date=')) {
-            const value = arg.substring(7).replace(/^["']|["']$/g, '');
-            if (value) {
-                options.date = value;
-            }
+            options.date = arg.substring(7).replace(/^["']|["']$/g, '');
         }
     });
 
     if (!options.title) {
-        console.error('❌  A --title value is required. Use --help to see usage.');
+        console.error('❌ A --title value is required.');
+        process.exit(1);
+    }
+
+    if (!['blog', 'page'].includes(options.type)) {
+        console.error('❌ --type must be "blog" or "page".');
         process.exit(1);
     }
 
     if (!options.slug) {
-        options.slug = generateSlug(options.title);
+        options.slug = options.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     }
 
     return options;
 }
 
-function generateSlug(input) {
-    return input
-        .toString()
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
-}
-
-function ensureContentDir() {
-    if (!fs.existsSync(CONTENT_DIR)) {
-        fs.mkdirSync(CONTENT_DIR, { recursive: true });
+function main() {
+    const options = parseArgs();
+    const targetDir = path.join(ROOT_CONTENT_DIR, options.type === 'page' ? 'pages' : 'blog');
+    
+    if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
     }
-}
 
-function createPostFile(options) {
-    ensureContentDir();
     const filename = `${options.slug}.md`;
-    if (options.slug.includes('..')) {
-        console.error(`❌  Invalid slug: '${options.slug}'`);
-        process.exit(1);
-    }
-    const filePath = path.join(CONTENT_DIR, filename);
+    const filePath = path.join(targetDir, filename);
 
     if (fs.existsSync(filePath)) {
-        console.error(`❌  A post with slug '${options.slug}' already exists at content/${filename}.`);
+        console.error(`❌ Content already exists: ${filePath}`);
         process.exit(1);
     }
 
@@ -110,23 +101,16 @@ function createPostFile(options) {
         author: options.author,
         description: options.description,
         category: options.category,
-        tags: options.tags
+        tags: options.tags,
+        // Page specific field support for the site loader
+        ...(options.type === 'page' ? { heroImage: '' } : { featuredImage: '' })
     };
 
-    const body = `# ${options.title}\n\nStart writing your post content here.\n`;
-
+    const body = `# ${options.title}\n\nStart writing your ${options.type} content here.\n`;
     const fileContents = matter.stringify(body, frontMatter);
+    
     fs.writeFileSync(filePath, fileContents, 'utf8');
-
-    console.log(`✅  Created content/${filename}`);
-    console.log('Next steps:');
-    console.log('  1. Edit the markdown file with your article content.');
-    console.log('  2. Run "npm run sync-cms" to regenerate the HTML blog post and index.');
-}
-
-function main() {
-    const options = parseArgs();
-    createPostFile(options);
+    console.log(`✅ Created ${options.type} at content/${options.type === 'page' ? 'pages' : 'blog'}/${filename}`);
 }
 
 main();
