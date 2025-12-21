@@ -9,7 +9,8 @@ description: Emerging trends within the broader AI landscape is what we call
 category: Business
 tags:
   - local-ai
-featuredImage: /images/digital-allies-post5-featured.svg
+featuredImage: content/images/blog/Kingman Local Edition Innovation & Digital
+  Opportunities - digital-allies-post5-featured.png
 featuredImageAlt: 'a blue square with a grid overlay and white rectangle in the
   center that displays the title of the blog: "what exactly is local AI?"'
 ---
