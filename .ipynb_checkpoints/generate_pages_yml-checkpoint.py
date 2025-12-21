@@ -1,30 +1,49 @@
 import os
 import yaml
 
-# Directory to scan
-cms_dir = “cms”
-output_file = “.pages.yml”
+# Configuration based on cms.yml structure
+# We scan 'content' because the CMS config uses content/blog, content/pages, etc.
+content_dir = "content"
+output_file = ".pages.yml"
+
+# Define the collections we want to include based on the Canvas configuration
+collections = ["blog", "pages", "settings"]
 
 # Initialize the structure for .pages.yml content
 pages_structure = []
 
-# Traverse the directory tree
-for root, dirs, files in os.walk(cms_dir):
-    # Skip the root directory itself
-    if root == cms_dir:
-        continue
+def generate_structure():
+    if not os.path.exists(content_dir):
+        print(f"Error: Directory '{content_dir}' not found.")
+        return
 
-    # Extract the subfolder name relative to cms/
-    relative_path = os.path.relpath(root, cms_dir)
+    for item in collections:
+        item_path = os.path.join(content_dir, item)
+        
+        if os.path.exists(item_path):
+            # For settings, we might want to list individual files as they are singletons
+            if item == "settings":
+                for file in os.listdir(item_path):
+                    if file.endswith((".yaml", ".yml")):
+                        name = file.split(".")[0].replace("_", " ").capitalize()
+                        pages_structure.append({
+                            "name": f"Admin: {name}",
+                            "src": os.path.join(item_path, file),
+                            "type": "singleton"
+                        })
+            else:
+                # For standard collections (blog, pages)
+                pages_structure.append({
+                    "name": item.capitalize(),
+                    "src": item_path,
+                    "type": "collection"
+                })
 
-    # Add entry for the folder
-    pages_structure.append({
-        “name”: relative_path.capitalize(),  # Use folder name as title
-        “src”: os.path.join(cms_dir, relative_path)
-    })
+    # Save the structure to .pages.yml
+    with open(output_file, "w") as f:
+        yaml.dump(pages_structure, f, default_flow_style=False, sort_keys=False)
 
-# Save the structure to .pages.yml
-with open(output_file, “w”) as f:
-    yaml.dump(pages_structure, f, default_flow_style=False)
+    print(f".pages.yml has been generated with {len(pages_structure)} top-level categories.")
 
-print(f”.pages.yml has been generated with {len(pages_structure)} entries.”)
+if __name__ == "__main__":
+    generate_structure()
