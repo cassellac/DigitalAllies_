@@ -13,6 +13,9 @@ category: Web Design
 tags:
   - web-design
   - seo
+featuredImage: /images/Kingman Local Edition Innovation & Digital Opportunities
+  - digital-allies-post1-featured.png
+featuredImageAlt: "Is it time for a new we site? Features Graphic "
 ---
 In today’s digital-first world, a website isn’t just a nice-to-have for small businesses—it’s a fundamental necessity. Your website is often the very first interaction a potential customer has with your brand. It’s your digital storefront, your business card, and your 24/7 salesperson all rolled into one. If your website isn’t up to par, you could be missing out on valuable opportunities to connect with customers, build trust, and grow your business.
 
