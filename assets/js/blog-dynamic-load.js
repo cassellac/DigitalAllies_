@@ -1,73 +1,132 @@
 /**
  * blog-dynamic-load.js
  * Dynamically loads blog posts from /content/blog-index.json
- * Updated to support accessibility fields (Alt Text).
+ * Supports URL parameter filtering ?category=X
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const blogContainer = document.querySelector('#blog-posts-container'); // Ensure this ID exists in your HTML
+    const blogContainer = document.querySelector('#blog-posts-container'); 
+    const categoryHeader = document.querySelector('#category-header');
+    
+    // Only run if the container exists
     if (!blogContainer) return;
 
+    // Get category from URL
+    const urlCategory = getUrlParameter('category');
+    
+    // Show loading state
+    blogContainer.innerHTML = `
+        <div class="col-span-full text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-blue"></div>
+            <p class="mt-2 text-gray-500">Loading insights...</p>
+        </div>
+    `;
+
     fetch('/content/blog-index.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load blog index');
+            return response.json();
+        })
         .then(data => {
-            const posts = data.posts || [];
+            let posts = data.posts || [];
             
+            // Filter by Category if present in URL
+            if (urlCategory) {
+                const cleanCategory = urlCategory.toLowerCase();
+                posts = posts.filter(post => 
+                    (post.category && post.category.toLowerCase() === cleanCategory) ||
+                    (post.tags && post.tags.some(tag => tag.toLowerCase() === cleanCategory))
+                );
+                
+                // Update Header to show active filter
+                if (categoryHeader) {
+                    categoryHeader.textContent = `Category: ${urlCategory.charAt(0).toUpperCase() + urlCategory.slice(1)}`;
+                    categoryHeader.classList.remove('hidden');
+                }
+            }
+
             if (posts.length === 0) {
-                blogContainer.innerHTML = '<p class="text-center text-gray-500">No posts found.</p>';
+                blogContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-gray-50 rounded-lg">
+                        <p class="text-xl text-gray-600 mb-2">No posts found.</p>
+                        <p class="text-gray-500">I haven't written about this topic yet, but I'm working on it.</p>
+                        <a href="/blog" class="mt-4 inline-block text-primary-blue hover:underline">View all posts</a>
+                    </div>`;
                 return;
             }
 
             // Clear loading state
             blogContainer.innerHTML = '';
 
+            // Render Posts
             posts.forEach(post => {
-                // Check if post is published (simple check)
+                // Check if post is published
                 const publishDate = new Date(post.publishDate);
-                if (publishDate > new Date()) return; 
+                // Optional: Uncomment to hide future posts
+                // if (publishDate > new Date()) return; 
 
                 const article = document.createElement('article');
-                article.className = 'bg-white/90 backdrop-blur rounded-2xl border border-pale-blue p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1';
+                article.className = 'bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group';
                 
-                // Use new CMS fields: featuredImageAlt and description
-                const altText = post.featuredImageAlt || post.title; 
-                const excerpt = post.description || post.excerpt || 'Read more...';
-                const category = post.category || 'General';
-                
-                article.innerHTML = `
-                    <div class="mb-4">
-                        <span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">${category}</span>
-                    </div>
-                    <h2 class="text-3xl font-bold text-gray-dark mb-3">
-                        <a href="/content/blog/${post.slug}.html" class="hover:underline text-primary-blue">
-                            ${post.title}
-                        </a>
-                    </h2>
-                    <div class="flex flex-wrap items-center gap-3 text-sm text-gray-medium mb-4">
-                        <span>${publishDate.toLocaleDateString()}</span>
-                        <span>•</span>
-                        <span>${post.readingTime || 5} min read</span>
-                    </div>
-                    <p class="text-gray-medium mb-6 leading-relaxed">${excerpt}</p>
-                    
-                    ${post.tags && post.tags.length ? `
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        ${post.tags.slice(0, 3).map(tag => `<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">#${tag}</span>`).join('')}
-                    </div>` : ''}
+                // Fallback image if none provided
+                const imageSrc = post.featuredImage || '/assets/images/digital-allies-logo-default.svg';
+                const imageAlt = post.imageAlt || post.title;
 
-                    <a href="/content/blog/${post.slug}.html" class="inline-flex items-center text-primary-blue font-semibold hover:underline group">
-                        Read More
-                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                article.innerHTML = `
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="${imageSrc}" 
+                             alt="${imageAlt}"
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                             onerror="this.src='/assets/logo/digital-allies-logo-default.svg'">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-primary-blue rounded-full shadow-sm uppercase tracking-wider">
+                                ${post.category || 'Update'}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center text-sm text-gray-500 mb-3 space-x-4">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                ${new Date(post.publishDate).toLocaleDateString()}
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                ${post.readingTime || 5} min read
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                            <a href="${post.publicUrl || '#'}" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                ${post.title}
+                            </a>
+                        </h3>
+                        
+                        <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            ${post.excerpt || post.description || 'Click to read more about this topic.'}
+                        </p>
+
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between mt-auto">
+                            <span class="text-sm font-medium text-primary-blue group-hover:translate-x-1 transition-transform inline-flex items-center">
+                                Read Article 
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </span>
+                        </div>
+                    </div>
                 `;
                 
                 blogContainer.appendChild(article);
             });
         })
-        .catch(err => {
-            console.error('Error loading blog posts:', err);
-            blogContainer.innerHTML = '<p class="text-center text-red-500">Unable to load posts at this time.</p>';
+        .catch(error => {
+            console.error('Error loading posts:', error);
+            blogContainer.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <p class="text-red-500">Unable to load posts at this time.</p>
+                    <p class="text-sm text-gray-400 mt-2">Please try refreshing the page.</p>
+                </div>
+            `;
         });
 });
