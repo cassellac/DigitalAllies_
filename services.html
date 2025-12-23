@@ -8,6 +8,8 @@
     <meta name="description" content="Professional digital services for small businesses: Technology Consulting, Web Design, Branding, and Ongoing Support.">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <script src="assets/js/global.js"></script>
 
@@ -48,9 +50,8 @@
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors">Blog</a>
                     <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue transition-colors">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors">Contact</a>
-                    <a href="/contact" class="px-6 py-3 text-sm font-medium text-white bg-primary-blue rounded-lg shadow-button hover:bg-blue-600 transition-all">Start Your Project</a>
+                    <a href="/contact" class="btn btn--secondary px-6 py-3 text-sm">Start Your Project</a>
                 </div>
-                <!-- Mobile Menu Button -->
                 <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -62,7 +63,6 @@
                     <a href="/about" class="text-gray-dark hover:text-primary-blue">About</a>
                     <a href="/services" class="text-gray-dark hover:text-primary-blue">Services</a>
                     <a href="/blog" class="text-gray-dark hover:text-primary-blue">Blog</a>
-                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue">Knowledge Base</a>
                     <a href="/contact" class="text-gray-dark hover:text-primary-blue">Contact</a>
                 </div>
             </div>
@@ -70,16 +70,14 @@
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="relative py-20 bg-gray-50 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Hero Section (Updated) -->
+        <section class="gradient-bg section--gradient py-20 lg:py-32 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
                 <div class="max-w-3xl">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                        <span data-en="Tools to Help You Grow" data-es="Herramientas para Ayudarte a Crecer">Tools to Help You Grow</span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Tools to Help You Grow
                     </h1>
-                    <p class="text-xl text-gray-600 leading-relaxed" 
-                       data-en="I don't sell 'packages' I sell solutions. Here is how I can help you bridge the gap between where you are and where you want to be."
-                       data-es="No vendo 'paquetes', vendo soluciones. Así es como puedo ayudarte a cerrar la brecha entre dónde estás y dónde quieres estar.">
+                    <p class="text-xl text-blue-50 leading-relaxed">
                         I don't sell "packages"; I sell solutions. Here is how I can help you bridge the gap between where you are and where you want to be.
                     </p>
                 </div>
@@ -91,67 +89,67 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid md:grid-cols-2 gap-12">
                     
-                    <!-- 1. Technology Consulting & Implementation -->
-                    <div id="consulting" class="p-8 rounded-2xl bg-white border border-gray-100 shadow-soft hover:shadow-hover transition-all duration-300">
-                        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                            <img src="assets/images/icons/consulting2.svg" alt="" class="w-8 h-8 text-green-600">
+                    <!-- 1. Technology Consulting -->
+                    <div id="consulting" class="p-8 rounded-2xl card-service-consulting shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fa-solid fa-gears text-2xl text-green-600"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4" data-en="Technology Consulting & Implementation" data-es="Consultoría e Implementación Tecnológica">Technology Consulting & Implementation</h2>
-                        <p class="text-gray-600 mb-6" data-en="You don't need more software; you need the right software. I help you audit your current tools, find cost-effective alternatives, and set up automations that give you your time back." data-es="No necesitas más software; necesitas el software correcto. Te ayudo a auditar tus herramientas actuales, encontrar alternativas rentables y configurar automatizaciones que te devuelvan tu tiempo.">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Technology Consulting & Implementation</h2>
+                        <p class="text-gray-600 mb-6">
                             You don't need more software; you need the right software. I help you audit your current tools, find cost-effective alternatives, and set up automations that give you your time back.
                         </p>
                         <ul class="space-y-3 mb-8 text-gray-600">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Software Audits & Cost Reduction</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Workflow Automation</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Email & CRM Setup</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-3"></i>Software Audits & Cost Reduction</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-3"></i>Workflow Automation</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-3"></i>Email & CRM Setup</li>
                         </ul>
                     </div>
 
                     <!-- 2. Web Design -->
-                    <div id="web-design" class="p-8 rounded-2xl bg-white border border-gray-100 shadow-soft hover:shadow-hover transition-all duration-300">
-                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                            <img src="assets/images/icons/developement.svg" alt="" class="w-8 h-8 text-primary-blue">
+                    <div id="web-design" class="p-8 rounded-2xl card-service-web shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fa-solid fa-laptop-code text-2xl text-primary-blue"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4" data-en="Web Design" data-es="Diseño Web">Web Design</h2>
-                        <p class="text-gray-600 mb-6" data-en="Your website is your 24/7 storefront. I build accessible, bilingual, and fast websites that actually convert visitors into customers. No templates that break in a month—just solid code." data-es="Tu sitio web es tu escaparate 24/7. Construyo sitios web accesibles, bilingües y rápidos que realmente convierten visitantes en clientes. Sin plantillas que se rompen en un mes, solo código sólido.">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Web Design</h2>
+                        <p class="text-gray-600 mb-6">
                             Your website is your 24/7 storefront. I build accessible, bilingual, and fast websites that actually convert visitors into customers. No templates that break in a month—just solid code.
                         </p>
                         <ul class="space-y-3 mb-8 text-gray-600">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-primary-blue mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Custom Development</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-primary-blue mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Accessibility (WCAG) Compliance</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-primary-blue mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Bilingual Support</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-primary-blue mr-3"></i>Custom Development</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-primary-blue mr-3"></i>Accessibility (WCAG) Compliance</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-primary-blue mr-3"></i>Bilingual Support</li>
                         </ul>
                     </div>
 
                     <!-- 3. Branding -->
-                    <div id="branding" class="p-8 rounded-2xl bg-white border border-gray-100 shadow-soft hover:shadow-hover transition-all duration-300">
-                        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                            <img src="assets/images/icons/design.svg" alt="" class="w-8 h-8 text-purple-600">
+                    <div id="branding" class="p-8 rounded-2xl card-service-branding shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fa-solid fa-pen-nib text-2xl text-purple-600"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4" data-en="Branding" data-es="Marca">Branding</h2>
-                        <p class="text-gray-600 mb-6" data-en="A logo is not a brand. I help you define your voice, your values, and your visual identity so that you attract the customers who believe what you believe." data-es="Un logotipo no es una marca. Te ayudo a definir tu voz, tus valores y tu identidad visual para que atraigas a los clientes que creen en lo que tú crees.">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Branding</h2>
+                        <p class="text-gray-600 mb-6">
                             A logo is not a brand. I help you define your voice, your values, and your visual identity so that you attract the customers who believe what you believe.
                         </p>
                         <ul class="space-y-3 mb-8 text-gray-600">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Logo & Identity Design</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Voice & Messaging Strategy</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Brand Guidelines</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-600 mr-3"></i>Logo & Identity Design</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-600 mr-3"></i>Voice & Messaging Strategy</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-600 mr-3"></i>Brand Guidelines</li>
                         </ul>
                     </div>
 
-                    <!-- 4. Ongoing Support & Maintenance -->
-                    <div id="support" class="p-8 rounded-2xl bg-white border border-gray-100 shadow-soft hover:shadow-hover transition-all duration-300">
-                        <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <!-- 4. Support -->
+                    <div id="support" class="p-8 rounded-2xl card-service-support shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fa-solid fa-life-ring text-2xl text-gray-600"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4" data-en="Ongoing Support & Maintenance" data-es="Soporte y Mantenimiento Continuo">Ongoing Support & Maintenance</h2>
-                        <p class="text-gray-600 mb-6" data-en="Websites aren't 'set it and forget it.' I provide ongoing care to ensure your site stays secure, fast, and up-to-date, so you don't have to worry about updates or hackers." data-es="Los sitios web no son 'configúralo y olvídalo'. Proporciono cuidado continuo para asegurar que tu sitio permanezca seguro, rápido y actualizado, para que no tengas que preocuparte por actualizaciones o hackers.">
-                            Websites aren't "set it and forget it." I provide ongoing care to ensure your site stays secure, fast, and up-to-date, so you don't have to worry about updates or hackers.
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Ongoing Support & Maintenance</h2>
+                        <p class="text-gray-600 mb-6">
+                            Websites aren't "set it and forget it." I provide ongoing care to ensure your site stays secure, fast, and up-to-date.
                         </p>
                         <ul class="space-y-3 mb-8 text-gray-600">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Security Updates & Backups</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Content Updates</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Performance Monitoring</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-gray-500 mr-3"></i>Security Updates & Backups</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-gray-500 mr-3"></i>Content Updates</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-gray-500 mr-3"></i>Performance Monitoring</li>
                         </ul>
                     </div>
                 </div>
@@ -168,155 +166,146 @@
                 </div>
 
                 <div class="space-y-24">
-                    
-                    <!-- 1. Journey to the Center of Hope (JTCH) -->
+                    <!-- JTCH -->
                     <div id="jtch" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 scroll-mt-28">
                         <div class="grid md:grid-cols-2">
                             <div class="bg-blue-900 text-white p-12 flex flex-col justify-center">
                                 <h3 class="text-2xl font-bold mb-6">Journey to the Center of Hope</h3>
                                 <p class="mb-6 text-blue-100">
-                                    Journey to the Center of Hope, a vital resource for the homeless community in Kingman, was operating with fragmented digital tools. They needed a way to connect donors, volunteers, and those in need without increasing their administrative burden.
+                                    A vital resource for the homeless community in Kingman operating with fragmented digital tools.
                                 </p>
                                 <h4 class="font-bold text-lg mb-2 text-white">The Solution</h4>
                                 <ul class="list-disc list-inside text-blue-100 space-y-2 mb-6">
                                     <li>Accessible, bilingual web presence</li>
                                     <li>Streamlined donation pathways</li>
-                                    <li>Resource directories for immediate aid</li>
                                 </ul>
                             </div>
                             <div class="p-12 flex flex-col justify-center bg-gray-50">
                                  <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                                      <h4 class="font-bold text-gray-900 mb-4">Key Outcomes</h4>
-                                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                                     <div class="grid grid-cols-3 gap-4 text-center">
                                          <div>
-                                             <div class="text-3xl font-bold text-primary-blue mb-1">100%</div>
-                                             <div class="text-gray-600 text-xs">Accessibility Compliance</div>
+                                             <div class="text-2xl font-bold text-primary-blue">100%</div>
+                                             <div class="text-gray-500 text-xs">Accessibility</div>
                                          </div>
                                          <div>
-                                             <div class="text-3xl font-bold text-green-600 mb-1">+60%</div>
-                                             <div class="text-gray-600 text-xs">Outreach Impact</div>
+                                             <div class="text-2xl font-bold text-green-600">+60%</div>
+                                             <div class="text-gray-500 text-xs">Outreach</div>
                                          </div>
                                          <div>
-                                             <div class="text-3xl font-bold text-purple-600 mb-1">3x</div>
-                                             <div class="text-gray-600 text-xs">Engagement</div>
+                                             <div class="text-2xl font-bold text-purple-600">3x</div>
+                                             <div class="text-gray-500 text-xs">Engagement</div>
                                          </div>
                                      </div>
                                  </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 2. E17 Live-In Cooperative -->
+                    <!-- E17 -->
                     <div id="e17" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 scroll-mt-28">
                         <div class="grid md:grid-cols-2">
-                            <div class="order-2 md:order-1 p-12 flex flex-col justify-center bg-gray-50">
-                                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                                     <h4 class="font-bold text-gray-900 mb-4">Key Outcomes</h4>
-                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center">
-                                         <div>
-                                             <div class="text-3xl font-bold text-primary-blue mb-1">-75%</div>
-                                             <div class="text-gray-600 text-xs">Admin Time</div>
-                                         </div>
-                                         <div>
-                                             <div class="text-3xl font-bold text-green-600 mb-1">+90%</div>
-                                             <div class="text-gray-600 text-xs">Event Participation</div>
-                                         </div>
-                                     </div>
-                                 </div>
-                            </div>
-                            <div class="order-1 md:order-2 bg-green-900 text-white p-12 flex flex-col justify-center">
+                            <div class="bg-green-900 text-white p-12 flex flex-col justify-center">
                                 <h3 class="text-2xl font-bold mb-6">E17 Live-In Cooperative</h3>
                                 <p class="mb-6 text-green-100">
-                                    Managing a cooperative housing community involves complex logistics. E17 struggled with manual communication and disorganized event planning. They needed a central hub.
+                                    Managing a cooperative housing community involves complex logistics and communication.
                                 </p>
                                 <h4 class="font-bold text-lg mb-2 text-white">The Solution</h4>
                                 <ul class="list-disc list-inside text-green-100 space-y-2 mb-6">
                                     <li>Custom-built member intranet</li>
-                                    <li>Automated event calendar & notifications</li>
-                                    <li>Centralized document repository</li>
+                                    <li>Automated event calendar</li>
                                 </ul>
+                            </div>
+                            <div class="p-12 flex flex-col justify-center bg-gray-50">
+                                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                                     <h4 class="font-bold text-gray-900 mb-4">Key Outcomes</h4>
+                                     <div class="grid grid-cols-2 gap-4 text-center">
+                                         <div>
+                                             <div class="text-2xl font-bold text-primary-blue">-75%</div>
+                                             <div class="text-gray-500 text-xs">Admin Time</div>
+                                         </div>
+                                         <div>
+                                             <div class="text-2xl font-bold text-green-600">+90%</div>
+                                             <div class="text-gray-500 text-xs">Participation</div>
+                                         </div>
+                                     </div>
+                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 3. Sasha Esposito Therapy -->
+                    <!-- Sasha -->
                     <div id="sasha" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 scroll-mt-28">
                         <div class="grid md:grid-cols-2">
                             <div class="bg-purple-900 text-white p-12 flex flex-col justify-center">
                                 <h3 class="text-2xl font-bold mb-6">Sasha Esposito Therapy</h3>
                                 <p class="mb-6 text-purple-100">
-                                    In the sensitive field of therapy, trust begins online. Sasha needed a brand identity that felt professional yet deeply personal, moving away from sterile medical templates.
+                                    Sasha needed a brand identity that felt professional yet deeply personal.
                                 </p>
                                 <h4 class="font-bold text-lg mb-2 text-white">The Solution</h4>
                                 <ul class="list-disc list-inside text-purple-100 space-y-2 mb-6">
                                     <li>Warm, empathetic visual identity</li>
-                                    <li>Responsive, calming user interface</li>
-                                    <li>Secure contact forms & resource library</li>
+                                    <li>Secure contact forms</li>
                                 </ul>
                             </div>
                             <div class="p-12 flex flex-col justify-center bg-gray-50">
                                  <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                                      <h4 class="font-bold text-gray-900 mb-4">Key Outcomes</h4>
-                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center">
+                                     <div class="grid grid-cols-2 gap-4 text-center">
                                          <div>
-                                             <div class="text-3xl font-bold text-primary-blue mb-1">+40%</div>
-                                             <div class="text-gray-600 text-xs">Client Connection</div>
+                                             <div class="text-2xl font-bold text-primary-blue">+40%</div>
+                                             <div class="text-gray-500 text-xs">Connection</div>
                                          </div>
                                          <div>
-                                             <div class="text-3xl font-bold text-purple-600 mb-1">2x</div>
-                                             <div class="text-gray-600 text-xs">Brand Clarity</div>
+                                             <div class="text-2xl font-bold text-green-600">2x</div>
+                                             <div class="text-gray-500 text-xs">Clarity</div>
                                          </div>
                                      </div>
                                  </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 4. Tao Wei Designs -->
+                    <!-- Tao -->
                     <div id="tao" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 scroll-mt-28">
                         <div class="grid md:grid-cols-2">
-                            <div class="order-2 md:order-1 p-12 flex flex-col justify-center bg-gray-50">
-                                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                                     <h4 class="font-bold text-gray-900 mb-4">Key Outcomes</h4>
-                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center">
-                                         <div>
-                                             <div class="text-3xl font-bold text-primary-blue mb-1">+50%</div>
-                                             <div class="text-gray-600 text-xs">Project Efficiency</div>
-                                         </div>
-                                         <div>
-                                             <div class="text-3xl font-bold text-green-600 mb-1">100%</div>
-                                             <div class="text-gray-600 text-xs">Strategy Alignment</div>
-                                         </div>
-                                     </div>
-                                 </div>
-                            </div>
-                            <div class="order-1 md:order-2 bg-gray-800 text-white p-12 flex flex-col justify-center">
+                            <div class="bg-gray-800 text-white p-12 flex flex-col justify-center">
                                 <h3 class="text-2xl font-bold mb-6">Tao Wei Designs</h3>
                                 <p class="mb-6 text-gray-300">
-                                    Starting a design business requires more than just talent; it requires a business foundation. Tao Wei needed strategic guidance to navigate industry complexities.
+                                    Starting a design business requires a solid business foundation.
                                 </p>
                                 <h4 class="font-bold text-lg mb-2 text-white">The Solution</h4>
                                 <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
                                     <li>Strategic business roadmap</li>
                                     <li>Operational workflow consulting</li>
-                                    <li>Market positioning mentorship</li>
                                 </ul>
+                            </div>
+                            <div class="p-12 flex flex-col justify-center bg-gray-50">
+                                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                                     <h4 class="font-bold text-gray-900 mb-4">Key Outcomes</h4>
+                                     <div class="grid grid-cols-2 gap-4 text-center">
+                                         <div>
+                                             <div class="text-2xl font-bold text-primary-blue">+50%</div>
+                                             <div class="text-gray-500 text-xs">Efficiency</div>
+                                         </div>
+                                         <div>
+                                             <div class="text-2xl font-bold text-green-600">100%</div>
+                                             <div class="text-gray-500 text-xs">Alignment</div>
+                                         </div>
+                                     </div>
+                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="py-24 bg-primary-blue text-white text-center">
+        <!-- CTA (Updated Blue) -->
+        <section class="py-20 gradient-bg section--gradient text-center">
              <div class="max-w-4xl mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-6" data-en="Not Sure What You Need?" data-es="¿No Estás Seguro de lo que Necesitas?">Not Sure What You Need?</h2>
-                <p class="text-xl text-blue-100 mb-8" data-en="That's okay. You don't need a technical spec sheet. You just need a conversation." data-es="Está bien. No necesitas una hoja de especificaciones técnicas. Solo necesitas una conversación.">
+                <h2 class="text-3xl font-bold mb-6 text-white">Not Sure What You Need?</h2>
+                <p class="text-xl text-blue-50 mb-8">
                     That's okay. You don't need a technical spec sheet. You just need a conversation.
                 </p>
-                <a href="/contact" class="px-8 py-4 bg-white text-primary-blue rounded-lg font-bold shadow-lg hover:bg-gray-50 transition-all hover:-translate-y-1">
+                <a href="/contact" class="btn btn--primary text-lg">
                     Book a Free Consultation
                 </a>
              </div>
@@ -324,23 +313,23 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (Standardized) -->
     <footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
                 <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                        <div class="w-3 h-3 bg-primary-blue rounded-full"></div>
-                        Digital Allies
-                    </h3>
-                    <p class="text-gray-400 text-sm leading-relaxed" 
-                       data-en="Empowering small businesses with accessible, human-centered digital solutions."
-                       data-es="Empoderando a las pequeñas empresas con soluciones digitales accesibles y centradas en el ser humano.">
+                    <a href="/" class="flex items-center space-x-2">
+                        <img src="/assets/logo/digital-allies-logo-default.svg" alt="Digital Allies Logo" class="h-8 w-auto brightness-0 invert">
+                        <span class="text-xl font-bold">Digital Allies</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
                         Empowering small businesses with accessible, human-centered digital solutions.
                     </p>
                 </div>
+                <!-- Links -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4" data-en="Explore" data-es="Explorar">Explore</h4>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Explore</h4>
                     <ul class="space-y-2">
                         <li><a href="/about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
                         <li><a href="/services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
@@ -348,21 +337,23 @@
                         <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
+                <!-- Services -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4" data-en="Services" data-es="Servicios">Services</h4>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Services</h4>
                     <ul class="space-y-2">
                         <li><a href="/services#consulting" class="text-gray-300 hover:text-white transition-colors">Tech Consulting</a></li>
                         <li><a href="/services#web-design" class="text-gray-300 hover:text-white transition-colors">Web Design</a></li>
                         <li><a href="/services#branding" class="text-gray-300 hover:text-white transition-colors">Branding</a></li>
-                        <li><a href="/services#support" class="text-gray-300 hover:text-white transition-colors">Support & Maintenance</a></li>
+                        <li><a href="/services#support" class="text-gray-300 hover:text-white transition-colors">Support</a></li>
                     </ul>
                 </div>
+                <!-- Connect -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4" data-en="Connect" data-es="Conectar">Connect</h4>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Connect</h4>
                     <ul class="space-y-2 text-sm text-gray-300">
-                        <li>Kingman, Arizona</li>
-                        <li><a href="mailto:contact@digitalallies.net" class="hover:text-white">contact@digitalallies.net</a></li>
-                        <li>928-228-5769</li>
+                        <li class="flex items-start"><span class="mr-2"><i class="fa-solid fa-location-dot"></i></span> Kingman, Arizona</li>
+                        <li class="flex items-start"><span class="mr-2"><i class="fa-solid fa-envelope"></i></span> <a href="mailto:contact@digitalallies.net" class="hover:text-white">contact@digitalallies.net</a></li>
+                        <li class="flex items-start"><span class="mr-2"><i class="fa-solid fa-phone"></i></span> 928-228-5769</li>
                     </ul>
                 </div>
             </div>
@@ -371,6 +362,7 @@
                 <div class="flex gap-6 text-sm text-gray-500">
                     <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
                     <a href="/terms" class="hover:text-white transition-colors">Terms</a>
+                    <a href="/cookies" class="hover:text-white transition-colors">Cookies</a>
                     <a href="/sitemap.xml" class="hover:text-white transition-colors">Sitemap</a>
                 </div>
             </div>
