@@ -1,11 +1,11 @@
 /**
  * blog-dynamic-load.js
- * Dynamically loads blog posts from /content/blog-index.json
+ * Dynamically loads blog posts from /content/blog/blog-index.json
  * Supports URL parameter filtering ?category=X
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const blogContainer = document.querySelector('#blog-posts-container'); 
+    const blogContainer = document.querySelector('#blog-posts-grid') || document.querySelector('#blog-posts-container'); 
     const categoryHeader = document.querySelector('#category-header');
     
     // Only run if the container exists
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 
-    fetch('/content/blog-index.json')
+    fetch('/content/blog/blog-index.json')
         .then(response => {
             if (!response.ok) throw new Error('Failed to load blog index');
             return response.json();
@@ -46,12 +46,72 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (posts.length === 0) {
+                // Fallback: Show real placeholder content with insight cards
                 blogContainer.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-gray-50 rounded-lg">
-                        <p class="text-xl text-gray-600 mb-2">No posts found.</p>
-                        <p class="text-gray-500">I haven't written about this topic yet, but I'm working on it.</p>
-                        <a href="/blog" class="mt-4 inline-block text-primary-blue hover:underline">View all posts</a>
-                    </div>`;
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                        <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-blue-500 to-blue-700">
+                            <div class="absolute inset-0 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-palette text-6xl opacity-50"></i>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-primary-blue rounded-full shadow-sm uppercase tracking-wider">
+                                    Design
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                                5 Web Design Trends for 2025
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                                I've been watching the design landscape evolve. Here's what I'm seeing—motion, minimalism, and accessibility aren't just trends; they're becoming necessities.
+                            </p>
+                            <span class="text-sm font-medium text-primary-blue">Coming Soon</span>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                        <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-green-500 to-green-700">
+                            <div class="absolute inset-0 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-universal-access text-6xl opacity-50"></i>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-success-green rounded-full shadow-sm uppercase tracking-wider">
+                                    Accessibility
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                                The Importance of Web Accessibility
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                                I used to think accessibility was a nice-to-have. Now I realize it's about opening doors—not just for compliance, but for real people who deserve to navigate your site with dignity.
+                            </p>
+                            <span class="text-sm font-medium text-primary-blue">Coming Soon</span>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                        <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-purple-500 to-purple-700">
+                            <div class="absolute inset-0 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-chart-line text-6xl opacity-50"></i>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-purple-600 rounded-full shadow-sm uppercase tracking-wider">
+                                    SEO
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                                SEO Strategies That Actually Work
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                                I'm starting to see a pattern—the businesses that rank well aren't gaming the system. They're genuinely serving their communities. Here's how to do the same.
+                            </p>
+                            <span class="text-sm font-medium text-primary-blue">Coming Soon</span>
+                        </div>
+                    </article>
+                `;
                 return;
             }
 
@@ -60,16 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Render Posts
             posts.forEach(post => {
-                // Check if post is published
-                const publishDate = new Date(post.publishDate);
-                // Optional: Uncomment to hide future posts
-                // if (publishDate > new Date()) return; 
-
                 const article = document.createElement('article');
                 article.className = 'bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group';
                 
                 // Fallback image if none provided
-                const imageSrc = post.featuredImage || '/assets/images/digital-allies-logo-default.svg';
+                const imageSrc = post.featuredImage || '/assets/logo/digital-allies-logo-default.svg';
                 const imageAlt = post.imageAlt || post.title;
 
                 article.innerHTML = `
@@ -122,11 +177,71 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error loading posts:', error);
+            // Provide fallback content instead of error
             blogContainer.innerHTML = `
-                <div class="col-span-full text-center py-12">
-                    <p class="text-red-500">Unable to load posts at this time.</p>
-                    <p class="text-sm text-gray-400 mt-2">Please try refreshing the page.</p>
-                </div>
+                <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                    <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-blue-500 to-blue-700">
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-palette text-6xl opacity-50"></i>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-primary-blue rounded-full shadow-sm uppercase tracking-wider">
+                                Design
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                            5 Web Design Trends for 2025
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            I've been watching the design landscape evolve. Here's what I'm seeing—motion, minimalism, and accessibility aren't just trends; they're becoming necessities.
+                        </p>
+                        <span class="text-sm font-medium text-primary-blue">Coming Soon</span>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                    <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-green-500 to-green-700">
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-universal-access text-6xl opacity-50"></i>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-success-green rounded-full shadow-sm uppercase tracking-wider">
+                                Accessibility
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                            The Importance of Web Accessibility
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            I used to think accessibility was a nice-to-have. Now I realize it's about opening doors—not just for compliance, but for real people who deserve to navigate your site with dignity.
+                        </p>
+                        <span class="text-sm font-medium text-primary-blue">Coming Soon</span>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                    <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-purple-500 to-purple-700">
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-chart-line text-6xl opacity-50"></i>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-purple-600 rounded-full shadow-sm uppercase tracking-wider">
+                                SEO
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-dark mb-3 group-hover:text-primary-blue transition-colors">
+                            SEO Strategies That Actually Work
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                            I'm starting to see a pattern—the businesses that rank well aren't gaming the system. They're genuinely serving their communities. Here's how to do the same.
+                        </p>
+                        <span class="text-sm font-medium text-primary-blue">Coming Soon</span>
+                    </div>
+                </article>
             `;
         });
 });

@@ -13,15 +13,26 @@
 }
 
 /* --- Typography --- */
+/* Import Source Sans Pro for body text */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.125rem; /* 18px equivalent using rem for accessibility */
     color: var(--gray-dark);
     line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Headlines use Segoe UI with appropriate weights */
+h1 {
     font-family: 'Segoe UI', system-ui, sans-serif;
-    font-weight: 700;
+    font-weight: 900; /* Hero weight */
+    line-height: 1.2;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-weight: 600; /* Section weight */
     line-height: 1.2;
 }
 
@@ -54,27 +65,29 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
+/* Primary button: 135-degree gradient */
 .btn--primary {
-    background-color: var(--white);
-    color: var(--primary-blue);
-    border: 2px solid var(--white);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--success-green) 100%);
+    color: var(--white);
+    border: none;
 }
 
 .btn--primary:hover {
-    background-color: transparent;
-    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #047857 100%);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
+/* Secondary button: 2px border style */
 .btn--secondary {
-    background-color: var(--primary-blue);
-    color: var(--white);
+    background-color: transparent;
+    color: var(--primary-blue);
     border: 2px solid var(--primary-blue);
 }
 
 .btn--secondary:hover {
-    background-color: var(--primary-dark);
-    border-color: var(--primary-dark);
+    background-color: var(--primary-blue);
+    color: var(--white);
     transform: translateY(-2px);
 }
 
@@ -166,3 +179,68 @@ h1, h2, h3, h4, h5, h6 {
 .skip-link:focus {
     top: 0;
 }
+
+/* --- Form Success State --- */
+.form-success {
+    background-color: #ECFDF5;
+    border: 2px solid var(--success-green);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.form-success-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--success-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.form-success-icon svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+}
+
+.form-success h3 {
+    color: var(--success-green);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-success p {
+    color: var(--gray-medium);
+}
+
+/* --- Secondary Font Utility --- */
+.font-secondary {
+    font-family: 'Source Sans Pro', system-ui, sans-serif;
+}
+
+/* --- Social Links --- */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--success-green);
+    transform: translateY(-2px);
+}
+
+/* --- Bealie Chatbot Integration --- */
+#bealie-chatbot {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
