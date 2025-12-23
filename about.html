@@ -8,59 +8,14 @@
     <meta name="description"
         content="Meet Anthony Cassella, the solo-preneur behind Digital Allies. Committed to bringing accessible, high-quality digital solutions to Kingman, AZ.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-blue': '#2563EB',
-                        'success-green': '#059669',
-                        'alert-red': '#EF4444',
-                        'gray-dark': '#414243',
-                        'gray-medium': '#6B7280',
-                        'pale-blue': '#DBEAFE',
-                        'light-blue': '#E0F2FE'
-                    },
-                    fontFamily: {
-                        'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
-                        'secondary': ['Source Sans Pro', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <script src="assets/js/global.js"></script>
 
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="DA" />
-    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Digital Allies",
-        "email": "contact@digitalallies.net",
-        "telephone": "928-228-5769",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kingman",
-            "addressRegion": "AZ",
-            "addressCountry": "US"
-        },
-        "url": "https://digitalallies.net",
-        "founder": {
-            "@type": "Person",
-            "name": "Anthony Cassella"
-        },
-        "description": "Professional web development and digital solutions for businesses in Kingman, AZ and surrounding areas."
-    }
-    </script>
 </head>
 
 <body class="font-primary bg-white text-gray-dark">
@@ -73,14 +28,14 @@
                 <button onclick="toggleLanguage('en')" id="lang-en"
                     class="px-3 py-1 text-sm font-medium text-primary-blue bg-white rounded-full shadow-sm">EN</button>
                 <button onclick="toggleLanguage('es')" id="lang-es"
-                    class="px-3 py-1 text-sm font-medium text-gray-medium hover:text-primary-blue transition-colors">ES</button>
+                    class="px-3 py-1 text-sm font-medium text-gray-dark hover:text-primary-blue transition-colors">ES</button>
             </div>
         </div>
     </div>
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50" role="banner">
-        <nav class="max-w-7xl mx-auto px-4 py-4" role="navigation" aria-label="Main navigation">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <a href="/" class="flex items-center space-x-1">
                     <div class="relative w-4 h-4 flex items-center justify-center">
@@ -89,441 +44,144 @@
                     <span class="text-xl font-bold text-gradient">Digital Allies</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Home"
-                        data-es="Inicio">Home</a>
-                    <a href="/about" class="text-primary-blue font-bold transition-colors" data-en="About"
-                        data-es="Acerca">About</a>
-                    <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors"
-                        data-en="Services" data-es="Servicios">Services</a>
-                    <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors" data-en="Blog"
-                        data-es="Blog">Blog</a>
-                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue transition-colors"
-                        data-en="Knowledge Base" data-es="Base de Conocimientos">Knowledge Base</a>
-                    <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors"
-                        data-en="Contact" data-es="Contacto">Contact</a>
-                    <a href="/contact" class="px-6 py-3 text-sm font-medium text-white bg-primary-blue rounded-lg shadow-button hover:bg-blue-600 transition-all hover:-translate-y-0.5"
-                        data-en="Start Your Project" data-es="Comienza Tu Proyecto">Start Your Project</a>
+                    <a href="/" class="text-gray-dark hover:text-primary-blue transition-colors">Home</a>
+                    <a href="/about" class="text-primary-blue font-bold">About</a>
+                    <a href="/services" class="text-gray-dark hover:text-primary-blue transition-colors">Services</a>
+                    <a href="/blog" class="text-gray-dark hover:text-primary-blue transition-colors">Blog</a>
+                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue transition-colors">Knowledge Base</a>
+                    <a href="/contact" class="text-gray-dark hover:text-primary-blue transition-colors">Contact</a>
+                    <a href="/contact" class="btn btn--secondary px-6 py-3 text-sm">Start Your Project</a>
                 </div>
-                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <span class="sr-only">Open navigation</span>
+                <button class="md:hidden p-2" onclick="toggleMobileMenu(this)" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue" role="menu">
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pale-blue">
                 <div class="flex flex-col space-y-4 pt-4">
-                    <a href="/" class="text-gray-dark hover:text-primary-blue" data-en="Home" data-es="Inicio"
-                        role="menuitem">Home</a>
-                    <a href="/about" class="text-gray-dark hover:text-primary-blue" data-en="About" data-es="Acerca"
-                        role="menuitem">About</a>
-                    <a href="/services" class="text-gray-dark hover:text-primary-blue" data-en="Services"
-                        data-es="Servicios" role="menuitem">Services</a>
-                    <a href="/blog" class="text-gray-dark hover:text-primary-blue" data-en="Blog" data-es="Blog"
-                        role="menuitem">Blog</a>
-                    <a href="/knowledge-base" class="text-gray-dark hover:text-primary-blue" data-en="Knowledge Base"
-                        data-es="Base de Conocimientos" role="menuitem">Knowledge Base</a>
-                    <a href="/contact" class="text-gray-dark hover:text-primary-blue" data-en="Contact"
-                        data-es="Contacto" role="menuitem">Contact</a>
-                    <a href="/contact" class="px-6 py-3 text-sm font-medium text-white bg-primary-blue rounded-lg text-center"
-                        data-en="Start Your Project" data-es="Comienza Tu Proyecto" role="menuitem">Start Your
-                        Project</a>
+                    <a href="/" class="text-gray-dark hover:text-primary-blue">Home</a>
+                    <a href="/about" class="text-gray-dark hover:text-primary-blue">About</a>
+                    <a href="/services" class="text-gray-dark hover:text-primary-blue">Services</a>
+                    <a href="/blog" class="text-gray-dark hover:text-primary-blue">Blog</a>
+                    <a href="/contact" class="text-gray-dark hover:text-primary-blue">Contact</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main id="main-content">
-    <!-- Hero Section -->
-    <section class="gradient-bg section--gradient py-20 relative">
-        <div id="about-hero-shapes" class="floating-shapes-container" data-bg-shapes data-particles="med"
-            data-particle-color="var(--purple)" aria-hidden="true">
-        </div>
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16 fade-in">
-                <h1 class="text-5xl font-bold text-gray-dark mb-2" data-en="About Me" data-es="Sobre Mí">About Me</h1>
-                <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Welcome to Your Success Story!"
-                    data-es="¡Bienvenido a Tu Historia de Éxito!">Welcome to Your Success Story!</h2>
-                <p class="text-xl text-gray-medium font-secondary max-w-4xl mx-auto"
-                    data-en="Are you ready to reach new heights on your business journey? I'm delighted to have you here!"
-                    data-es="¿Estás listo para alcanzar nuevas alturas en tu viaje empresarial? ¡Estoy encantado de tenerte aquí!">
-                    Are you ready to reach new heights on your business journey? I'm delighted to have you here!
-                </p>
-            </div>
-
-            <div class="max-w-4xl mx-auto text-center fade-in-delay-1">
-                <p class="text-lg text-gray-medium mb-6 font-secondary"
-                    data-en="I understand the hustle, the passion, and the drive it takes to run a business. I know the late nights, the early mornings, and the endless cups of coffee. But more importantly, I understand the vision you have for your business."
-                    data-es="Entiendo el ajetreo, la pasión y el impulso que se necesita para dirigir un negocio. Conozco las noches largas, las mañanas tempranas y las tazas infinitas de café. Pero más importante, entiendo la visión que tienes para tu negocio.">
-                    I understand the hustle, the passion, and the drive it takes to run a business. I know the late
-                    nights, the early mornings, and the endless cups of coffee. But more importantly, I understand the
-                    vision you have for your business.
-                </p>
-                <p class="text-lg text-gray-medium mb-8 font-secondary"
-                    data-en="That's why I'm committed to providing you with tools that can help make your journey easier and your success closer. Join me, and let's write your success story together. I'm not just offering a product; I'm offering a partnership."
-                    data-es="Por eso estoy comprometido a brindarte herramientas que puedan ayudar a hacer tu viaje más fácil y tu éxito más cercano. Únete a mí y escribamos tu historia de éxito juntos. No solo ofrezco un producto; ofrezco una asociación.">
-                    That's why I'm committed to providing you with tools that can help make your journey easier and
-                    your success closer. Join me, and let's write your success story together. I'm not just offering a
-                    product; I'm offering a partnership.
-                </p>
-                <div class="bg-white shadow-lg inline-block p-8 rounded-2xl border border-gray-100">
-                    <p class="text-xl font-medium text-gray-dark"
-                        data-en="A partnership that supports, understands, and grows with you every step of the way."
-                        data-es="Una asociación que te apoya, te entiende y crece contigo en cada paso del camino.">
-                        A partnership that supports, understands, and grows with you every step of the way.
+        <!-- Hero Section (Updated) -->
+        <section class="gradient-bg section--gradient py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold mb-2 text-white">About Me</h1>
+                    <h2 class="text-4xl font-bold mb-6 text-blue-50">Welcome to Your Success Story!</h2>
+                    <p class="text-xl text-blue-100 font-secondary max-w-4xl mx-auto">
+                        Are you ready to reach new heights on your business journey? I'm delighted to have you here!
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- I Get It Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in">
-                    <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="I Get It." data-es="Lo Entiendo.">I Get It.</h2>
-                    <p class="text-lg text-gray-medium mb-6 font-secondary"
-                        data-en="I wholeheartedly embrace the relentless spirit of small business owners and entrepreneurs. I intimately understand the dedication, fervent passion, and the tireless endeavor that defines your journey."
-                        data-es="Abrazo de todo corazón el espíritu implacable de los propietarios de pequeñas empresas y emprendedores. Entiendo íntimamente la dedicación, la pasión ferviente y el esfuerzo incansable que define tu viaje.">
-                        I wholeheartedly embrace the relentless spirit of small business owners and entrepreneurs. I
-                        intimately understand the dedication, fervent passion, and the tireless endeavor that defines
-                        your journey.
-                    </p>
-                    <p class="text-lg text-gray-medium mb-6 font-secondary"
-                        data-en="I'm no stranger to the late-night grind, the early morning hustle, and the endless stream of caffeine-fueled creativity. But, beyond all else, I resonate deeply with the vision that drives your business forward."
-                        data-es="No soy ajeno al trabajo nocturno, la prisa matutina y el flujo interminable de creatividad alimentada por cafeína. Pero, por encima de todo, resueno profundamente con la visión que impulsa tu negocio hacia adelante.">
-                        I'm no stranger to the late-night grind, the early morning hustle, and the endless stream of
-                        caffeine-fueled creativity. But, beyond all else, I resonate deeply with the vision that drives
-                        your business forward.
-                    </p>
-                    <p class="text-lg text-gray-medium mb-8 font-secondary"
-                        data-en="My unwavering commitment is to equip my clients with the tools that not only lighten the load of your journey but also bring your success within reach."
-                        data-es="Mi compromiso inquebrantable es equipar a mis clientes con las herramientas que no solo alivian la carga de tu viaje, sino que también ponen tu éxito al alcance.">
-                        My unwavering commitment is to equip my clients with the tools that not only lighten the load
-                        of your journey but also bring your success within reach.
-                    </p>
-                    <div class="bg-gray-50 border-l-4 border-primary-blue p-6 rounded-r-xl">
-                        <p class="text-lg font-medium text-gray-dark"
-                            data-en="I'm not just offering you a service; I extend a partnership - one that stands by your side, comprehends your aspirations, and evolves with you, step by step."
-                            data-es="No solo te ofrezco un servicio; extiendo una asociación: una que está a tu lado, comprende tus aspiraciones y evoluciona contigo, paso a paso.">
-                            I'm not just offering you a service; I extend a partnership - one that stands by your
-                            side, comprehends your aspirations, and evolves with you, step by step.
+        <!-- Main Content Sections (Preserved) -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold text-gray-dark mb-6">I Get It.</h2>
+                        <p class="text-lg text-gray-600 mb-6 font-secondary">
+                            I understand the hustle, the passion, and the drive it takes to run a business. I know the late nights, the early mornings, and the endless cups of coffee. But more importantly, I understand the vision you have for your business.
                         </p>
-                    </div>
-                </div>
-
-                <div class="fade-in-delay-1">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-green-100 rounded-3xl transform rotate-6">
+                        <div class="bg-gray-50 border-l-4 border-primary-blue p-6 rounded-r-xl">
+                            <p class="text-lg font-medium text-gray-dark">
+                                I'm not just offering a product; I'm offering a partnership that supports, understands, and grows with you every step of the way.
+                            </p>
                         </div>
-                        <div class="relative bg-white shadow-xl p-8 rounded-3xl border border-gray-100">
+                    </div>
+                    <div>
+                        <div class="bg-white shadow-xl p-8 rounded-3xl border border-gray-100">
                             <div class="text-center">
-                                <div
-                                    class="w-20 h-20 bg-gradient-to-br from-primary-blue to-success-green rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
+                                <div class="w-20 h-20 bg-gradient-to-br from-primary-blue to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <i class="fa-solid fa-handshake text-3xl text-white"></i>
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-dark mb-4"
-                                    data-en="Partnership, Not Just Service" data-es="Asociación, No Solo Servicio">
-                                    Partnership, Not Just Service</h3>
-                                <p class="text-gray-medium"
-                                    data-en="I believe in building lasting relationships that grow alongside your business success."
-                                    data-es="Creo en construir relaciones duraderas que crezcan junto con el éxito de tu negocio.">
-                                    I believe in building lasting relationships that grow alongside your business
-                                    success.
+                                <h3 class="text-2xl font-bold text-gray-dark mb-4">Partnership, Not Just Service</h3>
+                                <p class="text-gray-500">
+                                    I believe in building lasting relationships that grow alongside your business success.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Who I Am -->
-    <section class="py-20 gradient-bg section--gradient relative">
-        <div id="who-we-are-shapes" class="floating-shapes-container" data-bg-shapes aria-hidden="true">
-        </div>
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Who I Am" data-es="Quién Soy">Who I Am</h2>
-                <p class="text-xl text-gray-medium font-secondary max-w-4xl mx-auto"
-                    data-en="A dedicated digital partner and technology enthusiast on a mission to deliver affordable solutions while forging authentic relationships."
-                    data-es="Un socio digital dedicado y entusiasta de la tecnología con la misión de ofrecer soluciones asequibles mientras forjo relaciones auténticas.">
-                    A dedicated digital partner and technology enthusiast on a mission to deliver affordable solutions while forging authentic relationships.
+        <!-- My Values (Icons Updated) -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-dark mb-4">My Values</h2>
+                    <p class="text-xl text-gray-600">The principles that guide everything I do</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Excellence -->
+                    <div class="p-8 bg-white rounded-2xl shadow-soft">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-primary-blue">
+                            <i class="fa-solid fa-star text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Excellence</h3>
+                        <p class="text-gray-600">I never settle for anything less than the best, ensuring exceptional quality in everything I deliver.</p>
+                    </div>
+                    <!-- Innovation -->
+                    <div class="p-8 bg-white rounded-2xl shadow-soft">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6 text-green-600">
+                            <i class="fa-solid fa-lightbulb text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Innovation</h3>
+                        <p class="text-gray-600">Passionate about creating solutions that make a positive impact and keep you ahead of the curve.</p>
+                    </div>
+                    <!-- Transparency -->
+                    <div class="p-8 bg-white rounded-2xl shadow-soft">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6 text-purple-600">
+                            <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Transparency</h3>
+                        <p class="text-gray-600">Integrity and trust are core. I believe in open communication and honest partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA (Updated) -->
+        <section class="py-20 gradient-bg section--gradient text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-white">Ready to Start Your Success Story?</h2>
+                <p class="text-xl text-blue-50 mb-8">
+                    Join me and let's write your success story together. I'm not just offering a product; I'm offering a partnership.
                 </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in-delay-1">
-                    <div class="floating">
-                        <svg class="w-full h-auto max-w-lg mx-auto drop-shadow-xl" viewBox="0 0 500 400" fill="none">
-                            <rect x="50" y="100" width="400" height="250" rx="25" fill="#DBEAFE" />
-                            <circle cx="150" cy="180" r="40" fill="#2563EB" />
-                            <circle cx="250" cy="180" r="40" fill="#059669" />
-                            <circle cx="350" cy="180" r="40" fill="#2563EB" />
-                            <path d="M130 200 Q150 220 170 200" stroke="white" stroke-width="3"
-                                stroke-linecap="round" />
-                            <path d="M230 200 Q250 220 270 200" stroke="white" stroke-width="3"
-                                stroke-linecap="round" />
-                            <path d="M330 200 Q350 220 370 200" stroke="white" stroke-width="3"
-                                stroke-linecap="round" />
-                            <rect x="100" y="280" width="300" height="40" rx="20" fill="#E0F2FE" />
-                            <text x="250" y="305" text-anchor="middle" fill="#2563EB" font-size="16"
-                                font-weight="bold">Digital Solutions for the Real World</text>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="fade-in-delay-2">
-                    <p class="text-lg text-gray-medium mb-6 font-secondary"
-                        data-en="My essence is in crafting digital solutions that bridge the gap between the virtual and the physical, making a tangible impact in the world of business."
-                        data-es="Mi esencia está en crear soluciones digitales que conecten lo virtual con lo físico, generando un impacto tangible en el mundo de los negocios.">
-                        My essence is in crafting digital solutions that bridge the gap between the virtual and the
-                        physical, making a tangible impact in the world of business.
-                    </p>
-                    <p class="text-lg text-gray-medium mb-8 font-secondary"
-                        data-en="I invite you to join me on this journey towards a more equitable, fruitful and blissful future, for everyone. I am Digital Allies and I create digital solutions for the real world."
-                        data-es="Te invito a unirte a mí en este viaje hacia un futuro más equitativo, fructífero y próspero para todos. Soy Digital Allies y creo soluciones digitales para el mundo real.">
-                        I invite you to join me on this journey towards a more equitable, fruitful and blissful future,
-                        for everyone. I am Digital Allies and I create digital solutions for the real world.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white shadow-sm text-center p-6 rounded-xl border border-gray-100">
-                            <div class="text-3xl font-bold text-primary-blue mb-2">50+</div>
-                            <div class="text-sm text-gray-medium" data-en="Happy Clients" data-es="Clientes Felices">
-                                Happy Clients</div>
-                        </div>
-                        <div class="bg-white shadow-sm text-center p-6 rounded-xl border border-gray-100">
-                            <div class="text-3xl font-bold text-success-green mb-2">5+</div>
-                            <div class="text-sm text-gray-medium" data-en="Years Experience"
-                                data-es="Años de Experiencia">Years Experience</div>
-                        </div>
-                    </div>
+                <div class="flex justify-center">
+                    <a href="/contact" class="btn btn--primary text-lg">Get Started Today</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- My Values -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-dark mb-4" data-en="My Values" data-es="Mis Valores">My Values</h2>
-                <p class="text-xl text-gray-medium font-secondary" data-en="The principles that guide everything I do"
-                    data-es="Los principios que guían todo lo que hago">The principles that guide everything I do
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Excellence -->
-                <div class="fade-in-delay-1 bg-white p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Excellence" data-es="Excelencia">
-                        Excellence</h3>
-                    <p class="text-gray-medium font-secondary"
-                        data-en="I always strive for excellence and never settle for anything less than the best. I consistently strive to exceed expectations and take pride in the work that I do, ensuring that each product or service is of exceptional quality."
-                        data-es="Siempre me esfuerzo por la excelencia y nunca me conformo con menos que lo mejor. Consistentemente me esfuerzo por superar las expectativas y me enorgullezco del trabajo que hago, asegurando que cada producto o servicio sea de calidad excepcional.">
-                        I always strive for excellence and never settle for anything less than the best. I
-                        consistently strive to exceed expectations and take pride in the work that I do, ensuring that
-                        each product or service is of exceptional quality.
-                    </p>
-                </div>
-
-                <!-- Innovation -->
-                <div class="fade-in-delay-2 bg-white p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-success-green to-primary-blue rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Innovation" data-es="Innovación">
-                        Innovation</h3>
-                    <p class="text-gray-medium font-secondary"
-                        data-en="I am passionate about creating solutions that make a positive impact in people's lives, and my goal is to provide the highest quality products and services at the best possible price. My commitment to innovation keeps me ahead of the curve."
-                        data-es="Soy apasionado por crear soluciones que generen un impacto positivo en la vida de las personas, y mi objetivo es brindar productos y servicios de la más alta calidad al mejor precio posible. Mi compromiso con la innovación me mantiene a la vanguardia.">
-                        I am passionate about creating solutions that make a positive impact in people's lives, and
-                        my goal is to provide the highest quality products and services at the best possible price. My
-                        commitment to innovation keeps me ahead of the curve.
-                    </p>
-                </div>
-
-                <!-- Transparency -->
-                <div class="fade-in-delay-3 bg-white p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Transparency" data-es="Transparencia">
-                        Transparency</h3>
-                    <p class="text-gray-medium font-secondary"
-                        data-en="Integrity and trust make up the core values I live by. I strive to provide my customers with an honest and straightforward experience when it comes to their business needs. I believe in open communication and take responsibility for any issues that may arise."
-                        data-es="La integridad y la confianza constituyen los valores fundamentales por los que vivo. Me esfuerzo por brindar a mis clientes una experiencia honesta y directa cuando se trata de sus necesidades comerciales. Creo en la comunicación abierta y asumo la responsabilidad por cualquier problema que pueda surgir.">
-                        Integrity and trust make up the core values I live by. I strive to provide my customers with
-                        an honest and straightforward experience when it comes to their business needs. I believe in
-                        open communication and take responsibility for any issues that may arise.
-                    </p>
-                </div>
-
-                <!-- Equality -->
-                <div class="fade-in-delay-1 bg-white p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-success-green to-primary-blue rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Equality" data-es="Igualdad">Equality
-                    </h3>
-                    <p class="text-gray-medium font-secondary"
-                        data-en="I believe in equality in every step and decision I make as a business and put in the extra effort it takes to make sure that I am treating everybody fairly. I strive to provide equal opportunities to everyone regardless of their background or status."
-                        data-es="Creo en la igualdad en cada paso y decisión que tomo como empresa y pongo el esfuerzo adicional que se necesita para asegurar que trato a todos de manera justa. Me esfuerzo por brindar igualdad de oportunidades a todos sin importar su origen o estatus.">
-                        I believe in equality in every step and decision I make as a business and put in the extra
-                        effort it takes to make sure that I am treating everybody fairly. I strive to provide equal
-                        opportunities to everyone regardless of their background or status.
-                    </p>
-                </div>
-
-                <!-- Commitment -->
-                <div class="fade-in-delay-2 bg-white p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-dark mb-4" data-en="Commitment" data-es="Compromiso">
-                        Commitment</h3>
-                    <p class="text-gray-medium font-secondary"
-                        data-en="I am committed to providing a satisfying and successful experience for my customers. I understand that the success of each project depends on my dedication and effort, so I always put in the extra mile to make sure that everything is done right."
-                        data-es="Estoy comprometido a brindar una experiencia satisfactoria y exitosa para mis clientes. Entiendo que el éxito de cada proyecto depende de mi dedicación y esfuerzo, por lo que siempre hago un esfuerzo adicional para asegurar que todo se haga correctamente.">
-                        I am committed to providing a satisfying and successful experience for my customers. I
-                        understand that the success of each project depends on my dedication and effort, so I always
-                        put in the extra mile to make sure that everything is done right.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission & Vision -->
-    <section class="py-20 gradient-bg section--gradient">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-16">
-                <div class="fade-in">
-                    <div class="bg-white shadow-xl p-8 rounded-2xl h-full border border-gray-100">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-primary-blue to-success-green rounded-xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                                </path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-dark mb-4" data-en="My Vision"
-                            data-es="Mi Visión">My Vision</h3>
-                        <p class="text-gray-medium font-secondary"
-                            data-en="To create a world where every business, regardless of size, has access to professional digital solutions that help them thrive and connect authentically with their communities."
-                            data-es="Crear un mundo donde cada negocio, sin importar su tamaño, tenga acceso a soluciones digitales profesionales que les ayuden a prosperar y conectar auténticamente con sus comunidades.">
-                            To create a world where every business, regardless of size, has access to professional
-                            digital solutions that help them thrive and connect authentically with their communities.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="fade-in-delay-1">
-                    <div class="bg-white shadow-xl p-8 rounded-2xl h-full border border-gray-100">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-success-green to-primary-blue rounded-xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-dark mb-4" data-en="My Mission"
-                            data-es="Mi Misión">My Mission</h3>
-                        <p class="text-gray-medium font-secondary"
-                            data-en="I empower small businesses and entrepreneurs by providing affordable, high-quality digital solutions and fostering genuine partnerships that support growth, innovation, and success at every step of the journey."
-                            data-es="Empodero a pequeñas empresas y emprendedores proporcionando soluciones digitales asequibles y de alta calidad, fomentando asociaciones genuinas que apoyan el crecimiento, la innovación y el éxito en cada paso del viaje.">
-                            I empower small businesses and entrepreneurs by providing affordable, high-quality digital
-                            solutions and fostering genuine partnerships that support growth, innovation, and success at
-                            every step of the journey.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="fade-in">
-                <h2 class="text-4xl font-bold text-gray-dark mb-6" data-en="Ready to Start Your Success Story?"
-                    data-es="¿Listo para Comenzar Tu Historia de Éxito?">Ready to Start Your Success Story?</h2>
-                <p class="text-xl text-gray-medium mb-8 font-secondary"
-                    data-en="Join me and let's write your success story together. I'm not just offering a product; I'm offering a partnership."
-                    data-es="Únete a mí y escribamos tu historia de éxito juntos. No solo ofrezco un producto; ofrezco una asociación.">
-                    Join me and let's write your success story together. I'm not just offering a product; I'm
-                    offering a partnership.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="/contact" class="px-8 py-4 bg-primary-blue text-white rounded-lg font-medium shadow-button hover:bg-blue-600 transition-all hover:-translate-y-0.5" 
-                        data-en="Get Started Today" data-es="Comienza Hoy">
-                        Get Started Today
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (Standardized) -->
     <footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
                 <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                        <div class="w-3 h-3 bg-primary-blue rounded-full"></div>
-                        Digital Allies
-                    </h3>
-                    <p class="text-gray-400 text-sm leading-relaxed" 
-                       data-en="Empowering small businesses with accessible, human-centered digital solutions."
-                       data-es="Empoderando a las pequeñas empresas con soluciones digitales accesibles y centradas en el ser humano.">
+                    <a href="/" class="flex items-center space-x-2">
+                        <img src="/assets/logo/digital-allies-logo-default.svg" alt="Digital Allies Logo" class="h-8 w-auto brightness-0 invert">
+                        <span class="text-xl font-bold">Digital Allies</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
                         Empowering small businesses with accessible, human-centered digital solutions.
                     </p>
                 </div>
+                <!-- Links -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4" data-en="Explore" data-es="Explorar">Explore</h4>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Explore</h4>
                     <ul class="space-y-2">
                         <li><a href="/about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
                         <li><a href="/services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
@@ -531,21 +189,23 @@
                         <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
+                <!-- Services -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4" data-en="Services" data-es="Servicios">Services</h4>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Services</h4>
                     <ul class="space-y-2">
                         <li><a href="/services#consulting" class="text-gray-300 hover:text-white transition-colors">Tech Consulting</a></li>
                         <li><a href="/services#web-design" class="text-gray-300 hover:text-white transition-colors">Web Design</a></li>
                         <li><a href="/services#branding" class="text-gray-300 hover:text-white transition-colors">Branding</a></li>
-                        <li><a href="/services#support" class="text-gray-300 hover:text-white transition-colors">Support & Maintenance</a></li>
+                        <li><a href="/services#support" class="text-gray-300 hover:text-white transition-colors">Support</a></li>
                     </ul>
                 </div>
+                <!-- Connect -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4" data-en="Connect" data-es="Conectar">Connect</h4>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Connect</h4>
                     <ul class="space-y-2 text-sm text-gray-300">
-                        <li>Kingman, Arizona</li>
-                        <li><a href="mailto:contact@digitalallies.net" class="hover:text-white">contact@digitalallies.net</a></li>
-                        <li>928-228-5769</li>
+                        <li class="flex items-start"><span class="mr-2"><i class="fa-solid fa-location-dot"></i></span> Kingman, Arizona</li>
+                        <li class="flex items-start"><span class="mr-2"><i class="fa-solid fa-envelope"></i></span> <a href="mailto:contact@digitalallies.net" class="hover:text-white">contact@digitalallies.net</a></li>
+                        <li class="flex items-start"><span class="mr-2"><i class="fa-solid fa-phone"></i></span> 928-228-5769</li>
                     </ul>
                 </div>
             </div>
