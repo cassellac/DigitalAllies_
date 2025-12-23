@@ -18,7 +18,7 @@
 
 body {
     font-family: 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem; /* 18px equivalent using rem for accessibility */
     color: var(--gray-dark);
     line-height: 1.6;
 }

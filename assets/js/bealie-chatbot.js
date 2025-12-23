@@ -64,13 +64,14 @@ class BealieChatbot {
         this.isOpen = false;
         this.isMinimized = false;
         this.messages = [];
+        // URL encode the spaces in file paths to ensure proper loading
         this.bealieStates = {
-            default: '/assets/Bealie/Bealie - 1.PNG',
-            thinking: '/assets/Bealie/Bealie - 2.PNG',
-            happy: '/assets/Bealie/Bealie - 3.PNG',
-            helpful: '/assets/Bealie/Bealie - 4.PNG',
-            greeting: '/assets/Bealie/Bealie - 5.PNG',
-            success: '/assets/Bealie/Bealie - 6.PNG'
+            default: '/assets/Bealie/Bealie%20-%201.PNG',
+            thinking: '/assets/Bealie/Bealie%20-%202.PNG',
+            happy: '/assets/Bealie/Bealie%20-%203.PNG',
+            helpful: '/assets/Bealie/Bealie%20-%204.PNG',
+            greeting: '/assets/Bealie/Bealie%20-%205.PNG',
+            success: '/assets/Bealie/Bealie%20-%206.PNG'
         };
         this.currentState = 'default';
         this.init();
@@ -89,15 +90,35 @@ class BealieChatbot {
             this.langController.setLanguage(window.currentLanguage);
         }
         
-        // Listen for language changes from global toggle
-        const originalToggleLanguage = window.toggleLanguage;
-        window.toggleLanguage = (lang) => {
-            if (originalToggleLanguage) {
-                originalToggleLanguage(lang);
+        // Listen for language changes using a custom event listener approach
+        // This avoids overwriting the global toggleLanguage function
+        const self = this;
+        
+        // Create a MutationObserver to watch for lang attribute changes on html element
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'lang') {
+                    const newLang = document.documentElement.lang;
+                    if (newLang === 'en' || newLang === 'es') {
+                        self.langController.setLanguage(newLang);
+                        self.updateUILanguage();
+                    }
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, { attributes: true });
+        
+        // Also listen for storage events (for cross-tab sync)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'preferredLanguage') {
+                const newLang = e.newValue;
+                if (newLang === 'en' || newLang === 'es') {
+                    self.langController.setLanguage(newLang);
+                    self.updateUILanguage();
+                }
             }
-            this.langController.setLanguage(lang || (this.langController.getLanguage() === 'en' ? 'es' : 'en'));
-            this.updateUILanguage();
-        };
+        });
     }
 
     updateUILanguage() {
