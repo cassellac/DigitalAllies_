@@ -145,7 +145,7 @@
                             <button type="submit" class="w-full btn btn--primary" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
                         </form>
                         <!-- Success State -->
-                        <div id="form-success" class="form-success hidden">
+                        <div id="form-success" class="form-success hidden" style="display: none;">
                             <div class="form-success-icon">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -178,7 +178,8 @@
                         console.log('Form submitted:', data);
                         
                         // Hide form, show success
-                        form.classList.add('hidden');
+                        form.style.display = 'none';
+                        successMsg.style.display = 'block';
                         successMsg.classList.remove('hidden');
                         
                         // Scroll to success message
