@@ -6,9 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Allies - Digital Solutions for the Real World</title>
     <meta name="description"
-        content="Offering IT consulting, web design, branding, ongoing maintenance and training to empower small businesses in Kingman">
+        content="Offering IT, consulting, front end, web and digital asset design, ongoing maintenance and training to empower small businesses in Kingman">
+    <meta name="keywords" content="Web Design Kingman AZ, Digital Marketing, Accessibility, Bilingual Websites, Small Business SEO, AI optimization, Digital Allies">
+    <meta name="author" content="Digital Allies">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://digitalallies.net/">
+    <meta property="og:title" content="Digital Allies - Digital Solutions for the Real World">
+    <meta property="og:description" content="I help small busiensses get online with websites that are beautiful, easy to use and accessible to everyone.">
+    <meta property="og:image" content="https://digitalallies.net/assets/images/icons/Your_Digital_Handshake_version_1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://digitalallies.net/">
+    <meta property="twitter:title" content="Digital Allies - Digital Solutions for the Real World">
+    <meta property="twitter:description" content="I help small busiensses get online with websites that are beautiful, easy to use and accessible to everyone.">
+    <meta property="twitter:image" content="https://digitalallies.net/assets/images/icons/Your_Digital_Handshake_version_1.png">
+
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'primary': ['Segoe UI', 'system-ui', 'sans-serif'],
+                        'secondary': ['Source Sans Pro', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
@@ -22,6 +53,118 @@
 
 <body class="font-primary bg-white text-gray-dark">
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Custom Animations for Hero Graphic -->
+    <style>
+        @keyframes grow-bar {
+            from { width: 0; opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pop-in {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-bar-1 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.2s; }
+        .animate-bar-2 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.4s; }
+        .animate-bar-3 { animation: grow-bar 1s ease-out forwards; animation-delay: 0.6s; }
+        .animate-pop { animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; transform-origin: center; animation-delay: 1.2s; }
+        .animate-float { animation: float-card 6s ease-in-out infinite; }
+    </style>
+
+   <script type="application/ld+json">
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Digital Allies",
+        "url": "https://digitalallies.net",
+        "logo": "https://digitalallies.net/assets/logo/digital-allies-logo-blue-gradient.svg",
+        "email": "contact@digitalallies.net",
+        "telephone": "928-228-5769",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kingman",
+            "addressRegion": "AZ",
+            "addressCountry": "US"
+        },
+        "sameAs": [
+            "https://www.facebook.com/digitalallies",
+            "https://www.instagram.com/the_digital_allies"
+        ],
+        "description": "Serving Mohave County & the Tri-cities with web development, design, and AEO/GEO/SEO consulting, plus ongoing maintenance and training."
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Design and Development",
+        "provider": {
+            "@type": "Organization",
+            "name": "Digital Allies"
+        },
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Mohave County"
+        },
+        "description": "Front-end web development, UI/UX design, and digital asset creation for local businesses."
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "AEO, GEO & SEO Consulting",
+        "provider": {
+            "@type": "Organization",
+            "name": "Digital Allies"
+        },
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Mohave County"
+        },
+        "description": "Strategic consulting and implementation for Search Engine Optimization (SEO), Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO)."
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Website Maintenance & Training",
+        "provider": {
+            "@type": "Organization",
+            "name": "Digital Allies"
+        },
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Mohave County"
+        },
+        "description": "Ongoing website updates, security maintenance, and client training services."
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Digital Allies",
+        "url": "https://digitalallies.net",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://digitalallies.net/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+]
+</script>
+    
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HVGNEKE8R"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HVGNEKE8R');
+</script>
     
     <!-- Language Toggle -->
     <div class="bg-pale-blue py-2">
@@ -36,7 +179,7 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm border-b border-pale-blue sticky top-0 z-50">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-primary-blue sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <a href="/" class="flex items-center space-x-1">
@@ -167,14 +310,7 @@
                         <p class="text-gray-600 mb-4">Streamlined logistics with a custom intranet.</p>
                         <a href="/services#e17" class="text-primary-blue font-semibold hover:underline">Read Case Study →</a>
                     </article>
-                    <!-- Sasha -->
-                    <article class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
-                        <span class="text-sm font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">Healthcare Branding</span>
-                        <h3 class="text-2xl font-bold mt-4 mb-2">Sasha Esposito Therapy</h3>
-                        <p class="text-gray-600 mb-4">Warm, accessible identity for a private practice.</p>
-                        <a href="/services#sasha" class="text-primary-blue font-semibold hover:underline">Read Case Study →</a>
-                    </article>
-                    <!-- JTCH -->
+                    <!-- JTTCOH -->
                     <article class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
                         <span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Non-Profit</span>
                         <h3 class="text-2xl font-bold mt-4 mb-2">Journey to the Center of Hope</h3>
@@ -213,8 +349,7 @@
                 <div class="space-y-4">
                     <a href="/" class="flex items-center space-x-2">
                         <!-- White Logo for Footer -->
-                        <img src="/assets/logo/digital-allies-logo-default.svg" alt="Digital Allies Logo" class="h-8 w-auto brightness-0 invert">
-                        <span class="text-xl font-bold">Digital Allies</span>
+                        <img src="/assets/logo/digital-allies-logo-default.svg" alt="Digital Allies Logo" class="h-8 w-auto brightness    invert">
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed">
                         Empowering small businesses with accessible, human-centered digital solutions.
@@ -259,10 +394,10 @@
                     </ul>
                     <!-- Social Links -->
                     <div class="flex space-x-3 mt-4">
-                        <a href="https://www.linkedin.com/company/digitalalliesnet" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow Digital Allies on LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
+                        <a href="https://www.facebook.com/digitalallies" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow Digital Allies on Facebook">
+                            <i class="fa-brands fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/digitalallies.net" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow Digital Allies on Instagram">
+                        <a href="https://www.instagram.com/the_digital_allies" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow Digital Allies on Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </div>
