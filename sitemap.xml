@@ -4,62 +4,86 @@
 
   <url>
        <loc>https://digitalallies.net/</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>1.0000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/about</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/services</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/blog</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/knowledge-base</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/contact</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://digitalallies.net/accessibility-guide</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <loc>https://digitalallies.net/services?category=consulting</loc>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+       <priority>0.9500</priority>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/services?category=web-design</loc>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.9500</priority>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/services?category=branding</loc>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.9500</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/privacy</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/terms</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://digitalallies.net/cookies</loc>
-       <lastmod>2025-11-02T20:05:16+00:00</lastmod>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/sitemap.xml</loc>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://digitalallies.net/accessibility-guide</loc>
+       <lastmod>2025-12-25T07:43:52+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
   </url>
 </urlset>
