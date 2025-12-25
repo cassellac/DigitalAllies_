@@ -23,6 +23,8 @@
 # RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
 # AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
 
+sitemap: https://a506035.sitemaphosting.com/4609255/sitemap_4609255.xml
+
 # BEGIN Github Pages & Digital Allies Managed content
 
 User-Agent: *
